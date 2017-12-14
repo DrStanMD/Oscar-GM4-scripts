@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Reminders
 // @namespace   Stanscript
 // @include  *lab/CA/ALL/labDisplay.jsp?segmentID*
@@ -14,6 +14,8 @@
 // ==/UserScript==
 /*
 Indemnity
+
+http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 Although reasonable care is taken to test the scripts before publishing, 
 everything you see here is meant to be informational only, and should be used with caution. 
 No guarantee is made or implied about the scripts here whatsoever. 
@@ -27,13 +29,11 @@ var inputvar = 226 //form id goes here
 if (inputvar == 0) {
   alert('Set the specific HTML form Id for your Oscar system')
   return false
-}
-//========Get Path============
+} //========Get Path============
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
-//=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -43,8 +43,7 @@ if (location.search) {
     if (!nv[0]) continue;
     params[nv[0]] = nv[1] || true;
   }
-}
-//*************AUTOTICKLER**********************************************************
+} //*************AUTOTICKLER**********************************************************
 
 if (params.myparam1) {
   screen1 = params.myparam1
@@ -78,14 +77,13 @@ if (params.myparam1) {
   var newD = newYear + '-' + newMonth + '-' + newDay;
   document.serviceform.xml_appointment_date.value = newD;
   //document.getElementsByName("textarea").value = newvalue;
-  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue)
-  //document.getElementById("FormName").submit();
-}
-//*******************************************************************************
+  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue) //document.getElementById("FormName").submit();
+} //*******************************************************************************
 
-y = document.getElementsByClassName('NarrativeRes').length
-//alert(y)
+y = document.getElementsByClassName('NarrativeRes').length //alert(y)
 x = window.location.toString()
+q1 = x.indexOf('lab/CA/ALL/labDisplay.jsp')
+q2 = document.getElementsByClassName('NarrativeRes')
 if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
   //  alert('LabReport')
   var mytag = document.getElementsByTagName('a');
@@ -99,21 +97,23 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
     }
   }
 } 
-else if (x.indexOf('lab/CA/ALL/labDisplay.jsp' && document.getElementsByClassName('NarrativeRes'))) {
+else if (q1 > - 1 && q2 > - 1) {
+  //else if (x.indexOf('lab/CA/ALL/labDisplay.jsp' && document.getElementsByClassName('NarrativeRes'))) {
   var NarList = document.getElementsByClassName('NarrativeRes');
   demopos = ((NarList[1].innerHTML).indexOf('demo='))
   demoend = (NarList[1].innerHTML).indexOf('&', demopos)
-  demono = (NarList[1].innerHTML).substring(demopos + 5, demoend)
+  demono = (NarList[1].innerHTML).substring(demopos + 5, demoend) //alert(demono)
 } 
 else if (x.indexOf('dms/MultiPageDocDisplay.jsp?segmentID') > - 1) {
   x = ($('input[tabindex=12]').attr('onclick'))
   x = (x.toString())
   var pstart = x.search('demographic_no')
   var pend = x.lastIndexOf('tickler')
-  demono = x.substring(pstart + 15, pend - 3).toString()
+  demono = x.substring(pstart + 15, pend - 3).toString() //alert(demono)
 } 
 else if (x.indexOf('dms/showDocument.jsp?inWindow') > - 1) {
   demono = $('input[name=demog]').val();
+  //  alert(demono)
 } 
 else {
   z = document.getElementById('msgBtn_' + params.segmentID)
@@ -201,8 +201,7 @@ for (i = 0; i < AB.length; i++) {
   var myLabel = AB[i][0]
   var myValue = AB[i][1]
   var myRadio2 = myRadio2 + '<input name=\'TimeR\' id=' + myId + ' type=\'radio\'     value=' + myValue + ' /><label for=' + myId + '>' + myLabel + '</label><br>'
-}
-//***********************************************************************
+} //***********************************************************************
 
 var input2 = document.createElement('input');
 input2.type = 'button';
@@ -233,8 +232,7 @@ function ButtonFunction2() {
           addthis = Other.value
         }
         $(myElement).html(RestoreHTML)
-        window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2)
-        //PREVENTION SCREEN********
+        window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2) //PREVENTION SCREEN********
         switch (addthis) {
           case 'Mammogram':
             vPrev = 'MAM'
@@ -253,8 +251,7 @@ function ButtonFunction2() {
           setTimeout(function () {
             // alert('Timeout')
           }, 2000);
-      }
-      //************END PREVENTION*****************
+      } //************END PREVENTION*****************
 
     }
   }
@@ -274,8 +271,7 @@ document.getElementById('Radio2Div').addEventListener('change', function () {
     }
   }
 });
-}
-//***********************************************************************
+} //***********************************************************************
 
 var input3 = document.createElement('input');
 input3.type = 'button';
@@ -306,8 +302,7 @@ document.getElementById('mybutton').addEventListener('click', function () {
         addthis = Other.value
       }
       $(myElement).html(RestoreHTML)
-      window.open(vPath + 'tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
-      //PREVENTION SCREEN********
+      window.open(vPath + 'tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
       switch (addthis) {
         case 'Mammogram':
           vPrev = 'MAM'
@@ -323,8 +318,7 @@ document.getElementById('mybutton').addEventListener('click', function () {
       }
       if (vPrev) {
         window.open(vPath + 'oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
-    }
-    //************END PREVENTION*****************
+    } //************END PREVENTION*****************
 
   }
 }
@@ -344,8 +338,7 @@ for (i = 0; i < AB.length; i++) {
   }
 }
 });
-}
-//*******************************************************************************
+} //*******************************************************************************
 //Rx screen shortcut
 //alert(demono)
 
@@ -357,8 +350,7 @@ input4.setAttribute('style', 'font-size:16px;position:absolute;top:370px;right:0
 document.body.appendChild(input4);
 function ButtonFunction4() {
 window.open(vPath + 'oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
-}
-//Create invoice
+} //Create invoice
 /*var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
@@ -373,6 +365,5 @@ input5.onclick = ButtonFunction5;
 input5.setAttribute('style', 'font-size:16px;position:absolute;top:340px;right:0px;background-color: lightblue;');
 document.body.appendChild(input5);
 function ButtonFunction5() {
-window.open(vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600')
-//window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
+window.open(vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
 }
