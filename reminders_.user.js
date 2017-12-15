@@ -97,8 +97,9 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
     }
   }
 } 
-else if (q1 > - 1 && q2 > - 1) {
-  //else if (x.indexOf('lab/CA/ALL/labDisplay.jsp' && document.getElementsByClassName('NarrativeRes'))) {
+else if (q1 > - 1 && q2) {
+  // alert("Lab 2")
+  // else if (x.indexOf('lab/CA/ALL/labDisplay.jsp')>-1){  // && document.getElementsByClassName('NarrativeRes'))) {
   var NarList = document.getElementsByClassName('NarrativeRes');
   demopos = ((NarList[1].innerHTML).indexOf('demo='))
   demoend = (NarList[1].innerHTML).indexOf('&', demopos)
