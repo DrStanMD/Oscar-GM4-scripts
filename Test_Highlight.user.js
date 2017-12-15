@@ -359,7 +359,7 @@ window.addEventListener('keypress', function (theEvent) {
       //$('#acklabel').val(fixedauthor + "  ##" + SavedLines )
       $('#acklabel').val($('#acklabel').val())
       $('#createLabel').click();
-      getComment('ackLab')
+      unsafeWindow.getComment('ackLab')
       break;
     case theAltKey && theKey == 'w':
       //
@@ -372,14 +372,14 @@ window.addEventListener('keypress', function (theEvent) {
         }
         $('#acklabel').val((text).trim())
         $('#createLabel').click();
-        getComment('ackLab')
+         unsafeWindow.getComment('ackLab')
         return text;
       }
       getSelectionText()
       break;
     case theAltKey && theKey == 'Z':
       //Open comment textbox
-      getComment('ackLab')
+       unsafeWindow.getComment('ackLab')
       break;
     case theAltKey && theKey == 'z':
       SaveAndExit()
