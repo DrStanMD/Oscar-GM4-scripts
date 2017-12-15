@@ -329,7 +329,7 @@ function SaveAndExit() {
   $('#acklabel').val(fixedauthor + '  ##' + SavedLines)
   $('#createLabel').click();
   $('#createLabel').click();
-  getComment('ackLab') //window.close()
+  unsafeWindow.getComment('ackLab') //window.close()
 }
 function ClearStoredSelections() {
   SavedLines = ''
