@@ -343,6 +343,7 @@ for (i = 0; i < AB.length; i++) {
 //Rx screen shortcut
 //alert(demono)
 
+if (demono > - 1) {
 var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Open Rx Screen';
@@ -367,4 +368,5 @@ input5.setAttribute('style', 'font-size:16px;position:absolute;top:340px;right:0
 document.body.appendChild(input5);
 function ButtonFunction5() {
 window.open(vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
+}
 }
