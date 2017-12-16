@@ -2,7 +2,7 @@
 // @name        Colorize Web Text
 // @namespace   Stanscript
 // @include     *
-// @description Utility script for programmners that modifies the color of the selected text
+// @description Utility script for programmers that modifies the color of the selected text
 // @version     1
 // @grant       none
 // ==/UserScript==
