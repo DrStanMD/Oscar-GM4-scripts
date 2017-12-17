@@ -237,7 +237,7 @@ function ButtonFunction2() {
       if (document.getElementById(xyz).checked) {
         addthis = AA[i][0]
         if (AA[i][1] == 'Other') {
-          addthis = myOther.value
+          addthis = document.getElementById('myOther').value
         }
         $(myElement).html(RestoreHTML)
         window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2) //PREVENTION SCREEN********
@@ -309,8 +309,8 @@ document.getElementById('mybutton').addEventListener('click', function () {
     if (document.getElementById(xyz).checked) {
       addthis = AA[i][0]
       if (AA[i][1] == 'Other') {
-        //   alert(myOther.value)
-        addthis = myOther.value
+        //   alert(document.getElementById("myOther").value)
+        addthis = document.getElementById('myOther').value
       }
       $(myElement).html(RestoreHTML)
       window.open(vPath + 'tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
