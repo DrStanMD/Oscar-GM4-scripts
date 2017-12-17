@@ -155,8 +155,7 @@ AA[5] = [
 AA[6] = [
   '<input type=\'text\' id=\'myOther\'  onfocus=\'Aller6.checked=true\'   name=\'Other\'>',
   'Other'
-]
-//alert(AA)
+] //alert(AA)
 AB = [
 ]
 AB[0] = [
@@ -214,6 +213,7 @@ for (i = 0; i < AB.length; i++) {
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'AutoReminders';
+input2.id = 'AutoReminders';
 input2.onclick = ButtonFunction2;
 input2.setAttribute('style', 'font-size:16px;position:absolute;top:400px;right:0px;background-color: #FFC0CB;');
 document.body.appendChild(input2);
@@ -284,6 +284,7 @@ document.getElementById('Radio2Div').addEventListener('change', function () {
 var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'AutoTickler';
+input3.id = 'AutoTickler';
 input3.onclick = ButtonFunction3;
 input3.setAttribute('style', 'font-size:16px;position:absolute;top:430px;right:0px;background-color: lime;');
 document.body.appendChild(input3);
@@ -353,7 +354,11 @@ for (i = 0; i < AB.length; i++) {
 //Rx screen shortcut
 //alert(demono)
 
+document.getElementById('AutoReminders').style.visibility = 'hidden';
+document.getElementById('AutoTickler').style.visibility = 'hidden';
 if (demono > - 1) {
+document.getElementById('AutoReminders').style.visibility = 'visible';
+document.getElementById('AutoTickler').style.visibility = 'visible';
 var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Open Rx Screen';
