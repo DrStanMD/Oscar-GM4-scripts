@@ -130,26 +130,33 @@ AA = [
 ]
 AA[0] = [
   'Mammogram',
+  ''
 ]
 AA[1] = [
   'Pap',
+  ''
 ]
 AA[2] = [
   'Colonoscopy',
+  ''
 ]
 AA[3] = [
   'PSA',
+  ''
 ]
 AA[4] = [
   'CEA',
+  ''
 ]
 AA[5] = [
   'FIT',
+  ''
 ]
 AA[6] = [
   '<input type=\'text\' id=\'myOther\'  onfocus=\'Aller6.checked=true\'   name=\'Other\'>',
   'Other'
 ]
+alert(AA)
 AB = [
 ]
 AB[0] = [
@@ -291,17 +298,18 @@ if (params.demoName) {
 var RestoreHTML = $(myElement).html()
 $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
 document.getElementById('mybutton').addEventListener('click', function () {
-  // alert("HI")
   //document.getElementById('RadioDiv').addEventListener('click', function () {
   if (document.getElementById('Cancel').checked) {
     $(myElement).html(RestoreHTML)
-  }  // alert("HI again")
+  } // alert("HI again")
+  //alert(AA)
 
   for (i = 0; i < AA.length; i++) {
     xyz = 'Aller' + i
     if (document.getElementById(xyz).checked) {
       addthis = AA[i][0]
       if (AA[i][1] == 'Other') {
+        //   alert(myOther.value)
         addthis = myOther.value
       }
       $(myElement).html(RestoreHTML)
