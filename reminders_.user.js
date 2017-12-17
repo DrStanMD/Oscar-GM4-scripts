@@ -156,7 +156,7 @@ AA[6] = [
   '<input type=\'text\' id=\'myOther\'  onfocus=\'Aller6.checked=true\'   name=\'Other\'>',
   'Other'
 ]
-alert(AA)
+//alert(AA)
 AB = [
 ]
 AB[0] = [
