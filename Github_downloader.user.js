@@ -19,7 +19,7 @@ for (var i = 0; i < myclass.length; i++) {
   if (myclass[i].id) {
     x = '#' + myclass[i].id
     myArray[i] = x
-    var radioBtn = $('<input type=\'checkbox\' class=\'mycheckbox\'  checked id= ' + onclickvalue + ' value =' + onclickvalue + '>');
+    var radioBtn = $('<input type=\'checkbox\' class=\'mycheckbox\'   id= ' + onclickvalue + ' value =' + onclickvalue + '>');
     $(x).before(radioBtn)
   }
 }
