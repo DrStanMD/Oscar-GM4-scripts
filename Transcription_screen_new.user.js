@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Annotation for Transcription Screen 1
 // @namespace   Stanscripts
 // @description Adds annotation button for saving selected text to encounter screen
@@ -9,6 +9,8 @@
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
+//alert()
+
 ExcelArray = [
   'TRANSCRIP',
   'CELLPATH',
@@ -17,9 +19,11 @@ ExcelArray = [
 ]
 newLine = ''
 teststring = $('.Title2').html()
+
 if (teststring) {
-  teststring = ($('.Title2').html.trim()
+  teststring = teststring.trim()
 }
+//alert(teststring)
 if (ExcelArray.indexOf(teststring) > - 1) {
   //if (teststring == 'TRANSCRIP' || teststring == 'CELLPATH') {
   var input = document.createElement('input');
@@ -48,7 +52,9 @@ else {
     $('.panel > textarea:nth-child(1)').val(myText)
   }
 }
+  //alert()
 author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
+//alert(author)
 if (!author) {
   author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
 }
@@ -56,6 +62,7 @@ if (!author) {
   //author = prompt("Please enter label name", "");
   author = 'Author not found'
 }
+
 fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim()
 //alert(fixedauthor)
 function getSelectionText() {
@@ -115,3 +122,4 @@ else
   firstElement = (elements.slice(1))
   vPath = ('https://' + location.host + '/' + firstElement)
 }
+
