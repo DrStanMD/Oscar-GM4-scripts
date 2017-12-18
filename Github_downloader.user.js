@@ -27,7 +27,7 @@ var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'IMPORT SCRIPTS';
 input1.onclick = ButtonFunction1;
-input1.setAttribute('style', 'font-size:18px;position:fixed;top:200px;left:100px;');
+input1.setAttribute('style', 'font-size:18px;position:fixed;top:200px;left:10px;');
 document.body.appendChild(input1);
 function ButtonFunction1() {
   var myclass2 = document.getElementsByClassName('mycheckbox');
@@ -42,7 +42,7 @@ var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Check all';
 input2.onclick = ButtonFunction2;
-input2.setAttribute('style', 'font-size:12px;position:fixed;top:130px;left:100px;');
+input2.setAttribute('style', 'font-size:12px;position:fixed;top:130px;left:10px;');
 document.body.appendChild(input2);
 function ButtonFunction2() {
   var myclass2 = document.getElementsByClassName('mycheckbox');
@@ -54,7 +54,7 @@ var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'Uncheck all';
 input3.onclick = ButtonFunction3;
-input3.setAttribute('style', 'font-size:12px;position:fixed;top:160px;left:100px;');
+input3.setAttribute('style', 'font-size:12px;position:fixed;top:160px;left:10px;');
 document.body.appendChild(input3);
 function ButtonFunction3() {
   var myclass2 = document.getElementsByClassName('mycheckbox');
