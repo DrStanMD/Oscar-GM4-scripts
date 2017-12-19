@@ -70,7 +70,7 @@ window.addEventListener('load', function () {
     document.body.appendChild(linkButton2);
   }
   function doLink() {
-    alert(demographicNo)
+    //alert(demographicNo)
     var elements = (window.location.pathname.split('/', 2));
     firstElement = (elements.slice(1));
     var vPath = ('https://' + location.host + '/' + firstElement);
@@ -81,7 +81,7 @@ window.addEventListener('load', function () {
   function storeName() {
     var myDemo = window.location.href.split('&demographicNo=') [1];
     myDemoNo = myDemo.split('&') [0]; //This returns the patients demographic number
-    localStorage.setItem('ptDemoNo', myDemoNo); //stores this in local storage
+    localStorage.setItem('ptDemoNo', mydemographicNo); //stores this in local storage
     // alert(myDemoNo)
   }
   if (locator == 'demographicdemographiccontrol.jsp') { //We are in the Master Demographic Page
