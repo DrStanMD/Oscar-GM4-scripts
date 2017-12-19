@@ -21,8 +21,7 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
-var mydemographicNo = params.demographicNo
-//alert(mydemographicNo)
+var mydemographicNo = params.demographicNo//alert(mydemographicNo)
 window.addEventListener('load', function () {
   // This splits off the addition to the URL and conveniently assigns it to QueryString for easy retrieval
   var QueryString = function () {
@@ -71,10 +70,11 @@ window.addEventListener('load', function () {
   }
   function doLink() {
     //alert(demographicNo)
+    localStorage.setItem('ptDemoNo', mydemographicNo)
     var elements = (window.location.pathname.split('/', 2));
     firstElement = (elements.slice(1));
     var vPath = ('https://' + location.host + '/' + firstElement);
-    var linkPath = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demographicNo + '&displaymode=edit&dboperation=search_detail&z=1';
+    var linkPath = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + mydemographicNo + '&displaymode=edit&dboperation=search_detail&z=1';
     var linkWindow = window.open(linkPath);
     window.close();
   }
