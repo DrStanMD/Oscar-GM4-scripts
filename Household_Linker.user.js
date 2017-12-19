@@ -10,7 +10,19 @@
 // @version     2
 // @grant       none
 // ==/UserScript==
-var myDemoNo = 0
+//=====Get Parameters============
+var params = {
+};
+if (location.search) {
+  var parts = location.search.substring(1).split('&');
+  for (var i = 0; i < parts.length; i++) {
+    var nv = parts[i].split('=');
+    if (!nv[0]) continue;
+    params[nv[0]] = nv[1] || true;
+  }
+}
+var mydemographicNo = params.demographicNo
+//alert(mydemographicNo)
 window.addEventListener('load', function () {
   // This splits off the addition to the URL and conveniently assigns it to QueryString for easy retrieval
   var QueryString = function () {
@@ -58,11 +70,11 @@ window.addEventListener('load', function () {
     document.body.appendChild(linkButton2);
   }
   function doLink() {
-    storeName()    //alert(myDemoNo)
+    alert(demographicNo)
     var elements = (window.location.pathname.split('/', 2));
     firstElement = (elements.slice(1));
     var vPath = ('https://' + location.host + '/' + firstElement);
-    var linkPath = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + myDemoNo + '&displaymode=edit&dboperation=search_detail&z=1';
+    var linkPath = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demographicNo + '&displaymode=edit&dboperation=search_detail&z=1';
     var linkWindow = window.open(linkPath);
     window.close();
   }
@@ -90,7 +102,7 @@ window.addEventListener('load', function () {
       $('input[name=demographic_no]').val(Patient); //The appointment is made with the demographic number which is the best approach
       $('#addButton').click();
       localStorage.clear(); //This empties the clipboard so that it does not activate again
-    }    // This is the code that moves the appt around	 
+    } // This is the code that moves the appt around	 
 
     var appStatus = 0;
     var determinator = 0;
