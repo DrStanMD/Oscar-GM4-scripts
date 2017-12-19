@@ -69,20 +69,22 @@ window.addEventListener('load', function () {
     document.body.appendChild(linkButton2);
   }
   function doLink() {
-    //alert(demographicNo)
-    localStorage.setItem('ptDemoNo', mydemographicNo)
+    var myDemo = window.location.href.split('&demographicNo=') [1];
+    myDemoNo = myDemo.split('&') [0]; //This returns the patients demographic number
+    localStorage.setItem('ptDemoNo', myDemoNo); //stores this in local storage
+    //alert(myDemoNo)    //alert(mydemographicNo)
     var elements = (window.location.pathname.split('/', 2));
     firstElement = (elements.slice(1));
     var vPath = ('https://' + location.host + '/' + firstElement);
-    var linkPath = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + mydemographicNo + '&displaymode=edit&dboperation=search_detail&z=1';
+    var linkPath = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + myDemoNo + '&displaymode=edit&dboperation=search_detail&z=1';
     var linkWindow = window.open(linkPath);
     window.close();
   }
   function storeName() {
     var myDemo = window.location.href.split('&demographicNo=') [1];
     myDemoNo = myDemo.split('&') [0]; //This returns the patients demographic number
-    localStorage.setItem('ptDemoNo', mydemographicNo); //stores this in local storage
-    // alert(myDemoNo)
+    localStorage.setItem('ptDemoNo', myDemoNo); //stores this in local storage
+    alert(myDemoNo)
   }
   if (locator == 'demographicdemographiccontrol.jsp') { //We are in the Master Demographic Page
     if (QueryString.z == 1) { //This will only activate if the request started from the Family Link button
