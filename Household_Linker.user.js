@@ -21,7 +21,7 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
-var mydemographicNo = params.demographicNo//alert(mydemographicNo)
+var mydemographicNo = params.demographicNo //alert(mydemographicNo)
 window.addEventListener('load', function () {
   // This splits off the addition to the URL and conveniently assigns it to QueryString for easy retrieval
   var QueryString = function () {
@@ -84,11 +84,13 @@ window.addEventListener('load', function () {
     var myDemo = window.location.href.split('&demographicNo=') [1];
     myDemoNo = myDemo.split('&') [0]; //This returns the patients demographic number
     localStorage.setItem('ptDemoNo', myDemoNo); //stores this in local storage
-    alert(myDemoNo)
+    //alert(myDemoNo)
   }
   if (locator == 'demographicdemographiccontrol.jsp') { //We are in the Master Demographic Page
+    //alert()
     if (QueryString.z == 1) { //This will only activate if the request started from the Family Link button
-      var address = $('#editDemographic > tbody:nth-child(1) > tr:nth-child(4)>td:nth-child(2) > input:nth-child(1)').val();
+      // var address = $('#editDemographic > tbody:nth-child(1) > tr:nth-child(4)>td:nth-child(2) > input:nth-child(1)').val();
+      var address = $('#contactInformation > ul:nth-child(2) > li:nth-child(4) > span:nth-child(2)').html()
       $('input[name=keyword]').val(address);
       $('select[name=search_mode]').val('search_address');
       $('input[title="Search active patients"]').click();
