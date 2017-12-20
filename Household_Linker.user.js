@@ -47,8 +47,8 @@ window.addEventListener('load', function () {
       }
     }
     return query_string;
-  }();
-  //This splits off the web page details and combines them so that you can determine what page you are on
+  } //This splits off the web page details and combines them so that you can determine what page you are on
+
   var element1 = (window.location.pathname.split('/')) [2];
   var element2 = (window.location.pathname.split('/')) [3];
   var locator = element1.concat(element2);
@@ -87,18 +87,13 @@ window.addEventListener('load', function () {
     //alert(myDemoNo)
   }
   if (locator == 'demographicdemographiccontrol.jsp') { //We are in the Master Demographic Page
-    //alert()
-    if (QueryString.z == 1) { //This will only activate if the request started from the Family Link button
-      // var address = $('#editDemographic > tbody:nth-child(1) > tr:nth-child(4)>td:nth-child(2) > input:nth-child(1)').val();
-      var address = $('#contactInformation > ul:nth-child(2) > li:nth-child(4) > span:nth-child(2)').html()
-      $('input[name=keyword]').val(address);
-      $('select[name=search_mode]').val('search_address');
-      $('input[title="Search active patients"]').click();
-    }
-    if (QueryString.z == 2) { //This is just an extra that allows RBT to link straight to the encounter without stopping at Master Demographics
-      $('a[title="E-Chart"]').click();
-      window.close();
-    }
+    //  alert()
+    //  if (QueryString.z == 1) { //This will only activate if the request started from the Family Link button
+    // var address = $('#editDemographic > tbody:nth-child(1) > tr:nth-child(4)>td:nth-child(2) > input:nth-child(1)').val();
+    var address = $('#contactInformation > ul:nth-child(2) > li:nth-child(4) > span:nth-child(2)').html() // alert(address)
+    $('input[name=keyword]').val(address);
+    $('select[name=search_mode]').val('search_address');
+    $('input[title="Search active patients"]').click();
   }
   if ((locator == 'appointmentaddappointment.jsp') || (locator == 'appointmentappointmentcontrol.jsp')) { //We are in the Appointment Popup Page
     Patient = localStorage.getItem('ptDemoNo');
