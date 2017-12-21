@@ -62,10 +62,8 @@ if (location.search) {
 }
 window.onbeforeunload = reloadcookie;
 function reloadcookie() {
-  var y = (10 / 86400) //10 seconds
-  setCookie('RELOAD', 'RELOAD', y, 'path=/')
- // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
-
+  var y = (6 / 86400) //10 seconds
+  setCookie('RELOAD', 'RELOAD', y, 'path=/') // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
 }
 var input130 = document.createElement('input');
 input130.type = 'button';
@@ -76,7 +74,7 @@ input130.setAttribute('style', 'font-size:18px;position:fixed;z-index:1;bottom:2
 document.body.appendChild(input130);
 document.getElementById('input130').style.backgroundColor = 'yellow';
 function showAlert130() {
-  var y = (10 / 86400) //10 seconds
+  var y = (6 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') //alert(input202.value)
   location.reload();
 }
@@ -88,9 +86,14 @@ input2.onclick = ButtonFunction2;
 input2.setAttribute('style', 'font-size:18px;width:95px;position:fixed;bottom:208px;right:0px;z-index:1;background-color: #d9d9d9');
 document.body.appendChild(input2);
 function ButtonFunction2() {
+  var endtimer = input2.value
   input2.value = 'Timer'
-  input2.style.background = '#d9d9d9'
-  setCookie('UNLOAD', Date(), 360, 'path=/')
+  input2.style.background = '#d9d9d9' // setCookie('UNLOAD', Date(), 360, 'path=/') 
+  var t = new Date();
+  t.setSeconds(t.getSeconds() + 10);
+  // alert(Date())
+  // alert(t)
+  setCookie('UNLOAD', t, 360, 'path=/')
   x = 0 //Reset timer
   myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
 } //===========Timer==========
