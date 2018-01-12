@@ -62,7 +62,7 @@ if (location.search) {
 }
 window.onbeforeunload = reloadcookie;
 function reloadcookie() {
-  var y = (6 / 86400) //10 seconds
+  var y = (3 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
 }
 var input130 = document.createElement('input');
@@ -74,7 +74,7 @@ input130.setAttribute('style', 'font-size:18px;position:fixed;z-index:1;bottom:2
 document.body.appendChild(input130);
 document.getElementById('input130').style.backgroundColor = 'yellow';
 function showAlert130() {
-  var y = (6 / 86400) //10 seconds
+  var y = (3 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') //alert(input202.value)
   location.reload();
 }
@@ -87,6 +87,7 @@ input2.setAttribute('style', 'font-size:18px;width:95px;position:fixed;bottom:20
 document.body.appendChild(input2);
 function ButtonFunction2() {
   var endtimer = input2.value
+  setCookie('TTIME', endtimer, 360, 'path=/')
   input2.value = 'Timer'
   input2.style.background = '#d9d9d9' // setCookie('UNLOAD', Date(), 360, 'path=/') 
   var t = new Date();
@@ -116,6 +117,7 @@ String.prototype.toHHMMSS = function () {
 }
 if (!getCookie('RELOAD')) {
   var x = 0
+  alert(x)
   setCookie('LOAD', Date(), 360, 'path=/')
 } 
 else {
