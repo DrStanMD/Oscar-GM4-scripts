@@ -2,8 +2,6 @@
 // @name        Timer Suite
 // @namespace   Stanscript
 // @include     */casemgmt/forward.jsp?action=view&demographic*
-// @include    *oscarEncounter/oscarMeasurements/SetupMeasurements.do*
-// @include        *oscarEncounter/GraphMeasurements.do?demographic_no*
 // @description Record echart time
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     0
@@ -62,7 +60,7 @@ if (location.search) {
 }
 window.onbeforeunload = reloadcookie;
 function reloadcookie() {
-  var y = (3 / 86400) //10 seconds
+  var y = (6 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
 }
 var input130 = document.createElement('input');
@@ -74,7 +72,7 @@ input130.setAttribute('style', 'font-size:18px;position:fixed;z-index:1;bottom:2
 document.body.appendChild(input130);
 document.getElementById('input130').style.backgroundColor = 'yellow';
 function showAlert130() {
-  var y = (3 / 86400) //10 seconds
+  var y = (6 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') //alert(input202.value)
   location.reload();
 }
