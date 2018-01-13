@@ -115,7 +115,7 @@ String.prototype.toHHMMSS = function () {
 }
 if (!getCookie('RELOAD')) {
   var x = 0
-  alert(x)
+ // alert(x)
   setCookie('LOAD', Date(), 360, 'path=/')
 } 
 else {
