@@ -29,8 +29,9 @@ var inputvar = 226 //form id goes here
 if (inputvar == 0) {
   alert('Set the specific HTML form Id for your Oscar system')
   return false
+ 
 } //========Get Path============
-
+var dd = 50 //Button position
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
@@ -215,7 +216,7 @@ input2.type = 'button';
 input2.value = 'AutoReminders';
 input2.id = 'AutoReminders';
 input2.onclick = ButtonFunction2;
-input2.setAttribute('style', 'font-size:16px;position:absolute;top:400px;right:0px;background-color: #FFC0CB;');
+input2.setAttribute('style', 'font-size:16px;position:absolute;top:'+(400+dd)+'px;right:0px;background-color: #FFC0CB;');
 document.body.appendChild(input2);
 var addthis = ''
 var addthis2 = '360'
@@ -286,7 +287,7 @@ input3.type = 'button';
 input3.value = 'AutoTickler';
 input3.id = 'AutoTickler';
 input3.onclick = ButtonFunction3;
-input3.setAttribute('style', 'font-size:16px;position:absolute;top:430px;right:0px;background-color: lime;');
+input3.setAttribute('style', 'font-size:16px;position:absolute;top:'+(430+dd)+'px;right:0px;background-color: lime;');
 document.body.appendChild(input3);
 var addthis = ''
 var addthis2 = '360'
@@ -363,7 +364,7 @@ var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Open Rx Screen';
 input4.onclick = ButtonFunction4;
-input4.setAttribute('style', 'font-size:16px;position:absolute;top:370px;right:0px;background-color: lightblue;');
+input4.setAttribute('style', 'font-size:16px;position:absolute;top:'+(370+dd)+'px;right:0px;background-color: lightblue;');
 document.body.appendChild(input4);
 function ButtonFunction4() {
 window.open(vPath + 'oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
@@ -379,7 +380,7 @@ var input5 = document.createElement('input');
 input5.type = 'button';
 input5.value = 'Master';
 input5.onclick = ButtonFunction5;
-input5.setAttribute('style', 'font-size:16px;position:absolute;top:340px;right:0px;background-color: lightblue;');
+input5.setAttribute('style', 'font-size:16px;position:absolute;top:'+(340+dd)+'px;right:0px;background-color: lightblue;');
 document.body.appendChild(input5);
 function ButtonFunction5() {
 window.open(vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
