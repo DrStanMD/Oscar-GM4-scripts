@@ -13,7 +13,7 @@ imported.src = 'https://secure10.oscarhost.ca/SDHurwitzInc/eform/displayImage.do
 document.head.appendChild(imported);
 */
 var count = $('#tblDiscs tr').length;
-//   alert(count)
+// alert(count)
 //********************************************************************************
 function GetNextLeaf(node) {
   while (!node.nextSibling) {
@@ -214,8 +214,8 @@ function ResetNames() {
   $('#acklabel').val('')
   $('#createLabel').click();
   $('#createLabel').click();
-}
-window.resizeTo(1200, 800);
+}//window.resizeTo(1200, 800);
+
 window.moveTo(300, 100) //author = prompt("Please enter label name", "");
 //Get line numbers from label and apply highlights************
 GetLabel = $('#acklabel').val()
@@ -257,8 +257,7 @@ if (ExcelArray.indexOf(teststring) == - 1) {
 } 
 else {
   //**************************************Highlight 
-  var SavedLines = ''
-  document.designMode = 'on';
+  var SavedLines = ''  //document.designMode = 'on';
   document.designMode = 'off';
   author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
   if (!author) {
@@ -372,14 +371,14 @@ window.addEventListener('keypress', function (theEvent) {
         }
         $('#acklabel').val((text).trim())
         $('#createLabel').click();
-         unsafeWindow.getComment('ackLab')
+        unsafeWindow.getComment('ackLab')
         return text;
       }
       getSelectionText()
       break;
     case theAltKey && theKey == 'Z':
       //Open comment textbox
-       unsafeWindow.getComment('ackLab')
+      unsafeWindow.getComment('ackLab')
       break;
     case theAltKey && theKey == 'z':
       SaveAndExit()
