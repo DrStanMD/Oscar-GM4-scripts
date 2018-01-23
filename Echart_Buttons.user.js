@@ -6,7 +6,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
-window.moveTo(300, 100)
+//window.moveTo(300, 100)
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
