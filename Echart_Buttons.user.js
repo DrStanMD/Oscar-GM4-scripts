@@ -6,6 +6,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
+window.moveTo(300, 100)
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
@@ -278,3 +279,14 @@ function showAlert19()
   }, 1500);
   */
 }
+
+var input180 = document.createElement('input');
+input180.type = 'button';
+input180.value = 'DM flow sheet';
+input180.onclick = showAlert180;
+input180.setAttribute('style', 'font-size:16px;z-index:1;position:fixed;bottom: 300px;right:0px');
+document.body.appendChild(input180);
+function showAlert180()
+{
+  window.open(vPath + 'oscarEncounter/oscarMeasurements/TemplateFlowSheet.jsp?demographic_no='+demo_no+'&template=diab2')
+}   
