@@ -15,5 +15,6 @@
 // @grant       none
 // ==/UserScript==
 window.resizeTo(1280, 780);
+window.moveTo(300, 100)
 //window.resizeTo(1300,900);
 //alert('hi')
