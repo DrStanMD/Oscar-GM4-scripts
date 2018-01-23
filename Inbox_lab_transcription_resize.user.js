@@ -1,5 +1,5 @@
-﻿// ==UserScript==
-// @name        Inbox lab transcription, Biilling screens,Notes resize
+// ==UserScript==
+// @name        Resize lab transcription, Biilling screens
 // @namespace   Stanscripts
 // @description Resizes various screens to (1280,780)
 // @include    *lab/CA/ALL/labDisplay.jsp*
@@ -11,6 +11,7 @@
 // @include    *dms/inboxManage.do?method=prepareForIndexPage*
 // @include    *dms/showDocument.jsp?inWindow=true&segmentID*
 // @include    *dms/MultiPageDocDisplay.jsp?segmentID*
+// @include    *casemgmt/forward.jsp?action=view&demographicNo*
 // @grant       none
 // ==/UserScript==
 window.resizeTo(1280, 780);
