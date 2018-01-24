@@ -7,11 +7,7 @@
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
-/*
-var imported = document.createElement('script');
-imported.src = 'https://secure10.oscarhost.ca/SDHurwitzInc/eform/displayImage.do?imagefile=Colorize_Web_Text.js'
-document.head.appendChild(imported);
-*/
+
 var count = $('#tblDiscs tr').length;
 // alert(count)
 //********************************************************************************
