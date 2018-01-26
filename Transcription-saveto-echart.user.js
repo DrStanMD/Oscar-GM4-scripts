@@ -65,7 +65,8 @@ function getSelectionText() {
   if (window.getSelection) {
     mytext = window.getSelection().toString();
     var eachLine = mytext.split('\n');
-    for (i = 0; i < eachLine.length - 1; i++) {
+   // for (i = 0; i < eachLine.length - 1; i++) {
+   for (i = 0; i < eachLine.length; i++) {
       newLine = newLine + eachLine[i] + '&LF'      //Replace all '#' characters with 'No.' as the # character breaks the code
       newLine = newLine.replace(/#/g, 'No.');
     }    //   alert(newLine)
