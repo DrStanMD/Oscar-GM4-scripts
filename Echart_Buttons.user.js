@@ -163,6 +163,7 @@ document.body.appendChild(input11);
 function showAlert11() //{(document.evaluate("id('save')/span/input[contains(@src,'verify-sign.png')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue).click();}
 //{(document.evaluate("id('save')/span/input[contains(@src,'dollar-sign-icon.png')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue).click();}
 {
+  $('#input2').click()
   $('#save > span:nth-child(1) > input:nth-child(5)').click()
 }
 var input12 = document.createElement('input');
