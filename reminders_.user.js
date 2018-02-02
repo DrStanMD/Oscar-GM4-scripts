@@ -351,10 +351,9 @@ for (i = 0; i < AB.length; i++) {
   }
 }
 });
-} //*******************************************************************************
+} 
+//*******************************************************************************
 //Rx screen shortcut
-//alert(demono)
-
 document.getElementById('AutoReminders').style.visibility = 'hidden';
 document.getElementById('AutoTickler').style.visibility = 'hidden';
 if (demono > - 1) {
@@ -385,4 +384,18 @@ document.body.appendChild(input5);
 function ButtonFunction5() {
 window.open(vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
 }
+
+//display LabGrid
+var input50 = document.createElement('input');
+input50.type = 'button';
+input50.value = 'LabGrid';
+input50.onclick = ButtonFunction50;
+input50.setAttribute('style', 'font-size:16px;position:absolute;top:'+(310+dd)+'px;right:0px;background-color: orange;');
+document.body.appendChild(input50);
+function ButtonFunction50() {
+  window.open(vPath+'eform/efmformadd_data.jsp?fid=68&demographic_no='+demono)
 }
+}
+
+
+
