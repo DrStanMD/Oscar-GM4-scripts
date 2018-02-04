@@ -176,7 +176,7 @@ function showAlert12() //{window.open(vPath  + '/oscarEncounter/oscarMeasurement
 {
   //https://secure10.oscarhost.ca/SDHurwitzInc/eform/efmformadd_data.jsp?fid=68&demographic_no=640&appointment=
   var formPath = vPath + 'eform/efmformadd_data.jsp?fid=68&demographic_no=' + demo_no
-  window.open(formPath)
+  window.open(formPath,'Popup_Window', 'width=800,height=800,left = 800,top = 0')
 }
 var input13 = document.createElement('input');
 input13.type = 'button';
