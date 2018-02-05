@@ -241,7 +241,7 @@ function ButtonFunction2() {
           addthis = document.getElementById('myOther').value
         }
         $(myElement).html(RestoreHTML)
-        window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2) //PREVENTION SCREEN********
+        window.open(vPath + '/eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2) //PREVENTION SCREEN********
         switch (addthis) {
           case 'Mammogram':
             vPrev = 'MAM'
@@ -256,7 +256,7 @@ function ButtonFunction2() {
             vPrev = ''
         }
         if (vPrev) {
-          window.open(vPath + 'oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
+          window.open(vPath + '/oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
           setTimeout(function () {
             // alert('Timeout')
           }, 2000);
@@ -315,7 +315,7 @@ document.getElementById('mybutton').addEventListener('click', function () {
         addthis = document.getElementById('myOther').value
       }
       $(myElement).html(RestoreHTML)
-      window.open(vPath + 'tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
+      window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
       switch (addthis) {
         case 'Mammogram':
           vPrev = 'MAM'
@@ -330,7 +330,7 @@ document.getElementById('mybutton').addEventListener('click', function () {
           vPrev = ''
       }
       if (vPrev) {
-        window.open(vPath + 'oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
+        window.open(vPath + '/oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
     } //************END PREVENTION*****************
 
   }
@@ -366,7 +366,7 @@ input4.onclick = ButtonFunction4;
 input4.setAttribute('style', 'font-size:16px;position:absolute;top:'+(370+dd)+'px;right:0px;background-color: lightblue;');
 document.body.appendChild(input4);
 function ButtonFunction4() {
-window.open(vPath + 'oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
+window.open(vPath + '/oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
 } //Create invoice
 /*var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
@@ -382,7 +382,7 @@ input5.onclick = ButtonFunction5;
 input5.setAttribute('style', 'font-size:16px;position:absolute;top:'+(340+dd)+'px;right:0px;background-color: lightblue;');
 document.body.appendChild(input5);
 function ButtonFunction5() {
-window.open(vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
+window.open(vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
 }
 
 //display LabGrid
@@ -393,7 +393,7 @@ input50.onclick = ButtonFunction50;
 input50.setAttribute('style', 'font-size:16px;position:absolute;top:'+(310+dd)+'px;right:0px;background-color: orange;');
 document.body.appendChild(input50);
 function ButtonFunction50() {
-  window.open(vPath+'eform/efmformadd_data.jsp?fid=68&demographic_no='+demono)
+  window.open(vPath+'/eform/efmformadd_data.jsp?fid=68&demographic_no='+demono)
 }
 }
 
