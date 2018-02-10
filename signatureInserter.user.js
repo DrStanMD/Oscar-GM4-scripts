@@ -12,7 +12,7 @@ vPath = ('https://' + location.host + '/' + firstElement)
 var ctx = document.getElementById('canvas').getContext('2d')
 base_image = new Image();
 base_image.src = vPath + '/eform/displayImage.do?imagefile=My Signature.jpg'
-window.addEventListener('load', function () {
+//window.addEventListener('load', function () {
   ctx.drawImage(base_image, 0, 0, 500, 100);
   ctx.beginPath();
   ctx.lineWidth = '2';
@@ -28,4 +28,4 @@ window.addEventListener('load', function () {
   ctx.moveTo(rnd1, 0);
   ctx.lineTo(150, 130);
   ctx.stroke(); // Draw it
-}, false);
+//}, false);
