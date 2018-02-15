@@ -21,7 +21,9 @@ window.addEventListener('keypress', function (theEvent) {
     // $('#savebutton').click()
      unsafeWindow.checkScratch()
      //alert("Saved")
+     setTimeout(function(){
      window.close()
+               }, 300);
       break;
   }
 },
