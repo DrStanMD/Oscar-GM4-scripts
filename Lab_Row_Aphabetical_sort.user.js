@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Lab Row display Alphabetical Sort
 // @namespace   Stanscript
 // @include     *lab/CumulativeLabValues.jsp*
@@ -112,13 +112,12 @@ var CDMArray = [
   '32309-7',
   '718-7',
   '1988-5',
-  'X10367'
-  //Hb
+  'X10367' //Hb
 ]
 function showAlert5() {
   window.open(vPath + '/lab/CumulativeLabValues.jsp?mysort=sort&demographic_no=' + params.demographicNo, '_blank', 'width=1000, scrollbars=yes, resizable=yes')
 }
-window.resizeTo(1200,780);
+window.resizeTo(1200, 780);
 printbutton = '<input style=\'font-size:18px;position:absolute;top:10px;left:400px;\' value=\'Print\' type=\'button\'  onclick=\'window.print()\' >'
 var today = new Date();
 var dd = today.getDate();
@@ -148,7 +147,7 @@ var checkedValues = ''
 var LabDataPrint = ''
 function getMeasures(measure, arrayno) {
   labURL = ''
-  labURL = 'testName=' + measure + '&demo=' + params.demographic_no + '&labType=HL7&identifier=' + myLabArray[arrayno][2]
+  labURL = 'testName=' + measure + '&demo=' + params.demographic_no + '&labType=HL7&identifier=' + myLabArray[arrayno][2] //alert(labURL)  
   xmlhttp = new XMLHttpRequest();
   str = ''
   var pathArray = window.location.pathname.split('/');
@@ -177,13 +176,11 @@ function getMeasures(measure, arrayno) {
       }
       measureArray.reverse()
       measureDateArray.reverse()
-      alldata[arrayno] = '<br><u>' + measure + '</u>' + '<br>'
-      //*************Limit to 10 results**********************
+      alldata[arrayno] = '<br><u>' + measure + '</u>' + '<br>' //*************Limit to 10 results**********************
       vlimit = 10
       if (measureArray.length < vlimit) {
         vlimit = measureArray.length
-      }
-      //****END LIMIT********************************
+      } //****END LIMIT********************************
 
       for (zz = 0; zz < vlimit; zz++) {
         if (measureArray[zz]) {
@@ -219,7 +216,8 @@ function Cumulative() {
     myLabArray[i][0] = labname
     myLabArray[i][2] = labparam
   }
-}
+} //alert()
+
 var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Print Cumulative Values';
@@ -259,8 +257,7 @@ function showAlert4() {
     }
   }
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>' + alldata2
-  lablist.document.body.innerHTML = LabDataPrint + printbutton
-  // lablist.print()
+  lablist.document.body.innerHTML = LabDataPrint + printbutton // lablist.print()
 }
 var input3 = document.createElement('input');
 input3.type = 'button';
@@ -283,18 +280,15 @@ function showAlert3() {
   checkedValues = $('input:checkbox:checked').map(function () {
     return this.value;
   }).get();
-  lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
-  // alert('You checked ' + checkedValues)
+  lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' // alert('You checked ' + checkedValues)
   for (var i = 0; i < checkedValues.length; i++) {
-    b = checkedValues[i]
-    // alert(b)
+    b = checkedValues[i] // alert(b)
     for (j = 0; j < myLabArray.length; j++) {
       if (myLabArray[j].indexOf(b) > - 1) {
         getMeasures(myLabArray[j][0], j)
       }
     }
-  }
-  /*
+  } /*
   var alldata2 = ''
   for (i = 0; i < alldata.length; i++) {
     if (alldata[i]) {
@@ -335,8 +329,7 @@ function showAlert2() {
 }
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
-//=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -389,8 +382,7 @@ for (i = 0; i < myArray.length; i++) {
   newendat = myArray[i].lastIndexOf(')')
   loincval = myArray[i].substring(newstartat + 2, newendat - 1)
   namestring = myArray[i].substring(0, startat)
-  chkval = ' '
-  /*
+  chkval = ' ' /*
   if (CDMArray.indexOf(loincval) > - 1) {
     chkval = ' checked '
   }
@@ -399,7 +391,7 @@ for (i = 0; i < myArray.length; i++) {
   }
   */
   myArray[i] = '<font size = \'1\'>' + myArray[i].substring(startat, endat) + '<input name=\'checkbox\' id=' + ('myCheckBox' + i) + chkval + ' value=' + loincval + ' type=\'checkbox\'>' + (namestring + ' (' + loincval + ') ') + '<br>'
-  Newlist = Newlist + myArray[i]
+  Newlist = Newlist + myArray[i] // alert(Newlist)
 }
 var input6 = document.createElement('input');
 input6.type = 'button';
@@ -410,7 +402,7 @@ input6.setAttribute('type', 'hidden');
 document.body.appendChild(input6);
 function myDisplay() {
   input2.setAttribute('type', 'hidden');
-  Cumulative()
+  Cumulative() // alert(myLabArray)
   myLabArray.sort()
   $('.leftBox > div:nth-child(3)').html(Newlist)
   CCBox()
@@ -439,60 +431,58 @@ if (params.demographic_no) {
 }
 function CCBox() {
   // alert("CCbox")
+  //  alert(myArray.length)
   for (i = 0; i < myArray.length; i++) {
-    q = document.getElementById(('myCheckBox' + i))
-    qq = document.getElementById('ALL')
-    if (qq.checked == true) {
-      q.checked = true;
-    } 
-    else if (qq.checked == false) {
-      q.checked = false;
-    }
-    //*****************
+    q = document.getElementById(('myCheckBox' + i)) //alert(i)
+    if (q) {
+      q = document.getElementById(('myCheckBox' + i)) // alert(q.value)
+      qq = document.getElementById('ALL')
+      if (qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (qq.checked == false) {
+        q.checked = false;
+      } //*****************
 
-    q = document.getElementById(('myCheckBox' + i))
-    qq = document.getElementById('CDM')
-    if (CDMArray.indexOf(q.value) > - 1 && qq.checked == true) {
-      q.checked = true;
-    } 
-    else if (CDMArray.indexOf(q.value) > - 1 && qq.checked == false) {
-      q.checked = false;
-    }
-    //*****************
+      q = document.getElementById(('myCheckBox' + i))
+      qq = document.getElementById('CDM')
+      if (CDMArray.indexOf(q.value) > - 1 && qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (CDMArray.indexOf(q.value) > - 1 && qq.checked == false) {
+        q.checked = false;
+      } //*****************
 
-    qq = document.getElementById('CBC')
-    if (CBCArray.indexOf(q.value) > - 1 && qq.checked == true) {
-      q.checked = true;
-    } 
-    else if (CBCArray.indexOf(q.value) > - 1 && qq.checked == false) {
-      q.checked = false;
-    }
-    //*****************
+      qq = document.getElementById('CBC')
+      if (CBCArray.indexOf(q.value) > - 1 && qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (CBCArray.indexOf(q.value) > - 1 && qq.checked == false) {
+        q.checked = false;
+      } //*****************
 
-    qq = document.getElementById('INF')
-    if (INFArray.indexOf(q.value) > - 1 && qq.checked == true) {
-      q.checked = true;
-    } 
-    else if (INFArray.indexOf(q.value) > - 1 && qq.checked == false) {
-      q.checked = false;
-    }
-    //*****************
+      qq = document.getElementById('INF')
+      if (INFArray.indexOf(q.value) > - 1 && qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (INFArray.indexOf(q.value) > - 1 && qq.checked == false) {
+        q.checked = false;
+      } //*****************
 
-    qq = document.getElementById('HEP')
-    if (HEPArray.indexOf(q.value) > - 1 && qq.checked == true) {
-      q.checked = true;
-    } 
-    else if (HEPArray.indexOf(q.value) > - 1 && qq.checked == false) {
-      q.checked = false;
-    }
-    //*****************
+      qq = document.getElementById('HEP')
+      if (HEPArray.indexOf(q.value) > - 1 && qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (HEPArray.indexOf(q.value) > - 1 && qq.checked == false) {
+        q.checked = false;
+      } //*****************
 
-    q = document.getElementById(('myCheckBox' + i))
-    qq = document.getElementById('ALL')
-    if (qq.checked == true) {
-      q.checked = true;
-    }
-    //*****************
+      q = document.getElementById(('myCheckBox' + i))
+      qq = document.getElementById('ALL')
+      if (qq.checked == true) {
+        q.checked = true;
+      } //*****************
 
+    }
   }
 }
