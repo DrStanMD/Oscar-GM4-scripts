@@ -236,6 +236,7 @@ function showAlert4() {
   }).get();
   // alert('You checked ' + checkedValues) + ' labs.'
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
+ $('.MainTableRightColumn').html("Please wait.  Loading......")
   if (r == false) {
     return false;
   } 
@@ -270,6 +271,7 @@ document.body.appendChild(input3);
 function showAlert3() {
   printthis = '<br>'
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
+   $('.MainTableRightColumn').html("Please wait.  Loading......")
   if (r == false) {
     return false;
   }
