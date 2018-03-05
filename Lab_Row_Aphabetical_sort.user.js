@@ -216,7 +216,7 @@ function Cumulative() {
     myLabArray[i][0] = labname
     myLabArray[i][2] = labparam
   }
-} //alert()
+} 
 
 var input4 = document.createElement('input');
 input4.type = 'button';
@@ -238,11 +238,11 @@ function showAlert4() {
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
-  }
-  var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-  lablist.moveTo(1200, 100);
-  lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
+  } 
+  //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
+
   for (var i = 0; i < checkedValues.length; i++) {
+    //alert(i)
     b = checkedValues[i]
     for (j = 0; j < myLabArray.length; j++) {
       if (myLabArray[j].indexOf(b) > - 1) {
@@ -257,7 +257,8 @@ function showAlert4() {
     }
   }
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>' + alldata2
-  lablist.document.body.innerHTML = LabDataPrint + printbutton // lablist.print()
+  data = LabDataPrint + printbutton // lablist.print()
+  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input3 = document.createElement('input');
 input3.type = 'button';
@@ -272,15 +273,13 @@ function showAlert3() {
   if (r == false) {
     return false;
   }
-  var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-  lablist.moveTo(1200, 100);
   checkedValues = ''
   alldata = [
   ]
   checkedValues = $('input:checkbox:checked').map(function () {
     return this.value;
   }).get();
-  lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' // alert('You checked ' + checkedValues)
+  // lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' // alert('You checked ' + checkedValues)
   for (var i = 0; i < checkedValues.length; i++) {
     b = checkedValues[i] // alert(b)
     for (j = 0; j < myLabArray.length; j++) {
@@ -288,17 +287,7 @@ function showAlert3() {
         getMeasures(myLabArray[j][0], j)
       }
     }
-  } /*
-  var alldata2 = ''
-  for (i = 0; i < alldata.length; i++) {
-    if (alldata[i]) {
-      alldata2 = alldata2 + alldata[i] + '<br>'
-    }
   }
-    LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>' + alldata2
-   lablist.document.body.innerHTML = LabDataPrint + printbutton
-*/
-
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3><br>' + '<table border=\'1\'  style=\'width:100%\'>'
   j = 0
   for (i = 0; i < alldata.length; i++) {
@@ -315,8 +304,9 @@ function showAlert3() {
       LabDataPrint = LabDataPrint + vtr + '<td width=\'25%\'  valign=\'top\'  >' + alldata[i] + '</td>' + vtre
       j = j + 1
     }
-    lablist.document.body.innerHTML = LabDataPrint + '</table>' + printbutton
   }
+  var data = LabDataPrint + '</table>' + printbutton
+  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input2 = document.createElement('input');
 input2.type = 'button';
@@ -410,28 +400,15 @@ function myDisplay() {
   input4.setAttribute('type', 'visible');
 }
 if (params.mysort) {
-  /*
-  // alert("OK")
-  input2.setAttribute('type', 'hidden');
-  Cumulative()
-  myLabArray.sort()
-  $('.leftBox > div:nth-child(3)').html(Newlist)
-  input3.setAttribute('type', 'visible');
-  input4.setAttribute('type', 'visible');
-  */
 }
 if (params.demographicNo) {
   input2.setAttribute('type', 'hidden');
-  //  input5.setAttribute('type', 'hidden');
-  // input6.setAttribute('type', 'visible');
 }
 if (params.demographic_no) {
   input5.setAttribute('type', 'hidden');
   input6.setAttribute('type', 'visible');
 }
 function CCBox() {
-  // alert("CCbox")
-  //  alert(myArray.length)
   for (i = 0; i < myArray.length; i++) {
     q = document.getElementById(('myCheckBox' + i)) //alert(i)
     if (q) {
