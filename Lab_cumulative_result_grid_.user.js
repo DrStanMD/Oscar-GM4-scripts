@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Lab cumulative result grid
 // @namespace   Stanscript
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
@@ -50,18 +50,13 @@ function ButtonFunction1() {
   if (r == false) {
     return false;
   }
-  var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-  lablist.moveTo(1200, 100);
-  printthis = '<br>'
-  // LabName.sort()
+  printthis = '<br>' // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
     pend = LabName[ii].indexOf('&demo')
     abrLabName = LabName[ii].substring(0, pend)
     getMeasures(LabName[ii])
     LabData[ii] = alldata[ii] + '<br>'
   }
-  // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3><br>' + '<table style=\'width:100%\'>'
   j = 0
   for (i = 0; i < LabData.length; i++) {
@@ -76,35 +71,29 @@ function ButtonFunction1() {
     }
     LabDataPrint = LabDataPrint + vtr + '<td width=\'25%\'>' + LabData[i] + '</td>' + vtre
     j = j + 1
-    lablist.document.body.innerHTML = LabDataPrint + '</table>' + printbutton
   }
+  var data = LabDataPrint + '</table>' + printbutton
+  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 function ButtonFunction2() {
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
   }
-  var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-  lablist.moveTo(1200, 100);
-  printthis = ''
-  // LabName.sort()
+  printthis = '' // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
     pend = LabName[ii].indexOf('&demo')
     abrLabName = LabName[ii].substring(0, pend)
     getMeasures(LabName[ii])
     LabData[ii] = alldata[ii] + '<br>'
   }
-  // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>'
   for (i = 0; i < LabData.length; i++) {
     LabDataPrint = LabDataPrint + LabData[i]
   }
-  LabdataPrint = LabDataPrint
-  lablist.document.body.innerHTML = LabDataPrint + printbutton
-  //lablist.print()
-}
-//***************************************************************************
+  var data = LabDataPrint + printbutton
+  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
+} //***************************************************************************
 
 var today = new Date();
 var dd = today.getDate();
@@ -177,13 +166,11 @@ function getMeasures(measure) {
     }
     measureArray.reverse()
     measureDateArray.reverse()
-    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>'
-    //*************Limit to 10 results**********************
+    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>' //*************Limit to 10 results**********************
     vlimit = 10
     if (measureArray.length < 10) {
       vlimit = measureArray.length
-    }
-    //****END LIMIT********************************
+    } //****END LIMIT********************************
 
     for (zz = 0; zz < vlimit; zz++) {
       alldata[ii] = alldata[ii] + (measureArray[zz] + ' (' + measureDateArray[zz] + ');  ' + printthis)
