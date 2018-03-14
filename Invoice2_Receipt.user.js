@@ -1,9 +1,9 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name       Invoice2/Receipt Print notes
 // @namespace   Stanscript
 // @include     *billing/CA/BC/billing*
 // @include     */billing/CA/BC/UpdateBilling*
-// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     3
 // @grant       none
 // ==/UserScript==
@@ -93,7 +93,7 @@ if (location.search) {
 }
 if (params.length > 1) {
   mysave = '#Invoices#' + params + '##'
-  // alert(mysave)
+   //alert(mysave)
   var y = $('textarea[name=\'messageNotes\']').val()
   // alert(y.indexOf(mysave));
   if (y.indexOf(mysave) == - 1) {
@@ -133,9 +133,10 @@ function PrintDOS() {
   }
 }
 function myFunction() {
-  y.css('background-color', 'white');
+    y.css('background-color', 'white');
   y.addClass('header').removeClass('address')
-  if (myCheckbox.checked == true) {
+  var element= document.getElementById('myCheckbox')
+  if (element.checked == true) {
     y.css('background-color', 'lightyellow');
     y.addClass('address').removeClass('header')
   }
@@ -148,8 +149,12 @@ y.after($(document.createElement('input')).attr({
   name: 'myCheckbox',
   value: 'myValue',
   type: 'checkbox',
-  class: 'header'
+  class: 'header',
 })
 );
-myCheckbox.onchange = myFunction
+var element = document.getElementById('myCheckbox');
+element.onclick = function() {
+myFunction()
+}
 y.after('<label for=\'myCheckbox\' class=\'header\'  >Print Note</label>')
+
