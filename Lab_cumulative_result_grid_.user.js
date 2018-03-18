@@ -81,7 +81,8 @@ function ButtonFunction1() {
   var data = encodeURIComponent(data)
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')  
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')  
   // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
   //  var data = LabDataPrint + '</table>' + printbutton
   // lablist = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
@@ -105,7 +106,8 @@ function ButtonFunction2() {
   var data = encodeURIComponent(LabDataPrint + printbutton)
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
 }
 //***************************************************************************
 
