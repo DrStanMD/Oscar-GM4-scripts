@@ -8,8 +8,6 @@
 // @grant       none
 // @version     1.0
 // ==/UserScript==
-
-
 var radioBtn1 = $('<input type= "checkbox" name="CDM" id="CDM" value ="CDM" checked  />');
 var radioBtn2 = $('<input type="checkbox" name="CBC" id="CBC" value ="CBC"   />');
 var radioBtn3 = $('<input type="checkbox" name="INF" id="INF" value ="INF"   />');
@@ -149,7 +147,8 @@ var checkedValues = ''
 var LabDataPrint = ''
 function getMeasures(measure, arrayno) {
   labURL = ''
-  labURL = 'testName=' + measure + '&demo=' + params.demographic_no + '&labType=HL7&identifier=' + myLabArray[arrayno][2] //alert(labURL)  
+  labURL = 'testName=' + measure + '&demo=' + params.demographic_no + '&labType=HL7&identifier=' + myLabArray[arrayno][2] 
+  //alert(labURL)  
   xmlhttp = new XMLHttpRequest();
   str = ''
   var pathArray = window.location.pathname.split('/');
@@ -178,11 +177,13 @@ function getMeasures(measure, arrayno) {
       }
       measureArray.reverse()
       measureDateArray.reverse()
-      alldata[arrayno] = '<br><u>' + measure + '</u>' + '<br>' //*************Limit to 10 results**********************
+      alldata[arrayno] = '<br><u>' + measure + '</u>' + '<br>' 
+      //*************Limit to 10 results**********************
       vlimit = 10
       if (measureArray.length < vlimit) {
         vlimit = measureArray.length
-      } //****END LIMIT********************************
+      } 
+      //****END LIMIT********************************
 
       for (zz = 0; zz < vlimit; zz++) {
         if (measureArray[zz]) {
@@ -218,8 +219,7 @@ function Cumulative() {
     myLabArray[i][0] = labname
     myLabArray[i][2] = labparam
   }
-} 
-
+}
 var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'View by Row';
@@ -240,8 +240,7 @@ function showAlert4() {
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
-  } 
-  //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
+  } //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
 
   for (var i = 0; i < checkedValues.length; i++) {
     //alert(i)
@@ -258,14 +257,12 @@ function showAlert4() {
       alldata2 = alldata2 + alldata[i] + '<br>'
     }
   }
-  
-  
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>' + alldata2
   data = LabDataPrint + printbutton // lablist.print()
   var data = encodeURIComponent(data)
-  localStorage.setItem("mydata", data);
- //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
+  localStorage.setItem('mydata', data);
+  //setCookie("mydata",data,360,"path=/");
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
   //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
@@ -288,7 +285,8 @@ function showAlert3() {
   checkedValues = $('input:checkbox:checked').map(function () {
     return this.value;
   }).get();
-  // lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' // alert('You checked ' + checkedValues)
+  // lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' 
+  // alert('You checked ' + checkedValues)
   for (var i = 0; i < checkedValues.length; i++) {
     b = checkedValues[i] // alert(b)
     for (j = 0; j < myLabArray.length; j++) {
@@ -314,14 +312,13 @@ function showAlert3() {
       j = j + 1
     }
   }
-
   var data = LabDataPrint + '</table>' + printbutton
   var data = encodeURIComponent(data)
-  localStorage.setItem("mydata", data);
+  localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
- // myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
-   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
+  // myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+  //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input2 = document.createElement('input');
 input2.type = 'button';
@@ -334,7 +331,8 @@ function showAlert2() {
 }
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/') 
+//=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -407,7 +405,8 @@ input6.setAttribute('type', 'hidden');
 document.body.appendChild(input6);
 function myDisplay() {
   input2.setAttribute('type', 'hidden');
-  Cumulative() // alert(myLabArray)
+  Cumulative() 
+  // alert(myLabArray)
   myLabArray.sort()
   $('.leftBox > div:nth-child(3)').html(Newlist)
   CCBox()
@@ -425,9 +424,11 @@ if (params.demographic_no) {
 }
 function CCBox() {
   for (i = 0; i < myArray.length; i++) {
-    q = document.getElementById(('myCheckBox' + i)) //alert(i)
+    q = document.getElementById(('myCheckBox' + i)) 
+    //alert(i)
     if (q) {
-      q = document.getElementById(('myCheckBox' + i)) // alert(q.value)
+      q = document.getElementById(('myCheckBox' + i)) 
+      // alert(q.value)
       qq = document.getElementById('ALL')
       if (qq.checked == true) {
         q.checked = true;
