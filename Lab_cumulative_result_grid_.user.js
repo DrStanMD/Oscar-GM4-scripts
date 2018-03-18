@@ -7,6 +7,10 @@
 // @version     1.1
 // @grant       none
 // ==/UserScript==
+//========Get Path============
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))//alert(firstElement)
+vPath = ('https://' + location.host + '/' + firstElement + '/')//alert(vPath)
 printbutton = '<input style=\'font-size:18px;position:absolute;top:10px;right:30px;\' value=\'Print\' type=\'button\'  onclick=\'window.print()\' >'
 teststring = $('.Title2').html()
 if (teststring) {
@@ -73,7 +77,11 @@ function ButtonFunction1() {
     j = j + 1
   }
   var data = LabDataPrint + '</table>' + printbutton
-  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
+  var data = encodeURIComponent(data)
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+  // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
+  //  var data = LabDataPrint + '</table>' + printbutton
+  // lablist = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 function ButtonFunction2() {
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
@@ -91,9 +99,9 @@ function ButtonFunction2() {
   for (i = 0; i < LabData.length; i++) {
     LabDataPrint = LabDataPrint + LabData[i]
   }
-  var data = LabDataPrint + printbutton
-  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
-} //***************************************************************************
+  var data = encodeURIComponent(LabDataPrint + printbutton) 
+ myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+}//***************************************************************************
 
 var today = new Date();
 var dd = today.getDate();
