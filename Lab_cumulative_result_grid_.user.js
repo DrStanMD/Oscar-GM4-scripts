@@ -62,7 +62,7 @@ function ButtonFunction1() {
     getMeasures(LabName[ii])
     LabData[ii] = alldata[ii] + '<br>'
   }
-  LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3><br>' + '<table style=\'width:100%\'>'
+  LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3><br>' + '<table border=\'1\'  style=\'width:100%\'>'
   j = 0
   for (i = 0; i < LabData.length; i++) {
     vtr = ''
