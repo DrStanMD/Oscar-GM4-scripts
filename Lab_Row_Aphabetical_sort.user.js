@@ -10,7 +10,7 @@
 // ==/UserScript==
 //========Get Path============
 
-var formID='414' //ENTER YOUR SPECIFIC FORM ID NUMBER HERE
+var formID='414' //  ENTER YOUR SPECIFIC POPUPWINDOW FORM ID NUMBER HERE
 
 //===============================
 var mylink = 'eform/efmshowform_data.jsp?fid='+formID
