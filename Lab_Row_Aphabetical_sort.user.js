@@ -262,7 +262,8 @@ function showAlert4() {
   var data = encodeURIComponent(data)
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
   //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
@@ -316,7 +317,8 @@ function showAlert3() {
   var data = encodeURIComponent(data)
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
   // myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
