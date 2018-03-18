@@ -240,10 +240,12 @@ function showAlert4() {
     return this.value;
   }).get();
   // alert('You checked ' + checkedValues) + ' labs.'
+  /*
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
-  }  
+  } 
+  */
   myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
 
@@ -281,10 +283,12 @@ input3.setAttribute('type', 'hidden');
 document.body.appendChild(input3);
 function showAlert3() {
   printthis = '<br>'
+  /*
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
   }
+  */
   myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   checkedValues = ''
   alldata = [
