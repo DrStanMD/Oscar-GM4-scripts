@@ -8,10 +8,10 @@
 // @grant       none
 // ==/UserScript==
 //========Get Path============
-
 var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))//alert(firstElement)
-vPath = ('https://' + location.host + '/' + firstElement + '/')//alert(vPath)
+firstElement = (elements.slice(1)) //alert(firstElement)
+vPath = ('https://' + location.host + '/' + firstElement + '/') 
+//alert(vPath)
 printbutton = '<input style=\'font-size:18px;position:absolute;top:10px;right:30px;\' value=\'Print\' type=\'button\'  onclick=\'window.print()\' >'
 teststring = $('.Title2').html()
 if (teststring) {
@@ -19,7 +19,7 @@ if (teststring) {
 }
 if (teststring == 'TRANSCRIP' || teststring == 'CELLPATH') {
   //alert(teststring)
-  return false;
+  //return false;
 }
 var printthis = '<br>'
 var input3 = document.createElement('input');
@@ -55,14 +55,14 @@ function ButtonFunction1() {
   if (r == false) {
     return false;
   }
-  printthis = '<br>' // LabName.sort()
+  printthis = '<br>'  // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
     pend = LabName[ii].indexOf('&demo')
     abrLabName = LabName[ii].substring(0, pend)
     getMeasures(LabName[ii])
     LabData[ii] = alldata[ii] + '<br>'
   }
-  LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3><br>' + '<table border=\'1\'  style=\'width:100%\'>'
+  LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3><br>' + '<table border=\'1\' style=\'width:100%\'>'
   j = 0
   for (i = 0; i < LabData.length; i++) {
     vtr = ''
@@ -79,9 +79,9 @@ function ButtonFunction1() {
   }
   var data = LabDataPrint + '</table>' + printbutton
   var data = encodeURIComponent(data)
-  localStorage.setItem("mydata", data);
+  localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')  
   // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
   //  var data = LabDataPrint + '</table>' + printbutton
   // lablist = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
@@ -91,7 +91,7 @@ function ButtonFunction2() {
   if (r == false) {
     return false;
   }
-  printthis = '' // LabName.sort()
+  printthis = ''
   for (ii = 0; ii < LabName.length; ii++) {
     pend = LabName[ii].indexOf('&demo')
     abrLabName = LabName[ii].substring(0, pend)
@@ -102,11 +102,12 @@ function ButtonFunction2() {
   for (i = 0; i < LabData.length; i++) {
     LabDataPrint = LabDataPrint + LabData[i]
   }
-  var data = encodeURIComponent(LabDataPrint + printbutton) 
-   localStorage.setItem("mydata", data);
+  var data = encodeURIComponent(LabDataPrint + printbutton)
+  localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
- myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
-}//***************************************************************************
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
+}
+//***************************************************************************
 
 var today = new Date();
 var dd = today.getDate();
@@ -179,11 +180,13 @@ function getMeasures(measure) {
     }
     measureArray.reverse()
     measureDateArray.reverse()
-    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>' //*************Limit to 10 results**********************
+    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>'    
+    //*************Limit to 10 results**********************
     vlimit = 10
     if (measureArray.length < 10) {
       vlimit = measureArray.length
-    } //****END LIMIT********************************
+    }    
+    //****END LIMIT********************************
 
     for (zz = 0; zz < vlimit; zz++) {
       alldata[ii] = alldata[ii] + (measureArray[zz] + ' (' + measureDateArray[zz] + ');  ' + printthis)
