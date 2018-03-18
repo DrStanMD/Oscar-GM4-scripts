@@ -46,19 +46,21 @@ var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Cumulative report by column';
 input1.onclick = ButtonFunction1;
-input1.setAttribute('style', 'font-size:10px;position:fixed;top:55px;right:0px;');
+input1.setAttribute('style', 'font-size:14px;position:fixed;top:60px;right:0px;');
 document.body.appendChild(input1);
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Cumulative report by row';
 input2.onclick = ButtonFunction2;
-input2.setAttribute('style', 'font-size:10px;position:fixed;top:35px;right:0px;');
+input2.setAttribute('style', 'font-size:14px;position:fixed;top:35px;right:0px;');
 document.body.appendChild(input2);
 function ButtonFunction1() {
+  /*
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
   }
+  */
   myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   printthis = '<br>' // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
@@ -93,10 +95,12 @@ function ButtonFunction1() {
   // lablist = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 function ButtonFunction2() {
+  /*
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
   }
+  */
   myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   printthis = '' // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
