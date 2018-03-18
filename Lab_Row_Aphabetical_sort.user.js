@@ -6,7 +6,7 @@
 // @description Lab Grid Alphabetical Sort
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version     1.0
+// @version     2.0
 // ==/UserScript==
 //========Get Path============
 
