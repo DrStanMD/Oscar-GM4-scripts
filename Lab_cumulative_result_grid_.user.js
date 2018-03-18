@@ -8,6 +8,7 @@
 // @grant       none
 // ==/UserScript==
 //========Get Path============
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))//alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/')//alert(vPath)
@@ -78,7 +79,9 @@ function ButtonFunction1() {
   }
   var data = LabDataPrint + '</table>' + printbutton
   var data = encodeURIComponent(data)
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+  localStorage.setItem("mydata", data);
+  //setCookie("mydata",data,360,"path=/");
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
   // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
   //  var data = LabDataPrint + '</table>' + printbutton
   // lablist = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
@@ -100,7 +103,9 @@ function ButtonFunction2() {
     LabDataPrint = LabDataPrint + LabData[i]
   }
   var data = encodeURIComponent(LabDataPrint + printbutton) 
- myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+   localStorage.setItem("mydata", data);
+  //setCookie("mydata",data,360,"path=/");
+ myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
 }//***************************************************************************
 
 var today = new Date();
