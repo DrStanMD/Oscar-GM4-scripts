@@ -220,7 +220,7 @@ function Cumulative() {
 
 var input4 = document.createElement('input');
 input4.type = 'button';
-input4.value = 'Print Cumulative Values';
+input4.value = 'View by Row';
 input4.onclick = showAlert4;
 input4.setAttribute('style', 'font-size:14px;position:absolute;top:20px;left:30px;background-color: pink;');
 input4.setAttribute('type', 'hidden');
@@ -236,7 +236,6 @@ function showAlert4() {
   }).get();
   // alert('You checked ' + checkedValues) + ' labs.'
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
- $('.MainTableRightColumn').html("Please wait.  Loading......")
   if (r == false) {
     return false;
   } 
@@ -257,13 +256,17 @@ function showAlert4() {
       alldata2 = alldata2 + alldata[i] + '<br>'
     }
   }
+  
+  
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>' + alldata2
   data = LabDataPrint + printbutton // lablist.print()
-  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
+  var data = encodeURIComponent(data)
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+  //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input3 = document.createElement('input');
 input3.type = 'button';
-input3.value = 'View Cumulative Values';
+input3.value = 'View by Column';
 input3.onclick = showAlert3
 input3.setAttribute('style', 'font-size:14px;position:absolute;top:0px;left:30px;background-color: lime;');
 input3.setAttribute('type', 'hidden');
@@ -271,7 +274,6 @@ document.body.appendChild(input3);
 function showAlert3() {
   printthis = '<br>'
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
-   $('.MainTableRightColumn').html("Please wait.  Loading......")
   if (r == false) {
     return false;
   }
@@ -307,8 +309,14 @@ function showAlert3() {
       j = j + 1
     }
   }
+
+ // var lablist = window.open('https://www.google.com', '_blank', 'width=800, scrollbars=yes, resizable=yes');
+
+  
   var data = LabDataPrint + '</table>' + printbutton
-  myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
+  var data = encodeURIComponent(data)
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input2 = document.createElement('input');
 input2.type = 'button';
