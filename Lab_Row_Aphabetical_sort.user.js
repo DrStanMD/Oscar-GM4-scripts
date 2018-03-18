@@ -8,6 +8,8 @@
 // @grant       none
 // @version     1.0
 // ==/UserScript==
+
+
 var radioBtn1 = $('<input type= "checkbox" name="CDM" id="CDM" value ="CDM" checked  />');
 var radioBtn2 = $('<input type="checkbox" name="CBC" id="CBC" value ="CBC"   />');
 var radioBtn3 = $('<input type="checkbox" name="INF" id="INF" value ="INF"   />');
@@ -261,7 +263,10 @@ function showAlert4() {
   LabDataPrint = '<h3>' + ptname + ':         ' + today + '</h3>' + alldata2
   data = LabDataPrint + printbutton // lablist.print()
   var data = encodeURIComponent(data)
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+  localStorage.setItem("mydata", data);
+ //setCookie("mydata",data,360,"path=/");
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
+  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input3 = document.createElement('input');
@@ -310,12 +315,12 @@ function showAlert3() {
     }
   }
 
- // var lablist = window.open('https://www.google.com', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-
-  
   var data = LabDataPrint + '</table>' + printbutton
   var data = encodeURIComponent(data)
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
+  localStorage.setItem("mydata", data);
+  //setCookie("mydata",data,360,"path=/");
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=')
+ // myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
    //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 var input2 = document.createElement('input');
