@@ -8,6 +8,11 @@
 // @grant       none
 // ==/UserScript==
 //========Get Path============
+
+var formID='414'
+
+//===============================
+var mylink = 'eform/efmshowform_data.jsp?fid='+formID
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/') //alert(vPath)
@@ -54,7 +59,7 @@ function ButtonFunction1() {
   if (r == false) {
     return false;
   }
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   printthis = '<br>' // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
     pend = LabName[ii].indexOf('&demo')
@@ -82,9 +87,9 @@ function ButtonFunction1() {
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
  myWindow.close()
- myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   // var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-  // var data = LabDataPrint + '</table>' + printbutton
+  //  var data = LabDataPrint + '</table>' + printbutton
   // lablist = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
 function ButtonFunction2() {
@@ -92,7 +97,7 @@ function ButtonFunction2() {
   if (r == false) {
     return false;
   }
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   printthis = '' // LabName.sort()
   for (ii = 0; ii < LabName.length; ii++) {
     pend = LabName[ii].indexOf('&demo')
@@ -108,7 +113,7 @@ function ButtonFunction2() {
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
   myWindow.close()
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414','_blank', 'width=800, scrollbars=yes, resizable=yes')  
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')    
 } //***************************************************************************
 
 var today = new Date();
