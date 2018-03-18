@@ -8,6 +8,12 @@
 // @grant       none
 // @version     1.0
 // ==/UserScript==
+//========Get Path============
+
+var formID='414'
+
+//===============================
+var mylink = 'eform/efmshowform_data.jsp?fid='+formID
 var radioBtn1 = $('<input type= "checkbox" name="CDM" id="CDM" value ="CDM" checked  />');
 var radioBtn2 = $('<input type="checkbox" name="CBC" id="CBC" value ="CBC"   />');
 var radioBtn3 = $('<input type="checkbox" name="INF" id="INF" value ="INF"   />');
@@ -238,7 +244,7 @@ function showAlert4() {
   if (r == false) {
     return false;
   }  
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414') 
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
 
   for (var i = 0; i < checkedValues.length; i++) {
@@ -262,7 +268,7 @@ function showAlert4() {
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
   myWindow.close()
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414')  
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
@@ -279,7 +285,7 @@ function showAlert3() {
   if (r == false) {
     return false;
   }
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414') 
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   checkedValues = ''
   alldata = [
   ]
@@ -317,7 +323,7 @@ function showAlert3() {
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
   myWindow.close()
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414')   
+  myWindow = window.open(vPath + mylink,'_blank', 'width=800, scrollbars=yes, resizable=yes')  
   // myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
