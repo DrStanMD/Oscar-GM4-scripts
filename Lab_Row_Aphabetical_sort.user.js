@@ -147,8 +147,7 @@ var checkedValues = ''
 var LabDataPrint = ''
 function getMeasures(measure, arrayno) {
   labURL = ''
-  labURL = 'testName=' + measure + '&demo=' + params.demographic_no + '&labType=HL7&identifier=' + myLabArray[arrayno][2] 
-  //alert(labURL)  
+  labURL = 'testName=' + measure + '&demo=' + params.demographic_no + '&labType=HL7&identifier=' + myLabArray[arrayno][2] //alert(labURL)  
   xmlhttp = new XMLHttpRequest();
   str = ''
   var pathArray = window.location.pathname.split('/');
@@ -177,13 +176,11 @@ function getMeasures(measure, arrayno) {
       }
       measureArray.reverse()
       measureDateArray.reverse()
-      alldata[arrayno] = '<br><u>' + measure + '</u>' + '<br>' 
-      //*************Limit to 10 results**********************
+      alldata[arrayno] = '<br><u>' + measure + '</u>' + '<br>' //*************Limit to 10 results**********************
       vlimit = 10
       if (measureArray.length < vlimit) {
         vlimit = measureArray.length
-      } 
-      //****END LIMIT********************************
+      } //****END LIMIT********************************
 
       for (zz = 0; zz < vlimit; zz++) {
         if (measureArray[zz]) {
@@ -240,7 +237,9 @@ function showAlert4() {
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
   if (r == false) {
     return false;
-  } //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
+  }  
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414') 
+  //lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....'
 
   for (var i = 0; i < checkedValues.length; i++) {
     //alert(i)
@@ -262,8 +261,8 @@ function showAlert4() {
   var data = encodeURIComponent(data)
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=','_blank', 'width=800, scrollbars=yes, resizable=yes')  
-  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
+  myWindow.close()
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414')  
   //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
@@ -280,14 +279,14 @@ function showAlert3() {
   if (r == false) {
     return false;
   }
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414') 
   checkedValues = ''
   alldata = [
   ]
   checkedValues = $('input:checkbox:checked').map(function () {
     return this.value;
   }).get();
-  // lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' 
-  // alert('You checked ' + checkedValues)
+  // lablist.document.body.innerHTML = 'You selected ' + checkedValues + '.  Please wait....' // alert('You checked ' + checkedValues)
   for (var i = 0; i < checkedValues.length; i++) {
     b = checkedValues[i] // alert(b)
     for (j = 0; j < myLabArray.length; j++) {
@@ -317,8 +316,8 @@ function showAlert3() {
   var data = encodeURIComponent(data)
   localStorage.setItem('mydata', data);
   //setCookie("mydata",data,360,"path=/");
-  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=','_blank', 'width=800, scrollbars=yes, resizable=yes')  
-  //myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=') 
+  myWindow.close()
+  myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414')   
   // myWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=414&mydata=' + data)
   //myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 }
@@ -333,8 +332,7 @@ function showAlert2() {
 }
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') 
-//=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -407,8 +405,7 @@ input6.setAttribute('type', 'hidden');
 document.body.appendChild(input6);
 function myDisplay() {
   input2.setAttribute('type', 'hidden');
-  Cumulative() 
-  // alert(myLabArray)
+  Cumulative() // alert(myLabArray)
   myLabArray.sort()
   $('.leftBox > div:nth-child(3)').html(Newlist)
   CCBox()
@@ -426,11 +423,9 @@ if (params.demographic_no) {
 }
 function CCBox() {
   for (i = 0; i < myArray.length; i++) {
-    q = document.getElementById(('myCheckBox' + i)) 
-    //alert(i)
+    q = document.getElementById(('myCheckBox' + i)) //alert(i)
     if (q) {
-      q = document.getElementById(('myCheckBox' + i)) 
-      // alert(q.value)
+      q = document.getElementById(('myCheckBox' + i)) // alert(q.value)
       qq = document.getElementById('ALL')
       if (qq.checked == true) {
         q.checked = true;
