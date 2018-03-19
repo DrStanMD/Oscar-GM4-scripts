@@ -20,7 +20,7 @@ if (location.search) {
 }
 //Open Set Next Date
 
-showHideNextDate('nextDateDiv', 'nextDate', 'nexerWarn')
+unsafeWindow.showHideNextDate('nextDateDiv', 'nextDate', 'nexerWarn')
 if (params.myparam2) {
   //  alert(params.myparam1)
   //  alert(params.myparam2)
