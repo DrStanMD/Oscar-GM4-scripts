@@ -272,10 +272,10 @@ document.getElementById('Radio2Div').addEventListener('change', function () {
     if (document.getElementById(xyz).checked) {
       addthis2 = AB[i][1]
       if (AB[i][1] == 'Months') {
-        addthis2 = Days.value * 30
+        addthis2 = document.getElementById("Days").value * 30
       }
       if (AB[i][1] == 'Years') {
-        addthis2 = Years.value * 365
+        addthis2 = document.getElementById("Years").value * 365
       }
     }
   }
@@ -343,10 +343,10 @@ for (i = 0; i < AB.length; i++) {
   if (document.getElementById(xyz).checked) {
     addthis2 = AB[i][1]
     if (AB[i][1] == 'Months') {
-      addthis2 = Days.value * 30
+      addthis2 = document.getElementById("Days").value * 30
     }
     if (AB[i][1] == 'Years') {
-      addthis2 = Years.value * 365
+      addthis2 = document.getElementById("Years").value * 365
     }
   }
 }
