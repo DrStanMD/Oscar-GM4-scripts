@@ -46,13 +46,13 @@ var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Cumulative report by column';
 input1.onclick = ButtonFunction1;
-input1.setAttribute('style', 'font-size:14px;position:fixed;top:60px;right:0px;');
+input1.setAttribute('style', 'font-size:13px;position:fixed;top:58px;right:0px;');
 document.body.appendChild(input1);
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Cumulative report by row';
 input2.onclick = ButtonFunction2;
-input2.setAttribute('style', 'font-size:14px;position:fixed;top:35px;right:0px;');
+input2.setAttribute('style', 'font-size:13px;position:fixed;top:35px;right:0px;');
 document.body.appendChild(input2);
 function ButtonFunction1() {
   /*
