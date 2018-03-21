@@ -6,8 +6,9 @@
 // @include        *oscarRx/choosePatient.do?providerNo*
 // @include        *oscarRx/Preview2.jsp?scriptId*
 // @include        *Rx page.htm
+// @include        *oscarRx/ViewScript2*
 // ==/UserScript==
-//GM_addStyle('.HideIt{display: none}')
+
 //=========Set Cookie===============
 function setCookie(cname, cvalue, exdays, cpath)
 {
