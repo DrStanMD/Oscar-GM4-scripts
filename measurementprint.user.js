@@ -8,7 +8,8 @@
 // ==/UserScript==
 var elements = (window.location.href)
 //alert(elements)
-var y = elements.indexOf('CDM'); //for the measurement screen title
+var y = elements.indexOf('CDM'); 
+//for the measurement screen title
 //alert(y)
 if (y > - 1) {
   $('input[name=\'value(inputValue-23)\']').css('background-color', 'yellow');
