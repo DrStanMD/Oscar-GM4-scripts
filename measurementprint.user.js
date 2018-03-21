@@ -6,7 +6,9 @@
 // @include    *oscarEncounter/oscarMeasurements/SetupMeasurements.do*
 // @include        *oscarEncounter/GraphMeasurements.do?demographic_no*
 // ==/UserScript==
-var elements = (window.location.href)//alert(elements)var y = elements.indexOf('CDM'); //for the measurement screen title
+var elements = (window.location.href)
+//alert(elements)
+var y = elements.indexOf('CDM'); //for the measurement screen title
 //alert(y)
 if (y > - 1) {
   $('input[name=\'value(inputValue-23)\']').css('background-color', 'yellow');
