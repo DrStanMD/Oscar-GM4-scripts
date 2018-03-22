@@ -5,6 +5,7 @@
 // @include        *oscarRx/choosePatient.do?providerNo*
 // @include        *signature_pad/tabletSignature.jsp*
 // @include        *eform/efmformadd_data.jsp?fid*
+// include         *oscarRx/ViewScript2*
 // ==/UserScript==
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
