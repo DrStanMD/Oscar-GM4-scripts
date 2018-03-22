@@ -9,6 +9,9 @@
 // @include        *oscarRx/ViewScript2*
 // ==/UserScript==
 
+$('#preview').css('background-color', 'yellow');
+alert($('#AutoNumber1').html())
+
 //=========Set Cookie===============
 function setCookie(cname, cvalue, exdays, cpath)
 {
