@@ -15,7 +15,7 @@ function myfunction(){
 y = ".leftGreyLine > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > span:nth-child(1) > input:nth-child(1)"
 $(y).css('background-color', 'yellow');
 $(y).after("<input id='myBtn' type='button' value='Triple Rx'   >")
-document.getElementById("myBtn").addEventListener("click", myfunction); 
+document.getElementById("myBtn").addEventListener("click", showAlert19); 
 
 $('#preview').css('background-color', 'yellow');
 alert($('#AutoNumber1').html())
@@ -160,7 +160,7 @@ document.body.appendChild(input19);
 input19.className = 'noprint'
 //$('.leftGreyLine > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1)').append(input19)
 function showAlert19()
-{
+{alert("HELLO2")
   //printPaste2Parent(true) 
   var rxprint = $('#pwTable > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)').html()
   rxprint1 = rxprint.substring(1, rxprint.search('<hr>'))
