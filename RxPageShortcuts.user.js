@@ -9,6 +9,14 @@
 // @include        *oscarRx/ViewScript2*
 // ==/UserScript==
 
+function myfunction(){
+  alert("HI")
+}
+y = ".leftGreyLine > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > span:nth-child(1) > input:nth-child(1)"
+$(y).css('background-color', 'yellow');
+$(y).after("<input id='myBtn' type='button' value='Triple Rx'   >")
+document.getElementById("myBtn").addEventListener("click", myfunction); 
+
 $('#preview').css('background-color', 'yellow');
 alert($('#AutoNumber1').html())
 
