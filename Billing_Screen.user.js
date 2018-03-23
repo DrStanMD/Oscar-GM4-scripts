@@ -6,7 +6,7 @@
 // @include     *billing/CA/BC/billingBC.jsp*
 // @include     *CaseManagementEntry.do
 // @exclude    *CaseManagementEntry.do?method=issuehistory&demographicNo*
-// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // @version 2.1
 // ==/UserScript==
@@ -183,6 +183,61 @@ function showAlert4() {
   firsthour = ''
   firstminute = ''
   $('#xml_other1_unit').val('')
+
+    var theDefault=firsthour;
+var theOptions = document.getElementsByName('xml_starttime_hr')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}  
+
+var theDefault=firstminute;
+var theOptions = document.getElementsByName('xml_starttime_min')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
+  
+var theDefault=hours;
+var theOptions = document.getElementsByName('xml_endtime_hr')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
+  
+  
+var theDefault=minutes;
+var theOptions = document.getElementsByName('xml_endtime_min')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
+    
+  /*
   $('body > form:nth-child(7) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > select:nth-child(1)').val('')
   $('body > form:nth-child(7) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > select:nth-child(1)').val('')
   $('body > form:nth-child(7) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > select:nth-child(1)').val('')
@@ -191,6 +246,7 @@ function showAlert4() {
   $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > select:nth-child(1)').val('')
   $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > select:nth-child(1)').val('')
   $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > select:nth-child(1)').val('')
+*/
 }
 var input = document.createElement('input');
 input.type = 'button';
@@ -261,6 +317,7 @@ function showAlert5() {
 function addtime(vAddTime) {
   var visittime = (vAddTime)
   var currentTime = new Date()
+ // alert(visittime)
   //  hours = currentTime.getHours()
   hours = Number(h)
   //  minutes = currentTime.getMinutes()
@@ -298,6 +355,62 @@ function addtime(vAddTime) {
   if (minutes < 10) {
     minutes = addzero[minutes]
   }
+
+
+    var theDefault=firsthour;
+var theOptions = document.getElementsByName('xml_starttime_hr')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}  
+
+var theDefault=firstminute;
+var theOptions = document.getElementsByName('xml_starttime_min')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
+  
+var theDefault=hours;
+var theOptions = document.getElementsByName('xml_endtime_hr')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
+  
+  
+var theDefault=minutes;
+var theOptions = document.getElementsByName('xml_endtime_min')[0].options;
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+//alert(theOption.text)
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
+    
+/*
   $('body > form:nth-child(7) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > select:nth-child(1)').val(firsthour)
   $('body > form:nth-child(7) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > select:nth-child(1)').val(firstminute)
   $('body > form:nth-child(7) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > select:nth-child(1)').val(hours)
@@ -306,4 +419,6 @@ function addtime(vAddTime) {
   $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > select:nth-child(1)').val(firstminute)
   $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > select:nth-child(1)').val(hours)
   $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > select:nth-child(1)').val(minutes)
+*/
 }
+
