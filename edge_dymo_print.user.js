@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         New Userscript
-// @namespace    http://tampermonkey.net/
+// @namespace    Stanscript
 // @version      0.1
 // @description  MS Edge dymo printer
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
