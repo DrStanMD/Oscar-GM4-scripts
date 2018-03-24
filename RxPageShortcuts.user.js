@@ -7,18 +7,56 @@
 // @include        *oscarRx/Preview2.jsp?scriptId*
 // @include        *Rx page.htm
 // @include        *oscarRx/ViewScript2*
+// @include *Prescription*
 // ==/UserScript==
 
+//========Get Path============
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1) )
+//alert(firstElement)
+vPath = ("https://" + location.host + "/"  + firstElement + "/")
+//alert(vPath)
+//*****************************************************************
+
+$(document).ready(function () {
+var editFrame = document.getElementById('preview');
+//alert($(editFrame).contents().find("html").html()); 
+
+});
 function myfunction(){
-  alert("HI")
+ // alert("HI")
+var editFrame = document.getElementById('preview');
+var rxprint = $(editFrame).contents().find("html").html();
+
+  rxprint1 = rxprint.substring(1, rxprint.search('<hr>'))
+  rxprint2 = rxprint.substring(rxprint.search('<td colspan="2" height="225px">')+32,rxprint.search('<hr>')) 
+  rxprint3 = (rxprint2.replace(/<br>/g, '  ')).trim()
+  //alert(rxprint3)
+  qend = rxprint3.search('Repeats')
+  qsplit = rxprint3.search('Qty:')
+  //alert(rxprint3.split(qsplit))
+  qty = rxprint3.substring(rxprint3.search('Qty:') + 4, qend - 1)
+  qtyInwords = ucFirst(inWords(qty))
+  rxprint3 = rxprint3.slice(0, qend)
+  rxprint4 = rxprint3.replace('Qty:' + qty.toString(), 'Qty:' + qty.toString() + '(' + qtyInwords + ')  ')
+  qsplit = rxprint4.search('Qty:')
+  rx1 = rxprint4.slice(0, qsplit).trim()
+  rx2 = rxprint4.slice(qsplit).trim()
+ //alert(rx1)
+ //alert(rx2)
+  rxlabel = vPath+'/eform/efmshowform_data.jsp?fid=142&demographic_no=' + demoNo + '&rxdata1=' + rx1 + '&rxdata2=' + rx2
+  //alert(rxlabel)
+  window.open(rxlabel)
 }
+
 y = ".leftGreyLine > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > span:nth-child(1) > input:nth-child(1)"
 $(y).css('background-color', 'yellow');
-$(y).after("<input id='myBtn' type='button' value='Triple Rx'   >")
-document.getElementById("myBtn").addEventListener("click", showAlert19); 
-
-$('#preview').css('background-color', 'yellow');
-alert($('#AutoNumber1').html())
+$(y).after("<input id='myBtn' type='button' value='Triple Rx TEST'   >")
+document.getElementById("myBtn").addEventListener("click", myfunction); 
+$('#pwTable').css('background-color', 'yellow');
+$('#preview2Form').css('background-color', 'yellow');
+//$('#preview').css('background-color', 'yellow');
+//alert($('#pwTable > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)').html())
 
 //=========Set Cookie===============
 function setCookie(cname, cvalue, exdays, cpath)
