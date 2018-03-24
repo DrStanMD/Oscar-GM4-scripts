@@ -18,6 +18,6 @@ input.setAttribute('style', 'font-size:20px;position:fixed;top:0px;right:0px;');
 document.body.appendChild(input);
 function showAlert()
 {
-  S('.DivContentSectionHead > a:nth-child(1)').click()
-  //window.open(vPath + 'oscarRx/PrintDrugProfile2.jsp', '', 'width=800,height=600')
+  //S('.DivContentSectionHead > a:nth-child(1)').click()
+  window.open(vPath + 'oscarRx/PrintDrugProfile2.jsp', '', 'width=800,height=800')
 }
