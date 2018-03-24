@@ -2,7 +2,7 @@
 // @name         New Userscript
 // @namespace    http://tampermonkey.net/
 // @version      0.1
-// @description  try to take over the world!
+// @description  MS Edge dymo printer
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @author       You
 // @match        http://labelwriter.com/software/dls/sdk/samples/js/PrintMeThatLabel/pl.html*
