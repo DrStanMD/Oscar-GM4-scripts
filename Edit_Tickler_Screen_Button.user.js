@@ -22,7 +22,7 @@ input.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:165p
 document.body.appendChild(input);
 function showAlert()
 {
-  addMonth(0)
+  unsafeWindow.addMonth(0)
 }
 var input4 = document.createElement('input');
 input4.type = 'button';
@@ -32,7 +32,7 @@ input4.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:235
 document.body.appendChild(input4);
 function showAlert4()
 {
-  addMonth(1)
+  unsafeWindow.addMonth(1)
 }
 var input1 = document.createElement('input');
 input1.type = 'button';
@@ -42,7 +42,7 @@ input1.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:320
 document.body.appendChild(input1);
 function showAlert2()
 {
-  addMonth(2)
+  unsafeWindow.addMonth(2)
 }
 var input2 = document.createElement('input');
 input2.type = 'button';
@@ -52,5 +52,5 @@ input2.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:405
 document.body.appendChild(input2);
 function showAlert3()
 {
-  addMonth(3)
+  unsafeWindow.addMonth(3)
 }
