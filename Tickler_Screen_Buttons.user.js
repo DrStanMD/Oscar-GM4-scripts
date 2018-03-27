@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
-// @require  http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     2.0
 // @grant       GM_log
 // ==/UserScript==
@@ -74,24 +74,25 @@ function highP(myclass) {
   var myhigh = ''
   myP = document.getElementsByClassName(myclass)
   for (var i = 0; i < myP.length; i++) {
-    if (myP[i].innerHTML == 'High' && myP[i].innerHTML.indexOf('appointment') > - 1) {
-      for (ii = 1; ii < 11; ii++) {
-        myP[i - 10 + ii].style.backgroundColor = 'orange';
-      }
-    }
     if (myP[i]) {
-      // alert(myP[i].innerHTML)
       if (myP[i].innerHTML == 'High') {
+       // alert(i+"HIGH")
         for (ii = 1; ii < 11; ii++) {
           myP[i - 7 + ii].style.backgroundColor = 'yellow';
         }
       }
       if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('APPT') > - 1) {
+       // alert(i+"APPOINTMENT")
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'lightgreen';
+          //************
+          if(myP[i - 10 + ii].style.backgroundColor == 'lightgreen' && myP[i-3].innerHTML=="High") //very urgent appointment 
+          {myP[i - 10 + ii].style.backgroundColor = 'orange';}
+          //*********** 
         }
       }
-      if (myP[i].innerHTML.indexOf('payment') > - 1 || myP[i].innerHTML.indexOf('Payment') > - 1 || myP[i].innerHTML.indexOf('PAYMENT') > - 1) {
+           
+     if (myP[i].innerHTML.indexOf('payment') > - 1 || myP[i].innerHTML.indexOf('Payment') > - 1 || myP[i].innerHTML.indexOf('PAYMENT') > - 1) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'pink';
         }
@@ -99,6 +100,7 @@ function highP(myclass) {
     }
   }
 }
+
 for (var j = 0; j < ClassArray.length; j++) {
   highP(ClassArray[j])
 }
