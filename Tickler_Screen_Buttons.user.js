@@ -76,13 +76,11 @@ function highP(myclass) {
   for (var i = 0; i < myP.length; i++) {
     if (myP[i]) {
       if (myP[i].innerHTML == 'High') {
-       // alert(i+"HIGH")
         for (ii = 1; ii < 11; ii++) {
           myP[i - 7 + ii].style.backgroundColor = 'yellow';
         }
       }
       if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('APPT') > - 1) {
-       // alert(i+"APPOINTMENT")
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'lightgreen';
           //************
