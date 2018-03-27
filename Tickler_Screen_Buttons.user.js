@@ -4,7 +4,7 @@
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     2.0
+// @version     3.0
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
