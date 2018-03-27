@@ -10,6 +10,8 @@
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement)
+
+if(document.getElementById('canvas').getContext('2d')){
 var ctx = document.getElementById('canvas').getContext('2d')
 base_image = new Image();
 base_image.src = vPath + '/eform/displayImage.do?imagefile=My Signature.jpg'
@@ -35,4 +37,4 @@ setTimeout(function(){
   ctx.stroke(); // Draw it
 //}, false);
   }, 100);
-
+}
