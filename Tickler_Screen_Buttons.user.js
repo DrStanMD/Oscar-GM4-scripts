@@ -76,19 +76,17 @@ function highP(myclass) {
   for (var i = 0; i < myP.length; i++) {
     if (myP[i]) {
       if (myP[i].innerHTML == 'High') {
-       // alert(i+"HIGH")
         for (ii = 1; ii < 11; ii++) {
           myP[i - 7 + ii].style.backgroundColor = 'yellow';          
           //************
           //alert(myP[i+3].innerHTML)
-          if(myP[i+3].innerHTML.indexOf("Recall")> -1)
+          if(myP[i+3].innerHTML.indexOf("Recall")> -1 || myP[i+3].innerHTML.indexOf("recall")> -1)
           {myP[i - 7 + ii].style.backgroundColor = 'orange';}
           //***********
           
         }
       }
       if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('APPT') > - 1) {
-       // alert(i+"APPOINTMENT")
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'lightgreen';
           //************
@@ -113,11 +111,7 @@ for (var j = 0; j < ClassArray.length; j++) {
 }
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
-  var onclickvalue = mytag[i].getAttribute('onclick') /*
-  if (onclickvalue !== null && onclickvalue.indexOf('tickler_no') > - 1) {
-    var inserttag = mytag[i]
-  }
-  */
+  var onclickvalue = mytag[i].getAttribute('onclick')
   if (onclickvalue !== null && onclickvalue.indexOf('demographic_no') > - 1) {
     var pstart = onclickvalue.search('demographic_no')
     var pend = onclickvalue.search('&displaymode=')
