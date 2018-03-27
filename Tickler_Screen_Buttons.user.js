@@ -104,7 +104,8 @@ for (var j = 0; j < ClassArray.length; j++) {
 }
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
-  var onclickvalue = mytag[i].getAttribute('onclick') /*
+  var onclickvalue = mytag[i].getAttribute('onclick') 
+  /*
   if (onclickvalue !== null && onclickvalue.indexOf('tickler_no') > - 1) {
     var inserttag = mytag[i]
   }
