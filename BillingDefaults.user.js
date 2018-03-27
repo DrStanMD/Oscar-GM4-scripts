@@ -45,7 +45,9 @@ return "";
 //********************************************************
 
 var default_doc = null
-default_doc = getCookie("default_doc")
+//default_doc = getCookie("default_doc")
+default_doc = localStorage.getItem("default_doc");
+
 if ($('select[name=xml_provider]').val()=="000000"){
 showAlert7()
 }
@@ -61,13 +63,15 @@ var Set_Default = $('select[name=xml_provider] option:selected').text()
 
 qdocname = Set_Default
 //qdocname = window.prompt("Enter Doctor's name", Set_Default);
-setCookie("default_doc",qdocname,360,"path=/");  //set cookie to expire in 360 days
+//setCookie("default_doc",qdocname,360,"path=/");  //set cookie to expire in 360 days
+localStorage.setItem("default_doc",qdocname); 
 //alert(qdocname +" is now set as the default billing doctor on this computer.")
+
 location.reload();
 }
 
 function showAlert7(){
-default_doc ='Hurwitz, Stanley D';
+//default_doc ='Hurwitz, Stanley D';
 if (!default_doc){
 alert("The default provider is not set for this session on this computer.  \nSelect the default provider from the list, then click STORE.")
 }
