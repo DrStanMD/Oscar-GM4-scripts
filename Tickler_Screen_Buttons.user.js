@@ -77,27 +77,30 @@ function highP(myclass) {
     if (myP[i]) {
       if (myP[i].innerHTML == 'High') {
         for (ii = 1; ii < 11; ii++) {
-          myP[i - 7 + ii].style.backgroundColor = 'yellow';          
+          myP[i - 7 + ii].style.backgroundColor = 'yellow';
           //************
           //alert(myP[i+3].innerHTML)
-          if(myP[i+3].innerHTML.indexOf("Recall")> -1 || myP[i+3].innerHTML.indexOf("recall")> -1)
-          {myP[i - 7 + ii].style.backgroundColor = 'orange';}
+          if (myP[i + 3].innerHTML.indexOf('Recall') > - 1 || myP[i + 3].innerHTML.indexOf('recall') > - 1)
+          {
+            myP[i - 7 + ii].style.backgroundColor = 'orange';
+          }          
           //***********
-          
+
         }
       }
       if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('APPT') > - 1) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'lightgreen';
           //************
-          if(myP[i - 10 + ii].style.backgroundColor == 'lightgreen' && myP[i-3].innerHTML=="High")
-          {myP[i - 10 + ii].style.backgroundColor = 'orange';}
+          if (myP[i - 10 + ii].style.backgroundColor == 'lightgreen' && myP[i - 3].innerHTML == 'High')
+          {
+            myP[i - 10 + ii].style.backgroundColor = 'orange';
+          }          
           //***********
-        
+
         }
       }
-           
-     if (myP[i].innerHTML.indexOf('payment') > - 1 || myP[i].innerHTML.indexOf('Payment') > - 1 || myP[i].innerHTML.indexOf('PAYMENT') > - 1) {
+      if (myP[i].innerHTML.indexOf('payment') > - 1 || myP[i].innerHTML.indexOf('Payment') > - 1 || myP[i].innerHTML.indexOf('PAYMENT') > - 1) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'pink';
         }
@@ -105,7 +108,6 @@ function highP(myclass) {
     }
   }
 }
-
 for (var j = 0; j < ClassArray.length; j++) {
   highP(ClassArray[j])
 }
