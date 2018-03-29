@@ -1,8 +1,8 @@
 // ==UserScript==
-// @name         New Userscript
+// @name         Dymo labelwriterpage
 // @namespace    Stanscript
 // @version      0.1
-// @description  MS Edge dymo printer
+// @description  MS Edge and dymo writer page dymo printer
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @author       You
 // @match        http://labelwriter.com/software/dls/sdk/samples/js/PrintMeThatLabel/pl.html*
@@ -13,7 +13,7 @@ setTimeout(function(){
     document.getElementById("printButton").style.backgroundColor = "red";
     window.open('', '_self', '');
     window.close();
-}, 3000);
+}, 2000);
 }
 document.getElementById("printButton").addEventListener("click", myfunction,true);
 document.getElementById("printButton").innerHTML="PRINT AND CLOSE";
