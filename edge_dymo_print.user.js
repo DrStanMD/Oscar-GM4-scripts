@@ -8,6 +8,14 @@
 // @match        http://labelwriter.com/software/dls/sdk/samples/js/PrintMeThatLabel/pl.html*
 // @grant        none
 // ==/UserScript==
+function myfunction(){
+setTimeout(function(){
+    document.getElementById("printButton").style.backgroundColor = "red";
+    window.open('', '_self', '');
+    window.close();
+}, 3000);
+}
+document.getElementById("printButton").addEventListener("click", myfunction,true);
 document.getElementById("labelTextArea").rows="8";
 document.getElementById("labelTextArea").cols = "150";
 var elements = (window.location.pathname.split('/', 2));
