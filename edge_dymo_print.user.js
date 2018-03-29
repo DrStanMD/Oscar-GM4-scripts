@@ -16,6 +16,7 @@ setTimeout(function(){
 }, 3000);
 }
 document.getElementById("printButton").addEventListener("click", myfunction,true);
+document.getElementById("printButton").innerHTML="PRINT AND CLOSE";
 document.getElementById("labelTextArea").rows="8";
 document.getElementById("labelTextArea").cols = "150";
 var elements = (window.location.pathname.split('/', 2));
@@ -34,8 +35,6 @@ if (location.search) {
 if (params.mydata) {
     document.getElementById("labelTextArea").value=decodeURIComponent(params.mydata);
 }
-
-document.getElementById("printButton").innerHTML="PRINT AND CLOSE";
 
 var input1 = document.createElement('input');
 input1.type = 'button';
