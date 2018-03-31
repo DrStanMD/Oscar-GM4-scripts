@@ -11,11 +11,20 @@ var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement)
 
+$(function(){
+     $('iframe[name="lightwindow_iframe"]').load(function(){
+       alert('HI')   
+       //$(this).contents().find('body').append('<div>.....</div>')
+      });
+});
+
 if(document.getElementById('canvas').getContext('2d')){
+ // alert()
 var ctx = document.getElementById('canvas').getContext('2d')
+ 
 base_image = new Image();
 base_image.src = vPath + '/eform/displayImage.do?imagefile=My Signature.jpg'
- 
+
 //window.addEventListener('load', function () {
 setTimeout(function(){ 
   //alert("Hello")
@@ -36,5 +45,5 @@ setTimeout(function(){
 
   ctx.stroke(); // Draw it
 //}, false);
-  }, 100);
+  }, 1000);
 }
