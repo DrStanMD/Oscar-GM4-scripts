@@ -3,20 +3,35 @@
 // @namespace     StansScripts
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @description Shortcut Alt-s for save prescription without printing, Print DymoLabel for Triple Rx
-// @include        *oscarRx/choosePatient.do?providerNo*
-// @include        *oscarRx/Preview2.jsp?scriptId*
-// @include        *Rx page.htm
-// @include        *oscarRx/ViewScript2*
-// @include *Prescription*
+// @include        *Rx page.htmew2.jsp?scriptId*
+// @include        *oscarRx*
 // ==/UserScript==
 
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1) )
-//alert(firstElement)
 vPath = ("https://" + location.host + "/"  + firstElement + "/")
-//alert(vPath)
 //*****************************************************************
+var params = {
+};
+if (location.search) {
+  var parts = location.search.substring(1).split('&');
+  for (var i = 0; i < parts.length; i++) {
+    var nv = parts[i].split('=');
+    if (!nv[0]) continue;
+    params[nv[0]] = nv[1] || true;
+  }
+}
+if (params.demographicNo) {
+  demoNo = params.demographicNo
+  //alert(params.demographicNo)
+  setCookie('CdemoNo', demoNo, 360, 'path=/')
+} 
+else {
+  demoNo = getCookie('CdemoNo')
+  //alert(demoNo)
+  setCookie('CdemoNo', '', 360, 'path=/')
+}
 
 $(document).ready(function () {
 var editFrame = document.getElementById('preview');
@@ -173,6 +188,8 @@ else {
   //alert(demoNo)
   setCookie('CdemoNo', '', 360, 'path=/')
 }
+//alert(demoNo)
+window.open(vpath+'eform/efmformadd_data.jsp?fid=417&demographic_no='+demoNo+'&appointment=&parentAjaxId=eforms')
 window.addEventListener('keypress', function (theEvent) {
   //theEvent.stopPropagation();
   //theEvent.preventDefault();
@@ -198,7 +215,8 @@ document.body.appendChild(input19);
 input19.className = 'noprint'
 //$('.leftGreyLine > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(3) > tbody:nth-child(1)').append(input19)
 function showAlert19()
-{alert("HELLO2")
+{
+  //alert("HELLO2")
   //printPaste2Parent(true) 
   var rxprint = $('#pwTable > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)').html()
   rxprint1 = rxprint.substring(1, rxprint.search('<hr>'))
@@ -213,7 +231,8 @@ function showAlert19()
   qsplit = rxprint4.search('Qty:')
   rx1 = rxprint4.slice(0, qsplit).trim()
   rx2 = rxprint4.slice(qsplit).trim()
-  rxlabel = 'https://secure10.oscarhost.ca/SDHurwitzInc/eform/efmformadd_data.jsp?fid=142&demographic_no=' + demoNo + '&rxdata1=' + rx1 + '&rxdata2=' + rx2
+                      
+ // rxlabel = vPath+'eform/efmformadd_data.jsp?fid=416&parentAjaxId=eforms&demographic_no=' + demoNo + '&rxdata1=' + rx1 + '&rxdata2=' + rx2
   //alert(rxlabel)
-  window.open(rxlabel)
+ // window.open(rxlabel)
 }
