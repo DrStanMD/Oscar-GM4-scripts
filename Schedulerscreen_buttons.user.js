@@ -287,7 +287,7 @@ input13.setAttribute('style', 'font-size:18px;position:fixed;bottom:90px;right:0
 document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 function showAlert13() {
-  window.location.href = vPath + 'provider/providercontrol.jsp?year=2017&month=1&day=03&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=6'
+  window.location.href = vPath + 'provider/providercontrol.jsp?year=2018&month=4&day=09&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=6'
   var theDefault = 'Ghobassy, Bahar';
   // var theDefault = 'Hurwitz, Stanley D';
   $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(3)').val(theDefault)
