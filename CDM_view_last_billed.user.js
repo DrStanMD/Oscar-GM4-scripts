@@ -17,7 +17,8 @@ var measureDateArray = [
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
-  var newURL = vPath + 'billing/CA/BC/billStatus.jsp?lastName=' + 'DOMANKO' + '&firstName=' + 'VERA' + '&filterPatient=true&demographicNo=' + '898'  //window.open(newURL)
+  var newURL = vPath + 'billing/CA/BC/billStatus.jsp?lastName=' + 'DO**' + '&firstName=' + 'VE**' + '&filterPatient=true&demographicNo=' + '8**'  
+  //window.open(newURL)
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText; //local variable
