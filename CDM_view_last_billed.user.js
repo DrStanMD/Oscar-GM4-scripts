@@ -12,7 +12,7 @@ firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/') //alert(vPath)
 var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
 var res = myParam.indexOf('&')
-var demo_no = myParam.substring(0, res)//alert(demo_no)
+var demo_no = myParam.substring(0, res) //alert(demo_no)
 var measureArray = [
 ];
 var measureDateArray = [
@@ -20,7 +20,7 @@ var measureDateArray = [
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
-  var newURL = vPath + 'billing/CA/BC/billStatus.jsp?lastName=' + '' + '&firstName=' + '' + '&filterPatient=true&demographicNo=' + demo_no  // window.open(newURL)
+  var newURL = vPath + 'billing/CA/BC/billStatus.jsp?lastName=' + '' + '&firstName=' + '' + '&filterPatient=true&demographicNo=' + demo_no // window.open(newURL)
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText; //local variable
@@ -34,17 +34,16 @@ function getMeasures(measure) {
       while ((myArray = myRe.exec(str)) !== null) {
         var y = (myRe.exec(str).toString()).replace(/\s/g, '')
         var mycode = y.substring(35, 40)
-             measureArray[i] = mycode;
+        measureArray[i] = mycode;
         i = i + 1;
-        //alert(i)
       }
       var myRe = /<td align="center" class="bCellData" >([0-9,-]+)<\/td>\s*<td align="center" class="bCellData" >/g; //for date
       var myArray;
       var i = 0;
       while ((myArray = myRe.exec(str)) !== null) {
-       var y = (myRe.exec(str).toString()).replace(/\s/g, '')
-      //alert(y)
-        measureDateArray[i] = myArray[1];
+        var y = (myRe.exec(str).toString()).replace(/\s/g, '')
+        var mycode = y.substring(35, 45)
+        measureDateArray[i] = mycode;
         i = i + 1;
       }
     }
@@ -55,4 +54,4 @@ function getMeasures(measure) {
 getMeasures()
 for (i = 0; i < measureArray.length; i++) {
   alert(measureArray[i] + ' billed on ' + measureDateArray[i])
-}//************************
+} //************************
