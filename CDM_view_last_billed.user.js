@@ -24,15 +24,16 @@ function getMeasures(measure) {
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText; //local variable
-      //alert(str)
       if (!str) {
         return;
       }
       var myRe = /<td align="center" class="bCellData" >[0-9]{5}<\/td>/g; //for CDM code 
       var myArray;
       var i = 0;
-      while ((myArray = myRe.exec(str)) !== null) {
+      while(i<40){
+      //while ((myArray = myRe.exec(str)) !== null) {
         var y = (myRe.exec(str).toString()).replace(/\s/g, '')
+        //alert(y)
         var mycode = y.substring(35, 40)
         measureArray[i] = mycode;
         i = i + 1;
@@ -40,7 +41,8 @@ function getMeasures(measure) {
       var myRe = /<td align="center" class="bCellData" >([0-9,-]+)<\/td>\s*<td align="center" class="bCellData" >/g; //for date
       var myArray;
       var i = 0;
-      while ((myArray = myRe.exec(str)) !== null) {
+       while(i<40){
+      //while ((myArray = myRe.exec(str)) !== null) {
         var y = (myRe.exec(str).toString()).replace(/\s/g, '')
         var mycode = y.substring(35, 45)
         measureDateArray[i] = mycode;
