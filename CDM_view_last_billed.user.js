@@ -27,23 +27,24 @@ function getMeasures(measure) {
       if (!str) {
         return;
       }
-      var myRe = /<td align="center" class="bCellData" >[0-9]{5}<\/td>/g; //for CDM code 
-      var myArray;
+      var myRe = /<td align="center" class="bCellData" >[0-9]{5}<\/td>\s*/g; //for CDM code 
+      var myArray = myRe.exec(str)
       var i = 0;
-      while(i<40){
-      //while ((myArray = myRe.exec(str)) !== null) {
+      // while(i<14){
+      while ((myArray = myRe.exec(str)) !== null) {
         var y = (myRe.exec(str).toString()).replace(/\s/g, '')
-        //alert(y)
         var mycode = y.substring(35, 40)
         measureArray[i] = mycode;
+        //alert(measureArray.length)
         i = i + 1;
       }
+      alert('OMG' + measureArray.length)
       var myRe = /<td align="center" class="bCellData" >([0-9,-]+)<\/td>\s*<td align="center" class="bCellData" >/g; //for date
       var myArray;
       var i = 0;
-       while(i<40){
-      //while ((myArray = myRe.exec(str)) !== null) {
-        var y = (myRe.exec(str).toString()).replace(/\s/g, '')
+      while (i < measureArray.length) {
+        //while ((myArray = myRe.exec(str)) !== null) {
+        var y = (myRe.exec(str).toString()).replace(/\s/g, '')        //alert(myArray)
         var mycode = y.substring(35, 45)
         measureDateArray[i] = mycode;
         i = i + 1;
