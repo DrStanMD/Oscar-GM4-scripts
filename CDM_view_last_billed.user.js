@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name        CDM billing codes from echart
+// @name        CDM-last-billed
 // @namespace   Stanscripts
-// @description CDM billing codes from echart
+// @description Alerts when CDM code was last billed
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
