@@ -69,7 +69,6 @@ if (z > - 1) {
 }
 var z = measureArray.indexOf('14075')
 if (z > - 1) {
-  alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
   var d = new Date(measureDateArray[z])
   if (d.getFullYear() == d.getFullYear(Date())) {
     alert('14075 billed this year')
