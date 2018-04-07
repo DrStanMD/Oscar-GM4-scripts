@@ -26,25 +26,28 @@ function getMeasures(measure) {
       var str = xmlhttp.responseText; //local variable
       if (!str) {
         return;
-      }
+      }    
       var myRe = /<td align="center" class="bCellData" >[0-9]{5}<\/td>\s*/g; //for CDM code 
-      var myArray = myRe.exec(str)
+      var myArray
       var i = 0;
-      // while(i<14){
+      //while(i<14){
       while ((myArray = myRe.exec(str)) !== null) {
-        var y = (myRe.exec(str).toString()).replace(/\s/g, '')
-        var mycode = y.substring(35, 40)
+        //var y = myRe.exec(str).toString().replace(/\s/g, '')
+        //alert(y)
+        y = myArray.toString()
+        var mycode = y.substring(38, 43)        
+        //alert(mycode)
         measureArray[i] = mycode;
         //alert(measureArray.length)
         i = i + 1;
       }
-      alert('OMG' + measureArray.length)
+      //alert('OMG' + measureArray.length)
       var myRe = /<td align="center" class="bCellData" >([0-9,-]+)<\/td>\s*<td align="center" class="bCellData" >/g; //for date
       var myArray;
       var i = 0;
       while (i < measureArray.length) {
         //while ((myArray = myRe.exec(str)) !== null) {
-        var y = (myRe.exec(str).toString()).replace(/\s/g, '')        //alert(myArray)
+        var y = (myRe.exec(str).toString()).replace(/\s/g, '') //alert(myArray)
         var mycode = y.substring(35, 45)
         measureDateArray[i] = mycode;
         i = i + 1;
