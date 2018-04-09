@@ -18,11 +18,11 @@ var measureArray = [
 var measureDateArray = [
 ];
 var demoArray = [
+  'CellPhone',
   'phone',
   'demo_cell',
   'email'
 ]
-
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
@@ -34,19 +34,28 @@ function getMeasures(measure) {
       if (!str) {
         return;
       }
-      var myReString = '<inputtype="text"name="' + measure + '".*/s*';
-      var myRe = new RegExp(myReString, 'g');
       //var myRe = /<inputtype="text"name="phone".*\s*/g;   
+      //var myRe = /<li><spanclass="label">CellPhone:<\/span><spanclass="info">.*\s*/g;     
+      var myReString = '<li><spanclass="label">' + measure + ':<\/span><spanclass="info">.*/s*'
+      //var myReString = '<inputtype="text"name="' + measure + '".*/s*';
+      //alert(myReString)
+      var myRe = new RegExp(myReString, 'g');
+            
+      //alert(myRe)
       var myArray
       var i = 0;
       while ((myArray = myRe.exec(str)) !== null) {
         y = myArray.toString()        
-        //alert(y)
-        var z = y.indexOf('value=')
-        var mycode = y.substring(z + 7)        
-        //alert(mycode)
-        var mycode2 = mycode.indexOf('">')
-        var mycode3 = mycode.substring(mycode + 8, mycode2)
+        //alert(y)  
+        //var z = y.indexOf('value=')
+        var z = y.indexOf('info')
+        //var mycode = y.substring(z + 7)
+        var mycode = y.substring(z + 6)
+        alert(mycode)
+        //var mycode2 = mycode.indexOf('">')
+        var mycode2 = mycode.indexOf('</span>')
+        //var mycode3 = mycode.substring(mycode + 8, mycode2)
+        var mycode3 = mycode.substring(mycode + 9, mycode2)
         alert(measure + ' is ' + mycode3)
         measureArray[i] = mycode3;
         i = i + 1;
