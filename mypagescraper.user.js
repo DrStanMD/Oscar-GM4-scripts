@@ -21,8 +21,8 @@ var demoArray = [
   'phone',
   'demo_cell',
   'email'
-]//var replace = "regex";
-//var re = new RegExp(replace,"g");
+]
+
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
