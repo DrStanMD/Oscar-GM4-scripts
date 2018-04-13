@@ -83,20 +83,28 @@ function highP(myclass) {
           if (myP[i + 3].innerHTML.indexOf('Recall') > - 1 || myP[i + 3].innerHTML.indexOf('recall') > - 1)
           {
             myP[i - 7 + ii].style.backgroundColor = 'orange';
-          }          
-          //***********
+          }          //***********
 
         }
-      }
-      if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('APPT') > - 1) {
+      }      /*   
+      var str = myP[i].innerHTML;
+      alert(str)
+      var re = /'appointment/i;
+      var found = str.match(re);
+      
+      var re1 = /'appt/i;
+      var found1 = str.match(re);  
+      if(found || found1){  
+*/
+
+      if (myP[i].innerHTML.toLowerCase().indexOf('appointment') > - 1 || myP[i].innerHTML.toLowerCase().indexOf('appt') > - 1) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 10 + ii].style.backgroundColor = 'lightgreen';
           //************
           if (myP[i - 10 + ii].style.backgroundColor == 'lightgreen' && myP[i - 3].innerHTML == 'High')
           {
             myP[i - 10 + ii].style.backgroundColor = 'orange';
-          }          
-          //***********
+          }          //***********
 
         }
       }
