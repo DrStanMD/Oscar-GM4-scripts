@@ -39,13 +39,11 @@ function getMeasures(measure) {
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
-        y = myArray.toString()
-       // alert(y)
+        y = myArray.toString()        // alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
-        var mycode3 = mycode.substring(mycode + 9, mycode2)        
-        //alert(j+measure + ' is ' + mycode3)
+        var mycode3 = mycode.substring(mycode + 9, mycode2)        //alert(j+measure + ' is ' + mycode3)
         demoArrayVal[j] = mycode3
       }
     }
@@ -57,13 +55,19 @@ $(document).ready(function () {
   for (j = 0; j < demoArray.length; j++) {
     getMeasures(demoArray[j]);
   }
-var header = document.getElementById('encounterHeader');
-var headerExtra1 = 'Add: '
-var headerExtra3 = 'File#: '
-var headerExtra4 = 'HC: '
-header.innerHTML += ('<br>' + headerExtra1.bold() + demoArrayVal[3]+","+ demoArrayVal[4] + ',' + demoArrayVal[5] + ',' + demoArrayVal[6] + ' '
- + ' ' + headerExtra3.bold() + demo_no + ' ' + headerExtra4.bold()
-+ demoArrayVal[7] + '   email: ' + demoArrayVal[1] + '   '
-+ '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-);
+  var HCN = demoArrayVal[7]
+  res = HCN.slice(0, 4)
+  res = res + ' ' + HCN.slice(4, 7)
+  res = res + ' ' + HCN.slice(7)
+  HCN = res
+  var header = document.getElementById('encounterHeader');
+  var headerExtra1 = 'Add: '
+  var headerExtra2 = ' Age: '
+  var headerExtra3 = 'File#: '
+  var headerExtra4 = 'PHN: '
+  header.innerHTML += ('<br>' + headerExtra1.bold() + demoArrayVal[3] + ',' + demoArrayVal[4] + ',' + demoArrayVal[5] + ',' + headerExtra2.bold() + demoArrayVal[6] + ' '
+  + ' ' + headerExtra3.bold() + demo_no + ' ' + headerExtra4.bold()
+  + HCN + '   email: ' + demoArrayVal[1] + '   '
+  + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+  );
 })
