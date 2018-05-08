@@ -61,11 +61,11 @@ $(document).ready(function () {
   res = res + ' ' + HCN.slice(7)
   HCN = res
   var header = document.getElementById('encounterHeader');
-  var headerExtra1 = 'Add: '
+  var headerExtra1 = 'Cell: '
   var headerExtra2 = ' Age: '
   var headerExtra3 = 'File#: '
   var headerExtra4 = 'PHN: '
-  header.innerHTML += ('<br>' + headerExtra1.bold() + demoArrayVal[3] + ',' + demoArrayVal[4] + ',' + demoArrayVal[5] + ',' + headerExtra2.bold() + demoArrayVal[6] + ' '
+  header.innerHTML += ('<br>' + headerExtra1.bold() + demoArrayVal[0] + ', ' + demoArrayVal[4] + ',' + headerExtra2.bold() + demoArrayVal[6] + ' '
   + ' ' + headerExtra3.bold() + demo_no + ' ' + headerExtra4.bold()
   + HCN + '   email: ' + demoArrayVal[1] + '   '
   + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
