@@ -7,24 +7,44 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
+var mymsgId = ""
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
-newWindow = window.open(vPath+'eform/efmshowform_data.jsp?fid=430', '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
-
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
   var newURL = vPath + 'oscarMessenger/DisplayMessages.do'
+  
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      var str = xmlhttp.responseText
+      //alert(str)
+  
       var str = xmlhttp.responseText.replace(/\s/g, '')
+      //alert(str)
+      //alert(str.indexOf("StickyNote", str.indexOf("StickyNote")+2));
       if (str.indexOf('StickyNote') > - 1) {
+        var x = str.indexOf('StickyNote')
+        //alert(x)
+        str=str.slice(x-60)
+        //alert(str)
+        var start=str.indexOf('messageID=')
+        var end = str.indexOf('&boxType')
+        mymsgId =str.substring(start+10,end)
+
+        
+        //newWindow = window.open(vPath+'eform/efmshowform_data.jsp?fid=430', '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
+     
+        
         if (confirm('New incoming StickyNote.  Read Now?')) {
-          var myWindow = window.open(newURL, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
+          //var myWindow = window.open(newURL, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
+          var myWindow = window.open(vPath+'oscarMessenger/ViewMessage.do?messageID='+mymsgId, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
+
         } else {
           //   txt = "You pressed Cancel!";
         }
+
       }
       if (!str) {
         return;
@@ -35,8 +55,17 @@ function getMeasures(measure) {
   xmlhttp.send();
 }
 getMeasures('X')
+//alert(mymsgId)
+//window.open(vPath+'oscarMessenger/ViewMessage.do?messageID='+mymsgId)
+
+//xmlhttp.open('GET', vPath+'oscarMessenger/ViewMessage.do?messageID=6604');
+//  xmlhttp.send();
+//  var str2 = xmlhttp.responseText.replace(/\s/g, '')
+ // alert(str2.indexOf("test2"))
+   
+
 setInterval(function () {
-  getMeasures('X');
+  //getMeasures('X');
 }, 30000);
 if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
   var input4 = document.createElement('input');
