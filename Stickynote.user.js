@@ -3,6 +3,7 @@
 // @namespace   Stanscripts
 // @description checks for stickynote
 // @include     *provider/providercontrol.jsp?*
+// @include     *oscarMessenger/CreateMessage.jsp*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
@@ -32,6 +33,20 @@ function getMeasures(measure) {
   xmlhttp.send();
 }
 getMeasures('X')
-setInterval(function(){ 
-getMeasures('X'); }, 30000);
-
+setInterval(function () {
+  getMeasures('X');
+}, 30000);
+if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
+  var input4 = document.createElement('input');
+  input4.type = 'button';
+  input4.value = 'StickyNote';
+  input4.onclick = showAlert4;
+  input4.setAttribute('style', 'font-size:16px;position:fixed;top:40px;right:400px; ');
+  document.body.appendChild(input4);
+}
+function showAlert4()
+{
+  document.getElementsByName('subject') [0].value = 'StickyNote'
+  document.getElementsByName('message') [0].focus();
+  document.getElementsByName('tblDFR2') [2].checked = true
+}
