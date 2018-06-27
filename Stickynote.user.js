@@ -7,6 +7,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
+newWindow = window.open("https://secure10.junoemr.com/SDHurwitzInc/eform/efmshowform_data.jsp?fid=430", '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
