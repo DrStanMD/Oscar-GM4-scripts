@@ -7,33 +7,54 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
+var myformID = 430 //<<<YOUR FORM id GOES HERE
 var mymsgId = ''
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
+vPath = ('https://' + location.host + '/' + firstElement + '/') //===========Cookies===============
+function setCookie(cname, cvalue, exdays, cpath)
+{
+  var d = new Date();
+  //d.setTime(d.getTime()+(exdays*24*60*60*1000));
+  d.setTime(d.getTime() + (exdays * 5000));
+  var expires = 'expires=' + d.toGMTString();
+  document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
+} //setCookie("homephone",qqhomephone,360,"path=/");
+
+function getCookie(cname)
+{
+  var name = cname + '=';
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++)
+  {
+    var c = ca[i].trim();
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return '';
+} //*****************************************************************
+
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
   var newURL = vPath + 'oscarMessenger/DisplayMessages.do'
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-      var str = xmlhttp.responseText
-      //alert(str)
-      var str = xmlhttp.responseText.replace(/\s/g, '')      //alert(str)
-      //alert(str.indexOf("StickyNote", str.indexOf("StickyNote")+2));
+      var str = xmlhttp.responseText //alert(str)
+      var str = xmlhttp.responseText.replace(/\s/g, '') //alert(str.indexOf("StickyNote", str.indexOf("StickyNote")+2));
       if (str.indexOf('StickyNote') > - 1) {
         var x = str.indexOf('StickyNote') //alert(x)
         str = str.slice(x - 60) //alert(str)
         var start = str.indexOf('messageID=')
         var end = str.indexOf('&boxType')
-        mymsgId = str.substring(start + 10, end)
-        //alert(mymsgId)
+        mymsgId = str.substring(start + 10, end) //alert(mymsgId)
+        /* 
         if (confirm('New incoming StickyNote.  Read Now?')) {
           //var myWindow = window.open(newURL, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
           var myWindow = window.open(vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
         } else {
           //   txt = "You pressed Cancel!";
         }
+      */
       }
       if (!str) {
         return;
@@ -47,14 +68,20 @@ getMeasures('X')
 xmlhttp = new XMLHttpRequest();
 xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
 xmlhttp.send();
-var str2 = xmlhttp.responseText.replace(/\s/g, '')//alert(str2)
-var y = str2.indexOf('textareaid="msgBody"name="Message"')
-str2 = str2.slice(y + 79)
-var z = str2.indexOf('</textarea><br>')
-//alert(str2.slice(0, z))
-mydata = str2.slice(0, z)
-//alert(mydata)
-newWindow = window.open(vPath+'eform/efmshowform_data.jsp?fid=430'+'&mdata='+mydata+'&msgID='+mymsgId, '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
+var str2 = xmlhttp.responseText //.replace(/\s/g, '')
+//alert(str2)
+var y = str2.indexOf('textarea id="msgBody" name="Message"')
+str2 = str2.slice(y + 93) //alert(str2)
+var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
+mydata = encodeURIComponent(str2.slice(0, z)) //alert(mydata)
+
+
+var winExists = getCookie("windowname")
+if(!winExists){
+newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata=' + mydata + '&msgID=' + mymsgId, '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
+setCookie('windowname', 'newWindow', 360, 'path=/');
+}
+
 setInterval(function () {
   //getMeasures('X');
 }, 30000);
