@@ -8,10 +8,13 @@
 // @grant       none
 // ==/UserScript==
 var myformID = 430 //<<<YOUR FORM id GOES HERE
+var mylink = ($('#navlist > li:nth-child(7) > a:nth-child(1)').attr('onclick')).toString()//alert(mylink)
+var x = mylink.indexOf('popupOscarRx')
+mylink = mylink.slice(x + 26, - 1)
 var mymsgId = ''
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') //===========Cookies===============
+vPath = ('https://' + location.host + '/' + firstElement + '/')
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
@@ -31,19 +34,29 @@ function getCookie(cname)
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
   }
   return '';
-} //*****************************************************************
-
+}
+function getAllIndexes(arr, val) {
+  var indexes = [
+  ],
+  i = - 1;
+  while ((i = arr.indexOf(val, i + 1)) != - 1) {
+    indexes.push(i);
+  }
+  return indexes;
+}
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
-  var newURL = vPath + 'oscarMessenger/DisplayMessages.do'
-  //window.open('https://secure10.junoemr.com/SDHurwitzInc/oscarMessenger/DisplayMessages.do?providerNo=1')
+  //var newURL = vPath + 'oscarMessenger/DisplayMessages.do'
+  var newURL = vPath + mylink
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText //alert(str)
-      var str = xmlhttp.responseText.replace(/\s/g, '') //alert(str.indexOf("StickyNote", str.indexOf("StickyNote")+2));
+      var str = xmlhttp.responseText.replace(/\s/g, '')
+      var indexes = getAllIndexes(str, 'StickyNote');
+      alert(indexes)
       if (str.indexOf('StickyNote') > - 1) {
-        var x = str.indexOf('StickyNote') //alert(x)
+        var x = str.indexOf('StickyNote')
         str = str.slice(x - 60) //alert(str)
         var start = str.indexOf('messageID=')
         var end = str.indexOf('&boxType')
@@ -65,30 +78,32 @@ function getMeasures(measure) {
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
   xmlhttp = new XMLHttpRequest();
-xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
-xmlhttp.send();
-var str2 = xmlhttp.responseText //.replace(/\s/g, '')
-//alert(str2)
-var y = str2.indexOf('textarea id="msgBody" name="Message"')
-str2 = str2.slice(y + 93) //
- // alert(str2)
-var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
-mydata = encodeURIComponent(str2.slice(0, z)) //
- //alert(mydata)
-var winExists = getCookie("windowname")
-if(!winExists){
-  if(mydata!=="null"){
-newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata=' + mydata + '&msgID=' + mymsgId, '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
-setCookie('windowname', 'newWindow', 360, 'path=/');
+  xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
+  xmlhttp.send();
+  var str2 = xmlhttp.responseText //.replace(/\s/g, '')
+  //alert(str2)
+  var y = str2.indexOf('textarea id="msgBody" name="Message"')
+  str2 = str2.slice(y + 93)  // alert(str2)
+  var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
+  mydata = encodeURIComponent(str2.slice(0, z)) //
+  //alert(mydata)
+  var winExists = getCookie('windowname')  //alert(winExists)
+  if (!winExists) {
+    if (mydata !== 'null') {
+      newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
+      + mydata + '&msgID=' + mymsgId, 'MsgWindow' + measure, 'toolbar=no,menubar=no,dialog=no,width=400,height=300,left=0, top=' + measure + 50)
+      setCookie('windowname', 'MsgWindow' + measure, 360, 'path=/');
+    }
   }
 }
-
-}
-getMeasures('X')
+getMeasures('0')
 setInterval(function () {
-getMeasures('X');
+  //getMeasures('0');
 }, 30000);
+//alert(window.location.pathname)
+//alert(window.location.pathname.indexOf('oscarMessenger/CreateMessage'))
 if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
+  alert('HI')
   var input4 = document.createElement('input');
   input4.type = 'button';
   input4.value = 'StickyNote';
