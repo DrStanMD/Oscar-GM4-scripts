@@ -37,6 +37,7 @@ function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
   var newURL = vPath + 'oscarMessenger/DisplayMessages.do'
+  //window.open('https://secure10.junoemr.com/SDHurwitzInc/oscarMessenger/DisplayMessages.do?providerNo=1')
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText //alert(str)
@@ -63,27 +64,29 @@ function getMeasures(measure) {
   }
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
-}
-getMeasures('X')
-xmlhttp = new XMLHttpRequest();
+  xmlhttp = new XMLHttpRequest();
 xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
 xmlhttp.send();
 var str2 = xmlhttp.responseText //.replace(/\s/g, '')
 //alert(str2)
 var y = str2.indexOf('textarea id="msgBody" name="Message"')
-str2 = str2.slice(y + 93) //alert(str2)
+str2 = str2.slice(y + 93) //
+ // alert(str2)
 var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
-mydata = encodeURIComponent(str2.slice(0, z)) //alert(mydata)
-
-
+mydata = encodeURIComponent(str2.slice(0, z)) //
+ //alert(mydata)
 var winExists = getCookie("windowname")
 if(!winExists){
+  if(mydata!=="null"){
 newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata=' + mydata + '&msgID=' + mymsgId, '', 'toolbar=no,menubar=no,dialog=no,width=400,height=200,top=0, left=0')
 setCookie('windowname', 'newWindow', 360, 'path=/');
+  }
 }
 
+}
+getMeasures('X')
 setInterval(function () {
-  //getMeasures('X');
+getMeasures('X');
 }, 30000);
 if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
   var input4 = document.createElement('input');
