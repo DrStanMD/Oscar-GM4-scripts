@@ -8,7 +8,23 @@
 // @grant       none
 // ==/UserScript==
 var myformID = 430 //<<<YOUR FORM id GOES HERE
-var mylink = ($('#navlist > li:nth-child(7) > a:nth-child(1)').attr('onclick')).toString()//alert(mylink)
+//**********************************************
+if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
+  var input4 = document.createElement('input');
+  input4.type = 'button';
+  input4.value = 'StickyNote';
+  input4.onclick = showAlert4;
+  input4.setAttribute('style', 'font-size:16px;position:fixed;top:40px;left:500px; ');
+  document.body.appendChild(input4);
+}
+function showAlert4()
+{
+  document.getElementsByName('subject') [0].value = 'StickyNote'
+  document.getElementsByName('tblDFR2') [2].click()
+  document.getElementsByName('message') [0].focus();
+}//**********************************************
+
+var mylink = ($('#navlist > li:nth-child(7) > a:nth-child(1)').attr('onclick')).toString() //alert(mylink)
 var x = mylink.indexOf('popupOscarRx')
 mylink = mylink.slice(x + 26, - 1)
 var mymsgId = ''
@@ -54,7 +70,7 @@ function getMeasures(measure) {
       var str = xmlhttp.responseText //alert(str)
       var str = xmlhttp.responseText.replace(/\s/g, '')
       var indexes = getAllIndexes(str, 'StickyNote');
-      alert(indexes)
+      //alert(indexes)
       if (str.indexOf('StickyNote') > - 1) {
         var x = str.indexOf('StickyNote')
         str = str.slice(x - 60) //alert(str)
@@ -83,11 +99,11 @@ function getMeasures(measure) {
   var str2 = xmlhttp.responseText //.replace(/\s/g, '')
   //alert(str2)
   var y = str2.indexOf('textarea id="msgBody" name="Message"')
-  str2 = str2.slice(y + 93)  // alert(str2)
+  str2 = str2.slice(y + 93) // alert(str2)
   var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
   mydata = encodeURIComponent(str2.slice(0, z)) //
   //alert(mydata)
-  var winExists = getCookie('windowname')  //alert(winExists)
+  var winExists = getCookie('windowname') //alert(winExists)
   if (!winExists) {
     if (mydata !== 'null') {
       newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
@@ -100,20 +116,3 @@ getMeasures('0')
 setInterval(function () {
   //getMeasures('0');
 }, 30000);
-//alert(window.location.pathname)
-//alert(window.location.pathname.indexOf('oscarMessenger/CreateMessage'))
-if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
-  alert('HI')
-  var input4 = document.createElement('input');
-  input4.type = 'button';
-  input4.value = 'StickyNote';
-  input4.onclick = showAlert4;
-  input4.setAttribute('style', 'font-size:16px;position:fixed;top:40px;right:400px; ');
-  document.body.appendChild(input4);
-}
-function showAlert4()
-{
-  document.getElementsByName('subject') [0].value = 'StickyNote'
-  document.getElementsByName('message') [0].focus();
-  document.getElementsByName('tblDFR2') [2].checked = true
-}
