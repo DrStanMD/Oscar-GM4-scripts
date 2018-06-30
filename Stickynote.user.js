@@ -39,13 +39,8 @@ function setCookie(cname, cvalue, exdays, cpath)
   //d.setTime(d.getTime()+(exdays*24*60*60*1000));
   d.setTime(d.getTime() + (exdays * 5000));
   var expires = 'expires=' + d.toGMTString();
-  /*
-  var date = new Date();
-date.setTime(date.getTime() + (60 * 1000));
-$.cookie('username', username, { expires: date });  // expires after 1 minute
-  */
   document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
-} //setCookie("homephone",qqhomephone,360,"path=/");
+} 
 
 function getCookie(cname)
 {
@@ -70,7 +65,6 @@ function getAllIndexes(arr, val) {
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
-  //var newURL = vPath + 'oscarMessenger/DisplayMessages.do'
   var newURL = vPath + mylink
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -110,16 +104,12 @@ function getMeasures(measure) {
   str2 = str2.slice(y + 93) // alert(str2)
   var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
   mydata = encodeURIComponent(str2.slice(0, z)) //
-  //alert(mydata)
-  //var winExists = getCookie('windowname')
-  //alert(winExists)
-  //if(winExists !== "MsgWindow0"){
   if (mydata !== 'null') {
     newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
     + mydata + '&msgID=' + mymsgId, 'MsgWindow' + measure, 'toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + measure + 10)
     setCookie('windowname', 'MsgWindow' + measure, 360, 'path=/');
   }
-}//}
+}
 
 getMeasures(0)
 newWindow.close()//alert(indexes.length)
@@ -128,5 +118,5 @@ for (q = indexes.length - 1; q > - 1; q--) {
   getMeasures(q)  //alert(getCookie('windowname'))
 }
 setInterval(function () {
-  //getMeasures('0');
+getMeasures('0');
 }, 30000);
