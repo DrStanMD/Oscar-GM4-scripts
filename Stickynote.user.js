@@ -22,12 +22,14 @@ function showAlert4()
   document.getElementsByName('subject') [0].value = 'StickyNote'
   document.getElementsByName('tblDFR2') [2].click()
   document.getElementsByName('message') [0].focus();
-}//**********************************************
+} //**********************************************
 
 var mylink = ($('#navlist > li:nth-child(7) > a:nth-child(1)').attr('onclick')).toString() //alert(mylink)
 var x = mylink.indexOf('popupOscarRx')
 mylink = mylink.slice(x + 26, - 1)
 var mymsgId = ''
+var indexes = [
+]
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
@@ -37,6 +39,11 @@ function setCookie(cname, cvalue, exdays, cpath)
   //d.setTime(d.getTime()+(exdays*24*60*60*1000));
   d.setTime(d.getTime() + (exdays * 5000));
   var expires = 'expires=' + d.toGMTString();
+  /*
+  var date = new Date();
+date.setTime(date.getTime() + (60 * 1000));
+$.cookie('username', username, { expires: date });  // expires after 1 minute
+  */
   document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
 } //setCookie("homephone",qqhomephone,360,"path=/");
 
@@ -52,8 +59,8 @@ function getCookie(cname)
   return '';
 }
 function getAllIndexes(arr, val) {
-  var indexes = [
-  ],
+  indexes = [
+  ]
   i = - 1;
   while ((i = arr.indexOf(val, i + 1)) != - 1) {
     indexes.push(i);
@@ -70,9 +77,10 @@ function getMeasures(measure) {
       var str = xmlhttp.responseText //alert(str)
       var str = xmlhttp.responseText.replace(/\s/g, '')
       var indexes = getAllIndexes(str, 'StickyNote');
-      //alert(indexes)
+      // alert(indexes)
       if (str.indexOf('StickyNote') > - 1) {
-        var x = str.indexOf('StickyNote')
+        //var x = str.indexOf('StickyNote')
+        var x = indexes[measure]
         str = str.slice(x - 60) //alert(str)
         var start = str.indexOf('messageID=')
         var end = str.indexOf('&boxType')
@@ -103,16 +111,22 @@ function getMeasures(measure) {
   var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
   mydata = encodeURIComponent(str2.slice(0, z)) //
   //alert(mydata)
-  var winExists = getCookie('windowname') //alert(winExists)
-  if (!winExists) {
-    if (mydata !== 'null') {
-      newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
-      + mydata + '&msgID=' + mymsgId, 'MsgWindow' + measure, 'toolbar=no,menubar=no,dialog=no,width=400,height=300,left=0, top=' + measure + 50)
-      setCookie('windowname', 'MsgWindow' + measure, 360, 'path=/');
-    }
+  //var winExists = getCookie('windowname')
+  //alert(winExists)
+  //if(winExists !== "MsgWindow0"){
+  if (mydata !== 'null') {
+    newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
+    + mydata + '&msgID=' + mymsgId, 'MsgWindow' + measure, 'toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + measure + 10)
+    setCookie('windowname', 'MsgWindow' + measure, 360, 'path=/');
   }
+}//}
+
+getMeasures(0)
+newWindow.close()//alert(indexes.length)
+for (q = indexes.length - 1; q > - 1; q--) {
+  //alert(q)
+  getMeasures(q)  //alert(getCookie('windowname'))
 }
-getMeasures('0')
 setInterval(function () {
   //getMeasures('0');
 }, 30000);
