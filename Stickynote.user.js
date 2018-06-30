@@ -113,7 +113,7 @@ function getMeasures(measure) {
   mydata = encodeURIComponent(str2.slice(0, z)) //
   if (mydata !== 'null') {
     newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
-    + mydata + '&msgID=' + mymsgId + '&mymsg=' + mymsgdate, 'MsgWindow' + measure, 'status=0,toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + measure + 5)
+    + mydata + '&msgID=' + mymsgId + '&mymsg=' + mymsgdate, 'MsgWindow' + measure, 'status=0,toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + parseInt(measure)*50)
     setCookie('windowname', 'MsgWindow' + measure, 3600, 'path=/');
     setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
   }
