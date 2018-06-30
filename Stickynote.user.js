@@ -41,7 +41,7 @@ function setCookie(cname, cvalue, exdays, cpath)
   var time = d.getTime();
   time += exdays * 1000; //   expires in 10 seconds, 3600 expires in one hour
   d.setTime(time);
-  var expires = 'expires=' + d.toUTCString()  //alert(expires)
+  var expires = 'expires=' + d.toUTCString() //alert(expires)
   document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
 }
 function getCookie(cname)
@@ -71,7 +71,7 @@ function getMeasures(measure) {
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText //alert(str)
-      var str = xmlhttp.responseText.replace(/\s/g, '')      //alert(str)
+      var str = xmlhttp.responseText.replace(/\s/g, '') //alert(str)
       var indexes = getAllIndexes(str, 'StickyNote');
       // alert(indexes)
       if (str.indexOf('StickyNote') > - 1) {
@@ -85,7 +85,7 @@ function getMeasures(measure) {
         var start = str.indexOf('<tdbgcolor="#EEEEFF">')
         var end = str.indexOf('</td><tdbgcolor="#EEEEFF"></td></tr>')
         mymsgdate = str.substring(start + 21, end)
-        mymsgdate = mymsgdate.slice(0, 10) + ' @ ' + mymsgdate.slice(10, 15)        //alert(mymsgdate)
+        mymsgdate = mymsgdate.slice(0, 10) + ' @ ' + mymsgdate.slice(10, 15) //alert(mymsgdate)
         /* 
         if (confirm('New incoming StickyNote.  Read Now?')) {
           //var myWindow = window.open(newURL, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
@@ -102,20 +102,22 @@ function getMeasures(measure) {
   }
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
-  xmlhttp = new XMLHttpRequest();
-  xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
-  xmlhttp.send();
-  var str2 = xmlhttp.responseText //.replace(/\s/g, '')
-  //alert(str2)
-  var y = str2.indexOf('textarea id="msgBody" name="Message"')
-  str2 = str2.slice(y + 93) // alert(str2)
-  var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
-  mydata = encodeURIComponent(str2.slice(0, z)) //
-  if (mydata !== 'null') {
-    newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
-    + mydata + '&msgID=' + mymsgId + '&mymsg=' + mymsgdate, 'MsgWindow' + measure, 'status=0,toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + parseInt(measure)*50)
-    setCookie('windowname', 'MsgWindow' + measure, 3600, 'path=/');
-    setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
+  if (measure > - 1) {
+    xmlhttp = new XMLHttpRequest();
+    xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
+    xmlhttp.send();
+    var str2 = xmlhttp.responseText //.replace(/\s/g, '')
+    //alert(str2)
+    var y = str2.indexOf('textarea id="msgBody" name="Message"')
+    str2 = str2.slice(y + 93) // alert(str2)
+    var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
+    mydata = encodeURIComponent(str2.slice(0, z)) //
+    if (mydata !== 'null') {
+      newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
+      + mydata + '&msgID=' + mymsgId + '&mymsg=' + mymsgdate, 'MsgWindow' + measure, 'status=0,toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + parseInt(measure) * 50)
+      setCookie('windowname', 'MsgWindow' + measure, 3600, 'path=/');
+      setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
+    }
   }
 }//***************************************************************************
 
