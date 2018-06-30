@@ -20,7 +20,8 @@ if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
 function showAlert4()
 {
   document.getElementsByName('subject') [0].value = 'StickyNote'
-  document.getElementsByName('tblDFR2') [2].click()
+  document.getElementsByName('tblDFR2') [2].click() //this could [0] or [1] or [?] depending on send group
+  //document.getElementsByName('tblDFR2') [1].click()
   document.getElementsByName('message') [0].focus();
 } //**********************************************
 
