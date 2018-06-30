@@ -29,6 +29,7 @@ var mylink = ($('#navlist > li:nth-child(7) > a:nth-child(1)').attr('onclick')).
 var x = mylink.indexOf('popupOscarRx')
 mylink = mylink.slice(x + 26, - 1)
 var mymsgId = ''
+var mymsgdate = ''
 var indexes = [
 ]
 var elements = (window.location.pathname.split('/', 2))
@@ -37,12 +38,12 @@ vPath = ('https://' + location.host + '/' + firstElement + '/')
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
-  //d.setTime(d.getTime()+(exdays*24*60*60*1000));
-  d.setTime(d.getTime() + (exdays * 5000));
-  var expires = 'expires=' + d.toGMTString();
+  var time = d.getTime();
+  time += exdays * 1000; //   expires in 10 seconds, 3600 expires in one hour
+  d.setTime(time);
+  var expires = 'expires=' + d.toUTCString()  //alert(expires)
   document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
-} 
-
+}
 function getCookie(cname)
 {
   var name = cname + '=';
@@ -70,16 +71,21 @@ function getMeasures(measure) {
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText //alert(str)
-      var str = xmlhttp.responseText.replace(/\s/g, '')
+      var str = xmlhttp.responseText.replace(/\s/g, '')      //alert(str)
       var indexes = getAllIndexes(str, 'StickyNote');
       // alert(indexes)
       if (str.indexOf('StickyNote') > - 1) {
         //var x = str.indexOf('StickyNote')
         var x = indexes[measure]
-        str = str.slice(x - 60) //alert(str)
+        str = str.slice(x - 60) //
+        //alert(str)
         var start = str.indexOf('messageID=')
         var end = str.indexOf('&boxType')
         mymsgId = str.substring(start + 10, end) //alert(mymsgId)
+        var start = str.indexOf('<tdbgcolor="#EEEEFF">')
+        var end = str.indexOf('</td><tdbgcolor="#EEEEFF"></td></tr>')
+        mymsgdate = str.substring(start + 21, end)
+        mymsgdate = mymsgdate.slice(0, 10) + ' @ ' + mymsgdate.slice(10, 15)        //alert(mymsgdate)
         /* 
         if (confirm('New incoming StickyNote.  Read Now?')) {
           //var myWindow = window.open(newURL, '', 'toolbar=no,menubar=no,dialog=no,width=800,height=600');
@@ -107,17 +113,16 @@ function getMeasures(measure) {
   mydata = encodeURIComponent(str2.slice(0, z)) //
   if (mydata !== 'null') {
     newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
-    + mydata + '&msgID=' + mymsgId, 'MsgWindow' + measure, 'toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + measure + 10)
-    setCookie('windowname', 'MsgWindow' + measure, 360, 'path=/');
+    + mydata + '&msgID=' + mymsgId + '&mymsg=' + mymsgdate, 'MsgWindow' + measure, 'status=0,toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + measure + 5)
+    setCookie('windowname', 'MsgWindow' + measure, 3600, 'path=/');
+    setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
   }
-}
+}//***************************************************************************
 
-getMeasures(0)
-newWindow.close()//alert(indexes.length)
+getMeasures()
 for (q = indexes.length - 1; q > - 1; q--) {
-  //alert(q)
-  getMeasures(q)  //alert(getCookie('windowname'))
+  getMeasures(q)
 }
 setInterval(function () {
-getMeasures('0');
-}, 30000);
+  getMeasures('0');
+}, 10000);
