@@ -7,6 +7,9 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
 // ==/UserScript==
+
+//var sound = document.getElementById("audio");
+//sound.play();
 var myformID = 430 //<<<YOUR FORM id GOES HERE
 //**********************************************
 if (window.location.pathname.indexOf('oscarMessenger/CreateMessage') > - 1) {
@@ -31,6 +34,8 @@ mylink = mylink.slice(x + 26, - 1)
 var mymsgId = ''
 var mymsgdate = ''
 var indexes = [
+]
+var newWindow = [
 ]
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
@@ -63,6 +68,12 @@ function getAllIndexes(arr, val) {
     indexes.push(i);
   }
   return indexes;
+}
+function closeWindows() {
+  //alert(indexes.length)
+  for (i = 0; i < indexes.length; i++) {
+    newWindow[i].close()
+  }
 }
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
@@ -113,18 +124,35 @@ function getMeasures(measure) {
     var z = str2.indexOf('</textarea><br>') //alert(str2.slice(0, z))
     mydata = encodeURIComponent(str2.slice(0, z)) //
     if (mydata !== 'null') {
-      newWindow = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
+      //alert(measure)
+      newWindow[measure] = window.open(vPath + 'eform/efmshowform_data.jsp?fid=' + myformID + '&mdata='
       + mydata + '&msgID=' + mymsgId + '&mymsg=' + mymsgdate, 'MsgWindow' + measure, 'status=0,toolbar=no,menubar=no,dialog=no,width=400,height=200,left=0, top=' + parseInt(measure) * 30)
       setCookie('windowname', 'MsgWindow' + measure, 3600, 'path=/');
-      setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
+      if (measure == 0) {
+        if (getCookie('firstMsgDate') !== mymsgdate) {
+          setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
+          //vBeep = 1          
+          //alert("NEW STICKYLABEL")
+          //newWindow[measure].close()
+          closeWindows()
+          return
+        }
+        setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
+      } //alert(getCookie('firstMsgDate'))
+
     }
   }
-}//***************************************************************************
+} //***************************************************************************
 
 getMeasures()
 for (q = indexes.length - 1; q > - 1; q--) {
   getMeasures(q)
 }
+if (newWindow[0]) {
+  //alert()
+ // newWindow[0].close()
+}
+getMeasures(0);
 setInterval(function () {
-  getMeasures('0');
+  getMeasures(0);
 }, 10000);
