@@ -170,3 +170,4 @@ getMeasures(0);
 setInterval(function () {
   getMeasures(0);
 }, 10000);
+
