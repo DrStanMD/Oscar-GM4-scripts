@@ -159,7 +159,7 @@ for (q = indexes.length - 1; q > - 1; q--) {
   getMeasures(q)
 }
 if (newWindow[0]) {
-  newWindow[0].close()
+  //newWindow[0].close()
 }
 getMeasures(0);
 setInterval(function () {
