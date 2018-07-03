@@ -75,7 +75,8 @@ function getAllIndexes(arr, val) {
 }
 function closeWindows() {
   //alert(indexes.length)
-  for (i = 0; i < indexes.length; i++) {
+  //for (i = 0; i < indexes.length; i++) {
+  for (i = 0; i < newWindow.length; i++) {
     newWindow[i].close()
   }
 }
@@ -140,10 +141,11 @@ function getMeasures(measure) {
           //newWindow[measure].close()
           setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
           closeWindows()
-          vbeep = 0
           for (q = indexes.length - 1; q > - 1; q--) {
             getMeasures(q)
           }
+          vbeep = 0
+          getMeasures(0);
         }
         setCookie('firstMsgDate', mymsgdate, 3600, 'path=/');
       } //alert(getCookie('firstMsgDate'))
@@ -163,4 +165,3 @@ getMeasures(0);
 setInterval(function () {
   getMeasures(0);
 }, 10000);
-
