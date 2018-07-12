@@ -2,7 +2,6 @@
 // @name        Preventions sort
 // @namespace   Stanscript
 // @description Sorts Preventions alphabetically
-// @include     *eform/efmimagemanager.jsp*
 // @include   *oscarPrevention/index*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @version     1
