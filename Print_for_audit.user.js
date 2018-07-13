@@ -2,12 +2,13 @@
 // @name        Echart button - Print for Audit - Disabled
 // @namespace   Stanscripts
 // @include     */casemgmt/forward.jsp?action=view&demographic*
-// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
+var formID = '414'
+var mylink = 'eform/efmshowform_data.jsp?fid=' + formID
 var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-//alert(firstElement)
+firstElement = (elements.slice(1))//alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/')
 var myParam = location.search.split('demographicNo=') [1]
 var res = myParam.indexOf('&')
@@ -51,8 +52,7 @@ function ButtonFunction1() {
     $('#save > div:nth-child(3) > button:nth-child(4)').click();
     $('#save > div:nth-child(3) > button:nth-child(4)').css('background-color', 'lavender');
   }, 4500);
-}
-//*************************************************************
+}//*************************************************************
 
 var input1 = document.createElement('input');
 input1.type = 'button';
@@ -63,7 +63,11 @@ document.body.appendChild(input1);
 function showAlert1()
 {
   //*****************print toilet roll***************
-  var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-  lablist.document.body.innerHTML = $(' #encMainDiv').html()
-  //*************************************************
+  //var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
+  //lablist.document.body.innerHTML = $(' #encMainDiv').html()
+  var data = $('#encMainDiv').html()
+  var data = encodeURIComponent(data)
+  localStorage.setItem('mydata', data);
+  //myWindow.close()
+  myWindow = window.open(vPath + mylink, '_blank', 'width=800, scrollbars=yes, resizable=yes')  //*************************************************
 }
