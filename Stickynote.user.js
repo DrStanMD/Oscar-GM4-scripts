@@ -168,3 +168,4 @@ setInterval(function () {
     getMeasures(0);
   }
 }, 20000);
+
