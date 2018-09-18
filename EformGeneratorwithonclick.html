@@ -2864,7 +2864,7 @@ vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactiv
     //alert("HI")
 	for(var i in this) { //print a list of functions contained in this page
 	if((typeof this[i]).toString()=="function"&&this[i].toString().indexOf("native")==-1){
-	  if(this[i].name == "CHOOSE_FROM_HERE_DOWN"){
+	if(this[i].name == "CHOOSE_FROM_HERE_DOWN"){
 	mylist="<b>List of functions in this script</b><p></p>"
 	}	  
 	mylist=mylist+'<li>'+this[i].name+"</li>"
@@ -2872,7 +2872,43 @@ vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactiv
 	win.document.body.innerHTML = mylist;
     }
 	}	
-	</script>
+	
+	     function parseDate1() {
+                // Change date field to dd/mmm/yyyy format
+                // Function expects an array of date components in yyyy-mm-dd format
+                // Get the date
+				// you will also need an hidden input for the date named Date1 and the javascript will push the date to TodayDate.  
+				//You can run the javascript by editing the <body> tag to read <body onload="parseDate();">.  
+				//There is a Truth test at the beginning of the script so that if the hidden input contains a null you will get "click for date".  
+				//This becomes more important if you are getting a date that may or may not be defined in the database such as LMP or EDC.  JohnR.
+	
+                var FullDate = document.getElementById("Date1").value; 
+                if ( FullDate ){
+                
+                var delimiter = '-';
+                // Split the value
+                var Year = FullDate.split(delimiter)[0];
+                var MonthNum = FullDate.split(delimiter)[1];
+                MonthNumArray = MonthNum -1;
+                var Day = FullDate.split(delimiter)[2];
+                var Month  = "";
+                var Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+                // Convert Numeric Month to 3 letter month
+                Month = Months[MonthNumArray]
+
+                var MixedDate = Day + "/" + Month + "/" + Year;
+                var NumericDate = Day + "/" + MonthNum + "/" + Year;
+
+                // Show the fields on the page
+                document.FormName.TodayDate.value = MixedDate ;
+                }
+                else{
+                    (document.FormName.TodayDate.value = "click for date" );}
+
+        }
+
+</script>
 </head>
 <body onload="init();readme();">
 <div id="main_container">
