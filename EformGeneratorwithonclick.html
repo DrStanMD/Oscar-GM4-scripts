@@ -17,7 +17,7 @@
 
 		
 		<script>
-		
+var win=""		
 var Rad =[]
 var RadMain =[]
 var AllNoSetflag = "off"
@@ -2118,10 +2118,14 @@ $('#inputB').hide();
 			//**************************************
 				$oscarDbCheckbox2.on('change', function (event, ui) {
 				if ($(this).is(':checked')) {
+				
 				x = prompt("Please enter function action - such as onclick", "");
+				win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
+				listfc()
 				y = prompt("Please enter function for " + x + " - such as alert(this)", "");
 			        $textBoxTemplate.find(":input").attr(x, y);
 					$textAreaTemplate.find("textarea").attr(x, y);
+				win.close()
 				}
 				else {
 				//alert(x)
@@ -2574,7 +2578,10 @@ $('#inputB').hide();
 				}
 			}
 		}
-
+         
+		function CHOOSE_FROM_HERE_DOWN(){
+		//all functions below this line are included in the new web page
+        }		
 		function init() {
 			/* browser check */
 			if (!(inFirefox || inChrome)) {
@@ -2837,12 +2844,6 @@ x[i].addEventListener("click", function(){
 }
 }
 
-/*
-function MainAllNo(varthis){ //applies all-no/clear-yes classes
-allno(varthis)
-}
-*/
-
 function myupdate(vid){ //only one box in the radio group will be checked
 var x =  document.getElementsByName(vid.name);
 if (x.length==1 && x[0].value=="X"){ //if there is only one member of the radiogroup, then this will act as checkbox rather than radiobox
@@ -2857,6 +2858,20 @@ for (var i = 0; i < x.length; i++) {
 vid.value = "X"
 vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box
 }
+	function listfc(){	
+	var mylist= ""
+	//win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
+    //alert("HI")
+	for(var i in this) { //print a list of functions contained in this page
+	if((typeof this[i]).toString()=="function"&&this[i].toString().indexOf("native")==-1){
+	  if(this[i].name == "CHOOSE_FROM_HERE_DOWN"){
+	mylist="<b>List of functions in this script</b><p></p>"
+	}	  
+	mylist=mylist+'<li>'+this[i].name+"</li>"
+	}
+	win.document.body.innerHTML = mylist;
+    }
+	}	
 	</script>
 </head>
 <body onload="init();readme();">
