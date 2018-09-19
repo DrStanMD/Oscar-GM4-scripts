@@ -16,7 +16,50 @@
         <script src="/bc_demo_15/eform/displayImage.do?imagefile=Read_me_gen.js"></script>
 
 		
-		<script>
+<script>
+//Detect browser
+// Opera 8.0+
+var isOpera = (!!window.opr && !!opr.addons) || !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+// Firefox 1.0+
+var isFirefox = typeof InstallTrigger !== 'undefined';
+// Safari 3.0+ "[object HTMLElementConstructor]" 
+var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+// Internet Explorer 6-11
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
+// Edge 20+
+var isEdge = !isIE && !!window.StyleMedia;
+// Chrome 1+
+var isChrome = !!window.chrome && !!window.chrome.webstore;
+// Blink engine detection
+var isBlink = (isChrome || isOpera) && !!window.CSS;
+
+var output = 'Detecting browsers by ducktyping:<hr>';
+output += 'isFirefox: ' + isFirefox + '<br>';
+output += 'isChrome: ' + isChrome + '<br>';
+output += 'isSafari: ' + isSafari + '<br>';
+output += 'isOpera: ' + isOpera + '<br>';
+output += 'isIE: ' + isIE + '<br>';
+output += 'isEdge: ' + isEdge + '<br>';
+output += 'isBlink: ' + isBlink + '<br>';
+//alert(output);
+
+
+	function listfc(){
+if(isFirefox){	//popup breaks code in Chrome)
+	var mylist= ""
+	win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
+	for(var i in this) { //print a list of functions contained in this page
+	if((typeof this[i]).toString()=="function"&&this[i].toString().indexOf("native")==-1){
+	if(this[i].name == "CHOOSE_FROM_HERE_DOWN"){
+	mylist="<b>List of functions in this script</b><p></p>"
+	}	  
+	mylist=mylist+'<li>'+this[i].name+"</li>"
+	}
+	win.document.body.innerHTML = mylist;
+    }
+	}
+	}	
+
 var win=""		
 var Rad =[]
 var RadMain =[]
@@ -2118,12 +2161,12 @@ $('#inputB').hide();
 			//**************************************
 				$oscarDbCheckbox2.on('change', function (event, ui) {
 				if ($(this).is(':checked')) {
-				x = prompt("Please enter function action - such as onclick", "");
-				//listfc()
-				y = prompt("Please enter function for " + x + " - such as alert(this)", "");
+				x = prompt("Please enter function action - such as onclick", "onblur");
+				listfc()
+				y = prompt("Please enter function for " + x + " - such as alert(this)", "dateCalc(this.value)");
 			        $textBoxTemplate.find(":input").attr(x, y);
 					$textAreaTemplate.find("textarea").attr(x, y);
-				//win.close()
+				win.close()
 				}
 				else {
 				//alert(x)
@@ -2857,58 +2900,41 @@ for (var i = 0; i < x.length; i++) {
 vid.value = "X"
 vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box
 }
-/*
-	function listfc(){	
-	var mylist= ""
-	win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
-    //alert("HI")
-	for(var i in this) { //print a list of functions contained in this page
-	if((typeof this[i]).toString()=="function"&&this[i].toString().indexOf("native")==-1){
-	if(this[i].name == "CHOOSE_FROM_HERE_DOWN"){
-	mylist="<b>List of functions in this script</b><p></p>"
-	}	  
-	mylist=mylist+'<li>'+this[i].name+"</li>"
-	}
-	win.document.body.innerHTML = mylist;
-    }
-	}	
 
-	     function parseDate1(vdate) {
-                // Change date field to dd/mmm/yyyy format
-                // Function expects an array of date components in yyyy-mm-dd format
-                // Get the date
-				// you will also need an hidden input for the date named Date1 and the javascript will push the date to TodayDate.  
-				//You can run the javascript by editing the <body> tag to read <body onload="parseDate();">.  
-				//There is a Truth test at the beginning of the script so that if the hidden input contains a null you will get "click for date".  
-				//This becomes more important if you are getting a date that may or may not be defined in the database such as LMP or EDC.  JohnR.
-	
-                var FullDate = document.getElementById(vdate).value; 
-                if ( FullDate ){
-                
-                var delimiter = '-';
-                // Split the value
-                var Year = FullDate.split(delimiter)[0];
-                var MonthNum = FullDate.split(delimiter)[1];
-                MonthNumArray = MonthNum -1;
-                var Day = FullDate.split(delimiter)[2];
-                var Month  = "";
-                var Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function dateCalc(vdate){
+ var month = new Array(11);
+ month[0]=  "Jan";
+ month[1]=  "Feb";
+ month[2]=  "Mar";
+ month[3]=  "Apr";
+ month[4]=  "May";
+ month[5]=  "Jun";
+ month[6]=  "Jul";
+ month[7]=  "Aug";
+ month[8]=  "Sep";
+ month[9]=  "Oct";
+ month[10]=  "Nov";
+ month[11]=  "Dec";
 
-                // Convert Numeric Month to 3 letter month
-                Month = Months[MonthNumArray]
+var d = new Date(vdate)
+//alert(d)
+d.setTime(d.getTime()+(d.getTimezoneOffset()*60*1000)) //fixes date offset for local time otherwise date can be wrong by 12 hours
+alert(d)
+var yyyy = d.getFullYear().toString();
+var mm = (d.getMonth()).toString();
+var mm = (d.getMonth()+1).toString();
+var dd  = d.getDate().toString()
+var mmChars = mm.split('');
+var ddChars = dd.split('');
+datestring = yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);  //date format: 2018-Mar-02
+alert(datestring)
+datestring = (ddChars[1]?dd:"0"+ddChars[0]) + ' '  + month[mm-1] + ', ' + yyyy //date format: 2018-03-02
+alert(datestring)
+}
 
-                var MixedDate = Day + "/" + Month + "/" + Year;
-                var NumericDate = Day + "/" + MonthNum + "/" + Year;
 
-                // Show the fields on the page
-                document.FormName.TodayDate.value = MixedDate ;
-				alert(MixedDate)
-                }
-                else{
-                    //(document.FormName.TodayDate.value = "click for date" );}
+		
 
-        }
-*/
 
 </script>
 </head>
