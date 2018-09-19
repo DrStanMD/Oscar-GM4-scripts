@@ -2118,14 +2118,12 @@ $('#inputB').hide();
 			//**************************************
 				$oscarDbCheckbox2.on('change', function (event, ui) {
 				if ($(this).is(':checked')) {
-				
 				x = prompt("Please enter function action - such as onclick", "");
-				win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
-				listfc()
+				//listfc()
 				y = prompt("Please enter function for " + x + " - such as alert(this)", "");
 			        $textBoxTemplate.find(":input").attr(x, y);
 					$textAreaTemplate.find("textarea").attr(x, y);
-				win.close()
+				//win.close()
 				}
 				else {
 				//alert(x)
@@ -2822,7 +2820,8 @@ x[i].value=""
 x[i].style.boxShadow = "inset 0 0 0 1000px white"  //comment this line to inactivate black box
 }
 }
-function readme(){
+function readme(vthis){
+alert(vthis)
 //x=window.open("/bc_demo_15/eform/displayImage.do?imagefile=Read_me_gen.js", "MsgWindow", "width=800,height=600")
 }
 function myinit(){ //this blacks out boxes that are checked on load
@@ -2858,9 +2857,10 @@ for (var i = 0; i < x.length; i++) {
 vid.value = "X"
 vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box
 }
+/*
 	function listfc(){	
 	var mylist= ""
-	//win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
+	win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
     //alert("HI")
 	for(var i in this) { //print a list of functions contained in this page
 	if((typeof this[i]).toString()=="function"&&this[i].toString().indexOf("native")==-1){
@@ -2872,8 +2872,8 @@ vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactiv
 	win.document.body.innerHTML = mylist;
     }
 	}	
-	
-	     function parseDate1() {
+
+	     function parseDate1(vdate) {
                 // Change date field to dd/mmm/yyyy format
                 // Function expects an array of date components in yyyy-mm-dd format
                 // Get the date
@@ -2882,7 +2882,7 @@ vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactiv
 				//There is a Truth test at the beginning of the script so that if the hidden input contains a null you will get "click for date".  
 				//This becomes more important if you are getting a date that may or may not be defined in the database such as LMP or EDC.  JohnR.
 	
-                var FullDate = document.getElementById("Date1").value; 
+                var FullDate = document.getElementById(vdate).value; 
                 if ( FullDate ){
                 
                 var delimiter = '-';
@@ -2902,15 +2902,17 @@ vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactiv
 
                 // Show the fields on the page
                 document.FormName.TodayDate.value = MixedDate ;
+				alert(MixedDate)
                 }
                 else{
-                    (document.FormName.TodayDate.value = "click for date" );}
+                    //(document.FormName.TodayDate.value = "click for date" );}
 
         }
+*/
 
 </script>
 </head>
-<body onload="init();readme();">
+<body onload="init();">
 <div id="main_container">
 	<div id="eform_view_wrapper">
 		<div id="eform_container" class="toSource">
