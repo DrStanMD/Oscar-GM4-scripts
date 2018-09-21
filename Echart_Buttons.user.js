@@ -251,13 +251,18 @@ function showAlert17()
 }
 var input18 = document.createElement('input');
 input18.type = 'button';
-input18.value = 'CDM LIST';
+input18.value = 'TripRx';
 input18.onclick = showAlert18;
 input18.setAttribute('style', 'width:80px;font-size:16px;z-index:1;position:fixed;bottom:180px;right:0px');
 document.body.appendChild(input18);
 function showAlert18()
 {
-  window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=22')
+  var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
+  var res = myParam.indexOf('&')
+  var demo_no = myParam.substring(0, res) //alert (demo_no)
+  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=458&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
+  //alert(formPath)
+  window.open(formPath) 
 }
 var input19 = document.createElement('input');
 input19.type = 'button';
@@ -275,8 +280,8 @@ function showAlert19()
   /*  
    setTimeout(function () {
     myWindow.focus();
-    $('input[name=\'value(inputValue-22)\']').css('background-color', 'yellow');
-    $('input[name=\'value(inputValue-22)\']').focus()
+    $('input[name=\'value(inputValue-23)\']').css('background-color', 'yellow');
+    $('input[name=\'value(inputValue-23)\']').focus()
   }, 1500);
   */
 }
