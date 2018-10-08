@@ -3,11 +3,11 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 5.1
+// @version 6.0
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
-
+var fixedauthor = ''
 var count = $('#tblDiscs tr').length;
 // alert(count)
 //********************************************************************************
@@ -181,17 +181,9 @@ ExcelArray = [
   'TRANSCRIP',
   'CELLPATH',
   'BCCASMP',
-  'BCCACSP'
-] /*
-  var LabList = document.getElementsByClassName('NarrativeRes');
-  for (i = 0; i < LabList.length; i++) {
-  //  alert(LabList[i].textContent)
-  $(LabList[i]).css('background-color', 'yellow');
-   alert($(LabList[i]).text())
-  //    LabList[i].style.backgroundColor = "yellow"; // make the first one red
-//alert(Labteststring)
-  }
-*/
+  'BCCACSP',
+  'DIAG IMAGE'
+]
 function RenameLabs() {
   Labteststring = ''
   NamedLab = ''
@@ -210,7 +202,7 @@ function ResetNames() {
   $('#acklabel').val('')
   $('#createLabel').click();
   $('#createLabel').click();
-}//window.resizeTo(1200, 800);
+} //window.resizeTo(1200, 800);
 
 window.moveTo(300, 100) //author = prompt("Please enter label name", "");
 //Get line numbers from label and apply highlights************
@@ -253,7 +245,7 @@ if (ExcelArray.indexOf(teststring) == - 1) {
 } 
 else {
   //**************************************Highlight 
-  var SavedLines = ''  //document.designMode = 'on';
+  var SavedLines = ''
   document.designMode = 'off';
   author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
   if (!author) {
@@ -282,28 +274,40 @@ else {
   input1.setAttribute('style', 'font-size:18px;position:fixed;top:500px;right:0px;');
   document.body.appendChild(input1);
 }
+if (teststring == 'DIAG IMAGE') {
+  //**************************************Highlight 
+  var SavedLines = ''
+  author = $('tr.NarrativeRes:nth-child(3) > td:nth-child(2)').html() //alert(author)
+  if (!author) {
+    author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
+  }
+  if (!author) {
+    author = prompt('Please enter label name', '');
+  }
+  //alert(author)
+  fixedauthor = (author.replace('Procedure: ', '')).trim() 
+  //alert(fixedauthor)
+  var input3 = document.createElement('input');
+  input3.type = 'button';
+  input3.value = 'Clear all';
+  input3.onclick = ClearStoredSelections
+  input3.setAttribute('style', 'font-size:18px;position:fixed;top:540px;right:0px;');
+  document.body.appendChild(input3);
+  var input = document.createElement('input');
+  input.type = 'button';
+  input.value = 'Highlight Text';
+  input.onclick = StoreSelection
+  input.setAttribute('style', 'font-size:18px;position:fixed;top:460px;right:0px;');
+  document.body.appendChild(input);
+  var input1 = document.createElement('input');
+  input1.type = 'button';
+  input1.value = 'Save and Exit';
+  input1.onclick = SaveAndExit
+  input1.setAttribute('style', 'font-size:18px;position:fixed;top:500px;right:0px;');
+  document.body.appendChild(input1);
+}
 function StoreSelection() {
   ColorizeSelection('yellow');
-  /*
-  var storedSelections = '';
-  if (window.getSelection) {
-    var currSelection = window.getSelection();
-    storedSelections = currSelection.getRangeAt(0);
-
-    document.designMode = 'on';
-    currSelection.addRange(storedSelections)
-    rng = currSelection
-    if (rng) {
-      window.find(rng)
-    } //  document.execCommand('BackColor', false, 'yellow')
-
-    document.execCommand('hiliteColor', false, 'yellow')
-    document.designMode = 'off';
-    
-  
-  //******************   
-}
-*/
 }
 function SaveAndExit() {
   SavedLines = ''
@@ -317,8 +321,9 @@ function SaveAndExit() {
     }
     i += 1
   }
-  )
-  if (ExcelArray.indexOf(teststring) > - 1 && teststring != 'TRANSCRIP') {
+  ) //alert(teststring)
+  //alert(fixedauthor)
+  if (ExcelArray.indexOf(teststring) > - 1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE') {
     fixedauthor = teststring
   }
   $('#acklabel').val(fixedauthor + '  ##' + SavedLines)
@@ -340,10 +345,7 @@ function ClearStoredSelections() {
 } ///*********************************************************************
 
 window.addEventListener('keypress', function (theEvent) {
-  //theEvent.stopPropagation();
-  //theEvent.preventDefault();
   var theKeyCode = theEvent.charCode;
-  // || event.which;
   var theKey = String.fromCharCode(theKeyCode);
   var theAltKey = theEvent.altKey;
   var theCtrlKey = theEvent.ctrlKey;
