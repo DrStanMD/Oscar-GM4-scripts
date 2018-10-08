@@ -8,6 +8,15 @@
 // @grant       none
 // ==/UserScript==
 //****************************************************
+/*
+var myclass2 = document.getElementsByClassName=("js-navigation-item")
+alert(myclass2.length)
+for(i=0;i<myclass2.length;i++){
+$(myclass2[i]).css('background-color', 'yellow')
+  alert($(myclass2[i]).html())
+}
+
+*/
 var myclass = document.getElementsByClassName('js-navigation-open');
 var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
 var myArray = [
@@ -62,4 +71,11 @@ function ButtonFunction3() {
     myclass2[i].checked = false
   }
 }
-
+for (i = 0; i < 200; i++) {
+  x = 'tr.js-navigation-item:nth-child(' + i + ') > td:nth-child(4) > span:nth-child(1) > time-ago:nth-child(1)'
+  y = $(x).html() + 'X'  //alert(y)
+  //alert(y.indexOf("month"))
+  if (y.indexOf('hour') > - 1 || y.indexOf('day') > - 1) {
+    $(x).css('background-color', 'yellow')
+  }
+}
