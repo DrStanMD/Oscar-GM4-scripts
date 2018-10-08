@@ -1,8 +1,7 @@
 // ==UserScript==
 // @name        Resize lab transcription, Biilling screens
 // @namespace   Stanscripts
-// @description Resizes various screens to full screen
-// @include    *SDHurwitzInc*
+// @description Resizes various screens to (1280,780)
 // @include    *lab/CA/ALL/labDisplay.jsp*
 // @include    *CaseManagementEntry.do*
 // @include    *billing/CA/BC/CreateBilling.do*        
@@ -15,23 +14,22 @@
 // @include    *casemgmt/forward.jsp?action=view&demographicNo*
 // @grant       none
 // ==/UserScript==
+window.resizeTo(1280, 780);
+window.moveTo(300, 100)//window.resizeTo(1300,900);
+//alert('hi')
 
-    window.onload = maxWindow;
-
-    function maxWindow() {
-        window.moveTo(0, 0);
-
-
-        if (document.all) {
-            top.window.resizeTo(screen.availWidth, screen.availHeight);
-        }
-
-        else if (document.layers || document.getElementById) {
-            if (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) {
-                top.window.outerHeight = screen.availHeight;
-                top.window.outerWidth = screen.availWidth;
-            }
-        }
+/*
+window.onload = maxWindow;
+function maxWindow() {
+  window.moveTo(0, 0);
+  if (document.all) {
+    top.window.resizeTo(screen.availWidth, screen.availHeight);
+  } 
+  else if (document.layers || document.getElementById) {
+    if (top.window.outerHeight < screen.availHeight || top.window.outerWidth < screen.availWidth) {
+      top.window.outerHeight = screen.availHeight;
+      top.window.outerWidth = screen.availWidth;
     }
-
-
+  }
+}
+*/
