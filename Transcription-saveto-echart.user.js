@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name        Annotation for Transcription Screen 1
+// @name        Annotation for Transcription Screen
 // @namespace   Stanscripts
 // @description Adds annotation button for saving selected text to encounter screen
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include   *lab/CA/ALL/labDisplay.jsp?demographicId*
 // @include     */annotation/annotation.jsp?display*
-// @version 5
+// @version  6.0
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
@@ -14,13 +14,16 @@ ExcelArray = [
   'TRANSCRIP',
   'CELLPATH',
   'BCCASMP',
-  'BCCACSP'
+  'BCCACSP',
+  'DIAG IMAGE'
 ]
 newLine = ''
-teststring = $('.Title2').html()
+var author = ''
+var fixedauthor = ''
+var teststring = $('.Title2').html()
 if (teststring) {
   teststring = teststring.trim()
-}//alert(teststring)
+} //alert(teststring)
 
 if (ExcelArray.indexOf(teststring) > - 1) {
   //if (teststring == 'TRANSCRIP' || teststring == 'CELLPATH') {
@@ -41,14 +44,14 @@ else {
       //Clear the extra spaces      
       myText = myText.replace(/%20%20/g, '');
       myText = myText.replace(/&LF/g, ' ');
-    }    //Fix Space    
+    } //Fix Space    
 
     myText = myText.replace(/%20/g, ' ');
     //Fix apostrophe
     myText = myText.replace(/%27/g, '\'');
     $('.panel > textarea:nth-child(1)').val(myText)
   }
-}//alert()
+} //alert()
 
 author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
 //alert(author)
@@ -59,19 +62,28 @@ if (!author) {
   //author = prompt("Please enter label name", "");
   author = 'Author not found'
 }
-fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim()//alert(fixedauthor)
+fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim() //alert(fixedauthor)
+if (teststring == 'DIAG IMAGE') {
+  author = $('tr.NarrativeRes:nth-child(3) > td:nth-child(2)').html() //alert(author)
+  if (!author) {
+    author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
+  }
+  //alert(author)
+  fixedauthor = (author.replace('Procedure: ', '')).trim()
+  //alert(fixedauthor)
+}
 function getSelectionText() {
   mytext = '';
   if (window.getSelection) {
     mytext = window.getSelection().toString();
     var eachLine = mytext.split('\n');
-   // for (i = 0; i < eachLine.length - 1; i++) {
-   for (i = 0; i < eachLine.length; i++) {
-      newLine = newLine + eachLine[i] + '&LF'      //Replace all '#' characters with 'No.' as the # character breaks the code
+    // for (i = 0; i < eachLine.length - 1; i++) {
+    for (i = 0; i < eachLine.length; i++) {
+      newLine = newLine + eachLine[i] + '&LF' //Replace all '#' characters with 'No.' as the # character breaks the code
       newLine = newLine.replace(/#/g, 'No.');
-    }    //   alert(newLine)
+    } //   alert(newLine)
 
-    return newLine    // return mytext
+    return newLine // return mytext
   } else if (document.selection && document.selection.type != 'Control') {
     mytext = document.selection.createRange().text;
   }
@@ -89,7 +101,7 @@ function showAlert() {
       params[nv[0]] = nv[1] || true;
     }
   }
-  myInsertURL = vPath + '/annotation/annotation.jsp?display=LabReports&table_id=' + segment_ID1 + '&demo=' + params.demo + '&other_id=0-1' + '&AnnotText' + 'Report Extract (' + fixedauthor + '): \n\r' + newLine  //alert(myInsertURL)
+  myInsertURL = vPath + '/annotation/annotation.jsp?display=LabReports&table_id=' + segment_ID1 + '&demo=' + params.demo + '&other_id=0-1' + '&AnnotText' + 'Report Extract (' + fixedauthor + '): \n\r' + newLine //alert(myInsertURL)
   window.open(myInsertURL, '', 'width=800, height=400')
 }
 var a_href = $('tr.NarrativeRes:nth-child(3) > td:nth-child(1) > a:nth-child(1)').attr('href')
