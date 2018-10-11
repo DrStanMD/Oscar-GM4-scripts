@@ -3,8 +3,9 @@
 // @namespace   StansScripts
 // @description Copies and pastes address/phone form master screen new demographic.  Can be set to copy mum's PHN for newborn. Inserts Dymo label button.
 // @include     *demographic/demographiccontrol.jsp?demographic_no*
-// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
+
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
@@ -119,7 +120,7 @@ $('#contactInformation > ul:nth-child(2) > li:nth-child(4) > span:nth-child(2)')
 $('#contactInformation > ul:nth-child(2) > li:nth-child(3) > span:nth-child(2)').css('background-color', 'aqua'); //cell phone
 $('#contactInformation > ul:nth-child(2) > li:nth-child(5) > span:nth-child(2)').css('background-color', 'yellow'); //City
 $('#contactInformation > ul:nth-child(2) > li:nth-child(6) > span:nth-child(2)').css('background-color', 'yellow'); //Province
-$('#contactInformation > ul:nth-child(2) > li:nth-child(7) > span:nth-child(2)').css('background-color', 'yellow'); //Postal
+$('#contactInformation > ul:nth-child(2) > li:nth-child(8) > span:nth-child(2)').css('background-color', 'yellow'); //Postal
 $('#healthInsurance > ul:nth-child(2) > li:nth-child(1) > span:nth-child(2)').css('background-color', 'pink'); //PHN
 //**********************************************************
 $('input[name=\'address\']').css('background-color', 'yellow');
@@ -132,5 +133,5 @@ $('input[name=\'phone2\']').css('background-color', 'yellow');
 $('input[name=\'email\']').css('background-color', 'yellow');
 var x = $('input[name=\'email\']').val()
 var z = '<a href="mailto:' + x + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-$('#contactInformation > ul:nth-child(2) > li:nth-child(8) > span:nth-child(2)').html(x + ' ' + z)
+$('#contactInformation > ul:nth-child(2) > li:nth-child(9) > span:nth-child(2)').html(x + ' ' + z)
 $('input[name=\'hin\']').css('background-color', 'pink');
