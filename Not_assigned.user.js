@@ -100,7 +100,6 @@ DT[7] = [
   'Drivers Med',
   'Faxed Requests',
   'Special Authority',
-  'GP for Me',
   'Faxed referral RMH',
 ]
 DT[8] = [
@@ -120,6 +119,7 @@ DT[10] = [
 DT[11] = [
   'ER / Hospital',
   'Discharge Reports',
+  'Home Care',
   'Residential Home',
   'Notification of Death',
 ]
