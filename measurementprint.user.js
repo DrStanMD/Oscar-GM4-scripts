@@ -5,6 +5,7 @@
 // @description Print button, Alt-s,Highlight RBS, Doubleclick for date
 // @include    *oscarEncounter/oscarMeasurements/SetupMeasurements.do*
 // @include        *oscarEncounter/GraphMeasurements.do?demographic_no*
+// @version 15.1
 // ==/UserScript==
 var elements = (window.location.href)
 //alert(elements)
@@ -12,8 +13,8 @@ var y = elements.indexOf('CDM');
 //for the measurement screen title
 //alert(y)
 if (y > - 1) {
-  $('input[name=\'value(inputValue-23)\']').css('background-color', 'yellow');
-  $('input[name=\'value(inputValue-23)\']').focus()
+  $('input[name=\'value(inputValue-35)\']').css('background-color', 'yellow');
+  $('input[name=\'value(inputValue-35)\']').focus()
 }
 var input = document.createElement('input');
 input.type = 'button';
