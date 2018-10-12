@@ -50,6 +50,7 @@ if (ProviderDoc) {
   ProvNum = ProviderDoc.substring(pstart + 12, pend)
 }
 //alert(ProvNum)
+ProvNum = 1
 
 function mySetDate(interval) {
   // set number of days to add
