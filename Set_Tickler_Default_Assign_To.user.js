@@ -14,7 +14,7 @@ var theOptions = document.getElementsByName('assignedTo') [0].options;
 for (var theOption of theOptions)
 {
   if (typeof (theOption) == 'object') {
-    alert(theOption.text)
+    //alert(theOption.text)
     if (theOption.text == theDefault) {
       theOption.selected = true;
       break;
