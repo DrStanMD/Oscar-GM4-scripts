@@ -5,7 +5,7 @@
 // @include     *dms/showDocument.jsp?inWindow=true&segmentID*
 // @include     *dms/MultiPageDocDisplay.jsp?segmentID*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version     2.1
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 //***************** Document Type must match Oscar exactly
@@ -195,6 +195,7 @@ window.addEventListener('keypress', function (theEvent) {
   }
 },
 true);
+
 var IDnum = params.segmentID
 var Field1 = '#autocompletedemo' + IDnum
 var Field2 = '#docType_' + IDnum
@@ -364,9 +365,13 @@ input12.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:0p
 document.body.appendChild(input12);
 function showAlert12() {
   //$(CommentArea).css("background-color","yellow");
-  $(CommentArea).val('Tickler Sent')
-  $(TicklerButton).click()
-  $(AckButton).click()
+
+  window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
+  // $(AckButton).click()
+   $(CommentArea).val('Tickler Sent')
+
+ // $(TicklerButton).click()
+
   //$(SaveButton).click()
   //$(CloseButton).click();
 }
