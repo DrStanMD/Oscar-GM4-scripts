@@ -3,13 +3,39 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 6.0
+// @version 15.1
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
 var fixedauthor = ''
 var count = $('#tblDiscs tr').length;
-// alert(count)
+//alert(count)
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+vPath = ('https://' + location.host + '/' + firstElement + '/')
+var params = {
+};
+if (location.search) {
+  var parts = location.search.substring(1).split('&');
+  for (var i = 0; i < parts.length; i++) {
+    var nv = parts[i].split('=');
+    if (!nv[0]) continue;
+    params[nv[0]] = nv[1] || true;
+  }
+}
+var IDnum = params.segmentID //alert(IDnum)
+//var Field1 = '#autocompletedemo' + IDnum
+//var Field2 = '#docType_' + IDnum
+//var Field2ID = 'docType_' + IDnum
+//var Field3 = '#docDesc_' + IDnum
+var CloseButton = ' #closeBtn_' + IDnum
+var AckButton = '#ackBtn_' + IDnum
+var SaveButton = '#save' + IDnum
+var TicklerButton = '#ticklerBtn_' + IDnum
+var CommentArea = '#comment_' + IDnum
+var AckLabel = '#acklabel_' + IDnum
+var CreateLabel = '#createLabel_' + IDnum
+var LabelSpan = '#labelspan_' + IDnum
 //********************************************************************************
 function GetNextLeaf(node) {
   while (!node.nextSibling) {
@@ -36,7 +62,7 @@ function GetPreviousLeaf(node) {
     leaf = leaf.lastChild;
   }
   return leaf;
-} // If the text content of an element contains white-spaces only, then does not need to colorize
+}// If the text content of an element contains white-spaces only, then does not need to colorize
 
 function IsTextVisible(text) {
   for (var i = 0; i < text.length; i++) {
@@ -55,7 +81,7 @@ function ColorizeLeaf(node, color) {
       parentNode.style.backgroundColor = color;
       return;
     }
-  } // Create a span element around the node
+  }  // Create a span element around the node
 
   var span = document.createElement('span');
   span.style.backgroundColor = color;
@@ -175,7 +201,8 @@ function ColorizeSelection(color) {
     // Internet Explorer before version 9
     alert('Your browser does not support this example!');
   }
-} //**********************************************************************************
+} 
+//**********************************************************************************
 
 ExcelArray = [
   'TRANSCRIP',
@@ -188,25 +215,29 @@ function RenameLabs() {
   Labteststring = ''
   NamedLab = ''
   var LabList = document.getElementsByClassName('Title2');
+  //alert(LabList)
   //LabList[0].style.color = "red"; // make the first one red
   for (i = 0; i < LabList.length; i++) {
+    // alert(LabList[i].innerHTML)
     Labteststring = (LabList[i].innerHTML).trim() // alert(Labteststring)
     NamedLab = NamedLab + renameTheLab(Labteststring) + ' '
   }
-  $('#acklabel').val(NamedLab)
+  $(AckLabel).val(NamedLab)  //$('.MainTableTopRowRightColumn > input:nth-child(7)').val(NamedLab)
   setTimeout(function () {
-    $('#createLabel').click();
+    $(CreateLabel).click();
   }, 500);
 }
 function ResetNames() {
-  $('#acklabel').val('')
-  $('#createLabel').click();
-  $('#createLabel').click();
-} //window.resizeTo(1200, 800);
+  $(AckLabel).val('')
+  $(CreateLabel).click();
+  $(CreateLabel).click();
+}//window.resizeTo(1200, 800);
 
-window.moveTo(300, 100) //author = prompt("Please enter label name", "");
+window.moveTo(300, 100)//author = prompt("Please enter label name", "");
 //Get line numbers from label and apply highlights************
-GetLabel = $('#acklabel').val()
+//GetLabel = $(AckLabel).val()
+GetLabel = $(LabelSpan).html()//GetLabel = $('.MainTableTopRowRightColumn > input:nth-child(7)').val()
+//alert(GetLabel)
 if (GetLabel.search('##') > 0) {
   vStart = GetLabel.search('##') + 2
 } 
@@ -217,6 +248,7 @@ else {
 var myMemo = ''
 vArray = GetLabel.slice(vStart)
 var res = vArray.split(',');
+//alert(res)
 if (res != null) {
   // alert(res.length)
   for (i = 0; i < res.length - 1; i++) {
@@ -224,12 +256,11 @@ if (res != null) {
     myMemo = myMemo + ' ' + $('tr.NarrativeRes:nth-child(' + res[i] + ') > td:nth-child(2)').text()
   }
 }
-teststring = ($('.Title2').html()).trim() //alert(ExcelArray.indexOf(teststring))
+teststring = ($('.Title2').html()).trim()//alert(ExcelArray.indexOf(teststring))
 //alert(teststring)
 if (ExcelArray.indexOf(teststring) == - 1) {
-  document.designMode = 'off';
   //auto rename**********************************
-  $(document).ready(RenameLabs()) //end auto rename***************************
+  $(document).ready(RenameLabs())  //end auto rename***************************
   var input5 = document.createElement('input');
   input5.type = 'button';
   input5.value = 'Rename the Labs';
@@ -245,16 +276,16 @@ if (ExcelArray.indexOf(teststring) == - 1) {
 } 
 else {
   //**************************************Highlight 
-  var SavedLines = ''
-  document.designMode = 'off';
-  author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
+  var SavedLines = ''  //author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
+  author = $('#acknowledgeForm_' + IDnum + '> table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
+  //alert(author)
   if (!author) {
-    author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
+    author = $('#acknowledgeForm_' + IDnum + '> table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
   }
   if (!author) {
     author = prompt('Please enter label name', '');
   }
-  fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim() //alert(fixedauthor)
+  fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim()  //alert(fixedauthor)
   var input3 = document.createElement('input');
   input3.type = 'button';
   input3.value = 'Clear all';
@@ -283,10 +314,9 @@ if (teststring == 'DIAG IMAGE') {
   }
   if (!author) {
     author = prompt('Please enter label name', '');
-  }
-  //alert(author)
-  fixedauthor = (author.replace('Procedure: ', '')).trim() 
-  //alert(fixedauthor)
+  } //alert(author)
+
+  fixedauthor = (author.replace('Procedure: ', '')).trim() //alert(fixedauthor)
   var input3 = document.createElement('input');
   input3.type = 'button';
   input3.value = 'Clear all';
@@ -310,39 +340,46 @@ function StoreSelection() {
   ColorizeSelection('yellow');
 }
 function SaveAndExit() {
+  //alert(fixedauthor)
   SavedLines = ''
   var i = 0
   $('tr.NarrativeRes').each(function () {
     var elements = $(this).text();
     var ecolor = $(this).html();
-    //alert(i + elements)   
+    // alert(i + elements)   
     if (ecolor.includes('background-color: yellow;')) {
-      SavedLines += i + 3 + ','
+      SavedLines += i + 2 + ','      //SavedLines += i + 3 + ','
     }
     i += 1
   }
-  ) //alert(teststring)
+  )  //alert(teststring)
   //alert(fixedauthor)
   if (ExcelArray.indexOf(teststring) > - 1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE') {
     fixedauthor = teststring
   }
-  $('#acklabel').val(fixedauthor + '  ##' + SavedLines)
-  $('#createLabel').click();
-  $('#createLabel').click();
-  unsafeWindow.getComment('ackLab') //window.close()
+  $(AckLabel).val(fixedauthor + '  ##' + SavedLines)
+  $(CreateLabel).click();
+  $(CreateLabel).click();
+  // unsafeWindow.getComment('ackLab') //window.close()
+  unsafeWindow.getComment('ackLab', IDnum);
+  //$('.MainTableTopRowRightColumn > input:nth-child(7)').click()
 }
 function ClearStoredSelections() {
-  SavedLines = ''
-  $('#acklabel').val(fixedauthor)
-  for (i = 0; i < count + 2; i++) {
+  //alert(fixedauthor)
+  //alert(count)
+  SavedLines = ''  //$(Acklabel).val(fixedauthor)
+  //alert(count)
+  for (i = 0; i < count; i++) {
+    // alert(fixedauthor)
     $('tr.NarrativeRes:nth-child(' + i + ') > td:nth-child(1) > span:nth-child(1)').css('background-color', '');
     $('tr.NarrativeRes:nth-child(' + i + ') > td:nth-child(3) > span:nth-child(1)').css('background-color', '');
     $('tr.NarrativeRes:nth-child(' + i + ') > td:nth-child(2)').css('background-color', '');
     $('tr.NarrativeRes:nth-child(' + i + ') > td:nth-child(2) > span:nth-child(1)').css('background-color', '');
   }
-  $('#createLabel').click();
-  $('#createLabel').click();
-} ///*********************************************************************
+  $(CreateLabel).click();
+  $(CreateLabel).click();
+} 
+///*********************************************************************
 
 window.addEventListener('keypress', function (theEvent) {
   var theKeyCode = theEvent.charCode;
@@ -354,9 +391,10 @@ window.addEventListener('keypress', function (theEvent) {
     case theAltKey && theKey == 'q':
       //Save Selected text to Label
       //$('#acklabel').val(fixedauthor + "  ##" + SavedLines )
-      $('#acklabel').val($('#acklabel').val())
-      $('#createLabel').click();
-      unsafeWindow.getComment('ackLab')
+      $(Acklabel).val($(Acklabel).val())
+      $(CreateLabel).click();
+      //unsafeWindow.getComment('ackLab')
+      unsafeWindow.getComment('ackLab', IDnum);
       break;
     case theAltKey && theKey == 'w':
       //
@@ -367,16 +405,19 @@ window.addEventListener('keypress', function (theEvent) {
         } else if (document.selection && document.selection.type != 'Control') {
           text = document.selection.createRange().text;
         }
-        $('#acklabel').val((text).trim())
-        $('#createLabel').click();
-        unsafeWindow.getComment('ackLab')
+        $(Acklabel).val((text).trim())
+        $(CreateLabel).click();
+        //unsafeWindow.getComment('ackLab')
+        unsafeWindow.getComment('ackLab', IDnum);
         return text;
       }
       getSelectionText()
       break;
     case theAltKey && theKey == 'Z':
       //Open comment textbox
-      unsafeWindow.getComment('ackLab')
+      //unsafeWindow.getComment('ackLab')
+      unsafeWindow.getComment('ackLab', IDnum);
+      //$(AckLabel).click()
       break;
     case theAltKey && theKey == 'z':
       SaveAndExit()
@@ -388,14 +429,15 @@ window.addEventListener('keypress', function (theEvent) {
       break;
     case theAltKey && theKey == 'x':
       //Click on Tickler button
-      fixedauthor = $('#acklabel').val()
-      $('#createLabel').click();
-      $('#createLabel').click();
+      fixedauthor = $(Acklabel).val()
+      $(CreateLabel).click();
+      $(CreateLabel).click();
       SaveAndExit()
       break;
   }
 },
-true); //****************************************************************************
+true); 
+//****************************************************************************
 function renameTheLab(strOldName) {
   var strNewName = strOldName;
   switch (strOldName)
