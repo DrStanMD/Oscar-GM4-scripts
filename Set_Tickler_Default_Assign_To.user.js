@@ -3,25 +3,25 @@
 // @namespace      StansScripts
 // @include        *tickler/ticklerMain.jsp*
 // @description Sets Tickler Default Assign To
+// version 15.1
 // ==/UserScript==
-var theDefault = 'Hurwitz, Stanley D';
-//var theDefault='Ghobassy, Bahar';
-//var theDefault='Ho, Wei-Ning';
-//var theDefault='Winkler, Daniella';
+
+var theDefault = 'Hurwitz , Stanley D';
+//var theDefault='Ghobassy , Bahar';
+//var theDefault='Ho , Wei-Ning';
+//var theDefault='Winkler , Daniella';
 var theOptions = document.getElementsByName('assignedTo') [0].options;
 for (var theOption of theOptions)
 {
-  for (var i = 0; i < 3; i++) {
-  } //Delay Loop
-  //alert(theOption.text)
-
   if (typeof (theOption) == 'object') {
+    alert(theOption.text)
     if (theOption.text == theDefault) {
       theOption.selected = true;
       break;
     }
   }
 }
+
 //$('.mbttn').click()
 /*
 var elements = (window.location.pathname.split('/', 2))
