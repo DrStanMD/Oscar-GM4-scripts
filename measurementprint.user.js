@@ -13,8 +13,8 @@ var y = elements.indexOf('CDM');
 //for the measurement screen title
 //alert(y)
 if (y > - 1) {
-  $('input[name=\'value(inputValue-35)\']').css('background-color', 'yellow');
-  $('input[name=\'value(inputValue-35)\']').focus()
+  $('input[name=\'value(inputValue-33)\']').css('background-color', 'yellow');
+  $('input[name=\'value(inputValue-33)\']').focus()
 }
 var input = document.createElement('input');
 input.type = 'button';
