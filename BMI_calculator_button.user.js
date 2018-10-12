@@ -13,7 +13,7 @@ $('input[name=\'value(inputValue-2)\']').change(ButtonFunction1)
 $('input[name=\'value(inputValue-0)\']').css('background-color', 'lightgreen');
 $('input[name=\'value(inputValue-1)\']').css('background-color', 'yellow');
 $('input[name=\'value(inputValue-2)\']').css('background-color', 'lightgreen');
-//$('input[name=\'value(inputValue-3)\']').css('background-color', 'lightgreen');
+$('input[name=\'value(inputValue-4)\']').css('background-color', 'lightgreen');
 /*
 var input1=document.createElement("input");
 input1.type="button";
