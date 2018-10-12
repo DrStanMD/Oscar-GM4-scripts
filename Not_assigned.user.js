@@ -4,6 +4,7 @@
 // @description Shortcut Buttons for filling fields on "Not assigned" scanned pages. You can assign your own labels
 // @include     *dms/showDocument.jsp?inWindow=true&segmentID*
 // @include     *dms/MultiPageDocDisplay.jsp?segmentID*
+// @include     *dms/showDocument.jsp?segmentID=*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @version     15.1
 // @grant       none
