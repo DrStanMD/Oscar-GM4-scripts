@@ -2,6 +2,7 @@
 // @name        Github downloader
 // @namespace   Stanscript
 // @include     https://github.com/DrStanMD/Oscar-GM4-scripts
+// @include     *github.com/login*
 // @version     1
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
@@ -17,6 +18,11 @@ $(myclass2[i]).css('background-color', 'yellow')
 }
 
 */
+
+$('#login_field').val('sdhurwitz@gmail.com')
+$('#password').val('sTANHSTANH54')
+
+
 var myclass = document.getElementsByClassName('js-navigation-open');
 var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
 var myArray = [
