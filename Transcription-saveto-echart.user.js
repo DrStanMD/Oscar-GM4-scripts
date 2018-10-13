@@ -5,7 +5,7 @@
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include   *lab/CA/ALL/labDisplay.jsp?demographicId*
 // @include     */annotation/annotation.jsp?display*
-// @version  6.0
+// @version  15.1
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
@@ -17,6 +17,34 @@ ExcelArray = [
   'BCCACSP',
   'DIAG IMAGE'
 ]
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+vPath = ('https://' + location.host + '/' + firstElement + '/')
+var params = {
+};
+if (location.search) {
+  var parts = location.search.substring(1).split('&');
+  for (var i = 0; i < parts.length; i++) {
+    var nv = parts[i].split('=');
+    if (!nv[0]) continue;
+    params[nv[0]] = nv[1] || true;
+  }
+}
+var IDnum = params.segmentID //
+//alert(IDnum)
+//var Field1 = '#autocompletedemo' + IDnum
+//var Field2 = '#docType_' + IDnum
+//var Field2ID = 'docType_' + IDnum
+//var Field3 = '#docDesc_' + IDnum
+//var CloseButton = ' #closeBtn_' + IDnum
+//var AckButton = '#ackBtn_' + IDnum
+//var SaveButton = '#save' + IDnum
+//var TicklerButton = '#ticklerBtn_' + IDnum
+//var CommentArea = '#comment_' + IDnum
+//var AckLabel = '#acklabel_' + IDnum
+//var CreateLabel = '#createLabel_' + IDnum
+//var LabelSpan = '#labelspan_' + IDnum
+var AckForm = '#acknowledgeForm_' + IDnum//********************************************************************************
 newLine = ''
 var author = ''
 var fixedauthor = ''
@@ -52,9 +80,9 @@ else {
     $('.panel > textarea:nth-child(1)').val(myText)
   }
 } //alert()
+//author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
 
-author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
-//alert(author)
+author = $(AckForm + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()//alert(author)
 if (!author) {
   author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
 }
@@ -67,10 +95,9 @@ if (teststring == 'DIAG IMAGE') {
   author = $('tr.NarrativeRes:nth-child(3) > td:nth-child(2)').html() //alert(author)
   if (!author) {
     author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
-  }
-  //alert(author)
-  fixedauthor = (author.replace('Procedure: ', '')).trim()
-  //alert(fixedauthor)
+  }  //alert(author)
+
+  fixedauthor = (author.replace('Procedure: ', '')).trim()  //alert(fixedauthor)
 }
 function getSelectionText() {
   mytext = '';
