@@ -46,7 +46,11 @@ if (location.search) {
 }
 var IDnum = params.segmentID
 //alert(IDnum)
-var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)'//$(myElement).css('background-color', 'yellow')
+var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)'
+//$(myElement).css('background-color', 'yellow')
+var myElement2 = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
+//$(myElement2).css('background-color', 'yellow')
+
 //*************AUTOTICKLER**********************************************************
 if (params.myparam1) {
   screen1 = params.myparam1
@@ -227,7 +231,8 @@ function ButtonFunction2() {
   //alert(demono)
   //alert(params.demoName)
   //var myElement = '#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
-  if (params.demoName) {
+if (typeof params.demoName != 'undefined') {
+    myElement = myElement2
     //var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
   }
   var RestoreHTML = $(myElement).html()
@@ -304,9 +309,10 @@ function ButtonFunction3() {
 // alert(demono)
 //var myElement = '#acknowledgeForm'+IDnum+' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
 //$(myElement).css('background-color', 'red')
-alert(params.demoName + 'Exists')
-if (params.demoName !== 'undefined') {
-  // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
+//alert(params.demoName)
+if (typeof params.demoName != 'undefined') {
+    myElement = myElement2
+    // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
 }
 var RestoreHTML = $(myElement).html()
 $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
