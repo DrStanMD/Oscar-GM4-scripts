@@ -74,7 +74,7 @@ $(document).ready(function () {
     getMeasures(demoArray[j]);
     add_one = add_one + 1
   }
-  //alert(demoArrayVal)This is the email
+  //alert(demoArrayVal[0])  //This is the email
 })
 //===========Cookies===============
 function setCookie(cname, cvalue, exdays, cpath)
