@@ -9,7 +9,7 @@
 // @include  *tickler/ForwardDemographicTickler.do*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     2.2
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 /*
@@ -29,12 +29,11 @@ var inputvar = 226 //form id goes here
 if (inputvar == 0) {
   alert('Set the specific HTML form Id for your Oscar system')
   return false
-} //========Get Path============
-
-var dd = 50 //Button position
+}
+var dd = 0 //Button position
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/')//=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -44,8 +43,11 @@ if (location.search) {
     if (!nv[0]) continue;
     params[nv[0]] = nv[1] || true;
   }
-} //*************AUTOTICKLER**********************************************************
-
+}
+var IDnum = params.segmentID
+//alert(IDnum)
+var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)'//$(myElement).css('background-color', 'yellow')
+//*************AUTOTICKLER**********************************************************
 if (params.myparam1) {
   screen1 = params.myparam1
   screen1 = screen1.replace(/%20/g, ' ');
@@ -79,8 +81,8 @@ if (params.myparam1) {
   document.serviceform.xml_appointment_date.value = newD;
   //document.getElementsByName("textarea").value = newvalue;
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue) //document.getElementById("FormName").submit();
-} //*******************************************************************************
-
+} 
+//*******************************************************************************
 y = document.getElementsByClassName('NarrativeRes').length //alert(y)
 x = window.location.toString()
 q1 = x.indexOf('lab/CA/ALL/labDisplay.jsp')
@@ -209,7 +211,8 @@ for (i = 0; i < AB.length; i++) {
   var myLabel = AB[i][0]
   var myValue = AB[i][1]
   var myRadio2 = myRadio2 + '<input name=\'TimeR\' id=' + myId + ' type=\'radio\'     value=' + myValue + ' /><label for=' + myId + '>' + myLabel + '</label><br>'
-} //***********************************************************************
+} 
+//***********************************************************************
 
 var input2 = document.createElement('input');
 input2.type = 'button';
@@ -221,10 +224,11 @@ document.body.appendChild(input2);
 var addthis = ''
 var addthis2 = '360'
 function ButtonFunction2() {
-  // alert(demono)
-  var myElement = '#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
+  //alert(demono)
+  //alert(params.demoName)
+  //var myElement = '#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
   if (params.demoName) {
-    var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
+    //var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
   }
   var RestoreHTML = $(myElement).html()
   $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
@@ -264,9 +268,11 @@ function ButtonFunction2() {
 
     }
   }
-});//****set default times*****
+}); 
+  //****set default times*****
 $('#Aller1').focus(function () {
-  $('#Time3').click()  //alert(this.id)
+  $('#Time3').click() 
+  //alert(this.id)
 });
 document.getElementById('Time1').checked = true
 document.getElementById('Radio2Div').addEventListener('change', function () {
@@ -283,8 +289,8 @@ document.getElementById('Radio2Div').addEventListener('change', function () {
     }
   }
 });
-} //***********************************************************************
-
+} 
+//***********************************************************************
 var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'AutoTickler';
@@ -296,9 +302,11 @@ var addthis = ''
 var addthis2 = '360'
 function ButtonFunction3() {
 // alert(demono)
-var myElement = '#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
-if (params.demoName) {
-  var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
+//var myElement = '#acknowledgeForm'+IDnum+' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
+//$(myElement).css('background-color', 'red')
+alert(params.demoName + 'Exists')
+if (params.demoName !== 'undefined') {
+  // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
 }
 var RestoreHTML = $(myElement).html()
 $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
@@ -306,7 +314,8 @@ document.getElementById('mybutton').addEventListener('click', function () {
   //document.getElementById('RadioDiv').addEventListener('click', function () {
   if (document.getElementById('Cancel').checked) {
     $(myElement).html(RestoreHTML)
-  } // alert("HI again")
+  } 
+  // alert("HI again")
   //alert(AA)
 
   for (i = 0; i < AA.length; i++) {
@@ -338,10 +347,12 @@ document.getElementById('mybutton').addEventListener('click', function () {
 
   }
 }
-});//****set default times*****
+}); 
+//****set default times for pap*****
 $('#Aller1').focus(function () {
 $('#Time3').click() //alert(this.id)
 });
+  
 document.getElementById('Time1').checked = true
 document.getElementById('Radio2Div').addEventListener('change', function () {
 for (i = 0; i < AB.length; i++) {
@@ -357,7 +368,7 @@ for (i = 0; i < AB.length; i++) {
   }
 }
 });
-}//*******************************************************************************
+} //*******************************************************************************
 //Rx screen shortcut
 
 document.getElementById('AutoReminders').style.visibility = 'hidden';
@@ -389,7 +400,8 @@ input5.setAttribute('style', 'font-size:16px;position:absolute;top:' + (340 + dd
 document.body.appendChild(input5);
 function ButtonFunction5() {
 window.open(vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
-}//display LabGrid
+} 
+//display LabGrid
 /* 
 var input50 = document.createElement('input');
 input50.type = 'button';
