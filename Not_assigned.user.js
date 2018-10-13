@@ -102,6 +102,7 @@ DT[7] = [
   'Faxed Requests',
   'Special Authority',
   'Faxed referral RMH',
+  'email consent',
 ]
 DT[8] = [
   'photo',
