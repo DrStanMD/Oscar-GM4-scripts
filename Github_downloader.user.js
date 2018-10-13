@@ -20,7 +20,7 @@ $(myclass2[i]).css('background-color', 'yellow')
 */
 
 $('#login_field').val('sdhurwitz@gmail.com')
-$('#password').val('sTANHSTANH54')
+$('#password').val('')
 
 
 var myclass = document.getElementsByClassName('js-navigation-open');
