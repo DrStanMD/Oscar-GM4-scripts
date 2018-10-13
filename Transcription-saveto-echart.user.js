@@ -32,19 +32,8 @@ if (location.search) {
 }
 var IDnum = params.segmentID //
 //alert(IDnum)
-//var Field1 = '#autocompletedemo' + IDnum
-//var Field2 = '#docType_' + IDnum
-//var Field2ID = 'docType_' + IDnum
-//var Field3 = '#docDesc_' + IDnum
-//var CloseButton = ' #closeBtn_' + IDnum
-//var AckButton = '#ackBtn_' + IDnum
-//var SaveButton = '#save' + IDnum
-//var TicklerButton = '#ticklerBtn_' + IDnum
-//var CommentArea = '#comment_' + IDnum
-//var AckLabel = '#acklabel_' + IDnum
-//var CreateLabel = '#createLabel_' + IDnum
-//var LabelSpan = '#labelspan_' + IDnum
-var AckForm = '#acknowledgeForm_' + IDnum//********************************************************************************
+var AckForm = '#acknowledgeForm_' + IDnum
+//********************************************************************************
 newLine = ''
 var author = ''
 var fixedauthor = ''
@@ -72,16 +61,17 @@ else {
       //Clear the extra spaces      
       myText = myText.replace(/%20%20/g, '');
       myText = myText.replace(/&LF/g, ' ');
-    } //Fix Space    
-
+    } 
+    //Fix Space    
     myText = myText.replace(/%20/g, ' ');
     //Fix apostrophe
     myText = myText.replace(/%27/g, '\'');
     $('.panel > textarea:nth-child(1)').val(myText)
   }
-} //alert()
+} 
+var vDOS = $('tr.NarrativeRes:nth-child(2) > td:nth-child(3)').html()
+//alert(vDOS)
 //author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html();
-
 author = $(AckForm + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()//alert(author)
 if (!author) {
   author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
@@ -128,7 +118,7 @@ function showAlert() {
       params[nv[0]] = nv[1] || true;
     }
   }
-  myInsertURL = vPath + '/annotation/annotation.jsp?display=LabReports&table_id=' + segment_ID1 + '&demo=' + params.demo + '&other_id=0-1' + '&AnnotText' + 'Report Extract (' + fixedauthor + '): \n\r' + newLine //alert(myInsertURL)
+  myInsertURL = vPath + '/annotation/annotation.jsp?display=LabReports&table_id=' + segment_ID1 + '&demo=' + params.demo + '&other_id=0-1' + '&AnnotText' + 'Report Extract (' + fixedauthor + ' - '+vDOS+ '): \n\r' + newLine //alert(myInsertURL)
   window.open(myInsertURL, '', 'width=800, height=400')
 }
 var a_href = $('tr.NarrativeRes:nth-child(3) > td:nth-child(1) > a:nth-child(1)').attr('href')
