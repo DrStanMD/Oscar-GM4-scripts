@@ -199,7 +199,7 @@ AB[7] = [
 ]
 AB[8] = [
   'Now',
-  '1'
+  '0'
 ]
 var myRadio = '<br></br><div id=\'RadioDiv\'><button type=\'button\' id=\'mybutton\'>Continue</button><br>'
 for (i = 0; i < AA.length; i++) {
