@@ -126,6 +126,6 @@ function showAlert() {
   qqapptime = getCookie('apptime')
   qqappdoc = getCookie('appdoc')  //window.open(vPath + "/eform/efmformadd_data.jsp?fid="+myFID+"&demographic_no=1&appointment=" + app_prov_no)
   window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + myFID)  
-  // $('#addButton').click()
-  // $('#updateButton').click()
+  $('#addButton').click()
+  $('#updateButton').click()
 }
