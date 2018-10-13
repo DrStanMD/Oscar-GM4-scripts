@@ -37,6 +37,7 @@ var demoArray = [
 ]
 var demoArrayVal = [
 ]
+var myemail = ""
 var add_one = 0
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
@@ -74,7 +75,8 @@ $(document).ready(function () {
     getMeasures(demoArray[j]);
     add_one = add_one + 1
   }
-  //alert(demoArrayVal[0])  //This is the email
+  //alert(demoArrayVal[0]) //This is the email
+  myemail = demoArrayVal[0]
 })
 //===========Cookies===============
 function setCookie(cname, cvalue, exdays, cpath)
@@ -122,6 +124,7 @@ function showAlert() {
   setCookie('apptime', qapptime, 100, 'path=/');
   setCookie('appdoc', qappdoc, 100, 'path=/');
   setCookie('apppt', qapppt, 100, 'path=/');
+  setCookie('qemail', myemail, 10, 'path=/');
   qqappdate = getCookie('appdate')
   qqapptime = getCookie('apptime')
   qqappdoc = getCookie('appdoc')  //window.open(vPath + "/eform/efmformadd_data.jsp?fid="+myFID+"&demographic_no=1&appointment=" + app_prov_no)
@@ -129,3 +132,5 @@ function showAlert() {
   $('#addButton').click()
   $('#updateButton').click()
 }
+
+
