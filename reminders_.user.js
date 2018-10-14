@@ -322,8 +322,10 @@ if (typeof params.demoName != 'undefined') {
   myElement = myElement2  // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
 }
 var RestoreHTML = $(myElement).html()
-$(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
-document.getElementById('mybutton').addEventListener('click', function () {
+//$(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
+$(myElement).html('<table align=\'right\' bgcolor=\'yellow\'><td><div align=\'right\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
+
+  document.getElementById('mybutton').addEventListener('click', function () {
   //document.getElementById('RadioDiv').addEventListener('click', function () {
   if (document.getElementById('Cancel').checked) {
     $(myElement).html(RestoreHTML)
