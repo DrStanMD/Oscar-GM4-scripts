@@ -23,6 +23,7 @@ Using scripts described here may result in errant behavior in the EMR,
 inadvertently harming patients, and general badness. 
 Using any parts of the code implies you fully understand the code and the risks associated with using it.
 */
+
 //**********************************************************
 var inputvar = 226 //form id goes here
 //**********************************************************
@@ -44,18 +45,47 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
+
+
+//*****not the tickler screen*******
+if(params.segmentID){
 var IDnum = params.segmentID
 //alert(IDnum)
 var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)'
 //$(myElement).css('background-color', 'yellow')
 var myElement2 = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
 //$(myElement2).css('background-color', 'yellow')
+var mydocType = ''
 
-//*************AUTOTICKLER**********************************************************
+
+//*********Determine type of document**********************
+ExcelArray = [
+  'TRANSCRIP',
+  'CELLPATH',
+  'BCCASMP',
+  'BCCACSP',
+  'DIAG IMAGE'
+]
+
+var teststring = ($('.Title2').html()).trim()
+alert(teststring)
+//alert(ExcelArray.indexOf(teststring))
+if (ExcelArray.indexOf(teststring) > - 1) {
+//is this one of the above types?
+  mydocType = 'HL7'
+}
+else {
+  mydocType = 'DOC'
+}
+alert(mydocType)
+}
+//*************AUTOTICKLER screen**********************************************************
 if (params.myparam1) {
   screen1 = params.myparam1
   screen1 = screen1.replace(/%20/g, ' ');
   screen2 = params.myparam2
+  //alert(screen1)
+  //alert(screen2)      
   var oneDay = 24 * 60 * 60 * 1000;
   var d = new Date()
   d.setTime(d.getTime() + (screen2 * oneDay))
@@ -84,6 +114,7 @@ if (params.myparam1) {
   var newD = newYear + '-' + newMonth + '-' + newDay;
   document.serviceform.xml_appointment_date.value = newD;
   //document.getElementsByName("textarea").value = newvalue;
+  //alert(newvalue)
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue) //document.getElementById("FormName").submit();
 } 
 //*******************************************************************************
@@ -333,7 +364,15 @@ document.getElementById('mybutton').addEventListener('click', function () {
         addthis = document.getElementById('myOther').value
       }
       $(myElement).html(RestoreHTML)
-      window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
+      //alert(mydocType)
+      //alert(addthis)
+      //alert(addthis2)
+      window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType='+mydocType+'&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') 
+                 // (vPath +'/lab/CA/ALL/labDisplay.jsp?demographicId='+demono+'&providerNo=1&segmentID='+params.segmentID+'&multiID=null')
+      
+      
+      
+//PREVENTION SCREEN********
       switch (addthis) {
         case 'Mammogram':
           vPrev = 'MAM'
@@ -349,7 +388,8 @@ document.getElementById('mybutton').addEventListener('click', function () {
       }
       if (vPrev) {
         window.open(vPath + '/oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
-    } //************END PREVENTION*****************
+    } 
+//************END PREVENTION*****************
 
   }
 }
@@ -374,7 +414,8 @@ for (i = 0; i < AB.length; i++) {
   }
 }
 });
-} //*******************************************************************************
+} 
+//*******************************************************************************
 //Rx screen shortcut
 
 document.getElementById('AutoReminders').style.visibility = 'hidden';
@@ -390,7 +431,8 @@ input4.setAttribute('style', 'font-size:16px;position:absolute;top:' + (370 + dd
 document.body.appendChild(input4);
 function ButtonFunction4() {
 window.open(vPath + '/oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
-} //Create invoice
+} 
+//Create invoice
 /*var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
