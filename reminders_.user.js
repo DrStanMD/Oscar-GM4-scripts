@@ -23,7 +23,6 @@ Using scripts described here may result in errant behavior in the EMR,
 inadvertently harming patients, and general badness. 
 Using any parts of the code implies you fully understand the code and the risks associated with using it.
 */
-
 //**********************************************************
 var inputvar = 226 //form id goes here
 //**********************************************************
@@ -34,7 +33,8 @@ if (inputvar == 0) {
 var dd = 0 //Button position
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')//=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/') 
+//=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -45,46 +45,26 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
+//*****Determine type of document and not the tickler screen*******
+if (params.segmentID) {
+  var IDnum = params.segmentID
+  if (window.location.pathname.indexOf('showDocument.jsp') > - 1) {
+    var mydocType = 'DOC'
+    var myElement2 = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'    //var teststring = ''
+  }
+  if (window.location.pathname.indexOf('labDisplay.jsp') > - 1) {
+    var mydocType = 'HL7'
+    var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)'    //var teststring = ($('.Title2').html()).trim()
+  }  
+  //alert(mydocType)
+  //alert(teststring)
 
-
-//*****not the tickler screen*******
-if(params.segmentID){
-var IDnum = params.segmentID
-//alert(IDnum)
-var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)'
-//$(myElement).css('background-color', 'yellow')
-var myElement2 = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
-//$(myElement2).css('background-color', 'yellow')
-var mydocType = ''
-
-
-//*********Determine type of document**********************
-ExcelArray = [
-  'TRANSCRIP',
-  'CELLPATH',
-  'BCCASMP',
-  'BCCACSP',
-  'DIAG IMAGE'
-]
-
-var teststring = ($('.Title2').html()).trim()
-alert(teststring)
-//alert(ExcelArray.indexOf(teststring))
-if (ExcelArray.indexOf(teststring) > - 1) {
-//is this one of the above types?
-  mydocType = 'HL7'
-}
-else {
-  mydocType = 'DOC'
-}
-alert(mydocType)
 }
 //*************AUTOTICKLER screen**********************************************************
 if (params.myparam1) {
   screen1 = params.myparam1
   screen1 = screen1.replace(/%20/g, ' ');
-  screen2 = params.myparam2
-  //alert(screen1)
+  screen2 = params.myparam2  //alert(screen1)
   //alert(screen2)      
   var oneDay = 24 * 60 * 60 * 1000;
   var d = new Date()
@@ -116,7 +96,7 @@ if (params.myparam1) {
   //document.getElementsByName("textarea").value = newvalue;
   //alert(newvalue)
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue) //document.getElementById("FormName").submit();
-} 
+}
 //*******************************************************************************
 y = document.getElementsByClassName('NarrativeRes').length //alert(y)
 x = window.location.toString()
@@ -246,9 +226,8 @@ for (i = 0; i < AB.length; i++) {
   var myLabel = AB[i][0]
   var myValue = AB[i][1]
   var myRadio2 = myRadio2 + '<input name=\'TimeR\' id=' + myId + ' type=\'radio\'     value=' + myValue + ' /><label for=' + myId + '>' + myLabel + '</label><br>'
-} 
+}
 //***********************************************************************
-
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'AutoReminders';
@@ -262,9 +241,8 @@ function ButtonFunction2() {
   //alert(demono)
   //alert(params.demoName)
   //var myElement = '#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
-if (typeof params.demoName != 'undefined') {
-    myElement = myElement2
-    //var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
+  if (typeof params.demoName != 'undefined') {
+    myElement = myElement2    //var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
   }
   var RestoreHTML = $(myElement).html()
   $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
@@ -304,11 +282,10 @@ if (typeof params.demoName != 'undefined') {
 
     }
   }
-}); 
+});
   //****set default times*****
 $('#Aller1').focus(function () {
-  $('#Time3').click() 
-  //alert(this.id)
+  $('#Time3').click()  //alert(this.id)
 });
 document.getElementById('Time1').checked = true
 document.getElementById('Radio2Div').addEventListener('change', function () {
@@ -325,8 +302,8 @@ document.getElementById('Radio2Div').addEventListener('change', function () {
     }
   }
 });
-} 
-//***********************************************************************
+}//***********************************************************************
+
 var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'AutoTickler';
@@ -342,8 +319,7 @@ function ButtonFunction3() {
 //$(myElement).css('background-color', 'red')
 //alert(params.demoName)
 if (typeof params.demoName != 'undefined') {
-    myElement = myElement2
-    // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
+  myElement = myElement2  // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
 }
 var RestoreHTML = $(myElement).html()
 $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
@@ -351,8 +327,7 @@ document.getElementById('mybutton').addEventListener('click', function () {
   //document.getElementById('RadioDiv').addEventListener('click', function () {
   if (document.getElementById('Cancel').checked) {
     $(myElement).html(RestoreHTML)
-  } 
-  // alert("HI again")
+  }  // alert("HI again")
   //alert(AA)
 
   for (i = 0; i < AA.length; i++) {
@@ -363,16 +338,11 @@ document.getElementById('mybutton').addEventListener('click', function () {
         //   alert(document.getElementById("myOther").value)
         addthis = document.getElementById('myOther').value
       }
-      $(myElement).html(RestoreHTML)
-      //alert(mydocType)
+      $(myElement).html(RestoreHTML)      //alert(mydocType)
       //alert(addthis)
       //alert(addthis2)
-      window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType='+mydocType+'&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') 
-                 // (vPath +'/lab/CA/ALL/labDisplay.jsp?demographicId='+demono+'&providerNo=1&segmentID='+params.segmentID+'&multiID=null')
-      
-      
-      
-//PREVENTION SCREEN********
+      window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType=' + mydocType + '&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')      // (vPath +'/lab/CA/ALL/labDisplay.jsp?demographicId='+demono+'&providerNo=1&segmentID='+params.segmentID+'&multiID=null')
+      //PREVENTION SCREEN********
       switch (addthis) {
         case 'Mammogram':
           vPrev = 'MAM'
@@ -388,17 +358,14 @@ document.getElementById('mybutton').addEventListener('click', function () {
       }
       if (vPrev) {
         window.open(vPath + '/oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
-    } 
-//************END PREVENTION*****************
+    }    //************END PREVENTION*****************
 
   }
 }
-}); 
-//****set default times for pap*****
+});//****set default times for pap*****
 $('#Aller1').focus(function () {
 $('#Time3').click() //alert(this.id)
 });
-  
 document.getElementById('Time1').checked = true
 document.getElementById('Radio2Div').addEventListener('change', function () {
 for (i = 0; i < AB.length; i++) {
@@ -414,8 +381,7 @@ for (i = 0; i < AB.length; i++) {
   }
 }
 });
-} 
-//*******************************************************************************
+}//*******************************************************************************
 //Rx screen shortcut
 
 document.getElementById('AutoReminders').style.visibility = 'hidden';
@@ -431,8 +397,7 @@ input4.setAttribute('style', 'font-size:16px;position:absolute;top:' + (370 + dd
 document.body.appendChild(input4);
 function ButtonFunction4() {
 window.open(vPath + '/oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
-} 
-//Create invoice
+}//Create invoice
 /*var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
@@ -448,8 +413,7 @@ input5.setAttribute('style', 'font-size:16px;position:absolute;top:' + (340 + dd
 document.body.appendChild(input5);
 function ButtonFunction5() {
 window.open(vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
-} 
-//display LabGrid
+}//display LabGrid
 /* 
 var input50 = document.createElement('input');
 input50.type = 'button';
