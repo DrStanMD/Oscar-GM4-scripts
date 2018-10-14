@@ -323,7 +323,7 @@ if (typeof params.demoName != 'undefined') {
 }
 var RestoreHTML = $(myElement).html()
 //$(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
-$(myElement).html('<table align=\'right\' bgcolor=\'yellow\'><td><div align=\'right\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
+$(myElement).html('<table align=\'right\' bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
 
   document.getElementById('mybutton').addEventListener('click', function () {
   //document.getElementById('RadioDiv').addEventListener('click', function () {
