@@ -14,9 +14,13 @@
 // @include    *casemgmt/forward.jsp?action=view&demographicNo*
 // @grant       none
 // ==/UserScript==
+
+window.resizeTo(1280, 780);
+window.moveTo(400, 100)
+//window.resizeTo(1300,900);
 //window.resizeTo(1280, 780);
-window.moveTo(200, 50)
-window.resizeTo(1300,1000);
+//window.moveTo(200, 50)
+//window.resizeTo(1300,1000);
 //alert('hi')
 
 /*
