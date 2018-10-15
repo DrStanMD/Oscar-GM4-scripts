@@ -3,6 +3,7 @@
 // @include      *SetupMeasurements.do?groupName*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
 // @require     http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js
+// @version     15.1
 // @grant       GM_addStyle
 // ==/UserScript==
 /*--- For this to work well, we must also add-in the jQuery-UI CSS.
@@ -22,8 +23,8 @@ $('head').append('<link '
 + 'rel="stylesheet" type="text/css">'
 );
 if (y > - 1) {
-  $('input[name=\'value(inputValue-7)\']').css('background-color', 'yellow');
-  $('input[name=\'value(inputValue-7)\']').datepicker({
+  $('input[name=\'value(inputValue-8)\']').css('background-color', 'yellow');
+  $('input[name=\'value(inputValue-8)\']').datepicker({
     dateFormat: 'yy-mm-dd',
     changeMonth: true,
     changeYear: true,
