@@ -1,10 +1,11 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Invoice1 Screen
 // @namespace   Stanscripts
 // @description Create multiline statements,Highlight flags
 // @include     *billing/CA/BC/billStatus.jsp?lastName=*
-// @include             *billing/CA/BC/billStatus.jsp*
-// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @include     *billing/CA/BC/billStatus.jsp*
+// @version   15.1
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
 localStorage.setItem('srows1', '');
@@ -25,16 +26,22 @@ var rows1 = [
 var rows2 = [
 ]
 var rows3 = [
-]
-var rowCount = $('#table-1 > tbody > tr').length;
+] //var rowCount = $('#table> tbody > tr').length;
+var rowCount = $('.table > tbody:nth-child(2) > tr').length;
+//alert(rowCount)
 for (p = 0; p < rowCount + 1; p++) {
-  rows1[p] = ($(document.getElementById('table-1').rows[p].cells.item(0)).text()).trim()
-  rows2[p] = (document.getElementById('table-1').rows[p].cells.item(2).innerHTML).trim()
-  rows3[p] = (document.getElementById('table-1').rows[p].cells.item(10).innerHTML).trim()
+  //$('.table > tbody:nth-child(2) > tr:nth-child('+p+') > td:nth-child(1)').css('background-color', 'yellow')
+  //$('.table > tbody:nth-child(2) > tr:nth-child('+p+')').css('background-color', 'yellow')
+  rows1[p] = $('.table > tbody:nth-child(2) > tr:nth-child(' + p + ') > td:nth-child(1)').text().trim()
+  rows2[p] = $('.table > tbody:nth-child(2) > tr:nth-child(' + p + ') > td:nth-child(3)').text().trim()
+  rows3[p] = $('.table > tbody:nth-child(2) > tr:nth-child(' + p + ') > td:nth-child(10)').text().trim() 
+  //alert(rows1[p] + '---' + rows2[p] + '---' + rows3[p])
+  //rows1[p] = ($(document.getElementById('table-1').rows[p].cells.item(0)).text()).trim()
+  //rows2[p] = (document.getElementById('table-1').rows[p].cells.item(2).innerHTML).trim()
+  //rows3[p] = (document.getElementById('table-1').rows[p].cells.item(10).innerHTML).trim()
   localStorage.setItem('srows1', JSON.stringify(rows1));
   localStorage.setItem('srows2', JSON.stringify(rows2));
   localStorage.setItem('srows3', JSON.stringify(rows3));
-  // alert(rows1[p] + '---' + rows2[p] + '---' + rows3[p])
 }
 this.onblur = function () {
   window.localStorage.removeItem('storedparams');
@@ -68,8 +75,7 @@ function myXML(invoiceNo) {
       }
       while ((myArray = myRe2.exec(str)) !== null) {
         measureDateArray[i] = myArray[1];
-        place2 = str.indexOf('##')
-        //alert(str.substring(place1 + 4, place2))
+        place2 = str.indexOf('##') //alert(str.substring(place1 + 4, place2))
         substringArray[k] = str.substring(place1 + 10, place2)
         elements = substringArray[k].split(',')
         mytag[j].style.backgroundColor = 'pink';
@@ -116,7 +122,7 @@ document.body.appendChild(input);
 function showAlert() {
   var GetInv = prompt('Enter invoice numbers separated by commas', '');
   var elements = GetInv.split(',')
-  var mybillinglines = 'billing_no='
+  var mybillinglines = 'billing_no=' //alert(elements.length)
   for (m = 0; m < elements.length; m++) {
     if (m < elements.length - 1) {
       q = (rows1.indexOf(elements[m]))
