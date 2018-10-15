@@ -386,8 +386,8 @@ for (i = 0; i < AB.length; i++) {
 }//*******************************************************************************
 //Rx screen shortcut
 
-document.getElementById('AutoReminders').style.visibility = 'hidden';
-document.getElementById('AutoTickler').style.visibility = 'hidden';
+//document.getElementById('AutoReminders').style.visibility = 'hidden';
+//document.getElementById('AutoTickler').style.visibility = 'hidden';
 if (demono > - 1) {
 document.getElementById('AutoReminders').style.visibility = 'visible';
 document.getElementById('AutoTickler').style.visibility = 'visible';
