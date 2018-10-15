@@ -308,7 +308,8 @@ else {
 if (teststring == 'DIAG IMAGE') {
   //**************************************Highlight 
   var SavedLines = ''
-  author = $('tr.NarrativeRes:nth-child(3) > td:nth-child(2)').html() //alert(author)
+  author = $('tr.NarrativeRes:nth-child(2) > td:nth-child(2)').html() 
+  //alert(author)
   if (!author) {
     author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
   }
