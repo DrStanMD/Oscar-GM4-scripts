@@ -3,56 +3,13 @@
 // @namespace   Stanscript
 // @include     *providercontrol.jsp?year*
 // @description Replaces Reason-for-visit to the line below. Adds Wait Time button
-// @version     2
-// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @version     15.1
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
-
-/*
-var lablist = window.open('', '_blank', 'width=800, scrollbars=yes, resizable=yes');
-lablist.moveTo(1200, 100);
-xmlhttp = new XMLHttpRequest();
-var pathArray = window.location.pathname.split('/');
-var newURL = 'https://secure10.oscarhost.ca/SDHurwitzInc/demographic/demographiccontrol.jsp?demographic_no=2005&apptProvider=1&appointment=34169&displaymode=edit&dboperation=search_detail'
-xmlhttp.onreadystatechange = function () {
-  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-    var str = xmlhttp.responseText; //local variable
-    if (!str) {
-      return;
-    }    // str = str.replace(/\s+/g, '');
-
-    lablist.document.body.innerHTML = str
-    setTimeout(function () {
-      lablist.alert('HI')
-      lablist.alert($('#menu2').text())
-      $('#appt_table > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > a:nth-child(3)').css('background-color', 'yellow')
-      $('#appt_table > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > a:nth-child(3)').ready(function () {
-        callEligibilityWebService('../billing/CA/BC/ManageTeleplan.do', 'returnTeleplanMsg')
-      });
-      alert($('#menu2').text())
-      var msg = ($('#menu2').text())
-      var elig = msg.indexOf('ELIG_ON_DOS: YES') // alert(elig>-1)
-    }, 3000);
-
-          var myRe = /lastcreatedatetime/g
-          var ad = str.substring(str.search(myRe) + 34, str.search(myRe) + 44)
-          var ah = str.substring(str.search(myRe) + 44, str.search(myRe) + 46)
-          var as = str.substring(str.search(myRe) + 47, str.search(myRe) + 49)
-          arrivetime = str.substring(str.search(myRe) + 44, str.search(myRe) + 49)
-          if (arrivetime.indexOf('=') > - 1) {
-            arrivetime = ' '
-          }
-          if (arrivetime) {
-            DateCalc(ad, ah, as, i)
-          }
-        }
-
-  }
-}
-xmlhttp.open('GET', newURL, false);
-xmlhttp.send();
-*/
-//******************************************************************************
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1)) //alert(firstElement)
+vPath = ('https://' + location.host + '/' + firstElement + '/') //alert(vPath)
 var greenline1 = 'HereonTime'
 var greenline2 = 'HerebutLate'
 var mybtcolor = ''
@@ -138,17 +95,22 @@ function Arrive() {
   TimeColorSort()
 } //-----------------------------------------------------------------------------------------
 
-$(document.getElementById('expandReason')).after('&nbsp; <button type=\'button\' id=\'button0\' >Reason</button><button type=\'button\' id=\'button2\' >WaitTime</button><button type=\'button\' id=\'button1\' >Reload</button>')
+$(document.getElementById('expandReason')).after('&nbsp; <button type=\'button\' id=\'button0\' >Reason</button><button type=\'button\' id=\'button2\' >WaitTime</button><button type=\'button\' id=\'button3\' >S-Note</button><button type=\'button\' id=\'button1\' style="background-color: lime;">Reload</button>')
 document.getElementById('button0').addEventListener('click', function () {
   var x = document.getElementsByClassName('appt');
   for (i = 0; i < x.length; i++) {
     yy = (x[i].innerHTML)
+    //alert(yy)
     zz = (yy.indexOf('Reason'))
     oldstring = (yy.substring(0, zz - 10))
-    newstring = yy.substring(zz)
+    newstring = yy.substring(zz+31)
+    //alert(newstring)
     $(x[i]).html(oldstring)
     $(x[i]).append('<br>' + newstring)
   }
+})
+document.getElementById('button3').addEventListener('click', function () {
+  window.open(vPath + '/oscarMessenger/CreateMessage.jsp')
 })
 document.getElementById('button1').addEventListener('click', function () {
   location.reload();
