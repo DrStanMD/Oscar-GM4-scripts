@@ -5,15 +5,15 @@
 // @include     *provider/providercontrol.jsp?year*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 2
+// @version 15.1
 // ==/UserScript==
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
 //ADD YOUR OWN RBT NAME HERE
 var input15text = 'CDM\'s today'
-var input18text = 'CDM List'
+var input18text = 'DVL'
 //ADD TEMPLATE ID HERE
 var input15var = 2
-var input18var = 22
+var input18var = 56
 //**********************************************************************************************************
 function getCookie(cname)
 {
@@ -43,14 +43,19 @@ var ProvNum = ''
 if (params.provider_no) {
   ProvNum = params.provider_no
 }
-var ProviderDoc = $('body > form:nth-child(5) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > b:nth-child(1) > b:nth-child(3) > a:nth-child(2)').html()
+else
+{  
+var x = document.getElementsByName("weekview");
+var ProviderDoc = x[0].getAttribute('onclick')
+//alert(ProviderDoc)
 if (ProviderDoc) {
-  var pstart = ProviderDoc.search('curProvider=')
-  var pend = ProviderDoc.search('&curProviderName=')
+  var pstart = 0
+  var pend = ProviderDoc.indexOf("')")
   ProvNum = ProviderDoc.substring(pstart + 12, pend)
 }
 //alert(ProvNum)
-ProvNum = 1
+//ProvNum = 1
+}
 
 function mySetDate(interval) {
   // set number of days to add
