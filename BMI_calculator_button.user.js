@@ -8,8 +8,8 @@
 // @grant       none
 // ==/UserScript==
 window.resizeTo(1050, 700);
-$('input[name=\'value(inputValue-7)\']').change(ButtonFunction1)
 $('input[name=\'value(inputValue-2)\']').change(ButtonFunction1)
+$('input[name=\'value(inputValue-1)\']').change(ButtonFunction1)
 $('input[name=\'value(inputValue-0)\']').css('background-color', 'lightgreen');
 $('input[name=\'value(inputValue-1)\']').css('background-color', 'yellow');
 $('input[name=\'value(inputValue-2)\']').css('background-color', 'lightgreen');
