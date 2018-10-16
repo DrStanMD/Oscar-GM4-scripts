@@ -107,7 +107,7 @@ q1 = x.indexOf('lab/CA/ALL/labDisplay.jsp')
 q2 = document.getElementsByClassName('NarrativeRes')//alert(x)
 if (x.indexOf('dms/showDocument.jsp?') > - 1) { //This is a document
   demono = $('input[name=demog]').val();
-  alert(demono)
+  //alert(demono)
 }
 if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
   //  alert('LabReport')
