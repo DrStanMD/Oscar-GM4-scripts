@@ -6,6 +6,7 @@
 // @include  *dms/MultiPageDocDisplay.jsp?segmentID*
 // @include  *dms/showDocument.jsp?inWindow*
 // @include  *tickler/ticklerAdd.jsp*
+// @include  *dms/showDocument.jsp?segmentID*  
 // @include  *tickler/ForwardDemographicTickler.do*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
