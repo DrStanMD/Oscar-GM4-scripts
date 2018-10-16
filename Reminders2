@@ -44,7 +44,9 @@ if (location.search) {
     if (!nv[0]) continue;
     params[nv[0]] = nv[1] || true;
   }
-}//*****Determine type of document and not the tickler screen*******
+}
+
+//*****Determine type of document and not the tickler screen*******
 
 if (params.segmentID) {
   // alert(params.segmentID)
@@ -398,8 +400,10 @@ for (i = 0; i < AB.length; i++) {
 });
 } //*******************************************************************************
 //Rx screen shortcut
-//document.getElementById('AutoReminders').style.visibility = 'hidden';
-//document.getElementById('AutoTickler').style.visibility = 'hidden';
+if(params.status=="U"){
+document.getElementById('AutoReminders').style.visibility = 'hidden';
+document.getElementById('AutoTickler').style.visibility = 'hidden';
+}
 
 if (demono > - 1) {
 document.getElementById('AutoReminders').style.visibility = 'visible';
