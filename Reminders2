@@ -101,10 +101,10 @@ if (params.myparam1) {
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue)  //document.getElementById("FormName").submit();
 }//*******************************************************************************
 
-y = document.getElementsByClassName('NarrativeRes').length //alert(y)
-x = window.location.toString()
-q1 = x.indexOf('lab/CA/ALL/labDisplay.jsp')
-q2 = document.getElementsByClassName('NarrativeRes')//alert(x)
+var y = document.getElementsByClassName('NarrativeRes').length //alert(y)
+var x = window.location.toString()
+var q1 = x.indexOf('lab/CA/ALL/labDisplay.jsp')
+var q2 = document.getElementsByClassName('NarrativeRes')//alert(x)
 if (x.indexOf('dms/showDocument.jsp?') > - 1) { //This is a document
   demono = $('input[name=demog]').val();
   //alert(demono)
