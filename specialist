@@ -9,15 +9,6 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @version 1
 // ==/UserScript==
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement)
-var x = window.location.toString()
-alert(x)
-if (x.indexOf('billingManageReferralDoc') > - 1) {
-  var flastname = document.getElementsByName('lastname');
-  $(flastname).css('background-color', 'yellow');
-}
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
@@ -36,6 +27,30 @@ function getCookie(cname)
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
   }
   return '';
+}
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+vPath = ('https://' + location.host + '/' + firstElement)
+var x = window.location.toString()//alert(x)
+if (x.indexOf('config/AddSpecialist.jsp') > - 1) {
+  qlastname = getCookie('lastname')
+  qfirstname = getCookie('firstname')
+  qspecialty = getCookie('specialty')
+  qaddress = getCookie('address')
+  qphone = getCookie('phone')
+  qfax = getCookie('fax')
+  qrefno = getCookie('refno')
+  document.getElementsByName('lastName') [0].value = qlastname
+  document.getElementsByName('firstName') [0].value = qfirstname
+  document.getElementsByName('specType') [0].value = qspecialty
+  document.getElementsByName('address') [0].value = qaddress
+  document.getElementsByName('phone') [0].value = qphone
+  document.getElementsByName('fax') [0].value = qfax
+  $('#EctConAddSpecialistForm').val(qrefno)
+}
+if (x.indexOf('billingManageReferralDoc') > - 1) {
+  var flastname = document.getElementsByName('lastname');
+  $(flastname).css('background-color', 'yellow');
 }
 if (x.indexOf('billingAddReferralDoc') > - 1) {
   var qlastname = document.getElementsByName('last_name') [0].value
@@ -56,27 +71,7 @@ if (x.indexOf('billingAddReferralDoc') > - 1) {
   setCookie('phone', qphone, 1, 'path=/');
   setCookie('fax', qfax, 1, 'path=/');
   setCookie('refno', qrefno, 1, 'path=/');
-  alert('cookie set')
+  //alert('cookie set')
+  window.close()
   window.open(vPath + '/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp')
-}//alert(qlastname)
-
-if (qlastname === undefined)
-{
-  qlastname = getCookie('lastname')
-  qfirstname = getCookie('firstname')
-  qspecialty = getCookie('specialty')
-  qaddress = getCookie('address')
-  qphone = getCookie('phone')
-  qfax = getCookie('fax')
-  qrefno = getCookie('refno')
-} 
-else
-{
-  //window.close()
 }
-document.getElementsByName('lastName') [0].val('HELLO')
-document.getElementsByName('firstName') [0].val(qfirstname)//document.getElementsByName("specialty")[0].val(qspecialty)
-//document.getElementsByName("address")[0].val(qaddress)
-//document.getElementsByName("phone")[0].val(qphone)
-//document.getElementsByName("fax")[0].val(qfax)
-//$('#EctConAddSpecialistForm').val(qrefno)
