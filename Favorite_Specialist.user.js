@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Favorite Specialist
 // @namespace   StansScripts
 // @description Copies Referral Doc details from the main list to your favorite specialist list
@@ -7,14 +7,8 @@
 // @include     *billing/CA/BC/billingManageReferralDoc*
 // @include       *oscarEncounter/oscarConsultationRequest/ConsultationFormRequest*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 1
+// @version 15.1
 // ==/UserScript==
-
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement)
-$('.MainTableRightColumn > form:nth-child(1) > input:nth-child(1)') .css('background-color', 'yellow');
-$('.MainTableRightColumn > form:nth-child(1) > input:nth-child(1)') .focus()
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
@@ -33,26 +27,12 @@ function getCookie(cname)
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
   }
   return '';
-}($('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(20)') .val())
-//Lastname1
-$('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(6)') .css('background-color', 'yellow');
-var qlastname = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(6)') .val()
-//firstname1
-var qfirstname = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(8)') .val()
-//specialty1
-var qspecialty = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(11)') .val()
-//address1
-var qaddress = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(14)') .val() + ', ' + ($('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(20)') .val())
-//alert(qaddress)
-//phone
-var qphone = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(28)') .val()
-//fax
-var qfax = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > b:nth-child(29) > b:nth-child(1) > input:nth-child(1)') .val()
-var qrefno = $('.MainTableRightColumn > form:nth-child(1) > fieldset:nth-child(2) > input:nth-child(3)').val()
-
-//alert(qaddress)
-if (qlastname === undefined)
-{
+}
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+vPath = ('https://' + location.host + '/' + firstElement)
+var x = window.location.toString()//alert(x)
+if (x.indexOf('config/AddSpecialist.jsp') > - 1) {
   qlastname = getCookie('lastname')
   qfirstname = getCookie('firstname')
   qspecialty = getCookie('specialty')
@@ -60,10 +40,33 @@ if (qlastname === undefined)
   qphone = getCookie('phone')
   qfax = getCookie('fax')
   qrefno = getCookie('refno')
-} 
-else
-{
-  window.open(vPath + '/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp')
+  document.getElementsByName('lastName') [0].value = qlastname
+  document.getElementsByName('firstName') [0].value = qfirstname
+  document.getElementsByName('specType') [0].value = qspecialty
+  document.getElementsByName('address') [0].value = qaddress
+  document.getElementsByName('phone') [0].value = qphone
+  document.getElementsByName('fax') [0].value = qfax
+  $('#EctConAddSpecialistForm').val(qrefno)
+}
+if (x.indexOf('billingManageReferralDoc') > - 1) {
+  var flastname = document.getElementsByName('lastname');
+  $(flastname).css('background-color', 'yellow');
+}
+if (x.indexOf('billingAddReferralDoc') > - 1) {
+  var qlastname = document.getElementsByName('last_name') [0].value
+  var qfirstname = document.getElementsByName('first_name') [0].value
+  var qspecialty = document.getElementsByName('specialty') [0].value
+  var qaddress = document.getElementsByName('address1') [0].value
+  var qcity = document.getElementsByName('city') [0].value
+  var qprov = document.getElementsByName('province') [0].value
+  var qpostal = document.getElementsByName('postal') [0].value
+  var qphone = document.getElementsByName('phone') [0].value
+  var qfax = document.getElementsByName('fax') [0].value
+  var qrefno = document.getElementsByName('referral_no') [0].value
+  
+  qaddress =  qaddress+", "+qcity+", "+qprov+", "+qpostal
+  //alert(qaddress)
+    
   setCookie('lastname', qlastname, 1, 'path=/');
   setCookie('firstname', qfirstname, 1, 'path=/');
   setCookie('specialty', qspecialty, 1, 'path=/');
@@ -71,26 +74,7 @@ else
   setCookie('phone', qphone, 1, 'path=/');
   setCookie('fax', qfax, 1, 'path=/');
   setCookie('refno', qrefno, 1, 'path=/');
+  //alert('cookie set')
   window.close()
+  window.open(vPath + '/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp')
 }
-//Lastname2
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4) > input:nth-child(1)') .css('background-color', 'yellow');
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(4) > input:nth-child(1)') .val(qlastname)
-//firstname2
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(1) > td:nth-child(2) > input:nth-child(1)') .val(qfirstname)
-//specialty2
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(5) > td:nth-child(2) > input:nth-child(1)') .val(qspecialty)
-//address2
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(2) > textarea:nth-child(1)') .val(qaddress)
-//phone2
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(3) > td:nth-child(2) > input:nth-child(1)') .val(qphone)
-//fax2
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(3) > td:nth-child(4) > input:nth-child(1)') .val(qfax)
-//refno
-$('.MainTableRightColumn > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > form:nth-child(1) > table:nth-child(1) > tbody:nth-child(2) > tr:nth-child(5) > td:nth-child(4) > input:nth-child(1)').val(qrefno)
-$('#EctConAddSpecialistForm').val(qrefno)
-
-
-
-
-
