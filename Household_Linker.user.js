@@ -26,6 +26,7 @@ linkButton.setAttribute('style', 'font-size:9px;position:absolute;top:0px;right:
 document.body.appendChild(linkButton);
 }
 */
+/*
 if (x.indexOf('demographic/demographiccontrol.jsp') > - 1) {
   //alert("We are in the Master Demographic Page")
   var theTarget = document.getElementById('header');
@@ -42,6 +43,7 @@ function doLink() {
   $('select[name=search_mode]').val('search_address');
   $('input[title="Search active patients"]').click();
 }
+*/
 /*
 if (QueryString.z == 2){  //This is just an extra that allows RBT to link straight to the encounter without stopping at Master Demographics
 $('a[title="E-Chart"]').click();
