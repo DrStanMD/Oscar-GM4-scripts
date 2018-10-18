@@ -57,6 +57,7 @@ $(document).ready(function () {
   for (j = 0; j < demoArray.length; j++) {
     getMeasures(demoArray[j]);
   }
+  //alert(demoArrayVal)
   var HCN = demoArrayVal[7]
   res = HCN.slice(0, 4)
   res = res + ' ' + HCN.slice(4, 7)
@@ -67,9 +68,9 @@ $(document).ready(function () {
   var headerExtra2 = ' Age: '
   var headerExtra3 = 'File#: '
   var headerExtra4 = 'PHN: '
-  header.innerHTML += ('<br>' + headerExtra1.bold() + demoArrayVal[0] + ', ' + demoArrayVal[4] + ',' + headerExtra2.bold() + demoArrayVal[6] + ' '
-  + ' ' + headerExtra3.bold() + demo_no + ' ' + headerExtra4.bold()
-  + HCN + '   email: ' + demoArrayVal[1] + '   '
+  var headerExtra5 = ' Addr: '
+  header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4]
+  + ' ' + headerExtra4.bold() + HCN + '   email: '.bold() + demoArrayVal[1] + '   '
   + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
   );
 })
