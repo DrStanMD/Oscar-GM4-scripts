@@ -169,6 +169,7 @@ function ButtonFunction2() {
   });
 }// button for last years flushot
 
+/*
 var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'Flu Shot';
@@ -180,3 +181,4 @@ function ButtonFunction3() {
   setCookie('RELOAD', 'RELOADED', y, 'path=/') //alert(input202.value)
   myWindow = window.open(vPath + 'oscarPrevention/AddPreventionData.jsp?prevention=Flu&demographic_no=' + demoNo + '&prevResultDesc=&flushot', 'myWindow', 'width=800, height=600');
 }
+*/
