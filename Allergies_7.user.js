@@ -5,7 +5,7 @@
 // @include  *demographic/demographiccontrol.jsp?demographic_no*
 // @description Adds Navigation buttons for NKDA and common allergies, Auto FLUSHOT button
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     2.7
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 /*
