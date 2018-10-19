@@ -33,21 +33,28 @@ function getMeasures(measure) {
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       //alert(xmlhttp.responseText)
-      var str = xmlhttp.responseText.replace(/\s/g, '')
+      //var str = xmlhttp.responseText.replace(/\s/g, '')
+      var str = xmlhttp.responseText
       if (!str) {
         return;
-      } //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
+      } 
+      //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
+      // var myReString = 'Address History">History</span>):</span><span class="info">.*/s*'
+      //var myReString = '<span class="label">' + measure + '([\d,\.]+)<\/td>';  //for the measurement
 
-      var myReString = '<spanclass="label">' + measure + '.*/s*'
+      var myReString = '<span class="label">' + measure + '(.|[\n])*'
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
-        y = myArray.toString() // alert(y)
+        y = myArray.toString() // 
+        //alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
-        var mycode3 = mycode.substring(mycode + 9, mycode2) //alert(j+measure + ' is ' + mycode3)
-        demoArrayVal[add_one] = mycode3 //alert(demoArrayVal[add_one])
+        var mycode3 = mycode.substring(mycode + 9, mycode2) //
+        //alert(j+measure + ' is ' + mycode3)
+        demoArrayVal[add_one] = mycode3 
+        //alert(demoArrayVal[add_one])
         //alert(demoArrayVal.length)
       }
     }
@@ -76,7 +83,7 @@ if (location.search) {
     if (!nv[0]) continue;
     params[nv[0]] = nv[1] || true;
   }
-}//alert(params.segmentID)
+} //alert(params.segmentID)
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
@@ -85,8 +92,8 @@ var x = window.location.toString() //alert(x)
 if (x.indexOf('demographic/search.jsp') > - 1) {
   //alert("We are in the Search page")
   if (params.vaddress) {
-    var address = params.vaddress    //alert(address)
-    address = '8511 Bairdmore'
+    var address = decodeURIComponent(params.vaddress) //alert(address)
+    //address = '8511 Bairdmore'
     $('input[name=keyword]').val(address);
     $('select[name=search_mode]').val('search_address');
     $('input[title="Search active patients"]').click();
@@ -109,7 +116,7 @@ function doLink2() {
       add_one = add_one + 1
     } //alert(demoArrayVal[0]) //This is the address
 
-    address = demoArrayVal[0]
+    address = encodeURIComponent(demoArrayVal[0])
   })
   window.open(vPath + '/demographic/search.jsp?vaddress=' + address)
 }
