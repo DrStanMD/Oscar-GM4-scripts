@@ -13,13 +13,6 @@
 // ==/UserScript==
 //**********DEMOGRAPHIC PAGESCRAPER SNIPPET*****************
 var demoArray = [
-  //'CellPhone',
-  //'Phone(H)',
-  //'City',
-  //'Postal',
-  //'Age',
-  //'HealthIns.#'
-  //'Email',
   'Address'
 ]
 var demoArrayVal = [
@@ -39,7 +32,7 @@ function getMeasures(measure) {
         return;
       } 
       //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
-      // var myReString = 'Address History">History</span>):</span><span class="info">.*/s*'
+      //var myReString = 'Address History">History</span>):</span><span class="info">.*/s*'
       //var myReString = '<span class="label">' + measure + '([\d,\.]+)<\/td>';  //for the measurement
 
       var myReString = '<span class="label">' + measure + '(.|[\n])*'
@@ -61,7 +54,8 @@ function getMeasures(measure) {
   }
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
-} /*
+} 
+/*
 $(document).ready(function () {
   for (j = 0; j < demoArray.length; j++) {
     getMeasures(demoArray[j]);
@@ -99,6 +93,7 @@ if (x.indexOf('demographic/search.jsp') > - 1) {
     $('input[title="Search active patients"]').click();
   }
 }
+
 if (x.indexOf('casemgmt/forward.jsp?action') > - 1) {
   //alert("We are in the Encounter Page")
   var theTarget = document.getElementById('header');
@@ -109,15 +104,19 @@ if (x.indexOf('casemgmt/forward.jsp?action') > - 1) {
   linkButton.setAttribute('style', 'font-size:9px;position:absolute;top:0px;left:650px;background-color: #00FF00');
   document.body.appendChild(linkButton);
 }
+
 function doLink2() {
+  
   $(document).ready(function () {
     for (j = 0; j < demoArray.length; j++) {
       getMeasures(demoArray[j]);
       add_one = add_one + 1
-    } //alert(demoArrayVal[0]) //This is the address
+    } 
+    //alert(demoArrayVal[0]) //This is the address
 
     address = encodeURIComponent(demoArrayVal[0])
   })
+  
   window.open(vPath + '/demographic/search.jsp?vaddress=' + address)
 }
 if (x.indexOf('demographic/demographiccontrol.jsp') > - 1) {
