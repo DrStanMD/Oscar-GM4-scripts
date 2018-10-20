@@ -3,7 +3,7 @@
 // @namespace   Stanscript
 // @include     https://github.com/DrStanMD/Oscar-GM4-scripts
 // @include     *github.com/login*
-// @version     1
+// @version     1.15
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
