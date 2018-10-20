@@ -4,6 +4,7 @@
 // @description Various navigation buttons for echart screen.  Set your own specific fid (form number) or Measurement groupName
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @version 15.1
 // @grant       none
 // ==/UserScript==
 //window.moveTo(300, 100)
@@ -140,10 +141,12 @@ input9.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed
 document.body.appendChild(input9);
 function showAlert9()
 {
+  $('#imgeforms5').click()
   $('#imgmeasurements5').click()
   $('#imgdocs5').click()
   $('#imglabs5').click()
 }
+
 var input10 = document.createElement('input');
 input10.type = 'button';
 input10.value = 'Allergy Inj.';
