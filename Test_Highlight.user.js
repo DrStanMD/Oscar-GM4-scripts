@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 15.1
+// @version 15.2
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
