@@ -102,7 +102,9 @@ if (x.indexOf('casemgmt/forward.jsp?action') > - 1) {
   linkButton.value = 'Family Links';
   linkButton.onclick = doLink2;
   linkButton.setAttribute('style', 'font-size:9px;position:absolute;top:0px;left:650px;background-color: #00FF00');
+  setTimeout(function(){ 
   document.body.appendChild(linkButton);
+   }, 2000);
 }
 
 function doLink2() {
