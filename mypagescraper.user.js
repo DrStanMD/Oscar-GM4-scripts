@@ -25,6 +25,7 @@ var demoArray = [
 ]
 var demoArrayVal = [
 ]
+ 
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
@@ -74,6 +75,17 @@ $(document).ready(function () {
   var headerExtra5 = ' Addr: '
   header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4]
   + ' ' + headerExtra4.bold() + HCN + '   email: '.bold() + demoArrayVal[1] + '   '
-  + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+ // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+  + '<button type="button" id="button10">Send email</button>'                     
   );
+  document.getElementById("button10").onclick = do_email;
+  document.getElementById("button10").setAttribute('style', 'font-size:12px;');
+  
+  function do_email(){
+  //alert(demoArrayVal[1])
+  var email = demoArrayVal[1]
+  var mailto_link = 'mailto:' + email+ '?Subject=Confidential medical information'
+  window = window.open(mailto_link, 'emailWindow')  
+}
+  
 })
