@@ -5,6 +5,7 @@
 // @include     *appointment/appointmentcontrol.jsp*
 // @include     *appointment/addappointment.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @version 15.1
 // @grant       none
 // ==/UserScript==
 //************************************************************
