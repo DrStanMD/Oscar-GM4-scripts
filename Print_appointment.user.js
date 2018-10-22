@@ -84,7 +84,7 @@ $(document).ready(function () {
   }
   //alert(demoArrayVal[0]) //This is the email
   myemail = demoArrayVal[0]
-  alert(myemail)
+  //alert(myemail)
 })
 //===========Cookies===============
 function setCookie(cname, cvalue, exdays, cpath)
