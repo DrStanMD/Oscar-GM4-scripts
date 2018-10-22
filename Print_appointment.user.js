@@ -24,7 +24,10 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
-demoNo = params.demographic_no //alert(demoNo)
+var demoNo = params.demographic_no 
+//alert(demoNo)
+var apptno = params.appointment_no
+var provNo = params.provider_no
 //********************************
 var demoArray = [
   //'CellPhone',
@@ -43,7 +46,9 @@ var add_one = 0
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
-  var newURL = vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demoNo + '&displaymode=edit&dboperation=search_detail'
+ // var newURL = vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demoNo + '&displaymode=edit&dboperation=search_detail'
+  var newURL = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demoNo + '&apptProvider=' +provNo+ '&appointment=' +apptno+ '&displaymode=edit&dboperation=search_detail'
+  //window.open(newURL)
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       //alert(xmlhttp.responseText)
@@ -56,7 +61,8 @@ function getMeasures(measure) {
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
-        y = myArray.toString() // alert(y)
+        y = myArray.toString() // 
+        //alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
@@ -78,6 +84,7 @@ $(document).ready(function () {
   }
   //alert(demoArrayVal[0]) //This is the email
   myemail = demoArrayVal[0]
+  alert(myemail)
 })
 //===========Cookies===============
 function setCookie(cname, cvalue, exdays, cpath)
