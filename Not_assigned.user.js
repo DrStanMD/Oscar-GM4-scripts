@@ -205,7 +205,7 @@ var Field2ID = 'docType_' + IDnum
 var Field3 = '#docDesc_' + IDnum
 var CloseButton = ' #closeBtn_' + IDnum
 var AckButton = '#ackBtn_' + IDnum
-var SaveButton = '#save' + IDnum
+var SaveButton = '#save' + IDnum 
 var TicklerButton = '#ticklerBtn_' + IDnum
 var CommentArea = '#comment_' + IDnum
 document.getElementById(Field2ID).style.fontSize = '16px';
@@ -355,6 +355,8 @@ document.body.appendChild(input11);
 function showAlert11() {
   //$(TicklerButton).click()
   $(SaveButton).click()
+  $(SaveButton).click()
+  window.opener.location.reload();
   $(CloseButton).click();
 }
 var input12 = document.createElement('input');
