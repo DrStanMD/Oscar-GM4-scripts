@@ -524,10 +524,10 @@ function renameTheLab(strOldName) {
       strNewName = 'CUL';
       break;
     case 'REFER2':
-      strNewName = 'HepHIV';
+      strNewName = 'HepHIV.Hpy';
       break;
     case 'MICRO15':
-      strNewName = 'HepHiv';
+      strNewName = 'HepHIV';
       break;
     case 'CHEM18':
       strNewName = 'RF.ANA';
