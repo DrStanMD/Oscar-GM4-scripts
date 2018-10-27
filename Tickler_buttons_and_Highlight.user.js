@@ -19,6 +19,7 @@ function do_nextapp()
   if (/\S/.test(myappointment)) {
     //alert('Next appointment is ' + myappointment)
     $(this).html(myappointment)
+    $(this).css({fontSize: 12});
     $(this).css('background-color', '#08e8de') //#08e8de  #39FF14
   }
 }
