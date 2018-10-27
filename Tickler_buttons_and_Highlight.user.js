@@ -4,13 +4,24 @@
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version    15.3
+// @version    15.2
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
 //******email snippet****
 var myemail = ''
 var demo_no = ''
+function do_nextapp()
+{
+  //alert(this.value)
+  demo_no = this.value
+  getAppointment()  //alert(myappointment)
+  if (/\S/.test(myappointment)) {
+    //alert('Next appointment is ' + myappointment)
+    $(this).html(myappointment)
+    $(this).css('background-color', '#08e8de') //#08e8de  #39FF14
+  }
+}
 function validateEmail(emailField) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   var x = re.test(String(emailField)) //alert(x)
@@ -29,7 +40,10 @@ function validateEmail(emailField) {
 }
 function do_email() {
   //alert(this.id)
-  demo_no = this.id
+  demo_no = this.id  // getAppointment()
+  //alert(myappointment)
+  //  $(this).html('Next appointment is ' + myappointment)
+  //  $(this).css('background-color', '#39FF14')  //#08e8de  #39FF14
   getMeasures('Email')
   if (myemail) {
     validateEmail(myemail)
@@ -38,6 +52,36 @@ function do_email() {
     alert('no email address on file')
   }
 }
+function getAppointment() {
+  // alert("HI")
+  xmlhttp = new XMLHttpRequest();
+  var pathArray = window.location.pathname.split('/');
+  var newURL = vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demo_no + '&displaymode=edit&dboperation=search_detail' //window.open(newURL)
+  //window.open(newURL)
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      var str = xmlhttp.responseText
+      if (!str) {
+        return;
+      }
+      var myReString = '<span style="margin-left: 20px;font-style:italic">' + '(.|[\n])*'      //var myReString = '<span class="label">' + measure + '(.|[\n])*'
+      var myRe = new RegExp(myReString, 'g');
+      var myArray
+      while ((myArray = myRe.exec(str)) !== null) {
+        y = myArray.toString() //
+        //alert(y)
+        var z = y.indexOf('Next Appointment')
+        var mycode = y.substring(z + 18)        //alert(mycode)
+        var mycode2 = mycode.indexOf('</span>')
+        var mycode3 = mycode.substring(mycode + 9, mycode2)
+        myappointment = mycode3
+      }
+    }
+  }
+  xmlhttp.open('GET', newURL, false);
+  xmlhttp.send();
+}//****************************
+
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
@@ -180,11 +224,19 @@ for (var i = 0; i < mytag.length; i++) {
     //getMeasures('Email')
     //alert(myemail)
     var buttonId = IdNum //alert(buttonId)
+    var button2Id = 'app_' + IdNum    //alert(button2Id)
     var emailbutton = '<button type="button" id="' + buttonId + '">email</button>' //value="'+myemail+'"
+    var appbutton = '<button type="button" id="' + button2Id + '">Next</button>'
     var myLink = '<span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'
-    $(mytag[i]).after(myLink + '<br>' + emailbutton);
-    //$(mytag[i]).after(myLink);
+    //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
+    $(mytag[i]).after(myLink);
     document.getElementById(buttonId).onclick = do_email;
     document.getElementById(buttonId).setAttribute('style', 'font-size:12px;');
+    document.getElementById(button2Id).onclick = do_nextapp;
+    document.getElementById(button2Id).setAttribute('style', 'font-size:12px;');
+    document.getElementById(button2Id).value = IdNum
+    //document.getElementById(button2Id).style.visibility = "hidden";
+    //document.getElementById(buttonId).style.visibility = "hidden";
+
   }
 }
