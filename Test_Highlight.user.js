@@ -482,7 +482,7 @@ function renameTheLab(strOldName) {
       strNewName = 'CK';
       break;
     case 'CHEM5.5':
-      strNewName = 'TROP';
+      strNewName = 'TROP.BNP';
       break;
     case 'CHEM6':
       strNewName = 'CHOL';
