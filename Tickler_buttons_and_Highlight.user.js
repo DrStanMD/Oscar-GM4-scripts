@@ -4,10 +4,68 @@
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version    15.2
+// @version    15.3
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
+//******email snippet****
+var myemail = ''
+var demo_no = ''
+function validateEmail(emailField) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  var x = re.test(String(emailField)) //alert(x)
+  if (x == false)
+  {
+    alert('Invalid Email Address');
+    return false;
+  } 
+  else
+  {
+    //alert(emailField);
+    var mailto_link = 'mailto:' + myemail + '?Subject=Confidential medical information'
+    window = window.open(mailto_link, 'emailWindow')
+    return true;
+  }
+}
+function do_email() {
+  //alert(this.id)
+  demo_no = this.id
+  getMeasures('Email')
+  if (myemail) {
+    validateEmail(myemail)
+  } 
+  else {
+    alert('no email address on file')
+  }
+}
+function getMeasures(measure) {
+  xmlhttp = new XMLHttpRequest();
+  var pathArray = window.location.pathname.split('/');
+  var newURL = vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demo_no + '&displaymode=edit&dboperation=search_detail' //window.open(newURL)
+  xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+      var str = xmlhttp.responseText
+      if (!str) {
+        return;
+      }
+      var myReString = '<span class="label">' + measure + '(.|[\n])*'
+      var myRe = new RegExp(myReString, 'g');
+      var myArray
+      while ((myArray = myRe.exec(str)) !== null) {
+        y = myArray.toString() //alert(y)
+        var z = y.indexOf('info')
+        var mycode = y.substring(z + 6)
+        var mycode2 = mycode.indexOf('</span>')
+        var mycode3 = mycode.substring(mycode + 9, mycode2) //alert(j+measure + ' is ' + mycode3)
+        myemail = mycode3
+      }
+    }
+  }
+  xmlhttp.open('GET', newURL, false);
+  xmlhttp.send();
+} //*****************************
+
+var demo_no = ''
 window.resizeTo(1280, 780);
 // http://stackoverflow.com/questions/12146445/jquery-in-greasemonkey-1-0-conflicts-with-websites-using-jquery
 var elements = (window.location.pathname.split('/', 2))
@@ -118,8 +176,15 @@ for (var i = 0; i < mytag.length; i++) {
   if (onclickvalue !== null && onclickvalue.indexOf('demographic_no') > - 1) {
     var pstart = onclickvalue.search('demographic_no')
     var pend = onclickvalue.search('&displaymode=')
-    IdNum = onclickvalue.substring(pstart + 15, pend).toString()
+    IdNum = onclickvalue.substring(pstart + 15, pend).toString() //demo_no = IdNum
+    //getMeasures('Email')
+    //alert(myemail)
+    var buttonId = IdNum //alert(buttonId)
+    var emailbutton = '<button type="button" id="' + buttonId + '">email</button>' //value="'+myemail+'"
     var myLink = '<span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'
-    $(mytag[i]).after(myLink);
+    $(mytag[i]).after(myLink + '<br>' + emailbutton);
+    //$(mytag[i]).after(myLink);
+    document.getElementById(buttonId).onclick = do_email;
+    document.getElementById(buttonId).setAttribute('style', 'font-size:12px;');
   }
 }
