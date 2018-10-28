@@ -22,6 +22,10 @@ function do_nextapp()
     $(this).css({fontSize: 12});
     $(this).css('background-color', '#08e8de') //#08e8de  #39FF14
   }
+  else
+  {
+   $(this).text('None')
+  }
 }
 function validateEmail(emailField) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -228,13 +232,14 @@ for (var i = 0; i < mytag.length; i++) {
     var button2Id = 'app_' + IdNum    //alert(button2Id)
     var emailbutton = '<button type="button" id="' + buttonId + '">email</button>' //value="'+myemail+'"
     var appbutton = '<button type="button" id="' + button2Id + '">Next app</button>'
-    var myLink = '<span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'
+    var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'
     //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
-    $(mytag[i]).after(myLink);
+    //$(mytag[i]).after(myLink);
+    $(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     document.getElementById(buttonId).onclick = do_email;
-    document.getElementById(buttonId).setAttribute('style', 'font-size:12px;');
+    document.getElementById(buttonId).setAttribute('style', 'font-size:8px;');
     document.getElementById(button2Id).onclick = do_nextapp;
-    document.getElementById(button2Id).setAttribute('style', 'font-size:12px;');
+    document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
     document.getElementById(button2Id).value = IdNum
     //document.getElementById(button2Id).style.visibility = "hidden";
     //document.getElementById(buttonId).style.visibility = "hidden";
