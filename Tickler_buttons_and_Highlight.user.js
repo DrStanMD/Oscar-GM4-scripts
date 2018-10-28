@@ -4,27 +4,40 @@
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version    15.2
+// @version    15.3
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
 //******email snippet****
 var myemail = ''
 var demo_no = ''
+function expand_nextapp()
+{
+  for (var i = 0; i < 200; i++) //display first 20 next dates
+  {
+    var button2Id = 'app_' + i
+    if (document.getElementById(button2Id))
+    {
+      document.getElementById(button2Id).click()
+    }
+  }
+}
 function do_nextapp()
 {
   //alert(this.value)
-  demo_no = this.value
-  getAppointment()  //alert(myappointment)
+  demo_no = this.value  //alert(demo_no)
+  getAppointment() //alert(myappointment)
   if (/\S/.test(myappointment)) {
     //alert('Next appointment is ' + myappointment)
     $(this).html(myappointment)
-    $(this).css({fontSize: 12});
+    $(this).css({
+      fontSize: 12
+    });
     $(this).css('background-color', '#08e8de') //#08e8de  #39FF14
-  }
+  } 
   else
   {
-   $(this).text('None')
+    $(this).text('None')
   }
 }
 function validateEmail(emailField) {
@@ -45,7 +58,7 @@ function validateEmail(emailField) {
 }
 function do_email() {
   //alert(this.id)
-  demo_no = this.id  // getAppointment()
+  demo_no = this.id // getAppointment()
   //alert(myappointment)
   //  $(this).html('Next appointment is ' + myappointment)
   //  $(this).css('background-color', '#39FF14')  //#08e8de  #39FF14
@@ -69,14 +82,14 @@ function getAppointment() {
       if (!str) {
         return;
       }
-      var myReString = '<span style="margin-left: 20px;font-style:italic">' + '(.|[\n])*'      //var myReString = '<span class="label">' + measure + '(.|[\n])*'
+      var myReString = '<span style="margin-left: 20px;font-style:italic">' + '(.|[\n])*' //var myReString = '<span class="label">' + measure + '(.|[\n])*'
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
         y = myArray.toString() //
         //alert(y)
         var z = y.indexOf('Next Appointment')
-        var mycode = y.substring(z + 18)        //alert(mycode)
+        var mycode = y.substring(z + 18) //alert(mycode)
         var mycode2 = mycode.indexOf('</span>')
         var mycode3 = mycode.substring(mycode + 9, mycode2)
         myappointment = mycode3
@@ -85,7 +98,7 @@ function getAppointment() {
   }
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
-}//****************************
+} //****************************
 
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
@@ -129,6 +142,14 @@ document.body.appendChild(input);
 function showAlert() {
   window.open(vPath + 'tickler/ticklerAdd.jsp')
 }
+var input0 = document.createElement('input');
+input0.type = 'button';
+input0.id = 'input0';
+input0.value = 'Expand Next appointment';
+input0.onclick = expand_nextapp;
+input0.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:800px;');
+document.body.appendChild(input0);
+$('#input0').css('background-color', 'pink')
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Complete';
@@ -221,6 +242,7 @@ for (var j = 0; j < ClassArray.length; j++) {
 }
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
+  //for (var i = 0; i < 200; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
   if (onclickvalue !== null && onclickvalue.indexOf('demographic_no') > - 1) {
     var pstart = onclickvalue.search('demographic_no')
@@ -229,20 +251,27 @@ for (var i = 0; i < mytag.length; i++) {
     //getMeasures('Email')
     //alert(myemail)
     var buttonId = IdNum //alert(buttonId)
-    var button2Id = 'app_' + IdNum    //alert(button2Id)
+    var button2Id = 'app_' + i    //alert(button2Id)
     var emailbutton = '<button type="button" id="' + buttonId + '">email</button>' //value="'+myemail+'"
     var appbutton = '<button type="button" id="' + button2Id + '">Next app</button>'
-    var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'
-    //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
+    var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'    //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     //$(mytag[i]).after(myLink);
     $(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     document.getElementById(buttonId).onclick = do_email;
     document.getElementById(buttonId).setAttribute('style', 'font-size:8px;');
     document.getElementById(button2Id).onclick = do_nextapp;
     document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
-    document.getElementById(button2Id).value = IdNum
-    //document.getElementById(button2Id).style.visibility = "hidden";
+    document.getElementById(button2Id).value = IdNum    //document.getElementById(button2Id).style.visibility = "hidden";
     //document.getElementById(buttonId).style.visibility = "hidden";
-
   }
 }
+/*
+for (var i = 0; i < 200; i++) //display first 20 next dates
+{
+  var button2Id = 'app_' + i
+  if (document.getElementById(button2Id))
+  {
+    document.getElementById(button2Id).click()
+  }
+}
+*/
