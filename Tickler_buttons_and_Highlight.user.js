@@ -86,9 +86,7 @@ function validateEmail(emailField) {
 }
 function do_email() {
   //alert(this.value)
-  demo_no = this.value  //alert(myappointment)
-  //  $(this).html('Next appointment is ' + myappointment)
-  //  $(this).css('background-color', '#39FF14')  //#08e8de  #39FF14
+  demo_no = this.value
   getMeasures('Email')
   if (myemail) {
     validateEmail(myemail)
@@ -278,7 +276,7 @@ for (var i = 0; i < mytag.length; i++) {
     IdNum = onclickvalue.substring(pstart + 15, pend).toString() //demo_no = IdNum
     //getMeasures('Email')
     //alert(myemail)
-    var buttonId = IdNum //alert(buttonId)
+    var buttonId = 'email_' + i //alert(buttonId)
     var button2Id = 'app_' + i //alert(button2Id)
     var emailbutton = '<button type="button" id="' + buttonId + '">E</button>' //value="'+myemail+'"
     var appbutton = '<button type="button" id="' + button2Id + '">N</button>'
