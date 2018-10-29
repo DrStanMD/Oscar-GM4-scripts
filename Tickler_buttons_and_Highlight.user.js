@@ -4,7 +4,7 @@
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version    15.3
+// @version    15.2
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
@@ -252,15 +252,17 @@ for (var i = 0; i < mytag.length; i++) {
     //alert(myemail)
     var buttonId = IdNum //alert(buttonId)
     var button2Id = 'app_' + i    //alert(button2Id)
-    var emailbutton = '<button type="button" id="' + buttonId + '">email</button>' //value="'+myemail+'"
-    var appbutton = '<button type="button" id="' + button2Id + '">Next app</button>'
+    var emailbutton = '<button type="button" id="' + buttonId + '">E</button>' //value="'+myemail+'"
+    var appbutton = '<button type="button" id="' + button2Id + '">N</button>'
     var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'    //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     //$(mytag[i]).after(myLink);
-    $(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
+    $(mytag[i]).after(myLink + '<br>' + emailbutton + appbutton);
     document.getElementById(buttonId).onclick = do_email;
     document.getElementById(buttonId).setAttribute('style', 'font-size:8px;');
     document.getElementById(button2Id).onclick = do_nextapp;
     document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
+    //document.getElementById(button2Id).style.width = '6px';
+    document.getElementById(buttonId).style.width = '6px';
     document.getElementById(button2Id).value = IdNum    //document.getElementById(button2Id).style.visibility = "hidden";
     //document.getElementById(buttonId).style.visibility = "hidden";
   }
