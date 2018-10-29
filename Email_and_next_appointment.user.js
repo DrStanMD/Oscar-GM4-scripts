@@ -2,6 +2,7 @@
 // @name     Email Snippet
 // @version  1
 // @include *tickler/ticklerAdd.jsp?demographic_no*
+// @include *tickler/ForwardDemographicTickler.do*
 // @grant    none
 // ==/UserScript==
 //========Get Path============
