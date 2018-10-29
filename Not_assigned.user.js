@@ -370,7 +370,7 @@ document.body.appendChild(input12);
 function showAlert12() {
   //$(CommentArea).css("background-color","yellow");
 
-  window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
+  window.open(vPath + 'tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
   // $(AckButton).click()
    $(CommentArea).val('Tickler Sent')
 
