@@ -22,6 +22,8 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
+var searchbutton = document.getElementsByName('Submit');
+//$(searchbutton[0]).css('background-color', 'yellow')
 function getAppointment() {
   //alert('HI')
   xmlhttp = new XMLHttpRequest();
@@ -55,8 +57,7 @@ function do_nextapp()
 {
   demo_no = params.demographic_no
   getAppointment()
-  alert(myappointment) 
-  /*
+  alert(myappointment)  /*
   if (/\S/.test(myappointment)) {
     //alert('Next appointment is ' + myappointment)
     $(this).html(myappointment)
@@ -130,9 +131,9 @@ if (demo_no) {
     xmlhttp.send();
   }
   $(document).ready(function () {
-    getMeasures('Email')
-    alert(myemail)
-    getAppointment()
-    alert(myappointment)
+    //getMeasures('Email')
+    //alert(myemail)
+    getAppointment()    //alert(myappointment)
+    $(searchbutton[0]).after(('....Next appointment is ' + myappointment).bold())
   })
 } //*****************************
