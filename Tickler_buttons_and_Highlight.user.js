@@ -8,14 +8,42 @@
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
-//******email snippet****
+
 var myemail = ''
 var demo_no = ''
+//******email snippet****
+/*
+var mytag = document.getElementsByTagName('a');
+for (var i = 0; i < mytag.length; i++) {
+  if (mytag[i].innerHTML.indexOf('notepad') > - 1) {
+    var onclickvalue = mytag[i].getAttribute('onclick')
+    if (onclickvalue !== null && onclickvalue.indexOf('openNoteDialog') > - 1) {
+      var pstart = onclickvalue.search('openNoteDialog')
+      var pend = onclickvalue.search(',')
+      IdNum = onclickvalue.substring(pstart + 16, pend - 1).toString()
+      demo_no = IdNum
+      var appbutton2Id = 'app2_' + i
+      var appbutton2 = '<button type="button" id="' + appbutton2Id + '">N</button>'
+      var emailbutton2Id = 'email2_' + i
+      var emailbutton2 = '<button type="button" id="' + emailbutton2Id + '">E</button>'
+      $(mytag[i]).after(appbutton2 + emailbutton2)
+      document.getElementById(appbutton2Id).onclick = do_nextapp;
+      document.getElementById(appbutton2Id).setAttribute('style', 'font-size:8px;');
+      //document.getElementById(appbutton2Id).style.width = '6px';
+      document.getElementById(appbutton2Id).value = IdNum
+      document.getElementById(emailbutton2Id).onclick = do_email;
+      document.getElementById(emailbutton2Id).value = IdNum
+      document.getElementById(emailbutton2Id).setAttribute('style', 'font-size:8px;');
+    }
+  }
+}
+*/
 function expand_nextapp()
 {
   for (var i = 0; i < 200; i++) //display first 20 next dates
   {
     var button2Id = 'app_' + i
+    //var button2Id = 'app2_' + i
     if (document.getElementById(button2Id))
     {
       document.getElementById(button2Id).click()
@@ -25,7 +53,7 @@ function expand_nextapp()
 function do_nextapp()
 {
   //alert(this.value)
-  demo_no = this.value  //alert(demo_no)
+  demo_no = this.value //alert(demo_no)
   getAppointment() //alert(myappointment)
   if (/\S/.test(myappointment)) {
     //alert('Next appointment is ' + myappointment)
@@ -57,9 +85,8 @@ function validateEmail(emailField) {
   }
 }
 function do_email() {
-  //alert(this.id)
-  demo_no = this.id // getAppointment()
-  //alert(myappointment)
+  //alert(this.value)
+  demo_no = this.value  //alert(myappointment)
   //  $(this).html('Next appointment is ' + myappointment)
   //  $(this).css('background-color', '#39FF14')  //#08e8de  #39FF14
   getMeasures('Email')
@@ -205,12 +232,12 @@ function highP(myclass) {
     if (myP[i]) {
       if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('appt') > - 1) {
         for (ii = 1; ii < 11; ii++) {
-          myP[i - 10 + ii].style.backgroundColor = 'lightgreen';
+          myP[i - 9 + ii].style.backgroundColor = 'lightgreen';
         }
       }
       if (myP[i].innerHTML.indexOf('payment') > - 1 || myP[i].innerHTML.indexOf('Payment') > - 1 || myP[i].innerHTML.indexOf('PAYMENT') > - 1) {
         for (ii = 1; ii < 11; ii++) {
-          myP[i - 10 + ii].style.backgroundColor = 'pink';
+          myP[i - 9 + ii].style.backgroundColor = 'pink';
         }
       }
     }
@@ -219,17 +246,17 @@ function highP(myclass) {
     if (myP[i]) {
       if (myP[i].innerHTML.trim() == 'High') {
         for (ii = 1; ii < 11; ii++) {
-          myP[i - 7 + ii].style.backgroundColor = 'yellow';
+          myP[i - 6 + ii].style.backgroundColor = 'yellow';
           //************
           //alert(myP[i+3].innerHTML)
           if (myP[i + 3].innerHTML.indexOf('Recall') > - 1 || myP[i + 3].innerHTML.indexOf('recall') > - 1)
           {
-            myP[i - 7 + ii].style.backgroundColor = 'orange';
+            myP[i - 6 + ii].style.backgroundColor = 'orange';
           }
           if (myP[i + 3].innerHTML.indexOf('appointment') > - 1 || myP[i + 3].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i + 3].innerHTML.indexOf('appt') > - 1)
           {
             //alert()
-            myP[i - 7 + ii].style.backgroundColor = 'orange';
+            myP[i - 6 + ii].style.backgroundColor = 'orange';
           } //***********
 
         }
@@ -240,6 +267,7 @@ function highP(myclass) {
 for (var j = 0; j < ClassArray.length; j++) {
   highP(ClassArray[j])
 }
+
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   //for (var i = 0; i < 200; i++) {
@@ -251,22 +279,24 @@ for (var i = 0; i < mytag.length; i++) {
     //getMeasures('Email')
     //alert(myemail)
     var buttonId = IdNum //alert(buttonId)
-    var button2Id = 'app_' + i    //alert(button2Id)
+    var button2Id = 'app_' + i //alert(button2Id)
     var emailbutton = '<button type="button" id="' + buttonId + '">E</button>' //value="'+myemail+'"
     var appbutton = '<button type="button" id="' + button2Id + '">N</button>'
-    var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>'    //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
+    var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>' //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     //$(mytag[i]).after(myLink);
     $(mytag[i]).after(myLink + '<br>' + emailbutton + appbutton);
+    document.getElementById(buttonId).value = IdNum
     document.getElementById(buttonId).onclick = do_email;
     document.getElementById(buttonId).setAttribute('style', 'font-size:8px;');
     document.getElementById(button2Id).onclick = do_nextapp;
     document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
     //document.getElementById(button2Id).style.width = '6px';
     document.getElementById(buttonId).style.width = '6px';
-    document.getElementById(button2Id).value = IdNum    //document.getElementById(button2Id).style.visibility = "hidden";
+    document.getElementById(button2Id).value = IdNum    
+    //document.getElementById(button2Id).style.visibility = "hidden";
     //document.getElementById(buttonId).style.visibility = "hidden";
   }
-}
+} 
 /*
 for (var i = 0; i < 200; i++) //display first 20 next dates
 {
