@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Email and Next appointment
-// @version  1
+// @version  15.1
 // @include *tickler/ticklerAdd.jsp?demographic_no*
 // @include *tickler/ForwardDemographicTickler.do*
 // @grant    none
@@ -24,6 +24,7 @@ if (location.search) {
 }
 var searchbutton = document.getElementsByName('Submit');
 //$(searchbutton[0]).css('background-color', 'yellow')
+var appbutton = '<button type="button" id="appbuttonId">Next appointment</button>'
 function getAppointment() {
   //alert('HI')
   xmlhttp = new XMLHttpRequest();
@@ -134,6 +135,9 @@ if (demo_no) {
     //getMeasures('Email')
     //alert(myemail)
     getAppointment()    //alert(myappointment)
-    $(searchbutton[0]).after(('....Next appointment is ' + myappointment).bold())
+    $(searchbutton[0]).after('  ' + appbutton)
+    $('#appbuttonId').text('Next appointment is ' + myappointment)
+    document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
+    $('#appbuttonId').css('background-color', '#08e8de')
   })
 } //*****************************
