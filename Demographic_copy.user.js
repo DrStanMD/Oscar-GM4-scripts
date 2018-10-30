@@ -6,7 +6,21 @@
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     15.1
 // ==/UserScript==
-
+function validateEmail(emailField) {
+  if (emailField != '') {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    var x = re.test(String(emailField)) //alert(x)
+    if (x == false)
+    {
+      alert('Invalid Email Address');
+      return false;
+    }
+  }
+}
+var x = document.getElementsByName('email');
+$(x[0]).blur(function () {
+  validateEmail(this.value)
+});
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
@@ -25,7 +39,9 @@ function getCookie(cname)
     if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
   }
   return '';
-}
+}//alert(getCookie('adobe_email'))
+//alert(localStorage.getItem("adobe_email"));
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement)
@@ -56,7 +72,7 @@ $('#appt_table > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > a:nth-
 // alert($('#menu2').text())
 setTimeout(function () {
   var msg = ($('#menu2').text())
-  var elig = msg.indexOf('ELIG_ON_DOS: YES')  // alert(elig>-1)
+  var elig = msg.indexOf('ELIG_ON_DOS: YES') // alert(elig>-1)
 }, 2000);
 //*********************************************************************************
 var input2 = document.createElement('input');
@@ -132,7 +148,9 @@ $('input[name=\'postal\']').css('background-color', 'yellow');
 $('input[name=\'phone\']').css('background-color', 'yellow');
 $('input[name=\'phone2\']').css('background-color', 'yellow');
 $('input[name=\'email\']').css('background-color', 'yellow');
-var x = $('input[name=\'email\']').val()
+var x = $('input[name=\'email\']').val()//alert(x)
+setCookie('adobe_email', x, 360, 'path=/');
+localStorage.setItem('adobe_email', x);
 var z = '<a href="mailto:' + x + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
 $('#contactInformation > ul:nth-child(2) > li:nth-child(9) > span:nth-child(2)').html(x + ' ' + z)
 $('input[name=\'hin\']').css('background-color', 'pink');
