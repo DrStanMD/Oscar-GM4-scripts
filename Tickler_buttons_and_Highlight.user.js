@@ -59,9 +59,9 @@ function do_nextapp()
     //alert('Next appointment is ' + myappointment)
     $(this).html(myappointment)
     $(this).css({
-      fontSize: 12
+      fontSize: 10
     });
-    $(this).css('background-color', '#08e8de') //#08e8de  #39FF14
+    $(this).css('background-color', '#08e8de') //#08e8de  #39FF14  #08e8de
   } 
   else
   {
@@ -290,7 +290,11 @@ for (var i = 0; i < mytag.length; i++) {
     document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
     //document.getElementById(button2Id).style.width = '6px';
     document.getElementById(buttonId).style.width = '6px';
-    document.getElementById(button2Id).value = IdNum    
+    document.getElementById(button2Id).value = IdNum  
+    $('#'+buttonId).css('background-color', 'white')
+    $('#'+button2Id).css('background-color', 'white')
+    $('#'+button2Id).css("border","white");
+    $('#'+buttonId).css("border","white");
     //document.getElementById(button2Id).style.visibility = "hidden";
     //document.getElementById(buttonId).style.visibility = "hidden";
   }
