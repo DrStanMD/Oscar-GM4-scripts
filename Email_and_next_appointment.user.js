@@ -1,8 +1,9 @@
 // ==UserScript==
-// @name     Email and Next appointment
-// @version  15.1
+// @name     Email and Next appointment for tickler
+// @version  1
 // @include *tickler/ticklerAdd.jsp?demographic_no*
 // @include *tickler/ForwardDemographicTickler.do*
+// @include */tickler/ticklerAdd.jsp*
 // @grant    none
 // ==/UserScript==
 //========Get Path============
@@ -54,25 +55,7 @@ function getAppointment() {
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
 }
-function do_nextapp()
-{
-  demo_no = params.demographic_no
-  getAppointment()
-  alert(myappointment)  /*
-  if (/\S/.test(myappointment)) {
-    //alert('Next appointment is ' + myappointment)
-    $(this).html(myappointment)
-    $(this).css({
-      fontSize: 12
-    });
-    $(this).css('background-color', '#08e8de') //#08e8de  #39FF14
-  } 
-  else
-  {
-    $(this).text('None')
-  }
-  */
-}
+
 function validateEmail(emailField) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   var x = re.test(String(emailField)) //alert(x)
@@ -132,12 +115,16 @@ if (demo_no) {
     xmlhttp.send();
   }
   $(document).ready(function () {
+    var mytextarea = document.getElementsByName('textarea');
     //getMeasures('Email')
     //alert(myemail)
-    getAppointment()    //alert(myappointment)
-    $(searchbutton[0]).after('  ' + appbutton)
-    $('#appbuttonId').text('Next appointment is ' + myappointment)
-    document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
-    $('#appbuttonId').css('background-color', '#08e8de')
+    getAppointment() //alert(myappointment)
+    if (/\S/.test(myappointment)) {
+      $(searchbutton[0]).after('  ' + appbutton)
+      $('#appbuttonId').text('Next appointment is ' + myappointment)
+      document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
+      $('#appbuttonId').css('background-color', '#08e8de')
+      mytextarea[0].value = 'Next appointment is ' + myappointment.trim() + '. '
+    }
   })
-} //*****************************
+}
