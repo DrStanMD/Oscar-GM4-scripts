@@ -369,13 +369,11 @@ input12.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:0p
 document.body.appendChild(input12);
 function showAlert12() {
   //$(CommentArea).css("background-color","yellow");
-
+  unsafeWindow.addDocComment(params.segmentID,'1',true);
   window.open(vPath + 'tickler/ForwardDemographicTickler.do?docType=DOC&docId=' + params.segmentID + '&demographic_no=' + demono, '_blank', 'width=800, height=500') //PREVENTION SCREEN********
-  // $(AckButton).click()
-   $(CommentArea).val('Tickler Sent')
-
- // $(TicklerButton).click()
-
+  $(AckButton).click()
+    //$(CommentArea).val('Tickler Sent')
+  // $(TicklerButton).click()
   //$(SaveButton).click()
   //$(CloseButton).click();
 }
