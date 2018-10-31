@@ -40,7 +40,8 @@ for (var i = 0; i < mytag.length; i++) {
 */
 function expand_nextapp()
 {
-  for (var i = 0; i < 200; i++) //display first 20 next dates
+  
+  for (var i = 0; i < mytag.length; i++) //display first 20 next dates
   {
     var button2Id = 'app_' + i
     //var button2Id = 'app2_' + i
@@ -173,14 +174,21 @@ input0.id = 'input0';
 input0.value = 'Expand Next appointment';
 input0.onclick = expand_nextapp;
 input0.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:800px;');
+var mycheckbox0 ="<label id='myfont' style='position:fixed;top:30px;right:730px;'><input name='checkbox0' id='checkbox0' type='checkbox' style='position:fixed;top:28px;right:780px;'>Expand all.</label>"
+
 document.body.appendChild(input0);
 $('#input0').css('background-color', 'pink')
+$('#input0').after(mycheckbox0)
+$('#myfont').css('background-color', 'lightgray')
+
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Complete';
 input1.onclick = showAlert1;
 input1.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:520px;');
 document.body.appendChild(input1);
+
+
 function showAlert1() {
   document.forms['ticklerform'].submit_form.value = 'Complete';
   document.forms['ticklerform'].submit();
