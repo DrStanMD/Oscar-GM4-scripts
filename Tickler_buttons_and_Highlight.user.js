@@ -40,8 +40,11 @@ for (var i = 0; i < mytag.length; i++) {
 */
 function expand_nextapp()
 {
-  
-  for (var i = 0; i < mytag.length; i++) //display first 20 next dates
+  var y = 200
+  if(document.getElementById("checkbox0").checked){
+    y = mytag.length
+  }
+  for (var i = 0; i < y; i++) //display first 20 next dates
   {
     var button2Id = 'app_' + i
     //var button2Id = 'app2_' + i
@@ -171,15 +174,15 @@ function showAlert() {
 var input0 = document.createElement('input');
 input0.type = 'button';
 input0.id = 'input0';
-input0.value = 'Expand Next appointment';
+input0.value = 'Expand Next appointment (all)';
 input0.onclick = expand_nextapp;
 input0.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:800px;');
-var mycheckbox0 ="<label id='myfont' style='position:fixed;top:30px;right:730px;'><input name='checkbox0' id='checkbox0' type='checkbox' style='position:fixed;top:28px;right:780px;'>Expand all.</label>"
+var mycheckbox0 ="<input name='checkbox0' id='checkbox0' type='checkbox' style='position:fixed;top:28px;right:780px;'>"
 
 document.body.appendChild(input0);
 $('#input0').css('background-color', 'pink')
 $('#input0').after(mycheckbox0)
-$('#myfont').css('background-color', 'lightgray')
+
 
 var input1 = document.createElement('input');
 input1.type = 'button';
