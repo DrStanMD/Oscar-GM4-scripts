@@ -293,8 +293,8 @@ for (var i = 0; i < mytag.length; i++) {
     document.getElementById(button2Id).value = IdNum  
     $('#'+buttonId).css('background-color', 'white')
     $('#'+button2Id).css('background-color', 'white')
-    $('#'+button2Id).css("border","white");
-    $('#'+buttonId).css("border","white");
+    //$('#'+button2Id).css("border","white");
+    //$('#'+buttonId).css("border","white");
     //document.getElementById(button2Id).style.visibility = "hidden";
     //document.getElementById(buttonId).style.visibility = "hidden";
   }
