@@ -40,11 +40,8 @@ for (var i = 0; i < mytag.length; i++) {
 */
 function expand_nextapp()
 {
-  var y = 200
-  if(document.getElementById("checkbox0").checked){
-    y = mytag.length
-  }
-  for (var i = 0; i < y; i++) //display first 20 next dates
+  
+  for (var i = 0; i < mytag.length; i++) //display first 20 next dates
   {
     var button2Id = 'app_' + i
     //var button2Id = 'app2_' + i
@@ -174,7 +171,7 @@ function showAlert() {
 var input0 = document.createElement('input');
 input0.type = 'button';
 input0.id = 'input0';
-input0.value = 'Expand Next appointment (all)';
+input0.value = 'Expand Next app.(all)';
 input0.onclick = expand_nextapp;
 input0.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:800px;');
 var mycheckbox0 ="<input name='checkbox0' id='checkbox0' type='checkbox' style='position:fixed;top:28px;right:780px;'>"
