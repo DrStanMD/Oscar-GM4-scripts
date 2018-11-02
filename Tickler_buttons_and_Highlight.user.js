@@ -171,7 +171,7 @@ function showAlert() {
 var input0 = document.createElement('input');
 input0.type = 'button';
 input0.id = 'input0';
-input0.value = 'Expand Next app.(all)';
+input0.value = 'Expand next app...(all)';
 input0.onclick = expand_nextapp;
 input0.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:800px;');
 var mycheckbox0 ="<input name='checkbox0' id='checkbox0' type='checkbox' style='position:fixed;top:28px;right:780px;'>"
