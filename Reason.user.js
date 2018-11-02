@@ -2,30 +2,29 @@
 // @name        Reason Replace
 // @namespace   Stanscript
 // @include     *providercontrol.jsp?year*
-// @description Replaces Reason-for-visit to the line below. Adds Wait Time button
+// @description Replaces Reason-for-visit to the line below. Adds Wait Time button, day of week in weekview
 // @version     15.1
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
 var weekday = new Array(7);
-weekday[0] = 'Sun.';
-weekday[1] = 'Mon.';
-weekday[2] = 'Tue.';
-weekday[3] = 'Wed.';
-weekday[4] = 'Thu.';
-weekday[5] = 'Fri.';
-weekday[6] = 'Sat.';
+weekday[0] = 'Sunday';
+weekday[1] = 'Monday';
+weekday[2] = 'Tuesday';
+weekday[3] = 'Wednesday';
+weekday[4] = 'Thursday';
+weekday[5] = 'Friday';
+weekday[6] = 'Saturday';
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   //alert(mytag[i].outerHTML)
   if (mytag[i].outerHTML.indexOf('providercontrol.jsp?year=') > - 1) {
-    var onclickvalue = mytag[i].innerHTML.trim() 
-    //alert(onclickvalue)
+    var onclickvalue = mytag[i].innerHTML.trim()    //alert(onclickvalue)
     var d = new Date(onclickvalue);
     if (d.getFullYear()) {
       //$(mytag[i]).css('background-color', 'yellow') /
       var n = weekday[d.getDay() + 1];
-      if(n){
+      if (n) {
         $(mytag[i]).append('_' + n)
       }
     }
