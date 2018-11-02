@@ -7,6 +7,30 @@
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
+var weekday = new Array(7);
+weekday[0] = 'Sun.';
+weekday[1] = 'Mon.';
+weekday[2] = 'Tue.';
+weekday[3] = 'Wed.';
+weekday[4] = 'Thu.';
+weekday[5] = 'Fri.';
+weekday[6] = 'Sat.';
+var mytag = document.getElementsByTagName('a');
+for (var i = 0; i < mytag.length; i++) {
+  //alert(mytag[i].outerHTML)
+  if (mytag[i].outerHTML.indexOf('providercontrol.jsp?year=') > - 1) {
+    var onclickvalue = mytag[i].innerHTML.trim() 
+    //alert(onclickvalue)
+    var d = new Date(onclickvalue);
+    if (d.getFullYear()) {
+      //$(mytag[i]).css('background-color', 'yellow') /
+      var n = weekday[d.getDay() + 1];
+      if(n){
+        $(mytag[i]).append('_' + n)
+      }
+    }
+  }
+}
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/') //alert(vPath)
@@ -99,12 +123,10 @@ $(document.getElementById('expandReason')).after('&nbsp; <button type=\'button\'
 document.getElementById('button0').addEventListener('click', function () {
   var x = document.getElementsByClassName('appt');
   for (i = 0; i < x.length; i++) {
-    yy = (x[i].innerHTML)
-    //alert(yy)
+    yy = (x[i].innerHTML) //alert(yy)
     zz = (yy.indexOf('Reason'))
     oldstring = (yy.substring(0, zz - 10))
-    newstring = yy.substring(zz+31)
-    //alert(newstring)
+    newstring = yy.substring(zz + 31) //alert(newstring)
     $(x[i]).html(oldstring)
     $(x[i]).append('<br>' + newstring)
   }
