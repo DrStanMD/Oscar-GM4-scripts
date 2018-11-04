@@ -1,7 +1,8 @@
 // ==UserScript==
 // @name        Github downloader
 // @namespace   Stanscript
-// @include     https://github.com/DrStanMD/Oscar-GM4-scripts
+// @include     *DrStanMD/Oscar-GM4-scripts*
+// @include     *DrStanMD/GM4-Snippets*
 // @include     *github.com/login*
 // @version     1.15
 // @description Download multiple files from Github
