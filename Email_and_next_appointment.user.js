@@ -121,7 +121,7 @@ if (demo_no) {
     getAppointment() //alert(myappointment)
     if (/\S/.test(myappointment)) {
       $(searchbutton[0]).after('  ' + appbutton)
-      $('#appbuttonId').text('Next appointment is ' + myappointment)
+      $('#appbuttonId').text('Next office visit is ' + myappointment)
       document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
       $('#appbuttonId').css('background-color', '#08e8de')
       mytextarea[0].value = 'Next appointment is ' + myappointment.trim() + '. '
