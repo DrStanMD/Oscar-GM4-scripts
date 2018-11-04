@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name        Emailtest
+// @namespace   Stanscripts
+// @description Test Emailer
+// @include     */casemgmt/forward.jsp?action=view&demographic*
+// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @version 15.1
+// @grant       none
+// ==/UserScript==
+
+
 //The following are Global Variables that gets initiated with when the window is loaded. 
 var patientCell;
 var patientEmail; 
