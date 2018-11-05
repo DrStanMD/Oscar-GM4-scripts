@@ -124,7 +124,7 @@ if (demo_no) {
       $('#appbuttonId').text('Next office visit is ' + myappointment)
       document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
       $('#appbuttonId').css('background-color', '#08e8de')
-      mytextarea[0].value = 'Next appointment is ' + myappointment.trim() + '. '
+      mytextarea[0].value = 'Next office visit is ' + myappointment.trim() + '. '
     }
   })
 }
