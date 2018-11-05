@@ -66,7 +66,8 @@ window.addEventListener("load",function(){
 	textArea.onclick = function(){this.value="";};
 
 	// This is where the buttons are going on the webpage
-	var destination = document.getElementById("rightNavBar");
+	//var destination = document.getElementById("rightNavBar");
+	var destination = document.getElementById("leftNavBar");
 	destination.appendChild(textArea);
 	destination.appendChild(emailButton);
 	destination.appendChild(textButton);
