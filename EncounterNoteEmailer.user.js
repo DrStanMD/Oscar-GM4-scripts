@@ -1,13 +1,16 @@
-﻿// ==UserScript==
-// @name        EncounterNoteEmailer
+// ==UserScript==
+// @name        EncounterNoteEmailerV15
 // @namespace   http://dev.drbillylin.com/oscarwiki
 // @description	Puts ENEngine-enabled Email and Text Buttons on the Encounter Note page
 // @include     */casemgmt/forward.jsp?action=view*
-// @version     1.21
+// @version     15.1
 // @grant       none
-// @updateURL	https://github.com/linbilly/EmailTextEngine/raw/master/GreaseMonkey/EncounterNoteEmailer.meta.js
-// @downloadURL	https://github.com/linbilly/EmailTextEngine/raw/master/GreaseMonkey/EncounterNoteEmailer.user.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_V15.js
 // ==/UserScript==
+
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_V15.js
 
 // READ ME
 // 1. emailtextengine.js IS REQUIRED IN THE OSCAR IMAGE DIRECTORY FOR THE EMAIL AND TEXT BUTTONS TO WORK
@@ -15,12 +18,14 @@
 // 3. Use "EmailButton", "TextButton", and "ConsentButton" as the ID's for the 3 buttons
 
 // THIS PUTS THE emailtextengine.js IMAGE IN THE <HEAD> SECTION, WHICH ALLOWS FOR THE sendEmail(subject, body), sendText(body), and openForm() FUNCTIONS
+
 var head = document.getElementsByTagName("head")[0];
 var script = document.createElement('script');
 script.type = 'text/javascript';
 var pathArray = window.location.pathname.split( '/' );
-var newURL = window.location.protocol + "//" + window.location.host +"/"+pathArray[1]+"/eform/displayImage.do?imagefile=emailtextengine.js";
+var newURL = window.location.protocol + "//" + window.location.host +"/"+pathArray[1]+"/eform/displayImage.do?imagefile=emailtextengine_V15.js";
 script.src = newURL; 
+alert(newURL)
 head.appendChild(script);
 
 window.addEventListener("load",function(){
