@@ -1,4 +1,27 @@
 //The following are Global Variables that gets initiated with when the window is loaded. 
+
+
+function setCookie(cname, cvalue, exdays, cpath)
+{
+  var d = new Date();
+  //d.setTime(d.getTime()+(exdays*24*60*60*1000));
+  d.setTime(d.getTime() + (exdays * 5000));
+  var expires = 'expires=' + d.toGMTString();
+  document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
+  //setCookie('email', qqemail, 360, 'path=/');
+}
+function getCookie(cname)
+{
+  var name = cname + '=';
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++)
+  {
+    var c = ca[i].trim();
+    if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+  }
+  return '';
+}
+
 var patientCell;
 var patientEmail; 
 var ecnt;
@@ -241,6 +264,7 @@ function getPatientEmailAndText(){
         //alert(mycode3)
         patientCell = makeTwilioFriendly(mycode3);
         //alert(patientCell)
+        setCookie('mypatientCell', patientCell, 360, 'path=/');
       }
     }
   }
