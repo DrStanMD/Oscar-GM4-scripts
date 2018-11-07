@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name           Set Tickler Default SendTo
 // @namespace      StansScripts
 // @description Sets the default for Tickler SendTo, hyperlink to document, autotickler
@@ -22,53 +22,12 @@ if (location.search) {
   }
 }
 //alert(params.docType)
-/*
-if (params.myparam1) {
-  screen1 = params.myparam1
-  screen1 = screen1.replace(/%20/g, ' ');
-  screen2 = params.myparam2
-  var oneDay = 24 * 60 * 60 * 1000;
-  var d = new Date()
-  d.setTime(d.getTime() + (screen2 * oneDay))
-  d = new Date(d)
-  var month = new Array();
-  month[0] = 'Jan';
-  month[1] = 'Feb';
-  month[2] = 'Mar';
-  month[3] = 'Apr';
-  month[4] = 'May';
-  month[5] = 'Jun';
-  month[6] = 'Jul';
-  month[7] = 'Aug';
-  month[8] = 'Sep';
-  month[9] = 'Oct';
-  month[10] = 'Nov';
-  month[11] = 'Dec';
-  var mm = month[d.getMonth()];
-  var yy = d.getFullYear();
-  FUDate = mm + ' ' + yy
-  newvalue = screen1 + ' repeat due ' + FUDate
-  var newDate = d
-  var newYear = newDate.getFullYear()
-  var newMonth = newDate.getMonth() + 1;
-  var newDay = newDate.getDate();
-  var newD = newYear + '-' + newMonth + '-' + newDay;
-  document.serviceform.xml_appointment_date.value = newD;
-  //document.getElementsByName("textarea").value = newvalue;
-  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue)
-  //document.getElementById("FormName").submit();
-}
-*/
-//*******************************************************************************
+
 
 var theDefault = 'Hurwitz, Office';
 var theOptions = document.getElementsByName('task_assigned_to') [0].options;
 for (var theOption of theOptions)
 {
-  for (var i = 0; i < 3; i++) {
-  }
-  //Delay Loop
-
   if (typeof (theOption) == 'object') {
     if (theOption.text == theDefault) {
       theOption.selected = true;
@@ -142,10 +101,6 @@ function showAlert1()
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
   for (var theOption of theOptions)
   {
-    for (var i = 0; i < 3; i++) {
-    }
-    //Delay Loop
-
     if (typeof (theOption) == 'object') {
       if (theOption.text == theDefault) {
         theOption.selected = true;
@@ -166,9 +121,6 @@ function showAlert2()
   var theOptions = document.getElementsByName('priority') [0].options;
   for (var theOption of theOptions)
   {
-    for (var i = 0; i < 3; i++) {
-    }
-    //Delay Loop
 
     if (typeof (theOption) == 'object') {
       if (theOption.text == theDefault) {
@@ -178,14 +130,14 @@ function showAlert2()
     }
   }
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'yellow');
-  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('Stan to ')
+  x = document.getElementsByName("textarea")
+  //x = $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)')
+  $(x[0]).val($(x[0]).val() +' Stan to ')
+  
   var theDefault = 'Hurwitz, Stanley D';
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
   for (var theOption of theOptions)
   {
-    for (var i = 0; i < 3; i++) {
-    }
-    //Delay Loop
 
     if (typeof (theOption) == 'object') {
       if (theOption.text == theDefault) {
