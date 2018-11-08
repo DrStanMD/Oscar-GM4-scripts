@@ -279,6 +279,8 @@ for (var i = 0; i < mytag.length; i++) {
   //for (var i = 0; i < 200; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
   if (onclickvalue !== null && onclickvalue.indexOf('demographic_no') > - 1) {
+
+    var mycolor =$(mytag[i]).parents().css('backgroundColor')
     var pstart = onclickvalue.search('demographic_no')
     var pend = onclickvalue.search('&displaymode=')
     IdNum = onclickvalue.substring(pstart + 15, pend).toString() //demo_no = IdNum
@@ -297,14 +299,14 @@ for (var i = 0; i < mytag.length; i++) {
     document.getElementById(button2Id).onclick = do_nextapp;
     document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
     //document.getElementById(button2Id).style.width = '6px';
-    document.getElementById(buttonId).style.width = '6px';
+    //document.getElementById(buttonId).style.width = '6px';
     document.getElementById(button2Id).value = IdNum  
-    $('#'+buttonId).css('background-color', 'white')
-    $('#'+button2Id).css('background-color', 'white')
-    //$('#'+button2Id).css("border","white");
-    //$('#'+buttonId).css("border","white");
+    $('#'+buttonId).css('background-color', "white")
+    $('#'+button2Id).css('background-color', "lightgray")
+    $('#'+button2Id).css("border",mycolor);
+    $('#'+buttonId).css("border",mycolor);
     //document.getElementById(button2Id).style.visibility = "hidden";
-    //document.getElementById(buttonId).style.visibility = "hidden";
+    document.getElementById(buttonId).style.visibility = "hidden";
   }
 } 
 /*
