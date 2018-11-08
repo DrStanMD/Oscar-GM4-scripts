@@ -28,7 +28,7 @@ var ecnt;
 var initiated = false;
 var demoNo;
 var fid;
-
+setCookie('mypatientCell', "", 360, 'path=/');
 //On load, initiate the EmailTextEngine variables
 window.addEventListener("load",function(){
   startETEngine();
@@ -238,6 +238,8 @@ function getPatientEmailAndText(){
       myRe = /Cell Phone:<\/span>\n\s*<span class="info">(.*)<\/span>/i;
       if((myArray= myRe.exec(str))!==null){
         patientCell = makeTwilioFriendly(myArray[1]);
+        alert("Oscar12 " + patientCell)
+        setCookie('mypatientCell', patientCell, 360, 'path=/');
       }
     }
   };
@@ -263,7 +265,7 @@ function getPatientEmailAndText(){
         var mycode3 = mycode.substring(mycode + 9, mycode2) 
         //alert(mycode3)
         patientCell = makeTwilioFriendly(mycode3);
-        //alert(patientCell)
+        alert("Oscar15 "+patientCell)
         setCookie('mypatientCell', patientCell, 360, 'path=/');
       }
     }
