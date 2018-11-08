@@ -28,10 +28,15 @@ var ecnt;
 var initiated = false;
 var demoNo;
 var fid;
-setCookie('mypatientCell', "", 360, 'path=/');
+//setCookie('mypatientCell', "", 360, 'path=/');
+//getPatientEmailAndText()
+
+
 //On load, initiate the EmailTextEngine variables
 window.addEventListener("load",function(){
   startETEngine();
+  //alert(patientCell)
+  changeButtons()
 });
 
 function openConsentForm(){
@@ -238,7 +243,6 @@ function getPatientEmailAndText(){
       myRe = /Cell Phone:<\/span>\n\s*<span class="info">(.*)<\/span>/i;
       if((myArray= myRe.exec(str))!==null){
         patientCell = makeTwilioFriendly(myArray[1]);
-        alert("Oscar12 " + patientCell)
         setCookie('mypatientCell', patientCell, 360, 'path=/');
       }
     }
@@ -265,7 +269,7 @@ function getPatientEmailAndText(){
         var mycode3 = mycode.substring(mycode + 9, mycode2) 
         //alert(mycode3)
         patientCell = makeTwilioFriendly(mycode3);
-        alert("Oscar15 "+patientCell)
+        //alert(patientCell)
         setCookie('mypatientCell', patientCell, 360, 'path=/');
       }
     }
@@ -375,6 +379,11 @@ function getECNTMeasurement(){
 }
 
 function changeButtons(){
+    if (getCookie("mypatientCell")){
+    patientCell = getCookie("mypatientCell")
+    }
+    
+
   //Finding all EmailTextEngine buttons on the page
   var emailButtons = document.getElementsByName("EmailButton");
   var textButtons = document.getElementsByName("TextButton");
@@ -415,7 +424,8 @@ function changeButtons(){
         textButton.disabled = true;
       }
       else{
-        textButton.value ="Text: "+patientCell;
+        //alert(patientCell)
+        textButton.value ="Text: "+patientCell;        
       }
     }
   }
