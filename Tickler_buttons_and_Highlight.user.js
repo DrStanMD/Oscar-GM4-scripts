@@ -289,7 +289,7 @@ for (var i = 0; i < mytag.length; i++) {
     var buttonId = 'email_' + i //alert(buttonId)
     var button2Id = 'app_' + i //alert(button2Id)
     var emailbutton = '<button type="button" id="' + buttonId + '">E</button>' //value="'+myemail+'"
-    var appbutton = '<button type="button" id="' + button2Id + '">N</button>'
+    var appbutton = '<button type="button" id="' + button2Id + '">Next</button>'
     var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>' //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     //$(mytag[i]).after(myLink);
     $(mytag[i]).after(myLink + '<br>' + emailbutton + appbutton);
@@ -302,7 +302,7 @@ for (var i = 0; i < mytag.length; i++) {
     //document.getElementById(buttonId).style.width = '6px';
     document.getElementById(button2Id).value = IdNum  
     $('#'+buttonId).css('background-color', "white")
-    $('#'+button2Id).css('background-color', "lightgray")
+    $('#'+button2Id).css('background-color', mycolor)
     $('#'+button2Id).css("border",mycolor);
     $('#'+buttonId).css("border",mycolor);
     //document.getElementById(button2Id).style.visibility = "hidden";
