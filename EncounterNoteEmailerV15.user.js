@@ -5,14 +5,27 @@
 // @include     */casemgmt/forward.jsp?action=view*
 // @version     15.1
 // @grant       none
-// @require     emailtextengine_V15.js
+// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_V15.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials_V15.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=mandrill_nostringify.js
+
 // ==/UserScript==
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_V15.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials_V15.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=mandrill_nostringify.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=mandrill_nostringify_V15.js
+
 // @require     emailtextengine_V15.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials.js
 // READ ME
 // 1. emailtextengine.js IS REQUIRED IN THE OSCAR IMAGE DIRECTORY FOR THE EMAIL AND TEXT BUTTONS TO WORK
 // 2. Do NOT change the first chunk of code that puts emailtextengine.js in the <head> section
 // 3. Use "EmailButton", "TextButton", and "ConsentButton" as the ID's for the 3 buttons
 // THIS PUTS THE emailtextengine.js IMAGE IN THE <HEAD> SECTION, WHICH ALLOWS FOR THE sendEmail(subject, body), sendText(body), and openForm() FUNCTIONS
+
 /*
   var head = document.getElementsByTagName('head') [0];
   var script = document.createElement('script');
@@ -58,6 +71,7 @@ function getCookie(cname)
   return '';
 }
 
+
 if (getCookie("mypatientCell")){
   patientCell = getCookie("mypatientCell")
   //alert(patientCell)
@@ -65,6 +79,7 @@ if (getCookie("mypatientCell")){
 
 
 $(document).ready(function(){
+ // setCookie('mypatientCell', "wrong", 360, 'path=/');
  // window.addEventListener('load', function () {
     // You should keep most of the code for the buttons the way they are
     var emailButton = document.createElement('input');
@@ -112,4 +127,5 @@ $(document).ready(function(){
     destination.appendChild(textButton);
     destination.appendChild(consentButton);
 //  }, false);
+
 });
