@@ -6,20 +6,20 @@
 // @version     15.1
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_V15.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials_V15.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=mandrill_nostringify.js
+// @require     xxxxxxxxxxx=emailtextengine_V15.js
+// @require     xxxxxxxxxxx=emailtextengine_credentials_V15.js
+// @require     xxxxxxxxxxxx=mandrill_nostringify.js
 
 // ==/UserScript==
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_V15.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials_V15.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=mandrill_nostringify.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=mandrill_nostringify_V15.js
+// @require    xxxxxxxxxxxxxx=emailtextengine_V15.js
+// @require     xxxxxxxxxxx=emailtextengine.js
+// @require     xxxxxxxxx=emailtextengine_credentials.js
+// @require     xxxxxxxxxxxxxxx=emailtextengine_credentials_V15.js
+// @require     xxxxxxxxxxxxx=mandrill_nostringify.js
+// @require     xxxxxxxxxxxxx=mandrill_nostringify_V15.js
 
 // @require     emailtextengine_V15.js
-// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=emailtextengine_credentials.js
+// @require     xxxxxxxxxxxxxxxxx?imagefile=emailtextengine_credentials.js
 // READ ME
 // 1. emailtextengine.js IS REQUIRED IN THE OSCAR IMAGE DIRECTORY FOR THE EMAIL AND TEXT BUTTONS TO WORK
 // 2. Do NOT change the first chunk of code that puts emailtextengine.js in the <head> section
