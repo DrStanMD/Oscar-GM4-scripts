@@ -8,7 +8,7 @@
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @require     emailtextengine_V15.js
 // @require     emailtextengine_credentials_V15.js
-// @require     mandrill_nostringify.js
+// @require     mandrill_nostringify_V15.js
 
 // ==/UserScript==
 // @require    xxxxxxxxxxxxxx=emailtextengine_V15.js
