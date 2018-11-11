@@ -6,9 +6,9 @@
 // @version     15.1
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @require     xxxxxxxxxxx=emailtextengine_V15.js
-// @require     xxxxxxxxxxx=emailtextengine_credentials_V15.js
-// @require     xxxxxxxxxxxx=mandrill_nostringify.js
+// @require     emailtextengine_V15.js
+// @require     emailtextengine_credentials_V15.js
+// @require     mandrill_nostringify.js
 
 // ==/UserScript==
 // @require    xxxxxxxxxxxxxx=emailtextengine_V15.js
