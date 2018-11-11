@@ -28,9 +28,6 @@ var ecnt;
 var initiated = false;
 var demoNo;
 var fid;
-//setCookie('mypatientCell', "", 360, 'path=/');
-//getPatientEmailAndText()
-
 
 //On load, initiate the EmailTextEngine variables
 window.addEventListener("load",function(){
@@ -167,6 +164,7 @@ function sendText(body){
   var twilio_id = get_twilio_id();
   var twilio_auth = get_twilio_auth();
   var url = "https://"+twilio_id+":"+twilio_auth+"@api.twilio.com/2010-04-01/Accounts/"+twilio_id+"/Messages";
+  //window.open(url)  //**********unblank to display Twilio Web Response*************************************
 
   //using a form in a hidden iframe to send a POST to Twilio Server. Please suggest improvement if you have a simpler way to send to twilio.
   var form = document.createElement("form");
