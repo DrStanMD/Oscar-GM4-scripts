@@ -76,7 +76,7 @@ if (getCookie("mypatientCell")){
   patientCell = getCookie("mypatientCell")
   //alert(patientCell)
 }
-
+setCookie('mypatientCell', "", 360, 'path=/');
 
 $(document).ready(function(){
  // setCookie('mypatientCell', "wrong", 360, 'path=/');
