@@ -281,8 +281,11 @@ function showAlert19()
   var year = dt.getFullYear();
   vCal = vPath + 'provider/providercontrol.jsp?year=' + year + '&month=' + month + '&day=' + day + '&view=0&displaymode=day&dboperation=searchappointmentday&viewall=null'
   window.open(vCal, '_self');
+  unsafeWindow.findProvider()
+  /*
   $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(3)').val('Stan Group')
-  $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(4)').click()
+  $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(4)').click()\
+  */
 }
 var input13 = document.createElement('input');
 input13.type = 'button';
@@ -293,9 +296,10 @@ input13.setAttribute('style', 'font-size:18px;position:fixed;bottom:90px;right:0
 document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 function showAlert13() {
-  window.location.href = vPath + 'provider/providercontrol.jsp?year=2018&month=4&day=09&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=6'
+  unsafeWindow.findProvider()
+  window.location.href = vPath + 'provider/providercontrol.jsp?year=2018&month=12&day=03&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=6'
   var theDefault = 'Ghobassy, Bahar';
   // var theDefault = 'Hurwitz, Stanley D';
-  $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(3)').val(theDefault)
-  $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(4)').click()
+  //$('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(3)').val(theDefault)
+ // $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(4)').click()
 }
