@@ -3,10 +3,12 @@
 // @namespace   Stanscripts
 // @description Adds navigation buttons to scheduler screen
 // @include     *provider/providercontrol.jsp?year*
+// @include     *provider/receptionistfindprovider.jsp*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.1
+// @version 15.2
 // ==/UserScript==
+
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
 //ADD YOUR OWN RBT NAME HERE
 var input15text = 'CDM\'s today'
@@ -14,7 +16,16 @@ var input18text = 'DVL'
 //ADD TEMPLATE ID HERE
 var input15var = 2
 var input18var = 56
-//**********************************************************************************************************
+
+function setCookie(cname, cvalue, exdays, cpath)
+{
+  var d = new Date();
+  //d.setTime(d.getTime()+(exdays*24*60*60*1000));
+  d.setTime(d.getTime() + (exdays * 5000));
+  var expires = 'expires=' + d.toGMTString();
+  document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
+}//setCookie("homephone",qqhomephone,360,"path=/");
+
 function getCookie(cname)
 {
   var name = cname + '=';
@@ -26,6 +37,28 @@ function getCookie(cname)
   }
   return '';
 }
+var x = window.location.toString()
+if (x.indexOf('receptionistfindprovider') > - 1)
+{
+  window.resizeTo(400, 600);
+  window.moveTo(500, 100);
+  //alert(getCookie("theDefault"))
+  var mytag = document.getElementsByTagName('a');
+  //setTimeout(function () {
+    for (var i = 0; i < mytag.length; i++) {
+      //alert(mytag[i].innerHTML)
+      //if (mytag[i].innerHTML == 'Stan Group') {
+      if (mytag[i].innerHTML == getCookie('theDefault')) {
+        $(mytag[i]).css('background-color', 'red')        //alert(mytag[i].innerHTML)
+         //mytag[i].click()
+      }
+    }    
+  //window.close()
+
+  //}, 1000);
+}
+
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
@@ -279,13 +312,11 @@ function showAlert19()
   var month = dt.getMonth() + 1;
   var day = dt.getDate();
   var year = dt.getFullYear();
+  var theDefault = 'Stan Group' // 'Stan Group';
+  setCookie("theDefault",theDefault,360,"path=/");
   vCal = vPath + 'provider/providercontrol.jsp?year=' + year + '&month=' + month + '&day=' + day + '&view=0&displaymode=day&dboperation=searchappointmentday&viewall=null'
   window.open(vCal, '_self');
   unsafeWindow.findProvider()
-  /*
-  $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(3)').val('Stan Group')
-  $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(4)').click()\
-  */
 }
 var input13 = document.createElement('input');
 input13.type = 'button';
@@ -298,8 +329,8 @@ document.getElementById('input13').style.backgroundColor = 'yellow';
 function showAlert13() {
   unsafeWindow.findProvider()
   window.location.href = vPath + 'provider/providercontrol.jsp?year=2018&month=12&day=03&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=6'
-  var theDefault = 'Ghobassy, Bahar';
-  // var theDefault = 'Hurwitz, Stanley D';
-  //$('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(3)').val(theDefault)
- // $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > input:nth-child(4)').click()
+  var theDefault = 6 // 'Ghobassy, Bahar';
+  setCookie("theDefault",theDefault,360,"path=/");
 }
+
+
