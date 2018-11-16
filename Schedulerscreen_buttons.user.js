@@ -329,8 +329,8 @@ document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 function showAlert13() {
   unsafeWindow.findProvider()
-  window.location.href = vPath + 'provider/providercontrol.jsp?year=2018&month=12&day=03&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=6'
   var theDefault = 6 // 'Ghobassy, Bahar';
+  window.location.href = vPath + 'provider/providercontrol.jsp?year=2018&month=12&day=03&view=0&displaymode=day&dboperation=searchappointmentday&provider_no='+theDefault
   setCookie("theDefault",theDefault,360,"path=/");
 }
 
