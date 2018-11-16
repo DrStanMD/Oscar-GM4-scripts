@@ -6,7 +6,7 @@
 // @include     *provider/receptionistfindprovider.jsp*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.2
+// @version 15.1
 // ==/UserScript==
 
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
@@ -44,20 +44,21 @@ if (x.indexOf('receptionistfindprovider') > - 1)
   window.moveTo(500, 100);
   //alert(getCookie("theDefault"))
   var mytag = document.getElementsByTagName('a');
-  //setTimeout(function () {
+  for (var i = 0; i < mytag.length; i++) {
+    if (mytag[i].innerHTML == getCookie('theDefault')) {
+      $(mytag[i]).css('background-color', 'red')
+    }
+  } //window.close()
+
+  setTimeout(function () {
     for (var i = 0; i < mytag.length; i++) {
-      //alert(mytag[i].innerHTML)
-      //if (mytag[i].innerHTML == 'Stan Group') {
       if (mytag[i].innerHTML == getCookie('theDefault')) {
-        $(mytag[i]).css('background-color', 'red')        //alert(mytag[i].innerHTML)
-         //mytag[i].click()
+        $(mytag[i]).css('background-color', 'green')        
+        mytag[i].click()
       }
-    }    
-  //window.close()
-
-  //}, 1000);
+    }
+  }, 1000);
 }
-
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
