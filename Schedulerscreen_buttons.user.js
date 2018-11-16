@@ -57,7 +57,7 @@ if (x.indexOf('receptionistfindprovider') > - 1)
         mytag[i].click()
       }
     }
-  }, 1000);
+  }, 500);
 }
 
 var elements = (window.location.pathname.split('/', 2))
