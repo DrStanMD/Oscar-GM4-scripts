@@ -3,7 +3,7 @@
 // @namespace   http://dev.drbillylin.com/oscarwiki
 // @description	Puts ENEngine-enabled Email and Text Buttons on the Encounter Note page
 // @include     */casemgmt/forward.jsp?action=view*
-// @version     15.1
+// @version     15.2
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @require     emailtextengine_V15.js
