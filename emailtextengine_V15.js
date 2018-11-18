@@ -323,18 +323,19 @@ function textConsented() {
 }//getting the ecnt measurement value by going to the Email Text Consent Form which used eForm magic to get the value into: <input id="consent_measurement" type="hidden" name=m$ecnt#value oscardb=m$ecnt#value>
 
 function getECNTMeasurement() {
-  getMeasures('ECNT') 
+ // getMeasures('ECNT') 
   //alert(ecnt)
-  changeButtons();
-  /*
+  //changeButtons();
+  
   var consentWindow = openFid(fid, "hiddenWin2");
   document.getElementById("hiddenWin2").onload = function(){
     ecnt = consentWindow.document.getElementById("consent_measurement").value;
-        //setCookie('myecnt', ecnt, 360, 'path=/');
+    //setCookie('myecnt', ecnt, 360, 'path=/');
     //alert(ecnt)
     // after getting the ECNT measurement, we can change the EmailTextEngine buttons
+    changeButtons();
   };
-  */
+  
 }
 function changeButtons() {
   if (getCookie('mypatientCell')) {
