@@ -40,8 +40,8 @@ function getCookie(cname)
 var x = window.location.toString()
 if (x.indexOf('receptionistfindprovider') > - 1)
 {
-  window.resizeTo(400, 600);
-  window.moveTo(500, 100);
+  //window.resizeTo(400, 600);
+  //window.moveTo(500, 100);
   //alert(getCookie("theDefault"))
   var mytag = document.getElementsByTagName('a');
   for (var i = 0; i < mytag.length; i++) {
