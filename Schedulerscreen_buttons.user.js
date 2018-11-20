@@ -57,7 +57,7 @@ if (x.indexOf('receptionistfindprovider') > - 1)
         mytag[i].click()
       }
     }
-  }, 500);
+  }, 1000);
 }
 
 var elements = (window.location.pathname.split('/', 2))
@@ -277,7 +277,7 @@ document.body.appendChild(input15);
 //document.getElementById("input15").style.backgroundColor = "white"; 
 function showAlert15()
 {
-  window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input15var)
+  window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input15var + '&flag=1')
 }
 var input100 = document.createElement('input');
 input100.type = 'button';
@@ -297,7 +297,7 @@ input18.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:2
 document.body.appendChild(input18);
 function showAlert18()
 {
-  window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input18var)
+  window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input18var + '&flag=1')
 }
 var input19 = document.createElement('input');
 input19.type = 'button';
