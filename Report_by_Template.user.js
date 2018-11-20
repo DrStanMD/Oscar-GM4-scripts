@@ -5,7 +5,7 @@
 // @description RBT alphabetical, Pass parameter to RBT
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
-// @version     15.1
+// @version     1.5
 // ==/UserScript==
 //alert("HI")
 //========Get Path============
@@ -22,6 +22,7 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
+//alert(params.flag)
 $('#enclosingCol0 > input:nth-child(1)').val(params.demographic_no)//******************************************************************************
 $('.MainTableLeftColumn').append('<td>Favorites List - for future use</td>');
 d = $('div.templatelist').html()
@@ -58,4 +59,6 @@ $('div.templatelist').html('<a href=' + vPath + 'oscarReport/reportByTemplate/ad
 $('.MainTableBottomRowRightColumn').html(newlist)//*********REPLACE EXISTING LIST:
 //$('div.templatelist') .html(newlist)
 var x = document.getElementsByName('submitButton');
+if(params.flag==1){
 $(x[0]).click()
+}
