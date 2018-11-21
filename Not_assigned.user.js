@@ -20,6 +20,8 @@ DT[0] = [
   'Holter',
   'Blood',
   'Pre-Natal labs',
+  'ABO Rh',
+  'Genetics',
 ]
 DT[1] = [
   'consult',
@@ -117,6 +119,7 @@ DT[10] = [
   'Disability',
   'Admission Px',
   'Home Care',
+  'Record Request',
 ]
 DT[11] = [
   'ER / Hospital',
