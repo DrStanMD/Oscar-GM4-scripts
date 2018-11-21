@@ -44,9 +44,11 @@ input.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;
 document.body.appendChild(input);
 function showAlert()
 {
-  $('#menu3 > a:nth-child(12)').click()
-} // INSERT YOU OWN MEASUREMENT UNIQUE SELECTOR  HERE
-
+  //$('#menu3 > a:nth-child(12)').click()
+  window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR%20Management")
+    window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupDisplayHistory.do?type=INR","", "width=1000,height=600,left=50,top=400")
+} 
+// INSERT YOU OWN MEASUREMENT UNIQUE SELECTOR  HERE
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Specialist';
