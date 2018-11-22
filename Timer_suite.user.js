@@ -122,6 +122,7 @@ else {
   var x = parseInt(getCookie('TIMER'))
 }
 mytimer = setInterval(myMethod, 1000);
+var toRGB = 'set'
 function myMethod()
 {
   x = x + 1
@@ -132,7 +133,6 @@ function myMethod()
   if (x > 30) {
     input2.style.background = '#FFC0CB'
     input2.onclick = ButtonFunction2;
-
   }
     if (x > 300) {
     input2.style.background = 'orange'
@@ -145,19 +145,21 @@ function myMethod()
       if (x > 900) {
     input2.style.background = 'red'
     input2.onclick = ButtonFunction2;
+    blink()  
   }
 }
 
 function blink() {
-  setInterval(function () {
-    if (input2.style.background == '#FFC0CB')
-    {
-      input2.style.background = 'white'
-    } 
-    else
-    {
-      input2.style.background = '#FFC0CB'
-    }
-  }, 1000);
+if (toRGB == 'set')
+{
+  input2.style.background = 'white'
+  toRGB = ''
+} 
+else
+{
+  input2.style.background = 'red'
+  toRGB = 'set'
+}
+
 }
 
