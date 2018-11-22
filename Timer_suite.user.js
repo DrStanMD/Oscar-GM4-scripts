@@ -4,7 +4,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @description Record echart time
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     0
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 /*
@@ -132,5 +132,32 @@ function myMethod()
   if (x > 30) {
     input2.style.background = '#FFC0CB'
     input2.onclick = ButtonFunction2;
+
+  }
+    if (x > 300) {
+    input2.style.background = 'orange'
+    input2.onclick = ButtonFunction2;
+  }
+    if (x > 600) {
+    input2.style.background = 'red'
+    input2.onclick = ButtonFunction2;
+  }
+      if (x > 900) {
+    input2.style.background = 'red'
+    input2.onclick = ButtonFunction2;
   }
 }
+
+function blink() {
+  setInterval(function () {
+    if (input2.style.background == '#FFC0CB')
+    {
+      input2.style.background = 'white'
+    } 
+    else
+    {
+      input2.style.background = '#FFC0CB'
+    }
+  }, 1000);
+}
+
