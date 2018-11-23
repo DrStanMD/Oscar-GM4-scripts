@@ -94,7 +94,7 @@ function ButtonFunction2() {
   // alert(t)
   setCookie('UNLOAD', t, 360, 'path=/')
   x = 0 //Reset timer
-  myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, "MsgWindow", "width=200,height=100")
+  myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, "MsgWindow", "width=200,height=100,left=0,top=0")
 } //===========Timer==========
 
 String.prototype.toHHMMSS = function () {
