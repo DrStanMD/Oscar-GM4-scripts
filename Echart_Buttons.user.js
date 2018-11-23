@@ -44,11 +44,9 @@ input.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;
 document.body.appendChild(input);
 function showAlert()
 {
-  //$('#menu3 > a:nth-child(12)').click()
-  window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR%20Management")
-    window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupDisplayHistory.do?type=INR","", "width=1000,height=600,left=50,top=400")
-} 
-// INSERT YOU OWN MEASUREMENT UNIQUE SELECTOR  HERE
+  $('#menu3 > a:nth-child(12)').click()
+} // INSERT YOU OWN MEASUREMENT UNIQUE SELECTOR  HERE
+
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Specialist';
@@ -137,10 +135,12 @@ function showAlert8()
 }
 var input9 = document.createElement('input');
 input9.type = 'button';
+input9.id = 'Expand'
 input9.value = 'Expand';
 input9.onclick = showAlert9;
-input9.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;bottom:90px;right:0px; ');
+input9.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;bottom:90px;right:0px;');
 document.body.appendChild(input9);
+$('#Expand').css('background-color', '#08e8de')
 function showAlert9()
 {
   $('#imgeforms5').click()
@@ -268,6 +268,7 @@ function showAlert18()
   var formPath = vPath + 'eform/efmformadd_data.jsp?fid=458&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
   //alert(formPath)
   window.open(formPath) 
+  window.open(vPath+'/eform/displayImage.do?imagefile=Benzo_dosing_reduction.png')
 }
 var input19 = document.createElement('input');
 input19.type = 'button';
@@ -291,6 +292,7 @@ function showAlert19()
   */
 }
 
+/*
 var input180 = document.createElement('input');
 input180.type = 'button';
 input180.value = 'DM flow sheet';
@@ -301,3 +303,4 @@ function showAlert180()
 {
   window.open(vPath + 'oscarEncounter/oscarMeasurements/TemplateFlowSheet.jsp?demographic_no='+demo_no+'&template=diab2')
 }   
+*/
