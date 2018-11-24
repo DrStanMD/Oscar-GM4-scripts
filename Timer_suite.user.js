@@ -94,8 +94,18 @@ function ButtonFunction2() {
   // alert(t)
   setCookie('UNLOAD', t, 360, 'path=/')
   x = 0 //Reset timer
-  myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, "MsgWindow", "width=10,height=10,left=0,top=0")
-} //===========Timer==========
+  
+  //code to open window right bottom
+    height=5;
+    width=5;
+    t=window.innerHeight-height
+    l=window.innerWidth-width
+  //******************
+ myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, '', 'height='+height+', width='+width+', left='+l+', top='+t );
+ //myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, "MsgWindow", "width=10,height=10,right=200,top=0")
+} 
+
+//===========Timer==========
 
 String.prototype.toHHMMSS = function () {
   var sec_num = parseInt(this, 10); // don't forget the second param
