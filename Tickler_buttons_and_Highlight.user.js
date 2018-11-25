@@ -8,13 +8,15 @@
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
+
+var string1 = 'recall'.toUpperCase() // orange when high priority
+var string2 = 'appointment'.toUpperCase() //lightgreen but orange when high priority
+var string3 = 'appt'.toUpperCase() //lightgreen but orange when high priority
+var string4 = 'payment'.toUpperCase() //pink
+//high priority is yellow
+
 var myemail = ''
 var demo_no = ''
-var string1 = 'recall'.toUpperCase() // orange
-var string2 = 'appointment'.toUpperCase() //lightgreen
-var string3 = 'appt'.toUpperCase() //lightgreen
-var string4 = 'payment'.toUpperCase() //pink
-
 function expand_nextapp()
 {
   for (var i = 0; i < mytag.length; i++) //display first 20 next dates
