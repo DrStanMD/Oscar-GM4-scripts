@@ -8,9 +8,12 @@
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
-
 var myemail = ''
 var demo_no = ''
+var string1 = 'recall'.toUpperCase() // orange
+var string2 = 'appointment'.toUpperCase() //lightgreen
+var string3 = 'appt'.toUpperCase() //lightgreen
+var string4 = 'payment'.toUpperCase() //pink
 //******email snippet****
 /*
 var mytag = document.getElementsByTagName('a');
@@ -40,11 +43,9 @@ for (var i = 0; i < mytag.length; i++) {
 */
 function expand_nextapp()
 {
-  
   for (var i = 0; i < mytag.length; i++) //display first 20 next dates
   {
-    var button2Id = 'app_' + i
-    //var button2Id = 'app2_' + i
+    var button2Id = 'app_' + i    //var button2Id = 'app2_' + i
     if (document.getElementById(button2Id))
     {
       document.getElementById(button2Id).click()
@@ -174,21 +175,16 @@ input0.id = 'input0';
 input0.value = 'Expand next app...(all)';
 input0.onclick = expand_nextapp;
 input0.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:800px;');
-var mycheckbox0 ="<input name='checkbox0' id='checkbox0' type='checkbox' style='position:fixed;top:28px;right:780px;'>"
-
+var mycheckbox0 = '<input name=\'checkbox0\' id=\'checkbox0\' type=\'checkbox\' style=\'position:fixed;top:28px;right:780px;\'>'
 document.body.appendChild(input0);
 $('#input0').css('background-color', 'pink')
 $('#input0').after(mycheckbox0)
-
-
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Complete';
 input1.onclick = showAlert1;
 input1.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:520px;');
 document.body.appendChild(input1);
-
-
 function showAlert1() {
   document.forms['ticklerform'].submit_form.value = 'Complete';
   document.forms['ticklerform'].submit();
@@ -236,12 +232,12 @@ function highP(myclass) {
   myP = document.getElementsByClassName(myclass)
   for (var i = 0; i < myP.length; i++) {
     if (myP[i]) {
-      if (myP[i].innerHTML.indexOf('appointment') > - 1 || myP[i].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i].innerHTML.indexOf('appt') > - 1) {
+      if (myP[i].innerHTML.toUpperCase().indexOf(string2) > - 1 || myP[i].innerHTML.toUpperCase().indexOf(string3) > - 1) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 9 + ii].style.backgroundColor = 'lightgreen';
         }
       }
-      if (myP[i].innerHTML.indexOf('payment') > - 1 || myP[i].innerHTML.indexOf('Payment') > - 1 || myP[i].innerHTML.indexOf('PAYMENT') > - 1) {
+      if (myP[i].innerHTML.toUpperCase().indexOf(string4) > - 1) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 9 + ii].style.backgroundColor = 'pink';
         }
@@ -254,12 +250,12 @@ function highP(myclass) {
         for (ii = 1; ii < 11; ii++) {
           myP[i - 6 + ii].style.backgroundColor = 'yellow';
           //************
-          //alert(myP[i+3].innerHTML)
-          if (myP[i + 3].innerHTML.indexOf('Recall') > - 1 || myP[i + 3].innerHTML.indexOf('recall') > - 1)
+          //alert(myP[i+3].innerHTML.toUpperCase())
+          if (myP[i + 3].innerHTML.toUpperCase().indexOf(string1) > - 1)
           {
             myP[i - 6 + ii].style.backgroundColor = 'orange';
           }
-          if (myP[i + 3].innerHTML.indexOf('appointment') > - 1 || myP[i + 3].innerHTML.indexOf('APPOINTMENT') > - 1 || myP[i + 3].innerHTML.indexOf('appt') > - 1)
+          if (myP[i + 3].innerHTML.toUpperCase().indexOf(string2) > - 1 || myP[i + 3].innerHTML.toUpperCase().indexOf(string3) > - 1)
           {
             //alert()
             myP[i - 6 + ii].style.backgroundColor = 'orange';
@@ -273,14 +269,12 @@ function highP(myclass) {
 for (var j = 0; j < ClassArray.length; j++) {
   highP(ClassArray[j])
 }
-
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   //for (var i = 0; i < 200; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
   if (onclickvalue !== null && onclickvalue.indexOf('demographic_no') > - 1) {
-
-    var mycolor =$(mytag[i]).parents().css('backgroundColor')
+    var mycolor = $(mytag[i]).parents().css('backgroundColor')
     var pstart = onclickvalue.search('demographic_no')
     var pend = onclickvalue.search('&displaymode=')
     IdNum = onclickvalue.substring(pstart + 15, pend).toString() //demo_no = IdNum
@@ -300,16 +294,15 @@ for (var i = 0; i < mytag.length; i++) {
     document.getElementById(button2Id).setAttribute('style', 'font-size:8px;');
     //document.getElementById(button2Id).style.width = '6px';
     //document.getElementById(buttonId).style.width = '6px';
-    document.getElementById(button2Id).value = IdNum  
-    $('#'+buttonId).css('background-color', "white")
-    $('#'+button2Id).css('background-color', mycolor)
-    $('#'+button2Id).css("border",mycolor);
-    $('#'+buttonId).css("border",mycolor);
+    document.getElementById(button2Id).value = IdNum
+    $('#' + buttonId).css('background-color', 'white')
+    $('#' + button2Id).css('background-color', mycolor)
+    $('#' + button2Id).css('border', mycolor);
+    $('#' + buttonId).css('border', mycolor);
     //document.getElementById(button2Id).style.visibility = "hidden";
-    document.getElementById(buttonId).style.visibility = "hidden";
+    document.getElementById(buttonId).style.visibility = 'hidden';
   }
-} 
-/*
+}/*
 for (var i = 0; i < 200; i++) //display first 20 next dates
 {
   var button2Id = 'app_' + i
