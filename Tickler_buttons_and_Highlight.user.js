@@ -4,7 +4,7 @@
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version    15.3
+// @version    15.2
 // @grant       GM_log
 // ==/UserScript==
 //this.$ = this.jQuery = jQuery.noConflict(true);
@@ -14,33 +14,7 @@ var string1 = 'recall'.toUpperCase() // orange
 var string2 = 'appointment'.toUpperCase() //lightgreen
 var string3 = 'appt'.toUpperCase() //lightgreen
 var string4 = 'payment'.toUpperCase() //pink
-//******email snippet****
-/*
-var mytag = document.getElementsByTagName('a');
-for (var i = 0; i < mytag.length; i++) {
-  if (mytag[i].innerHTML.indexOf('notepad') > - 1) {
-    var onclickvalue = mytag[i].getAttribute('onclick')
-    if (onclickvalue !== null && onclickvalue.indexOf('openNoteDialog') > - 1) {
-      var pstart = onclickvalue.search('openNoteDialog')
-      var pend = onclickvalue.search(',')
-      IdNum = onclickvalue.substring(pstart + 16, pend - 1).toString()
-      demo_no = IdNum
-      var appbutton2Id = 'app2_' + i
-      var appbutton2 = '<button type="button" id="' + appbutton2Id + '">N</button>'
-      var emailbutton2Id = 'email2_' + i
-      var emailbutton2 = '<button type="button" id="' + emailbutton2Id + '">E</button>'
-      $(mytag[i]).after(appbutton2 + emailbutton2)
-      document.getElementById(appbutton2Id).onclick = do_nextapp;
-      document.getElementById(appbutton2Id).setAttribute('style', 'font-size:8px;');
-      //document.getElementById(appbutton2Id).style.width = '6px';
-      document.getElementById(appbutton2Id).value = IdNum
-      document.getElementById(emailbutton2Id).onclick = do_email;
-      document.getElementById(emailbutton2Id).value = IdNum
-      document.getElementById(emailbutton2Id).setAttribute('style', 'font-size:8px;');
-    }
-  }
-}
-*/
+
 function expand_nextapp()
 {
   for (var i = 0; i < mytag.length; i++) //display first 20 next dates
@@ -282,7 +256,7 @@ for (var i = 0; i < mytag.length; i++) {
     //alert(myemail)
     var buttonId = 'email_' + i //alert(buttonId)
     var button2Id = 'app_' + i //alert(button2Id)
-    var emailbutton = '<button type="button" id="' + buttonId + '">E</button>' //value="'+myemail+'"
+    var emailbutton = '<button type="button" id="' + buttonId + '">Email</button>' //value="'+myemail+'"
     var appbutton = '<button type="button" id="' + button2Id + '">Next</button>'
     var myLink = '<b><span><a target=/_blank/ href=' + vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&amp;appointmentNo=&amp;demographicNo=' + IdNum + '&amp;curProviderNo=&amp;reason=Tel-Progress+Notes&amp;encType=&amp;curDate=' + today + '&amp;appointmentDate=&amp;startTime=&amp;status=\');return false;\'>...Echart </a>' //$(mytag[i]).after(myLink + '<br>' + emailbutton + ' ' + appbutton);
     //$(mytag[i]).after(myLink);
@@ -295,12 +269,12 @@ for (var i = 0; i < mytag.length; i++) {
     //document.getElementById(button2Id).style.width = '6px';
     //document.getElementById(buttonId).style.width = '6px';
     document.getElementById(button2Id).value = IdNum
-    $('#' + buttonId).css('background-color', 'white')
+    $('#' + buttonId).css('background-color', mycolor)
     $('#' + button2Id).css('background-color', mycolor)
     $('#' + button2Id).css('border', mycolor);
     $('#' + buttonId).css('border', mycolor);
     //document.getElementById(button2Id).style.visibility = "hidden";
-    document.getElementById(buttonId).style.visibility = 'hidden';
+    //document.getElementById(buttonId).style.visibility = 'hidden';
   }
 }/*
 for (var i = 0; i < 200; i++) //display first 20 next dates
