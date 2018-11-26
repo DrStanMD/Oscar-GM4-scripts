@@ -17,33 +17,6 @@ var input18text = 'DVL'
 var input15var = 2
 var input18var = 56
 
-//*******Day of Week code
-var weekday = new Array(7);
-weekday[0] = 'Sun.';
-weekday[1] = 'Mon.';
-weekday[2] = 'Tue.';
-weekday[3] = 'Wed.';
-weekday[4] = 'Thu.';
-weekday[5] = 'Fri.';
-weekday[6] = 'Sat.';
-var mytag = document.getElementsByTagName('a');
-for (var i = 0; i < mytag.length; i++) {
-  //alert(mytag[i].outerHTML)
-  if (mytag[i].outerHTML.indexOf('providercontrol.jsp?year=') > - 1) {
-    var onclickvalue = mytag[i].innerHTML.trim() 
-    //alert(onclickvalue)
-    var d = new Date(onclickvalue);
-    if (d.getFullYear()) {
-      //$(mytag[i]).css('background-color', 'yellow') /
-      var n = weekday[d.getDay() + 1];
-      if(n){
-        $(mytag[i]).append('_' + n)
-      }
-    }
-  }
-}
-//**********
-
 function setCookie(cname, cvalue, exdays, cpath)
 {
   var d = new Date();
