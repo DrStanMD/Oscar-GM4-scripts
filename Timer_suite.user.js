@@ -101,7 +101,7 @@ function ButtonFunction2() {
     t=window.innerHeight-height
     l=window.innerWidth-width
   //******************
- myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, '', 'height='+height+', width='+width+', left='+l+', top='+t );
+ myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, '', 'height='+height+', width='+width+', right='+l+', top='+t );
  //myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, "MsgWindow", "width=10,height=10,right=200,top=0")
 } 
 
