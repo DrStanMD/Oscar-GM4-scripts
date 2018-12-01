@@ -5,7 +5,7 @@
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
 // @include          *CaseManagementEntry.do*
-// @version     4
+// @version     15.1
 // ==/UserScript==
 
 var theDefault='Refer To'; 
@@ -65,7 +65,7 @@ qdocname = Set_Default
 //qdocname = window.prompt("Enter Doctor's name", Set_Default);
 //setCookie("default_doc",qdocname,360,"path=/");  //set cookie to expire in 360 days
 localStorage.setItem("default_doc",qdocname); 
-//alert(qdocname +" is now set as the default billing doctor on this computer.")
+alert(qdocname +" is now set as the default billing doctor on this computer.")
 
 location.reload();
 }
