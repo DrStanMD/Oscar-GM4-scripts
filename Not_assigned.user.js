@@ -131,6 +131,7 @@ DT[11] = [
 DT[12] = [
   'Pharmacies',
   'Refills',
+  'Vaccine notification',
 ]
 //*******XRAY TYPES*************************************************************  
 xType = [
