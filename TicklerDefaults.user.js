@@ -4,7 +4,9 @@
 // @description Sets the default for Tickler SendTo, hyperlink to document, autotickler
 // @include        */tickler/ticklerAdd.jsp*
 // @include        *tickler/ForwardDemographicTickler.do*
+// @version 15.1
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+
 // ==/UserScript==
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
