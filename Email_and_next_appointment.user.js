@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Email and Next appointment for tickler
-// @version  1
+// @version  15.1
 // @include *tickler/ticklerAdd.jsp?demographic_no*
 // @include *tickler/ForwardDemographicTickler.do*
 // @include */tickler/ticklerAdd.jsp*
