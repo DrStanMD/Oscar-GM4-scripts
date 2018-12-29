@@ -37,6 +37,7 @@ for (var theOption of theOptions)
     }
   }
 }
+/*
 if (params.docType) {
   var input4 = document.createElement('input');
   input4.type = 'button';
@@ -64,6 +65,7 @@ function showAlert4()
   myText = myText + Array(textpad).join('.')
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(myText + myDocLink2)
 }
+*/
 var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Advise Appointment';
@@ -73,6 +75,17 @@ document.body.appendChild(input4);
 function showAlert4()
 {
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('Please advise patient about appointment.')
+var theDefault = 'Hurwitz, Office';
+var theOptions = document.getElementsByName('task_assigned_to') [0].options;
+for (var theOption of theOptions)
+{
+  if (typeof (theOption) == 'object') {
+    if (theOption.text == theDefault) {
+      theOption.selected = true;
+      break;
+    }
+  }
+}
 }
 var input3 = document.createElement('input');
 input3.type = 'button';
@@ -83,6 +96,17 @@ document.body.appendChild(input3);
 function showAlert3()
 {
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('PAP RECALL')
+var theDefault = 'Hurwitz, Office';
+var theOptions = document.getElementsByName('task_assigned_to') [0].options;
+for (var theOption of theOptions)
+{
+  if (typeof (theOption) == 'object') {
+    if (theOption.text == theDefault) {
+      theOption.selected = true;
+      break;
+    }
+  }
+}
 }
 var input1 = document.createElement('input');
 input1.type = 'button';
