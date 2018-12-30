@@ -3,11 +3,12 @@
 // @namespace   Stanscripts
 // @description Create multiline statements,Highlight flags
 // @include     *billing/CA/BC/billStatus.jsp?lastName=*
-// @include     *billing/CA/BC/billStatus.jsp*
+
 // @version   15.1
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
+// @include     *billing/CA/BC/billStatus.jsp*
 localStorage.setItem('srows1', '');
 localStorage.setItem('srows2', '');
 localStorage.setItem('srows3', '');
