@@ -61,7 +61,7 @@ else {
     var myText = location.search.split('AnnotText') [1]
     for (i = 0; i < myText.length; i++) {
     //clear URItags
-      myText = decodeURIComponent(myText)
+    // myText = decodeURIComponent(myText)
     //Clear the extra spaces      
       myText = myText.replace(/%20%20/g, '');
       myText = myText.replace(/&LF/g, ' ');
