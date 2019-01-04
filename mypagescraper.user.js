@@ -7,6 +7,12 @@
 // @grant       none
 // @version 15.2
 // ==/UserScript==
+
+//Reserve line in header
+var header = document.getElementById('encounterHeader');
+var headerReserve = header.innerHTML
+header.innerHTML += '<br>'
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
@@ -67,7 +73,7 @@ $(document).ready(function () {
   res = res + ' ' + HCN.slice(4, 7)
   res = res + ' ' + HCN.slice(7)
   HCN = res
-  var header = document.getElementById('encounterHeader');
+  header.innerHTML = headerReserve
   var headerExtra1 = 'Cell: '
   var headerExtra2 = ' Age: '
   var headerExtra3 = 'File#: '
