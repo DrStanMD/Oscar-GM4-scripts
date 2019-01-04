@@ -56,24 +56,22 @@ else {
   var path = window.location.pathname
   Acheck = path.search('/annotation/annotation.jsp')
   
-  
-  
   //******REMOVE METATAGS***************
   if (Acheck > 0) {
     var myText = location.search.split('AnnotText') [1]
     for (i = 0; i < myText.length; i++) {
-      //Clear the extra spaces      
+    //clear URItags
+      myText = decodeURIComponent(myText)
+    //Clear the extra spaces      
       myText = myText.replace(/%20%20/g, '');
       myText = myText.replace(/&LF/g, ' ');
-    } //Fix Space    
-
+    } 
+    //Fix Space    
     myText = myText.replace(/%20/g, ' ');
     //Fix apostrophe
     myText = myText.replace(/%27/g, '\'');
-   //******END REMOVE METATAGS***************
-    
-    
-    
+   //******END REMOVE METATAGS***************      
+  
     $('.panel > textarea:nth-child(1)').val(myText)
   }
 } 
