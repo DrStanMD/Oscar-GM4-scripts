@@ -76,7 +76,7 @@ $(document).ready(function () {
   HCN = res
   header.innerHTML = headerReserve
   header.innerHTML += ('Cell:'.bold() + demoArrayVal[0] + ' Addr:'.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] + ', ' + demoArrayVal[5]
-  + ' ' + 'PHN:'.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + 'eMail:'.bold() + demoArrayVal[1] + '   ' // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+  + ' ' + 'PHN:'.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + 'eMail: '.bold() + demoArrayVal[1] + '   ' // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
   + '<button type="button" id="button10">Send email</button>'
   );
   document.getElementById('button10').onclick = do_email;
