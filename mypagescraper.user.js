@@ -76,13 +76,13 @@ $(document).ready(function () {
   res = res + ' ' + HCN.slice(7)
   HCN = res
   header.innerHTML = headerReserve
-  var headerExtra1 = 'Cell: '
-  var headerExtra2 = ' Age: '
-  var headerExtra3 = 'File#: '
-  var headerExtra4 = 'PHN: '
-  var headerExtra5 = ' Addr: '
+  var headerExtra1 = 'Cell:'
+  var headerExtra2 = ' Age:'
+  var headerExtra3 = 'File#:'
+  var headerExtra4 = 'PHN:'
+  var headerExtra5 = ' Addr:'
   header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] + ', ' + demoArrayVal[5]
-  + ' ' + headerExtra4.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + '   email: '.bold() + demoArrayVal[1] + '   '  // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+  + ' ' + headerExtra4.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + 'eMail:'.bold() + demoArrayVal[1] + '   '  // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
   + '<button type="button" id="button10">Send email</button>'
   );
   document.getElementById('button10').onclick = do_email;
