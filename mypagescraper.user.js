@@ -7,8 +7,8 @@
 // @grant       none
 // @version 15.2
 // ==/UserScript==
-//Reserve line in header
-var header = document.getElementById('encounterHeader');
+
+var header = document.getElementById('encounterHeader'); //Reserve line in header
 var headerReserve = header.innerHTML
 header.innerHTML += '<br>'
 var elements = (window.location.pathname.split('/', 2))
