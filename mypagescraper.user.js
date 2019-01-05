@@ -8,9 +8,9 @@
 // @version 15.2
 // ==/UserScript==
 
-var header = document.getElementById('encounterHeader'); //Reserve line in header
+var header = document.getElementById('encounterHeader'); 
 var headerReserve = header.innerHTML
-header.innerHTML += '<br>'
+header.innerHTML += '<br>' //Reserve line in header
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
