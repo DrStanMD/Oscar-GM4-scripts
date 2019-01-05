@@ -7,8 +7,7 @@
 // @grant       none
 // @version 15.2
 // ==/UserScript==
-
-var header = document.getElementById('encounterHeader'); 
+var header = document.getElementById('encounterHeader');
 var headerReserve = header.innerHTML
 header.innerHTML += '<br>' //Reserve line in header
 var elements = (window.location.pathname.split('/', 2))
@@ -53,7 +52,7 @@ function getMeasures(measure) {
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
-        y = myArray.toString()        //alert(y)
+        y = myArray.toString() //alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
@@ -68,7 +67,7 @@ function getMeasures(measure) {
 $(document).ready(function () {
   for (j = 0; j < demoArray.length; j++) {
     getMeasures(demoArray[j]);
-  }  //alert(demoArrayVal)
+  } //alert(demoArrayVal)
 
   var HCN = demoArrayVal[7]
   res = HCN.slice(0, 4)
@@ -76,13 +75,8 @@ $(document).ready(function () {
   res = res + ' ' + HCN.slice(7)
   HCN = res
   header.innerHTML = headerReserve
-  var headerExtra1 = 'Cell:'
-  var headerExtra2 = ' Age:'
-  var headerExtra3 = 'File#:'
-  var headerExtra4 = 'PHN:'
-  var headerExtra5 = ' Addr:'
-  header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] + ', ' + demoArrayVal[5]
-  + ' ' + headerExtra4.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + 'eMail:'.bold() + demoArrayVal[1] + '   '  // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+  header.innerHTML += ('Cell:'.bold() + demoArrayVal[0] + ' Addr:'.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] + ', ' + demoArrayVal[5]
+  + ' ' + 'PHN:'.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + 'eMail:'.bold() + demoArrayVal[1] + '   ' // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
   + '<button type="button" id="button10">Send email</button>'
   );
   document.getElementById('button10').onclick = do_email;
