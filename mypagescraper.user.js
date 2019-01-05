@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.2
+// @version 15.3
 // ==/UserScript==
 var header = document.getElementById('encounterHeader');
 var headerReserve = header.innerHTML
