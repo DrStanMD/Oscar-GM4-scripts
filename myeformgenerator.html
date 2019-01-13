@@ -2215,7 +2215,12 @@ $('#inputB').hide();
 				listfc()
 				y = prompt("Please enter function for " + x + " - such as alert(this)", "alert(this)");
 			        $textBoxTemplate.find(":input").attr(x, y);
-					$textAreaTemplate.find("textarea").attr(x, y);
+                                if(y.indexOf("makehyperlink")>-1){
+                                document.getElementById("gen-textBoxDefaultTextId").value = "http://"
+                                $textBoxTemplate.find(":input").attr("style","color:blue;" );
+                                }
+
+				$textAreaTemplate.find("textarea").attr(x, y);
 				win.close()
 				}
 				else {
@@ -3012,9 +3017,11 @@ myelement.src = newsrc
 }
 
 function makehyperlink(myelement) {
-  var str = myelement.value
- // var result = str.link(str);
-  window.open(str)
+var str = myelement.value
+document.getElementById(myelement.id).readOnly = true; 
+document.getElementById(myelement.id).style.color = "blue";
+// var result = str.link(str);
+window.open(str)
 }
 
 function removeLineFeeds(myelement){
