@@ -1,7 +1,7 @@
 <html>
 <!-- Eform Generator 0.1.01 -->
 <!-- Author: Robert Martin -->
-<!-- Modified by Stan Hurwitz 2019-Jan-10-->
+<!-- Modified by Stan Hurwitz 2019-Jan-12-->
 <head>
 	<META http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<title>Oscar E-form Generator</title>
@@ -15,7 +15,8 @@
 	<!-- javascript file for the signature pads -- optional -->
 	<script src="/SDHurwitzInc/share/javascript/eforms/signature_pad.min.js"></script>
 
-	<script>
+
+	<!--script>
 		/* Hack to load jquery requirements from jquery site when run outside of oscar */
 		var runStandaloneVersion = false;
 		if (!window.jQuery) {
@@ -27,9 +28,9 @@
 			runStandaloneVersion = true;
 		}
 		console.info("Run as standalone version: " + runStandaloneVersion);
-	</script>
+	</script-->
+
 <script>
-		
 //Detect browser
     navigator.sayswho= (function(){
     var ua= navigator.userAgent, tem, 
@@ -628,11 +629,12 @@ $('#inputB').hide();
 			font-size: 11px;
 			border: 1px solid black;
 			cursor: pointer;
-			/*Rounds- change this one if preferred */
-            -webkit-border-radius: 12px;
-         	-moz-border-radius: 12px;
-        	border-radius: 10px;
+/*Rounds- change this one if preferred */
+-webkit-border-radius: 12px;
+-moz-border-radius: 12px;
+border-radius: 10px;
 		}
+             
 		.only-one-radio input:focus {
 			outline: none;
 			color: transparent;
@@ -760,9 +762,9 @@ $('#inputB').hide();
 		var eFormPageWidthLandscape = 1100;
 		var eFormPageHeightLandscape = 800;
 
-		var defaultTextBoxWidth = 256;
-		var defaultTextBoxHeight = 16;
-		var defaultCheckboxSize = 12;
+		var defaultTextBoxWidth = 130; //256
+		var defaultTextBoxHeight = 18;  //16
+		var defaultCheckboxSize = 14;  //12
 		var defaultbboxSize = 64;
 		var defaultShapeSize = 64;
 
@@ -794,7 +796,7 @@ $('#inputB').hide();
 		var CHEK_INPUT_SELECTOR = ":input[type=checkbox]";
 		var GENDER_PRECHECK_CLASS_SELECTOR = "[class*=gender_precheck_]";
 
-		var OSCAR_DISPLAY_IMG_SRC = "/SDHurwitzInc/eform/displayImage.do?imagefile=";
+                var OSCAR_DISPLAY_IMG_SRC ="/SDHurwitzInc/eform/displayImage.do?imagefile=";
 		var OSCAR_EFORM_ENTITY_URL = "/SDHurwitzInc/ws/rs/eform/";
 		var OSCAR_EFORM_SEARCH_URL = "/SDHurwitzInc/ws/rs/eforms/";
 
@@ -918,14 +920,16 @@ $('#inputB').hide();
 		}
 		function addOscarImagePath(string) {
 			if(!runStandaloneVersion) {
+//alert("native")
 				// remove the oscar loading path
 				// have to do escape for regex because of changing context path
 				var regexFixed = OSCAR_DISPLAY_IMG_SRC.replace(/\//g, "\\/").replace(/\./g, "\\.").replace(/\?/g, "\\?");
-				string = string.replace(new RegExp(regexFixed, "g"), "${oscar_image_path}");
+				//string = string.replace(new RegExp(regexFixed, "g"), "${oscar_image_path}");
+                                 string = string.replace(new RegExp(regexFixed, "g"), "$"+"{oscar_image_path}");
 			}
 			else {
+//alert("stand alone")
 				string = string.replace(/(img.*?)src\s*=\s*(\"|\')(?!data:image\/png;base64,)/gi, "$1src=$2${oscar_image_path}");
-
 			}
 			return string;
 		}
@@ -1056,7 +1060,8 @@ $('#inputB').hide();
 			if ($eform_container.find(".signaturePad").length > 0) {
 				source += signature_script.innerHTML;
 			}
-			source += "\<\/script></head><body onload='onEformLoad(); myinit();'><div id='eform_container'" +
+			//source += "\<\/script></head><body onload='onEformLoad(); reImg(); myinit();'><div id='eform_container'" +
+                        source += "\<\/script></head><body onload='onEformLoad(); myinit();'><div id='eform_container'" +
 				"style='max-width: " + eFormPageWidth + "px'>";
 			source += htmlElements.innerHTML;
 			source += "</div></body></html>";
@@ -1719,6 +1724,7 @@ $('#inputB').hide();
 			}).prependTo($parentElement);
 			if (srcString) {
 				$img.attr('src', srcString);
+				$img.attr('onerror', "myerror(this)");  
 			}
 			return $img;
 		}
@@ -2920,7 +2926,7 @@ function allno(){ //this checks All No on click
 var x = document.getElementsByClassName("all-no");
 for (var i = 0; i < x.length; i++) {
 x[i].value="X"
-x[i].style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box****************************
+//x[i].style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box****************************
 }
 var x = document.getElementsByClassName("clear-yes");
 for (var i = 0; i < x.length; i++) {
@@ -2939,7 +2945,7 @@ y[i].addEventListener("click", function(){
 });
 */
 if (y[i].value=="X"){
-y[i].style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box*******************************
+//y[i].style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box*******************************
 }
 }
 var z = document.getElementsByClassName("all-no-button2");
@@ -2973,7 +2979,7 @@ for (var i = 0; i < x.length; i++) {
     x[i].style.boxShadow = "inset 0 0 0 1000px white"
     x[i].value = "";
     vid.value = "X"
-    vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box*************************************
+    //vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box*************************************
 }
 }
 }
@@ -2996,12 +3002,26 @@ closeText: 'Clear'
  });
 };
 
+function myerror(myelement) {  
+//function to load image as standalone
+var newsrc = myelement.src.split('%7D')[1]
+myelement.src = newsrc 
+}
 
+function reImg(){
+// for stand alone development without uploading to OSCAR
+	var strLoc = window.location.href.toLowerCase();
+	if(strLoc.indexOf("https") == -1) {
+		var src1 = document.getElementById("gen_backgroundImage1").src;
+		document.getElementById("gen_backgroundImage1").src = src1.replace("$%7Boscar_image_path%7D","");
+	}
+}
 
 </script>
 </head>
 
 <body onload="init();">
+
 <div id="main_container">
 	<div id="eform_view_wrapper">
 		<div id="eform_container" class="toSource">
