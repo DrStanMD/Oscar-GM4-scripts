@@ -6,14 +6,14 @@
 	<META http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<title>Oscar E-form Generator</title>
 	<!-- import jQuery -->
-	<script src="/SDHurwitzInc/share/javascript/jquery/jquery-2.2.4.min.js"></script>
+	<script src="../share/javascript/jquery/jquery-2.2.4.min.js"></script>
 	<!-- import jQuery UI-->
-	<script src="/SDHurwitzInc/share/javascript/jquery/jquery-ui-1.12.0.min.js"></script>
+	<script src="../share/javascript/jquery/jquery-ui-1.12.0.min.js"></script>
 	<!-- import jQuery Theme (ui stylesheet) -->
-	<link href= "/SDHurwitzInc/share/javascript/jquery/jquery-ui-1.12.0/themes/vader/jquery-ui.min.css" rel="stylesheet">
+	<link href= "../share/javascript/jquery/jquery-ui-1.12.0/themes/vader/jquery-ui.min.css" rel="stylesheet">
 
 	<!-- javascript file for the signature pads -- optional -->
-	<script src="/SDHurwitzInc/share/javascript/eforms/signature_pad.min.js"></script>
+	<script src="../share/javascript/eforms/signature_pad.min.js"></script>
 
 
 	<!--script>
@@ -512,8 +512,6 @@ $('#inputB').hide();
 
 	<style id="eform_style" class="toSource">
 
-
-
 .all-no-button2 {            
 			display: inline-block;
 			text-align: left;
@@ -541,7 +539,6 @@ $('#inputB').hide();
 	//height: 20px; 
 }
 
-
 [class^="only-one-radio"] {
 	height: 12px;
 	width: 12px;
@@ -551,11 +548,8 @@ $('#inputB').hide();
 	font-weight: bold;
 	text-align: center;
 	background: pink;
-/*Rounds - keep this one*/
-    -webkit-border-radius: 12px;
-	-moz-border-radius: 12px;
-	border-radius: 10px;
 }
+
 		/* base style for pages */
 		.page_container {
 			position: relative;
@@ -629,10 +623,9 @@ $('#inputB').hide();
 			font-size: 11px;
 			border: 1px solid black;
 			cursor: pointer;
-/*Rounds- change this one if preferred */
--webkit-border-radius: 12px;
--moz-border-radius: 12px;
-border-radius: 10px;
+/*Rounds- delete comment if preferred */
+                       /*-webkit-border-radius: 12px; -moz-border-radius: 12px; border-radius: 10px;*/
+
 		}
              
 		.only-one-radio input:focus {
@@ -796,9 +789,9 @@ border-radius: 10px;
 		var CHEK_INPUT_SELECTOR = ":input[type=checkbox]";
 		var GENDER_PRECHECK_CLASS_SELECTOR = "[class*=gender_precheck_]";
 
-                var OSCAR_DISPLAY_IMG_SRC ="/SDHurwitzInc/eform/displayImage.do?imagefile=";
-		var OSCAR_EFORM_ENTITY_URL = "/SDHurwitzInc/ws/rs/eform/";
-		var OSCAR_EFORM_SEARCH_URL = "/SDHurwitzInc/ws/rs/eforms/";
+        var OSCAR_DISPLAY_IMG_SRC ="../eform/displayImage.do?imagefile=";
+		var OSCAR_EFORM_ENTITY_URL = "../ws/rs/eform/";
+		var OSCAR_EFORM_SEARCH_URL = "../ws/rs/eforms/";
 
 		
 		/** GLOBAL VARIABLES */
@@ -925,7 +918,7 @@ border-radius: 10px;
 				// have to do escape for regex because of changing context path
 				var regexFixed = OSCAR_DISPLAY_IMG_SRC.replace(/\//g, "\\/").replace(/\./g, "\\.").replace(/\?/g, "\\?");
 				//string = string.replace(new RegExp(regexFixed, "g"), "${oscar_image_path}");
-                                 string = string.replace(new RegExp(regexFixed, "g"), "$"+"{oscar_image_path}");
+                                string = string.replace(new RegExp(regexFixed, "g"), "$"+"{oscar_image_path}");
 			}
 			else {
 //alert("stand alone")
