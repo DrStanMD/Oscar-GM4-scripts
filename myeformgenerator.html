@@ -2002,7 +2002,7 @@ $('#inputB').hide();
 			$rBoxTemplateInput.addClass("only-one-radio").attr('autocomplete', 'off');
 			//$rBoxTemplateInput.addClass("cradio").attr('autocomplete', 'off');
 			$rBoxTemplateInput.addClass("cradio").attr('onclick', 'myupdate(this)');
-			
+
 			$bBoxTemplateInput.addClass("all-no-button2").attr('value', 'All No');
 			$bBoxTemplateInput.removeClass("gen_input")
 			//$bBoxTemplateInput.removeClass("cradio")
@@ -2213,7 +2213,7 @@ $('#inputB').hide();
 				*/
 				x = prompt("Please enter function action - such as onclick", "onclick");
 				listfc()
-				y = prompt("Please enter function for " + x + " - such as alert(this)", "alert(this.id)");
+				y = prompt("Please enter function for " + x + " - such as alert(this)", "alert(this)");
 			        $textBoxTemplate.find(":input").attr(x, y);
 					$textAreaTemplate.find("textarea").attr(x, y);
 				win.close()
@@ -2423,6 +2423,16 @@ $('#inputB').hide();
 			$element.append($hbox);
 		}
 		function setNoborderStyle($selector, value) {
+//*************************************************
+// sets radiobox border to Always Visible
+var x = $selector.attr('class')
+if (x) {
+  var n = x.indexOf('cradio');
+  if (n > 0) {
+    value = 0
+  }
+}
+//**************************************************
 			if ($selector == null) return false;
 			switch (value) {
 				case 2:
