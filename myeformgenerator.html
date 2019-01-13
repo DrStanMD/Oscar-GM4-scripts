@@ -1,7 +1,7 @@
 <html>
-<!-- Eform Generator 0.1.01 -->
+<!-- Eform Generator 0.2.01 -->
 <!-- Author: Robert Martin -->
-<!-- Modified by Stan Hurwitz 2019-Jan-12-->
+<!-- Modified by Stan Hurwitz 2019-Jan-13-->
 <head>
 	<META http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<title>Oscar E-form Generator</title>
@@ -2999,6 +2999,18 @@ function myerror(myelement) {
 //function to load image as standalone
 var newsrc = myelement.src.split('%7D')[1]
 myelement.src = newsrc 
+}
+
+function makehyperlink(myelement) {
+  var str = myelement.value
+ // var result = str.link(str);
+  window.open(str)
+}
+
+function removeLineFeeds(myelement){
+var str = myelement.value.replace(/(\r\n\t|\n|\r\t)/gm, "; ");
+document.getElementById(myelement.id).value=str;
+document.getElementById(myelement.id).style.fontSize = "10px";
 }
 
 function reImg(){
