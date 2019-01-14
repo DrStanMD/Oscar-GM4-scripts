@@ -2133,6 +2133,7 @@ $('#inputB').hide();
 					value: "",
 					change: function (event, ui) {
 						$textBoxTemplate.find(":input").val($(this).val());
+                                                $textBoxTemplate.find(":input").attr("title",$(this).val());
 						$textAreaTemplate.find("textarea").text($(this).val());
 					}
 				}))).append($("<div>").append($("<label>", {
@@ -2215,12 +2216,14 @@ $('#inputB').hide();
 				listfc()
 				y = prompt("Please enter function for " + x + " - such as alert(this)", "alert(this)");
 			        $textBoxTemplate.find(":input").attr(x, y);
-                                if(y.indexOf("makehyperlink")>-1){
-                                document.getElementById("gen-textBoxDefaultTextId").value = "http://"
-                                $textBoxTemplate.find(":input").attr("style","color:blue;" );
-                                }
-
+                                        if(y.indexOf("makehyperlink")>-1){
+                                        document.getElementById("gen-textBoxDefaultTextId").value = "http://"
+                                       $textBoxTemplate.find(":input").attr("style","color:blue;" );
+                                        }
 				$textAreaTemplate.find("textarea").attr(x, y);
+                                       if(y.indexOf("removeLineFeeds")>-1){
+                                       $textAreaTemplate.find(":input").attr("title", "Double-click to compress, shift-click to reset");
+                                        }
 				win.close()
 				}
 				else {
@@ -3024,10 +3027,15 @@ document.getElementById(myelement.id).style.color = "blue";
 window.open(str)
 }
 
-function removeLineFeeds(myelement){
-var str = myelement.value.replace(/(\r\n\t|\n|\r\t)/gm, "; ");
-document.getElementById(myelement.id).value=str;
-document.getElementById(myelement.id).style.fontSize = "10px";
+function removeLineFeeds(myelement) {
+  var str = myelement.value.replace(/(\r\n\t|\n|\r\t)/gm, '; ');
+  document.getElementById(myelement.id).value = str;
+  document.getElementById(myelement.id).style.fontSize = '10px';
+  $(document).click(function (e) {
+    if (e.shiftKey) {
+      document.getElementById(myelement.id).style.fontSize = '14px';
+    }
+  });
 }
 
 function reImg(){
