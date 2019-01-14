@@ -51,24 +51,42 @@
 	var browser_version = navigator.sayswho
 	//alert(browser_version)
 
-
-	function listfc(){
-    if(browser_version.indexOf("Firefox")>-1){	//popup breaks code in Chrome)
-    //alert("this is Firefox")
-	var mylist= ""
-	win = window.open("", "Function list", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100");
-	for(var i in this) { //print a list of functions contained in this page
-	if((typeof this[i]).toString()=="function"&&this[i].toString().indexOf("native")==-1){
-	if(this[i].name == "CHOOSE_FROM_HERE_DOWN"){
-	mylist="<b>List of functions in this script</b><p></p>"
-	}	  
-	mylist=mylist+'<li>'+this[i].name+"</li>"
-	}
-	win.document.body.innerHTML = mylist;
+function listfc() {
+  //*******************************************************	
+  var arr = [
+    {
+      val: 1,
+      text: 'One'
+    },
+    {
+      val: 2,
+      text: 'Two'
+    },
+    {
+      val: 3,
+      text: 'Three'
     }
-	}
-	}	
-		
+  ];
+  var sel = $('<select>').appendTo('.ui-tabs-nav');
+  $(arr).each(function () {
+    sel.append($('<option>').attr('value', this.val).text(this.text));
+  });
+  //*********************************************************
+  if (browser_version.indexOf('Firefox') > - 1) { //popup breaks code in Chrome)
+    //alert("this is Firefox")
+    var mylist = ''
+    win = window.open('', 'Function list', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100');
+    for (var i in this) { //print a list of functions contained in this page
+      if ((typeof this[i]).toString() == 'function' && this[i].toString().indexOf('native') == - 1) {
+        if (this[i].name == 'CHOOSE_FROM_HERE_DOWN') {
+          mylist = '<b>List of functions in this script</b><p></p>'
+        }
+        mylist = mylist + '<li>' + this[i].name + '</li>'
+      }
+      win.document.body.innerHTML = mylist;
+    }
+  }
+}
 		
 var Rad =[]
 var RadMain =[]
