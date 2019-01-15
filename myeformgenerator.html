@@ -51,34 +51,42 @@
 	var browser_version = navigator.sayswho
 	//alert(browser_version)
 
-function listfc() {
-  //*******************************************************	
-  var arr = [
-    {
-      val: 1,
-      text: 'One'
-    },
-    {
-      val: 2,
-      text: 'Two'
-    },
-    {
-      val: 3,
-      text: 'Three'
-    }
+function listfc() { //create a select list of functions
+  var myDiv = document.getElementById('ui-id-2'); //Append option list to page
+  //Create array of options to be added
+  var array = [
   ];
-  var sel = $('<select>').appendTo('.ui-tabs-nav');
-  $(arr).each(function () {
-    sel.append($('<option>').attr('value', this.val).text(this.text));
-  });
-  //*********************************************************
+  var num = 0
+  var vset = 0
+  for (var i in this) { //print a list of functions contained in this page
+    if ((typeof this[i]).toString() == 'function' && this[i].toString().indexOf('native') == - 1) {
+      if (this[i].name == 'SELECT_FUNCTION' || vset == 1) {
+        vset = 1 //alert(this[i].name)
+        array[num] = this[i].name
+        num = num + 1
+      }
+    }
+  } //Create and append select list
+
+  var selectList = document.createElement('select');
+  selectList.id = 'mySelect';
+  myDiv.appendChild(selectList);
+  //Create and append the options
+  for (var i = 0; i < array.length; i++) {
+    var option = document.createElement('option');
+    option.value = array[i];
+    option.text = array[i];
+    selectList.appendChild(option);
+  }
+
+  /*
   if (browser_version.indexOf('Firefox') > - 1) { //popup breaks code in Chrome)
     //alert("this is Firefox")
     var mylist = ''
     win = window.open('', 'Function list', 'toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=800,top=10,left=100');
     for (var i in this) { //print a list of functions contained in this page
       if ((typeof this[i]).toString() == 'function' && this[i].toString().indexOf('native') == - 1) {
-        if (this[i].name == 'CHOOSE_FROM_HERE_DOWN') {
+        if (this[i].name == 'SELECT_FUNCTION') {
           mylist = '<b>List of functions in this script</b><p></p>'
         }
         mylist = mylist + '<li>' + this[i].name + '</li>'
@@ -86,8 +94,10 @@ function listfc() {
       win.document.body.innerHTML = mylist;
     }
   }
+  */
 }
-		
+
+
 var Rad =[]
 var RadMain =[]
 var AllNoSetflag = "off"
@@ -2230,9 +2240,18 @@ $('#inputB').hide();
 				$textAreaTemplate.find("textarea").removeAttr(x);
 				}
 				*/
+				listfc() //create select list of functions
+				var e = document.getElementById('mySelect');
+                $(e).css('background-color', 'yellow')
+				$(e).focus()
+				//alert(e.length)
+				$(e).attr('size',e.length+1 );
+                e.onclick = function () {
+                var strUser = e.options[e.selectedIndex].text; 
+                //alert(strUser)
 				x = prompt("Please enter function action - such as onclick", "onclick");
-				listfc()
-				y = prompt("Please enter function for " + x + " - such as alert(this)", "alert(this)");
+				
+				y = prompt("Please enter function for " + x + " - such as alert(this)", strUser+"(this)");
 			        $textBoxTemplate.find(":input").attr(x, y);
                                         if(y.indexOf("makehyperlink")>-1){
                                         document.getElementById("gen-textBoxDefaultTextId").value = "http://"
@@ -2241,8 +2260,13 @@ $('#inputB').hide();
 				$textAreaTemplate.find("textarea").attr(x, y);
                                        if(y.indexOf("removeLineFeeds")>-1){
                                        $textAreaTemplate.find(":input").attr("title", "Double-click to compress, shift-click to reset");
-                                        }
-				win.close()
+                                        }				
+                $(e).remove()
+				};
+				
+				
+
+				//win.close()
 				}
 				else {
 					$textBoxTemplate.find(":input").removeAttr(x);
@@ -2866,8 +2890,7 @@ if (x) {
 		});
 	</script>
 	<script id="eform_script" class="toSource">
-	    function CHOOSE_FROM_HERE_DOWN(){}
-	
+	    	
 	
 		var needToConfirm = false;
 		/** call this to prevent closing the window without a confirmation */
@@ -2963,6 +2986,8 @@ x[i].value=""
 x[i].style.boxShadow = "inset 0 0 0 1000px white"  
 }
 }
+
+function SELECT_FUNCTION(){} //Start function list here and below
 
 function myinit(){ //this blacks out boxes that are checked on load and clicks hidden fields
 $('input[type=hidden]').click();
