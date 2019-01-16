@@ -56,13 +56,19 @@ function listfc() { //create a select list of functions
   //Create array of options to be added
   var array = [
   ];
+    var arraycontent = [
+  ];
+  
   var num = 0
   var vset = 0
   for (var i in this) { //print a list of functions contained in this page
     if ((typeof this[i]).toString() == 'function' && this[i].toString().indexOf('native') == - 1) {
       if (this[i].name == 'SELECT_FUNCTION' || vset == 1) {
-        vset = 1 //alert(this[i].name)
+        vset = 1 
+		//alert(this[i].name)
+		//alert(this[i])
         array[num] = this[i].name
+		arraycontent[num] = this[i]
         num = num + 1
       }
     }
@@ -74,7 +80,8 @@ function listfc() { //create a select list of functions
   //Create and append the options
   for (var i = 0; i < array.length; i++) {
     var option = document.createElement('option');
-    option.value = array[i];
+    option.value = arraycontent[i];
+	option.title = arraycontent[i];
     option.text = array[i];
     selectList.appendChild(option);
   }
@@ -778,7 +785,7 @@ $('#inputB').hide();
 		var OSCAR_SAVE_MESSAGE_UPDATE = "Update Eform";
 
 		// make sure .page_container css matches this when modifying
-		var eFormPageWidthPortrait = 850;//850
+		var eFormPageWidthPortrait = 800;//850
 		var eFormPageHeightPortrait = 1100;//1100
 		var eFormPageWidthLandscape = 1100;
 		var eFormPageHeightLandscape = 800;
@@ -2229,56 +2236,52 @@ $('#inputB').hide();
 			});
 			
 				//**************************************
-				
-				$oscarDbCheckbox2.on('change', function (event, ui) {
-				if ($(this).is(':checked')) {
-				//$oscarDbCheckbox3.prop('checked',false); 
-				//alert(x)
-				/*
+   $oscarDbCheckbox2.on('change', function (event, ui) {
+  if ($(this).is(':checked')) {
+    //$oscarDbCheckbox3.prop('checked',false); 
+    //alert(x)
+    /*
 				if(x){
 				$textBoxTemplate.find(":input").removeAttr(x);
 				$textAreaTemplate.find("textarea").removeAttr(x);
 				}
 				*/
-				listfc() //create select list of functions
-				var e = document.getElementById('mySelect');
-                $(e).css('background-color', 'yellow')
-				$(e).focus()
-				//alert(e.length)
-				$(e).attr('size',e.length+1 );
-                e.onclick = function () {
-                var strUser = e.options[e.selectedIndex].text; 
-                //alert(strUser)
-				x = prompt("Please enter function action - such as onclick", "onclick");
-				
-				y = prompt("Please enter function for " + x + " - such as alert(this)", strUser+"(this)");
-			        $textBoxTemplate.find(":input").attr(x, y);
-                                        if(y.indexOf("makehyperlink")>-1){
-                                        document.getElementById("gen-textBoxDefaultTextId").value = "http://"
-                                       $textBoxTemplate.find(":input").attr("style","color:blue;" );
-                                        }
-				$textAreaTemplate.find("textarea").attr(x, y);
-                                       if(y.indexOf("removeLineFeeds")>-1){
-                                       $textAreaTemplate.find(":input").attr("title", "Double-click to compress, shift-click to reset");
-                                        }				
-                $(e).remove()
-				};
-				
-				
+    listfc() //create select list of functions
+    var e = document.getElementById('mySelect');
+    $(e).css('background-color', 'yellow')
+    $(e).focus()    //alert(e.length)
+    $(e).attr('size', e.length + 1);
+    e.onclick = function () {
+      var strUser = e.options[e.selectedIndex].text;
+      var strContent = e.options[e.selectedIndex].value;
+      //alert(strUser)
+      //alert(strContent)
+      x = prompt('Please enter function action - such as onclick', 'onclick');
+      y = prompt('Please enter function for ' + x + ' - such as alert(this)', strUser + '(this)');
+      $textBoxTemplate.find(':input').attr(x, y);
+      if (y.indexOf('makehyperlink') > - 1) {
+        document.getElementById('gen-textBoxDefaultTextId').value = 'http://'
+        $textBoxTemplate.find(':input').attr('style', 'color:blue;');
+      }
+      $textAreaTemplate.find('textarea').attr(x, y);
+      if (y.indexOf('removeLineFeeds') > - 1) {
+        $textAreaTemplate.find(':input').attr('title', 'Double-click to compress, shift-click to reset');
+      }
+      $(e).remove()
+    };
+    //win.close()
+  } 
+  else {
+    $textBoxTemplate.find(':input').removeAttr(x);
+    $textAreaTemplate.find('textarea').removeAttr(x);
+  }
+});
 
-				//win.close()
-				}
-				else {
-					$textBoxTemplate.find(":input").removeAttr(x);
-					$textAreaTemplate.find("textarea").removeAttr(x);
-				}
-			});
-				
 				$oscarDbCheckbox3.on('change', function (event, ui) {
 				if ($(this).is(':checked')) {
 				//$oscarDbCheckbox2.prop('checked',false);    
-					$textBoxTemplate.find(":input").attr("onmouseover","mydatepicker(this.id)");
-					$textBoxTemplate.find(":input").attr("onfocus","mydatepicker(this.id)");
+					//$textBoxTemplate.find(":input").attr("onmouseover","mydatepicker(this)");
+					$textBoxTemplate.find(":input").attr("onclick","mydatepicker(this)");
 				}
 				else {
 				$textBoxTemplate.find(":input").removeAttr("onmouseover");
@@ -3046,8 +3049,8 @@ $.datepicker.setDefaults({
 //buttonText: "Calendar"
 });
 
-function mydatepicker(vid) {
-$( "#"+vid ).datepicker({ 
+function mydatepicker(myelement) {
+$( "#"+myelement.id).datepicker({ 
 dateFormat: 'yy-mm-dd (DD)',
 changeMonth: true,
 changeYear: true,
