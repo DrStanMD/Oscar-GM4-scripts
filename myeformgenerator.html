@@ -1,7 +1,7 @@
 <html>
 <!-- Eform Generator 0.2.01 -->
 <!-- Author: Robert Martin -->
-<!-- Modified by Stan Hurwitz 2019-Jan-13-->
+<!-- Modified by Stan Hurwitz 2019-Jan-20-->
 <head>
 	<META http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 	<title>Oscar E-form Generator</title>
@@ -13,9 +13,52 @@
 	<link href= "../share/javascript/jquery/jquery-ui-1.12.0/themes/vader/jquery-ui.min.css" rel="stylesheet">
 
 	<!-- javascript file for the signature pads -- optional -->
-	<script src="../share/javascript/eforms/signature_pad.min.js"></script>
+	<script src="${oscar_image_path}signature_pad.min.js"   onerror="myerror(this)"></script>
+	<!--script src="../share/javascript/eforms/signature_pad.min.js"></script-->
 
+<script>
 
+function measureTagfx(myelement){  //function for measurement tags
+    var e = document.getElementById("MeasureSelect");
+    //alert($(e).val())
+	//$('#textBoxTemplate').css('background-color', 'blue')
+	if($('#toggleGOscarDbCheckbox7').prop('checked')){
+	//alert("VALUE BOX")
+	$('#textBoxTemplate').find(':input').attr('oscarDB','m$'+$(e).val()+'#value');
+	}
+	if($('#toggleGOscarDbCheckbox8').prop('checked')){
+	//alert("DATE BOX")
+	$('#textBoxTemplate').find(':input').attr('oscarDB','m$'+$(e).val()+'#dateObserved');
+	}
+}
+  
+var measureArray=[];
+function getMeasures(measure) {  //get measurementList
+	xmlhttp=new XMLHttpRequest();
+	var elements = (window.location.pathname.split('/', 2))
+        firstElement = (elements.slice(1) )
+        vPath = ("https://" + location.host + "/" + firstElement + "/")
+	var newURL =vPath + "oscarEncounter/oscarMeasurements/SetupDisplayMeasurementTypes.do"
+//window.open(newURL)
+	xmlhttp.onreadystatechange=function(){
+		if (xmlhttp.readyState==4 && xmlhttp.status==200){
+			var str=xmlhttp.responseText; //local variable
+			if (!str) { return; }
+                          var myRe = /mType=([a-zA-Z0-9]+)/g                                       
+			var myArray;
+			var i=0;
+			while ((myArray = myRe.exec(str)) !== null){
+				measureArray[i]=myArray[1];
+				i=i+1;
+			}
+		}
+	}
+	xmlhttp.open("GET",newURL,false);
+	xmlhttp.send();
+}
+//getMeasures()
+//alert(measureArray)
+</script>
 	<!--script>
 		/* Hack to load jquery requirements from jquery site when run outside of oscar */
 		var runStandaloneVersion = false;
@@ -52,7 +95,14 @@
 	//alert(browser_version)
 
 function listfc() { //create a select list of functions
-  var myDiv = document.getElementById('ui-id-2'); //Append option list to page
+ var myDiv = document.getElementById('ui-id-2'); //Append option list to page //??????????
+ //var myDiv = document.getElementById('oscarDbTagSelect-button')
+  //$('#toggleGOscarDbCheckbox').click()
+  $('#toggleGOscarDbCheckbox').prop('checked', false);
+  $('#oscarDbTagSelect-button').show()
+  //$('#oscarDbTagSelect-button').prop('disabled', false);
+  //$db_tag_select.selectmenu('enable');
+  
   //Create array of options to be added
   var array = [
   ];
@@ -786,7 +836,7 @@ $('#inputB').hide();
 
 		// make sure .page_container css matches this when modifying
 		var eFormPageWidthPortrait = 800;//850
-		var eFormPageHeightPortrait = 1100;//1100
+		var eFormPageHeightPortrait = 1000;//1100
 		var eFormPageWidthLandscape = 1100;
 		var eFormPageHeightLandscape = 800;
 
@@ -850,10 +900,35 @@ $('#inputB').hide();
 		var eFormImageList = [];
 		
 		/** oscar db tags hardcoded for standalone. list update date: 2018-10-02 */
-		var oscarDatabaseTags = [
+                
+ var measureArray = [
+'02','02SA','24UA','24UR','5DAA','A1C','AACP','ABO','ABOR','ACOS','ACR','ACS','AEDR','AELV','AENC','AFP','AGED','AHGM','AIDU','ALB',
+'ALC','ALC','ALE1','ALE2','ALE3','ALKP','ALL0','ALL1','ALL2','ALL3','ALLE','ALLL','ALLR','ALP','ALPA','ALPA','ALR0','ALR1','ALR2','ALR3',
+'ALT','ANA','ANR','ANSY','AORA','APB1','APOB','APOB','ARAD','ARDT','ARMA','ASAU','ASPR','AST','ASTA','ASWA','ASYM','Ang','BCTR','BD',
+'BG','BILC','BILI','BILT','BILU','BMED','BMI','BP','BP','BP','BP','BPII','BPIS','BRHA','BTFT','BUN','C125','C153','C199','C3',
+'CA','CA','CASA','CAVD','CD4','CD4P','CDMP','CEA','CEDE','CEDM','CEDS','CEDW','CERV','CGSD','CHLM','CIMF','CK','CMBS','CMVI','CODC',
+'COGA','COLO','COPE','COPM','COPS','COUM','CRCL','CRP','CRP','CVD','CXR','CYTO','Clpl','DARB','DEPR','DESM','DIER','DIET','DIFB','DIG',
+'DIGT','DIL','DILY','DM','DMED','DMME','DMOE','DMSM','DMSM','DNFS','DOLE','DRCO','DRE','DRPW','DT1','DT2','DTYP','DiaC','DpSc','ECG',
+'ECHK','ECHO','ECNT','EDC','EDDD','EDF','EDGI','EDND','EDNL','EGFR','ENA','EPR','ESR','ESS','EXE','EYEE','ExeC','Exer','FAHS','FAMR',
+'FAS','FBPC','FBS','FEET','FEET','FEET','FEET','FEET','FEV1','FEVR','FGLC','FICO','FIT','FLUF','FOBF','FOBT','FOBT','FRAI','FRAM','FT3',
+'FT4','FTE','FTEx','FTIn','FTIs','FTLS','FTNe','FTOt','FTRe','FTST','FTUl','FUPP','Fer','G','G6PD','GBS','GC','GCT','GGT','GT1',
+'GT2','GWS','HB','HBEB','HBEG','HBVD','HCO3','HCON','HDL','HEAD','HFCG','HFCS','HFMD','HFMH','HFMO','HFMS','HFMT','HIP','HIVG','HLA',
+'HPBC','HPBP','HPBT','HPCG','HPCP','HPNP','HPSE','HPSG','HPYL','HR','HRMS','HSMC','HSMG','HT','HTN','HYPE','HYPM','Hchl','HpAI','HpBA',
+'HpBS','HpCA','IART','IBPL','INR','INSL','JVPE','KEEL','Kpl','LDL','LDLC','LEFP','LETH','LHAD','LITH','LMCY','LMED','LMP','LUCR','LcCt',
+'MACA','MACC','MAMF','MAMM','MCCE','MCCN','MCCO','MCCS','MCV','MDD','MG','MI','MOST','MedA','MedG','MedN','MedR','NA','NDIP','NDIS',
+'NERF','NOSK','NOVS','NYHA','Napl','NtrC','OBUS','OPAB','OPAE','OPUS','ORDU','ORSK','OSWP','OSWS','OTCO','OUTR','OthC','P','PANE','PAPF',
+'PAPP','PB19','PEDE','PEFR','PH','PHIN','PHOS','PHQS','PIDU','PLT','POSK','PPD','PROT','PRRF','PSA','PSA','PSPA','PSQS','PSSC','PTH',
+'PTSD','PULS','PVD','PXAM','PsyC','QDSH','RABG','REBG','RESP','RETI','RF','RHU','RPHR','RPPT','RUB','RUBA','RVTN','Rh','SBLT','SCR',
+'SDET','SDUS','SEXF','SEXH','SHAB','SIPS','SKD','SKST','SMBG','SMCD','SMCP','SMCS','SMK','SODI','SOHF','SPIR','SSEX','SSXC','STIS','STRE',
+'SUAB','SUNP','SUO2','SmCC','SmkA','SmkC','SmkD','SmkF','SmkP','SmkPY','SmkS','StSc','TCCH','TCHD','TCHL','TEM','TEMP','TG','TIME','TOXP',
+'TRIG','TSAT','TSH','TTG','TUG','UA','UACR','UAIP','UALB','UDUS','UHTP','URBH','URIC','URIC','USSH','VB12','VDRL','VFLU','VHPV','VLOA',
+'VPNE','VTD','VZAB','VZV','WAIS','WBC','WHR','WKED','WT','iDia','iEx','iHyp','iOth','iPTH','iRef'
+];    
+
+		     var oscarDatabaseTags = [
 		    "today", "time", "appt_date", "appt_start_time", "appt_end_time", "appt_location",
-            "next_appt_date", "next_appt_time", "nextf_appt_date", "next_appt_location", "current_form_id", "current_form_data_id",
-            "current_user", "current_user_fname_lname", "current_user_ohip_no", "current_user_specialty", "current_user_specialty_code",
+                    "next_appt_date", "next_appt_time", "nextf_appt_date", "next_appt_location", "current_form_id", "current_form_data_id",
+                    "current_user", "current_user_fname_lname", "current_user_ohip_no", "current_user_specialty", "current_user_specialty_code",
 			"current_user_cpsid", "current_user_id", "current_user_signature", "current_logged_in_user", "current_logged_in_user_address",
 			"current_logged_in_user_fax", "current_logged_in_user_work_phone", "current_logged_in_user_roles", "current_logged_in_user_type",
 			"current_logged_in_user_id", "current_user_takno", "current_logged_in_user_takno", "patient_name", "first_last_name",
@@ -924,9 +999,12 @@ $('#inputB').hide();
 		function getOscarDBTags() {
 			var dbTagList = null;
 			if(runStandaloneVersion) {
-				dbTagList = oscarDatabaseTags;
+				dbTagList = oscarDatabaseTags.sort()
 			}
 			else {
+
+                                getMeasures()       //******get measurementList
+
 				$.ajax
 				({
 					type: "GET",
@@ -944,7 +1022,7 @@ $('#inputB').hide();
 					}
 				});
 			}
-			return dbTagList;
+			return dbTagList.sort();
 		}
 		function addOscarImagePath(string) {
 			if(!runStandaloneVersion) {
@@ -1066,7 +1144,8 @@ $('#inputB').hide();
 				source += "\<script src='$\{oscar_javascript_path\}eforms/faxControl.js'\>\<\/script\>";
 			}
 			if ($signature_data.length > 0) {
-				source += "\<script src='$\{oscar_javascript_path\}eforms/signature_pad.min.js'\>\<\/script\>";
+                                source += "\<script src='${oscar_image_path}signature_pad.min.js'\>\<\/script\>";
+				//source += "\<script src='$\{oscar_javascript_path\}eforms/signature_pad.min.js'\>\<\/script\>";
 			}
 			source += "<style>";
 			var baseStyle = document.getElementById('eform_style');
@@ -2187,56 +2266,94 @@ $('#inputB').hide();
 			/* set up oscar database tag selection */
 			var $oscarDbCheckbox = $("<input>", {
 				id: "toggleGOscarDbCheckbox",
-				type: "checkbox"
+				type: "checkbox",
+				name: "radio1"
 			});
-			//************************************
-			var $oscarDbCheckbox2 = $("<input>", {
-				id: "toggleGOscarDbCheckbox2",
-				type: "checkbox"
-			});
-			var $oscarDbCheckbox3 = $("<input>", {
-				id: "toggleGOscarDbCheckbox3",
-				type: "checkbox"
-			});
-			//********************************
-			$("<div>").append($("<label>", {
-				text: "Use Database Tag:",
-				for: "toggleGOscarDbCheckbox"
-			})).append($oscarDbCheckbox).appendTo($options_menu1);
-			//***********************************
-			$("<div>").append($("<label>", {
-				text: "Add function:",
-				for: "toggleGOscarDbCheckbox2"
-			})).append($oscarDbCheckbox2).appendTo($options_menu1);
-			$("<div>").append($("<label>", {
-				text: "Make DatePicker:",
-				for: "toggleGOscarDbCheckbox3"
-			})).append($oscarDbCheckbox3).appendTo($options_menu1);
-			//	})).append($oscarDbCheckbox3).appendTo($oscarDbCheckbox2);
-			//*********************************
 
-			var $div1 = $("<div>").appendTo($options_menu1);
-			var $db_tag_select = addSelectMenu($div1, "oscarDbTagSelect", "Select Tag:", getOscarDBTags());
-			$db_tag_select.selectmenu("disable");
-			$db_tag_select.on("selectmenuchange", ( function (event, data) {
-				$textBoxTemplate.find(":input").attr('oscarDB', $db_tag_select.val());
-				$textAreaTemplate.find("textarea").attr('oscarDB', $db_tag_select.val());
-			}));
-			$oscarDbCheckbox.on('change', function (event, ui) {
-				if ($(this).is(':checked')) {
-					$db_tag_select.selectmenu("enable");
-					$textBoxTemplate.find(":input").attr('oscarDB', $db_tag_select.val());
-					$textAreaTemplate.find("textarea").attr('oscarDB', $db_tag_select.val());
-				}
-				else {
-					$db_tag_select.selectmenu("disable");
-					$textBoxTemplate.find(":input").removeAttr('oscarDB');
-					$textAreaTemplate.find("textarea").removeAttr('oscarDB');
-				}
-			});
-			
-				//**************************************
-   $oscarDbCheckbox2.on('change', function (event, ui) {
+//************************************
+var $oscarDbCheckbox2 = $('<input>', {
+  id: 'toggleGOscarDbCheckbox2',
+  type: 'checkbox'
+});
+var $oscarDbCheckbox3 = $('<input>', {
+  id: 'toggleGOscarDbCheckbox3',
+  type: 'checkbox'
+});
+var $oscarDbCheckbox4 = $('<input>', {
+  id: 'toggleGOscarDbCheckbox4',
+  type: 'checkbox'
+});
+//********************************
+var y = '<label for="toggleGOscarDbCheckbox5">Measurements:</label><input id="toggleGOscarDbCheckbox5" name = "radio1" type="checkbox">'
+$('<div>').append($('<label>', {
+  text: 'Use Database Tag:',
+  for : 'toggleGOscarDbCheckbox'
+})).append($oscarDbCheckbox).appendTo($options_menu1).append(y)
+//***********************************
+/*
+$('<div>').append($('<label>', {
+  text: 'Measurements:',
+  for : 'toggleGOscarDbCheckbox4'
+})).append($oscarDbCheckbox4).appendTo($options_menu1);
+
+var $oscarDbCheckbox7 = $("<input>", {
+id: "toggleGOscarDbCheckbox7",
+type: "radio",
+name: "radio2",
+change: function (event, ui) {
+measureTagfx(this)
+}
+});
+*/
+var y = '<label for="toggleGOscarDbCheckbox7">Value</label><input id="toggleGOscarDbCheckbox7" onclick="measureTagfx(this)"  name = "radio2" type="radio" checked>'
+var z = '<label for="toggleGOscarDbCheckbox8">Date Observed</label><input id="toggleGOscarDbCheckbox8" onclick="measureTagfx(this)"  name = "radio2" type="radio">'
+var q = '<label for="toggleGOscarDbCheckbox9">Comment</label><input id="toggleGOscarDbCheckbox9" onclick="measureTagfx(this)"  name = "radio2" type="radio">'
+$('<div>').append($('<label>', {
+  text: 'Add function:',
+  for : 'toggleGOscarDbCheckbox2'
+})).append($oscarDbCheckbox2).appendTo($options_menu1).append(y);
+$('<div>').append($('<label>', {
+  text: 'Make DatePicker:',
+  for : 'toggleGOscarDbCheckbox3'
+})).append($oscarDbCheckbox3).appendTo($options_menu1).append(z);
+//*********************************
+var $div1 = $('<div>').appendTo($options_menu1);
+var $db_tag_select = addSelectMenu($div1, 'oscarDbTagSelect', 'Select Tag:', getOscarDBTags());
+$db_tag_select.selectmenu('disable');
+//$textBoxTemplate.css('background-color', 'yellow')
+$db_tag_select.on('selectmenuchange', (function (event, data) {
+//alert($db_tag_select.val())   
+  $textBoxTemplate.find(':input').attr('oscarDB', $db_tag_select.val()); 
+  $textAreaTemplate.find('textarea').attr('oscarDB', $db_tag_select.val());
+}));
+$('#oscarDbTagSelect-button').hide()  //???????????
+
+$oscarDbCheckbox.on('change', function (event, ui) {
+//alert(this.checked)
+  if ($(this).is(':checked')) {
+  //alert(this.checked)   //workinghere
+  	$textBoxTemplate.find(':input').val("")
+	$textBoxTemplate.find(':input').removeAttr('oscarDB');
+    $('#toggleGOscarDbCheckbox5').prop('checked', false);
+  	$('#MeasureSelect').hide()
+    $('#oscarDbTagSelect-button').show()
+    $db_tag_select.selectmenu('enable');
+	$('#oscarDbTagSelect-button').prop('disabled', false); 
+	$textBoxTemplate.find(':input').attr('oscarDB',$db_tag_select.val()); 
+    $textAreaTemplate.find('textarea').attr('oscarDB', $db_tag_select.val());
+  } 
+  else {
+ //alert(this.checked)
+    $db_tag_select.selectmenu('disable');
+    $textBoxTemplate.find(':input').removeAttr('oscarDB');
+    $textAreaTemplate.find('textarea').removeAttr('oscarDB');
+	$('#oscarDbTagSelect-button').hide()
+	
+  }
+});
+
+//**************************************
+$oscarDbCheckbox2.on('change', function (event, ui) {
   if ($(this).is(':checked')) {
     //$oscarDbCheckbox3.prop('checked',false); 
     //alert(x)
@@ -2249,7 +2366,7 @@ $('#inputB').hide();
     listfc() //create select list of functions
     var e = document.getElementById('mySelect');
     $(e).css('background-color', 'yellow')
-    $(e).focus()    //alert(e.length)
+    $(e).focus() //alert(e.length)
     $(e).attr('size', e.length + 1);
     e.onclick = function () {
       var strUser = e.options[e.selectedIndex].text;
@@ -2272,25 +2389,98 @@ $('#inputB').hide();
     //win.close()
   } 
   else {
-    $textBoxTemplate.find(':input').removeAttr(x);
-    $textAreaTemplate.find('textarea').removeAttr(x);
+  //alert("unchecked")
+    var e = document.getElementById('mySelect');
+	document.getElementById('gen-textBoxDefaultTextId').value = ''
+  	$(e).remove()
+	$textBoxTemplate.find(':input').val("")
+    $textAreaTemplate.find('textarea').val("")
+    //$textBoxTemplate.find(':input').removeAttr(x);
+    //$textAreaTemplate.find('textarea').removeAttr(x);
+	$textBoxTemplate.find(':input').removeAttr('style');
+  }
+});
+$oscarDbCheckbox3.on('change', function (event, ui) {
+  if ($(this).is(':checked')) {
+    //$oscarDbCheckbox2.prop('checked',false);    
+    //$textBoxTemplate.find(":input").attr("onmouseover","mydatepicker(this)");
+    $textBoxTemplate.find(':input').attr('onclick', 'mydatepicker(this)');
+  } 
+  else {
+    $textBoxTemplate.find(':input').removeAttr('onmouseover');
+    $textBoxTemplate.find(':input').removeAttr('onfocus');
+  }
+});
+//**************************
+
+$('#toggleGOscarDbCheckbox5').on('change', function (event, ui) {   //??????
+  if ($(this).is(':checked')) {
+    
+  $('#toggleGOscarDbCheckbox').prop('checked', false);
+    $db_tag_select.selectmenu('disable');
+    $textBoxTemplate.find(':input').removeAttr('oscarDB');
+    $textAreaTemplate.find('textarea').removeAttr('oscarDB');
+	//**********
+    measureArray = measureArray.sort()
+    var myDiv = document.getElementById('oscarDbTagSelect-button'); //Append option list to page  
+    var selectList2 = document.createElement('select');
+    selectList2.id = 'MeasureSelect';
+    $(myDiv).after(selectList2);
+	//$textBoxTemplate.find(':input').css('background-color', 'orange')
+	var e = document.getElementById("MeasureSelect");
+    //$(e).css('background-color', 'yellow')
+	$(e).change(function(){ 
+    var y = $(this);
+	//alert(y)
+	measureTagfx(y)
+     });       
+    //Create and append the options
+    for (var i = 0; i < measureArray.length; i++) {
+      var option = document.createElement('option');
+      // option.value = measureArray[i];
+      // option.title = measureArray[i];
+      option.text = measureArray[i]
+      selectList2.appendChild(option);
+	  $('#oscarDbTagSelect-button').hide()    //working here
+    }
+	//alert((e).value)
+	measureTagfx()
+	//$textBoxTemplate.find(':input').attr('oscarDB',(e).value); 
+  } 
+  else {
+    $('#MeasureSelect').hide()
+	$('#oscarDbTagSelect-button').show()
+	measureTagfx(y)
+	$('#oscarDbTagSelect-button').hide()   //working here
+	$textBoxTemplate.find(':input').val("")
+	$textBoxTemplate.find(':input').removeAttr('oscarDB');
+  }
+});
+//*************************
+$oscarDbCheckbox4.on('change', function (event, ui) {
+  if ($(this).is(':checked')) {
+    measureArray = measureArray.sort()
+    var myDiv = document.getElementById('oscarDbTagSelect-button'); //Append option list to page  
+    var selectList2 = document.createElement('select');
+    selectList2.id = 'MeasureSelect';
+    $(myDiv).after(selectList2);
+    //Create and append the options
+    for (var i = 0; i < measureArray.length; i++) {
+      var option = document.createElement('option');
+      // option.value = measureArray[i];
+      // option.title = measureArray[i];
+      option.text = measureArray[i]
+      selectList2.appendChild(option);
+    }
+  } 
+  
+  else {
+    $('#MeasureSelect').hide()
   }
 });
 
-				$oscarDbCheckbox3.on('change', function (event, ui) {
-				if ($(this).is(':checked')) {
-				//$oscarDbCheckbox2.prop('checked',false);    
-					//$textBoxTemplate.find(":input").attr("onmouseover","mydatepicker(this)");
-					$textBoxTemplate.find(":input").attr("onclick","mydatepicker(this)");
-				}
-				else {
-				$textBoxTemplate.find(":input").removeAttr("onmouseover");
-				$textBoxTemplate.find(":input").removeAttr("onfocus");
-				}
-			});
-			//***************************************
-			
-		}
+//***************************************
+}
 		/** tab 2 setup */
 		function initLabelTemplateTab($tab) {
 			var $options_menu2 = $("<div>", {
