@@ -13,8 +13,7 @@
 	<link href= "../share/javascript/jquery/jquery-ui-1.12.0/themes/vader/jquery-ui.min.css" rel="stylesheet">
 
 	<!-- javascript file for the signature pads -- optional -->
-	<script src="${oscar_image_path}signature_pad.min.js"   onerror="myerror(this)"></script>
-	<!--script src="../share/javascript/eforms/signature_pad.min.js"></script-->
+	<script src="../share/javascript/eforms/signature_pad.min.js"></script>
 
 <script>
 
@@ -95,7 +94,7 @@ function getMeasures(measure) {  //get measurementList
 	//alert(browser_version)
 
 function listfc() { //create a select list of functions
- var myDiv = document.getElementById('ui-id-2'); //Append option list to page //??????????
+ var myDiv = document.getElementById('ui-id-1'); //Append option list to page //??????????
  //var myDiv = document.getElementById('oscarDbTagSelect-button')
   //$('#toggleGOscarDbCheckbox').click()
   $('#toggleGOscarDbCheckbox').prop('checked', false);
@@ -126,7 +125,7 @@ function listfc() { //create a select list of functions
 
   var selectList = document.createElement('select');
   selectList.id = 'mySelect';
-  myDiv.appendChild(selectList);
+  myDiv.before(selectList);
   //Create and append the options
   for (var i = 0; i < array.length; i++) {
     var option = document.createElement('option');
@@ -1144,8 +1143,8 @@ $('#inputB').hide();
 				source += "\<script src='$\{oscar_javascript_path\}eforms/faxControl.js'\>\<\/script\>";
 			}
 			if ($signature_data.length > 0) {
-                                source += "\<script src='${oscar_image_path}signature_pad.min.js'\>\<\/script\>";
-				//source += "\<script src='$\{oscar_javascript_path\}eforms/signature_pad.min.js'\>\<\/script\>";
+                               // source += "\<script src='${oscar_image_path}signature_pad.min.js'\>\<\/script\>";
+				source += "\<script src='$\{oscar_javascript_path\}eforms/signature_pad.min.js'\>\<\/script\>";
 			}
 			source += "<style>";
 			var baseStyle = document.getElementById('eform_style');
@@ -3180,7 +3179,6 @@ x[i].style.boxShadow = "inset 0 0 0 1000px white"
 }
 }
 
-function SELECT_FUNCTION(){} //Start function list here and below
 
 function myinit(){ //this blacks out boxes that are checked on load and clicks hidden fields
 $('input[type=hidden]').click();
@@ -3203,6 +3201,8 @@ z[i].addEventListener("click", function(){
 });
 }
 }
+
+
 
 function myupdate(vid){ //only one box in the radio group will be checked
 var x = document.getElementsByClassName(vid.getAttribute("class"));
@@ -3231,13 +3231,8 @@ for (var i = 0; i < x.length; i++) {
 }
 }
 
-$.datepicker.setDefaults({
-//for documentation link to http://api.jqueryui.com/datepicker/		
-//showOn: "both",
-//buttonImageOnly: true,
-//buttonImage: "calendar.gif"
-//buttonText: "Calendar"
-});
+
+function SELECT_FUNCTION(){} //Start function list here and below
 
 function mydatepicker(myelement) {
 $( "#"+myelement.id).datepicker({ 
@@ -3248,6 +3243,14 @@ showButtonPanel: true,
 closeText: 'Clear'
  });
 };
+
+$.datepicker.setDefaults({
+//for documentation link to http://api.jqueryui.com/datepicker/		
+//showOn: "both",
+//buttonImageOnly: true,
+//buttonImage: "calendar.gif"
+//buttonText: "Calendar"
+});
 
 function myerror(myelement) {  
 //function to load image as standalone
