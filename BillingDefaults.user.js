@@ -108,3 +108,6 @@ $("input[name='xml_appointment_date']").val(today);
 $('#xml_appointment_date').css("background-color","yellow");
 }
 
+//Highlight billing codes
+var allergy = "body > form:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
+$(allergy).css("background-color","lightyellow");
