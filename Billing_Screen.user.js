@@ -8,7 +8,7 @@
 // @exclude    *CaseManagementEntry.do?method=issuehistory&demographicNo*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
-// @version 2.1
+// @version 15.1
 // ==/UserScript==
 //**********************************************************
 var inputvar = 228 //form id goes here
@@ -38,8 +38,7 @@ if (h < 10) {
 }
 if (m < 10) {
   m = '0' + m
-}
-//alert(h)
+}//alert(h)
 //alert(m)
 
 var myYears = [
@@ -90,8 +89,7 @@ function myFunction() {
     z.onclick = showalert
     document.getElementById('mySelect').appendChild(z);
   }
-  var HH =
-  document.getElementById('H' + h).selected = true;
+  var HH = document.getElementById('H' + h).selected = true;
   //*****
   var x1 = document.createElement('SELECT');
   x1.setAttribute('id', 'mySelect1');
@@ -109,25 +107,20 @@ function myFunction() {
   }
   document.getElementById('M' + m).selected = true;
 }
-myFunction()
-//document.getElementById('mySelect').size = '2';
+myFunction()//document.getElementById('mySelect').size = '2';
 //document.getElementById('mySelect1').size = '2';
 function showalert() {
   // var x = document.getElementById('mySelect').value;
-  h = Number(this.value)
-  // alert(h)
+  h = Number(this.value)  // alert(h)
 }
 function showalert1() {
   // var x1 = document.getElementById('mySelect1').value;
-  m = Number(this.value)
-  //alert(m)
-}
-//========Get Path==================================================================
+  m = Number(this.value)  //alert(m)
+}//========Get Path==================================================================
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
-//=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/')//=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -153,19 +146,14 @@ if (params.demographic_no) {
 }
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
-  var onclickvalue = mytag[i].getAttribute('onclick')
-  // alert(onclickvalue)
+  var onclickvalue = mytag[i].getAttribute('onclick')  // alert(onclickvalue)
   if (onclickvalue !== null && onclickvalue.indexOf('demographicNo') > - 1) {
     // alert(onclickvalue)
-    var pstart = onclickvalue.search('demographicNo')
-    //  alert(pstart)
-    var pend = onclickvalue.search('InvoiceList')
-    //    alert(pend)
-    mydemono = onclickvalue.substring(pstart + 14, pend - 3).toString()
-    //   alert(mydemono)
+    var pstart = onclickvalue.search('demographicNo')    //  alert(pstart)
+    var pend = onclickvalue.search('InvoiceList')    //    alert(pend)
+    mydemono = onclickvalue.substring(pstart + 14, pend - 3).toString()    //   alert(mydemono)
   }
-}
-//var myTime=" <input type='time'' id='myTime'>"
+}//var myTime=" <input type='time'' id='myTime'>"
 //var myTime="<input type=time min=9:00 max=17:00 step=900> - 15m increments>"
 //$('#service_to_date').after(myTime);
 
@@ -183,61 +171,62 @@ function showAlert4() {
   firsthour = ''
   firstminute = ''
   $('#xml_other1_unit').val('')
-
-    var theDefault=firsthour;
-var theOptions = document.getElementsByName('xml_starttime_hr')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}  
-
-var theDefault=firstminute;
-var theOptions = document.getElementsByName('xml_starttime_min')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}
-  
-var theDefault=hours;
-var theOptions = document.getElementsByName('xml_endtime_hr')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}
-  
-  
-var theDefault=minutes;
-var theOptions = document.getElementsByName('xml_endtime_min')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}
-    
-
+  var theDefault = firsthour;
+  var theOptions = document.getElementsByName('xml_starttime_hr') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  var theDefault = firstminute;
+  var theOptions = document.getElementsByName('xml_starttime_min') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  var theDefault = hours;
+  var theOptions = document.getElementsByName('xml_endtime_hr') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  var theDefault = minutes;
+  var theOptions = document.getElementsByName('xml_endtime_min') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
 }
 var input = document.createElement('input');
 input.type = 'button';
@@ -300,18 +289,15 @@ function showAlert5() {
   var eth = ($('select[name=xml_endtime_hr] option:selected').val())
   var etm = ($('select[name=xml_endtime_min] option:selected').val())
   addthis = sth + ':' + stm
-  addthis2 = eth + ':' + etm
-  //addthis = firsthour + ':' + firstminute
+  addthis2 = eth + ':' + etm  //addthis = firsthour + ':' + firstminute
   //addthis2 = hours + ':' + minutes
   window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + mydemono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2)
 }
 function addtime(vAddTime) {
   var visittime = (vAddTime)
-  var currentTime = new Date()
- // alert(visittime)
+  var currentTime = new Date()  // alert(visittime)
   //  hours = currentTime.getHours()
-  hours = Number(h)
-  //  minutes = currentTime.getMinutes()
+  hours = Number(h)  //  minutes = currentTime.getMinutes()
   minutes = Number(m)
   firstminute = minutes - visittime
   firsthour = hours
@@ -346,61 +332,60 @@ function addtime(vAddTime) {
   if (minutes < 10) {
     minutes = addzero[minutes]
   }
-
-
-    var theDefault=firsthour;
-var theOptions = document.getElementsByName('xml_starttime_hr')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}  
-
-var theDefault=firstminute;
-var theOptions = document.getElementsByName('xml_starttime_min')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
+  var theDefault = firsthour;
+  var theOptions = document.getElementsByName('xml_starttime_hr') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  var theDefault = firstminute;
+  var theOptions = document.getElementsByName('xml_starttime_min') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  var theDefault = hours;
+  var theOptions = document.getElementsByName('xml_endtime_hr') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  var theDefault = minutes;
+  var theOptions = document.getElementsByName('xml_endtime_min') [0].options;
+  for (var theOptionoftheOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.text)
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
 }
-  
-var theDefault=hours;
-var theOptions = document.getElementsByName('xml_endtime_hr')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}
-  
-  
-var theDefault=minutes;
-var theOptions = document.getElementsByName('xml_endtime_min')[0].options;
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
-}
-    
-
-}
-
