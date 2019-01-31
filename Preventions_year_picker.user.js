@@ -3,7 +3,7 @@
 // @namespace   stanscript
 // @description Lists years
 // @include     *oscarPrevention/AddPreventionData.jsp*
-// @version     2
+// @version     15.1
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
@@ -78,6 +78,7 @@ document.getElementById('mySelect').size = '17';
 function showalert() {
   var x = document.getElementById('mySelect').value;
   $('#prevDate').val(x + '-11-01')
+  $('#date > img:nth-child(1)').click()
 }
 //AUTO FLU SHOT
 if (params.flushot) {
