@@ -227,11 +227,11 @@ function highP(myclass) {
           myP[i - 6 + ii].style.backgroundColor = 'yellow';
           //************
           //alert(myP[i+3].innerHTML.toUpperCase())
-          if (myP[i + 3].innerHTML.toUpperCase().indexOf(string1) > - 1)
+          if (myP[i + 3].innerHTML.toUpperCase().indexOf(string1) > - 1 || myP[i + 3].innerHTML.toUpperCase().indexOf("INR") > - 1)
           {
             myP[i - 6 + ii].style.backgroundColor = 'orange';
           }
-          if (myP[i + 3].innerHTML.toUpperCase().indexOf(string2) > - 1 || myP[i + 3].innerHTML.toUpperCase().indexOf(string3) > - 1)
+          if (myP[i + 3].innerHTML.toUpperCase().indexOf(string2) > - 1 || myP[i + 3].innerHTML.toUpperCase().indexOf(string3) > - 1 || myP[i + 3].innerHTML.toUpperCase().indexOf("INR") > - 1)
           {
             //alert()
             myP[i - 6 + ii].style.backgroundColor = 'orange';
