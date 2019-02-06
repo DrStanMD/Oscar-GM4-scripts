@@ -29,14 +29,14 @@ window.addEventListener('keypress', function(theEvent) {
 	var theShiftKey= theEvent.shiftKey;
 	switch(true){
 
-		case theAltKey && theKey=='z': 
+		case theShiftKey && theKey=='Z': 
 		 //alert(" ")
 		//$('#search > a:nth-child(1)').css('background-color','yellow');
 		$('#search > a:nth-child(1)').click()
 		//popupPage2('../demographic/search.jsp');return false;
 			break;
 		
-		case theAltKey && theKey=='j': 
+		case theShiftKey && theKey=='J': 
 		window.open(vPath + "billing/CA/BC/billingManageReferralDoc.jsp")
 		//$('#admin > a:nth-child(1)').click()
 		//$('div.adminBox:nth-child(7) > div:nth-child(2) > ul:nth-child(1) > li:nth-child(5) > a:nth-child(1)').click()
@@ -44,7 +44,7 @@ window.close()
 //alert(" ")
 			break;
 			
-	       case theAltKey && theKey=='k': //Open scratch pad
+	       case theShiftKey && theKey=='K': //Open scratch pad
 			$('#oscar_scratch > img:nth-child(1)').click()
 			break;
 
