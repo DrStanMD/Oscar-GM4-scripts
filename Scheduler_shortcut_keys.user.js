@@ -2,6 +2,7 @@
 // @name        Scheduler screen shortcut keys
 // @namespace   StansScripts
 // @description Shortcut keys for Schedular screen (Alt+z,j,k) for search,manage referral doc
+// @version 15.1
 // @include     */provider/providercontrol.jsp?year*
 // @include     */admin/admin.jsp*
 // @include       *oscarEncounter/oscarConsultationRequest/ConsultationFormRequest*
