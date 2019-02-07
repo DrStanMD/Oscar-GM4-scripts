@@ -10,6 +10,18 @@
 // @grant       none
 // ==/UserScript==
 //***************** Document Type must match Oscar exactly
+
+(function(){
+document.addEventListener('keydown', function(e) {
+
+  if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) {
+  $(AckButton).click()  
+    //alert("z pressed")
+  }
+}, false);
+})();
+
+
 //window.resizeTo(1280, 780);
 window.resizeTo(1500, 800);
 var DT = [
@@ -182,27 +194,7 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
-window.addEventListener('keypress', function (theEvent) {
-  //theEvent.stopPropagation();
-  //theEvent.preventDefault();
-  var theKeyCode = theEvent.charCode;
-  // || event.which;
-  var theKey = String.fromCharCode(theKeyCode);
-  var theAltKey = theEvent.altKey;
-  var theCtrlKey = theEvent.ctrlKey;
-  var theShiftKey = theEvent.shiftKey;
-  //var theDownKey= theEvent.PgDnKey;
-  switch (true) {
-    case theAltKey && theKey == 'z':
-      $(AckButton).click()
-      break;
-    case theAltKey && theKey == 'k':
-      //Open Scratch Pad
-      window.open(vPath + '/scratch/index.jsp')
-      break;
-  }
-},
-true);
+
 
 var IDnum = params.segmentID
 var Field1 = '#autocompletedemo' + IDnum
@@ -214,6 +206,8 @@ var AckButton = '#ackBtn_' + IDnum
 var SaveButton = '#save' + IDnum 
 var TicklerButton = '#ticklerBtn_' + IDnum
 var CommentArea = '#comment_' + IDnum
+
+
 document.getElementById(Field2ID).style.fontSize = '16px';
 $(Field2).blur(function () {
   myCollapse1()
