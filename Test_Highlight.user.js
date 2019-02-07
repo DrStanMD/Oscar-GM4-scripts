@@ -386,6 +386,10 @@ function ClearStoredSelections() {
 (function () {
   document.addEventListener('keydown', function (e) {
     //alert(e.keyCode)
+    
+    if (e.keyCode == 76 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //l
+       unsafeWindow.getComment('ackLab', IDnum);
+    }
 
     if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //z
        unsafeWindow.getComment('ackLab', IDnum);
