@@ -382,6 +382,23 @@ function ClearStoredSelections() {
 } 
 ///*********************************************************************
 
+
+(function () {
+  document.addEventListener('keydown', function (e) {
+    //alert(e.keyCode)
+
+    if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //z
+       unsafeWindow.getComment('ackLab', IDnum);
+    }
+    
+    if (e.keyCode == 90 && e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) { //Z
+      unsafeWindow.getComment('ackLab', IDnum);
+    }
+  }, false);
+}) ();
+
+
+/*
 window.addEventListener('keypress', function (theEvent) {
   var theKeyCode = theEvent.charCode;
   var theKey = String.fromCharCode(theKeyCode);
@@ -389,7 +406,7 @@ window.addEventListener('keypress', function (theEvent) {
   var theCtrlKey = theEvent.ctrlKey;
   var theShiftKey = theEvent.shiftKey;
   switch (true) {
-    case theAltKey && theKey == 'q':
+    case theShiftKey && theKey == 'Q':
       //Save Selected text to Label
       //$('#acklabel').val(fixedauthor + "  ##" + SavedLines )
       $(Acklabel).val($(Acklabel).val())
@@ -397,7 +414,7 @@ window.addEventListener('keypress', function (theEvent) {
       //unsafeWindow.getComment('ackLab')
       unsafeWindow.getComment('ackLab', IDnum);
       break;
-    case theAltKey && theKey == 'w':
+    case ShiftKey && theKey == 'W':
       //
       function getSelectionText() {
         var text = '';
@@ -414,21 +431,21 @@ window.addEventListener('keypress', function (theEvent) {
       }
       getSelectionText()
       break;
-    case theAltKey && theKey == 'Z':
+    case theAltKey && theKey == 'z':
       //Open comment textbox
       //unsafeWindow.getComment('ackLab')
       unsafeWindow.getComment('ackLab', IDnum);
       //$(AckLabel).click()
       break;
-    case theAltKey && theKey == 'z':
+    case theShiftKey && theKey == 'Z':
       SaveAndExit()
       break;
-    case theAltKey && theKey == 't':
+    case ShiftKey && theKey == 'T':
       //Click on Tickler button
       $('input:nth-child(13)').css('background-color', 'yellow');
       $('input:nth-child(13)').click();
       break;
-    case theAltKey && theKey == 'x':
+    case ShiftKey && theKey == 'X':
       //Click on Tickler button
       fixedauthor = $(Acklabel).val()
       $(CreateLabel).click();
@@ -438,6 +455,7 @@ window.addEventListener('keypress', function (theEvent) {
   }
 },
 true); 
+*/
 //****************************************************************************
 function renameTheLab(strOldName) {
   var strNewName = strOldName;
@@ -494,7 +512,7 @@ function renameTheLab(strOldName) {
       strNewName = 'UCHEM';
       break;
     case 'CHEM10':
-      strNewName = 'ACR';
+      strNewName = 'ACR/uProt';
       break;
     case 'CHEM11':
       strNewName = 'TSH';
@@ -509,7 +527,7 @@ function renameTheLab(strOldName) {
       strNewName = 'Horm';
       break;
     case 'CHEM17':
-      strNewName = 'CRP';
+      strNewName = 'CRP/SPEP';
       break;
     case 'CHEM19':
       strNewName = 'Tox';
@@ -524,10 +542,10 @@ function renameTheLab(strOldName) {
       strNewName = 'CUL';
       break;
     case 'REFER2':
-      strNewName = 'HepHIV.Hpyl';
+      strNewName = 'HepHIV.HPyl';
       break;
     case 'MICRO15':
-      strNewName = 'HepHIV';
+      strNewName = 'HepHiv';
       break;
     case 'CHEM18':
       strNewName = 'RF.ANA';
