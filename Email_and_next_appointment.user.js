@@ -4,6 +4,7 @@
 // @include *tickler/ticklerAdd.jsp?demographic_no*
 // @include *tickler/ForwardDemographicTickler.do*
 // @include */tickler/ticklerAdd.jsp*
+
 // @grant    none
 // ==/UserScript==
 //========Get Path============
@@ -124,7 +125,7 @@ if (demo_no) {
       $('#appbuttonId').text('Next office visit is ' + myappointment)
       document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
       $('#appbuttonId').css('background-color', '#08e8de')
-      mytextarea[0].value = 'Next office visit is ' + myappointment.trim() + '. '
+      mytextarea[0].value = 'Next office visit is ' + myappointment.trim() + '. ' + mytextarea[0].value
     }
   })
 }
