@@ -13,18 +13,7 @@
 // @version     15.1
 // @grant       none
 // ==/UserScript==
-/*
-Indemnity
 
-http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-Although reasonable care is taken to test the scripts before publishing, 
-everything you see here is meant to be informational only, and should be used with caution. 
-No guarantee is made or implied about the scripts here whatsoever. 
-Using scripts described here may result in errant behavior in the EMR, 
-inadvertently harming patients, and general badness. 
-Using any parts of the code implies you fully understand the code and the risks associated with using it.
-*/
-//**********************************************************
 var inputvar = 226 //form id goes here
 //**********************************************************
 if (inputvar == 0) {
@@ -98,10 +87,16 @@ if (params.myparam1) {
   var newDay = newDate.getDate();
   var newD = newYear + '-' + newMonth + '-' + newDay;
   document.serviceform.xml_appointment_date.value = newD;
-  //document.getElementsByName("textarea").value = newvalue;
   //alert(newvalue)
-  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val(newvalue)  //document.getElementById("FormName").submit();
-}//*******************************************************************************
+  //var e = $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)')
+  var mytextarea = document.getElementsByName('textarea');
+  //alert(mytextarea[0].value + " " + newvalue) 
+  mytextarea[0].value = mytextarea[0].value + " " + newvalue
+  //this.window.reload()
+  //document.getElementById("FormName").submit();
+}
+
+//*******************************************************************************
 
 var y = document.getElementsByClassName('NarrativeRes').length //alert(y)
 var x = window.location.toString()
