@@ -421,12 +421,14 @@ for (var i = 0; i < mytag.length; i++) {
 
 var input5 = document.createElement('input');
 input5.type = 'button';
-input5.value = 'Master';
+input5.value = 'Preventions';
 input5.onclick = ButtonFunction5;
 input5.setAttribute('style', 'font-size:16px;position:absolute;top:' + (340 + dd) + 'px;right:0px;background-color: lightblue;');
 document.body.appendChild(input5);
 function ButtonFunction5() {
-window.open(vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
+window.open(vPath + '/oscarPrevention/index.jsp?demographic_no='+ demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') 
+//window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
+//window.open(vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demono + '&displaymode=edit&dboperation=search_detail', 'myWindow', 'width=800,height=600') //window.open(vPath + 'billing.do?billRegion=BC&billForm=GP' + demono)
 }/* 
 //display LabGrid
 var input50 = document.createElement('input');
