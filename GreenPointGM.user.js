@@ -6,6 +6,7 @@
 // @grant    none
 // ==/UserScript==
 
+$('#selResType').css('background-color', 'yellow')
 
 /*
 https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94?Calendar
