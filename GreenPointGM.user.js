@@ -18,16 +18,17 @@ if (location.search) {
     }
 }
 
-alert(params.param1.replace(/%20/g, " "))
-alert(params.param2)
-alert(params.param3)
+var p1 = (params.param1.replace(/%20/g, " "))
+var p2 = Number(params.param2)
+var p3 = Number(params.param3)
 
-d = new Date('May 2, 2019')//alert(d)
-d.setDate(d.getDate() + 7);
-//alert(d)
+d = new Date(p1)
+alert(d)
+d.setDate(d.getDate() + p3);
+alert(d)
 var cm = d.getMonth() - 1
 var cd = d.getDate() - 1
-var cs = 3
+var cs = p2
 var mysites = [
   '90',
   '1',
