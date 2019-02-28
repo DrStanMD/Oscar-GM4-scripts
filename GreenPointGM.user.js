@@ -8,7 +8,7 @@
 
 //https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94
 
-var mysites = ['90','89','87','85','83','81','80','78','76','74','72','71','69','67','63','61','60','58']
+var mysites = ['90','44','89','87','85','83','81','80','78','76','74','72','71','69','67','63','61','60','58']
 
 $(document).ready(function () {
   $('#reserveButton').change(function () {
@@ -18,6 +18,19 @@ $(document).ready(function () {
 
 function mychange() {
   $(document).ready(function () {
+    //var x = $('#rce_67').html()
+    //alert(x.indexOf("rce avail"))
+    
+    for(i=0;i<mysites.length;i++){
+    var x = $('#rce_'+mysites[i]).html()
+    alert(x.indexOf("rce avail"))
+ 
+
+//<img src="https://reservation.pc.gc.ca/images/mapicons/service_avail.png" alt="Select Site: 13" title="" border="0">
+//<img src="https://reservation.pc.gc.ca/images/mapicons/service_unavail.png" alt="Select Site: 72" title="" border="0">
+}
+
+    
     if (document.getElementById('reserveButton').disabled) {
       alert('Not Available')
     } 
@@ -44,10 +57,7 @@ mychange()
 
 
 
-/*
-#rce_76 > a:nth-child(1) > img:nth-child(1)
-#rce_71 > a:nth-child(1) > img:nth-child(1)
 
-<img src="https://reservation.pc.gc.ca/images/mapicons/service_avail.png" alt="Select Site: 13" title="" border="0">
-<img src="https://reservation.pc.gc.ca/images/mapicons/service_unavail.png" alt="Select Site: 72" title="" border="0">
-*/
+
+
+
