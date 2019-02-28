@@ -6,7 +6,10 @@
 // @grant    none
 // ==/UserScript==
 //https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94
-d = new Date('May 27, 2019')//alert(d)
+d = new Date('May 27, 2019')
+alert(d)
+d.setDate(d.getDate() + 7);
+alert(d)
 cm = d.getMonth() - 1
 cd = d.getDate() - 1
 var mysites = [
