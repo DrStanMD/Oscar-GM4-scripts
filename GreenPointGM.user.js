@@ -18,8 +18,8 @@ if (location.search) {
   }
 }
 var p1 = (params.param1.replace(/%20/g, ' '))
-var p2 = Number(params.param2)//var p3 = Number(params.param3)
-d = new Date(p1)//alert(d)
+var p2 = Number(params.param2) //var p3 = Number(params.param3)
+d = new Date(p1) //alert(d)
 //d.setDate(d.getDate() + p3);
 //alert(d)
 var cm = d.getMonth() - 1
@@ -95,17 +95,16 @@ function mychange() {
     for (i = 0; i < mysites.length; i++) {
       var x = $('#rce_' + mysites[i]).html()
       if (x.indexOf('rce avail') > - 1) {
-        set = 1        
-        //myalarm()  
-        alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
+        set = 1        //myalarm()  
+        //alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
       }
-    }
-    //alert(set)
-    setTimeout(function(){  
-    if (set == 0) {
-      window.close()
-    }
-      }, 3000); 
+    }    //alert(set)
+
+    setTimeout(function () {
+      if (set == 0) {
+        window.close()
+      }
+    }, 10000);
   });
 }
 $('#selResType').val('Frontcountry Camping')
@@ -120,10 +119,9 @@ $('#MainContentPlaceHolder_LocationList').val('Pacific Rim') //$('#MainContentPl
 $('#selEquipmentSub').val('Small Tent')
 $('#selPartySize').val('2') //$('#selResource').val(mysites[0])
 //$('#selResource').trigger('change');
-setTimeout(function(){  
-mychange()
-      }, 5000);   
-
+setTimeout(function () {
+  mychange()
+}, 10000);
 /*
 $(document).ready(function () {
   $('#reserveButton').change(function () {
