@@ -6,24 +6,20 @@
 // @grant    none
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
-
 //=====Get Parameters============
-var params = {};
+var params = {
+};
 if (location.search) {
-    var parts = location.search.substring(1).split('&');
-    for (var i = 0; i < parts.length; i++) {
-        var nv = parts[i].split('=');
-        if (!nv[0]) continue;
-        params[nv[0]] = nv[1] || true;
-    }
+  var parts = location.search.substring(1).split('&');
+  for (var i = 0; i < parts.length; i++) {
+    var nv = parts[i].split('=');
+    if (!nv[0]) continue;
+    params[nv[0]] = nv[1] || true;
+  }
 }
-
-var p1 = (params.param1.replace(/%20/g, " "))
-var p2 = Number(params.param2)
-//var p3 = Number(params.param3)
-
-d = new Date(p1)
-//alert(d)
+var p1 = (params.param1.replace(/%20/g, ' '))
+var p2 = Number(params.param2)//var p3 = Number(params.param3)
+d = new Date(p1)//alert(d)
 //d.setDate(d.getDate() + p3);
 //alert(d)
 var cm = d.getMonth() - 1
@@ -31,8 +27,8 @@ var cd = d.getDate() - 1
 var cs = p2
 var mysites = [
   '90',
-  '1',
-  '44',
+  //'1',
+  //'44',
   '89',
   '87',
   '85',
@@ -95,13 +91,21 @@ function mychange() {
   var ndow = myday[dd.getDay()];
   //alert(n)
   $(document).ready(function () {
+    var set = 0
     for (i = 0; i < mysites.length; i++) {
       var x = $('#rce_' + mysites[i]).html()
       if (x.indexOf('rce avail') > - 1) {
+        set = 1        
         //myalarm()  
         alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
       }
     }
+    //alert(set)
+    setTimeout(function(){  
+    if (set == 0) {
+      window.close()
+    }
+      }, 3000); 
   });
 }
 $('#selResType').val('Frontcountry Camping')
@@ -116,8 +120,9 @@ $('#MainContentPlaceHolder_LocationList').val('Pacific Rim') //$('#MainContentPl
 $('#selEquipmentSub').val('Small Tent')
 $('#selPartySize').val('2') //$('#selResource').val(mysites[0])
 //$('#selResource').trigger('change');
+setTimeout(function(){  
 mychange()
-
+      }, 5000);   
 
 /*
 $(document).ready(function () {
