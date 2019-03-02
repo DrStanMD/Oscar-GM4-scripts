@@ -95,13 +95,11 @@ function mychange() {
     for (i = 0; i < mysites.length; i++) {
       var x = $('#rce_' + mysites[i]).html()
       if (x.indexOf('rce avail') > - 1) {
-        set = 1        
-        //myalarm() 
-        this.reload()
+        set = 1
+        myalarm()        
         //alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
       }
-    }    //alert(set)
-
+    }
     setTimeout(function () {
       if (set == 0) {
         window.close()
@@ -123,17 +121,4 @@ $('#selPartySize').val('2') //$('#selResource').val(mysites[0])
 //$('#selResource').trigger('change');
 setTimeout(function () {
   mychange()
-}, 10000);
-/*
-$(document).ready(function () {
-  $('#reserveButton').change(function () {
-    alert('Button changed')
-  });
-});
-    if (document.getElementById('reserveButton').disabled) {
-      alert('Not Available')
-    } 
-    else {
-      alert('**AVAILABLE**')
-    }
-*/
+}, 20000);
