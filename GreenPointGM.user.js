@@ -95,7 +95,9 @@ function mychange() {
     for (i = 0; i < mysites.length; i++) {
       var x = $('#rce_' + mysites[i]).html()
       if (x.indexOf('rce avail') > - 1) {
-        set = 1        //myalarm()  
+        set = 1        
+        //myalarm() 
+        this.reload()
         //alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
       }
     }    //alert(set)
