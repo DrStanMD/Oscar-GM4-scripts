@@ -6,6 +6,7 @@
 // @grant    none
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
+
 //=====Get Parameters============
 var params = {
 };
@@ -82,6 +83,7 @@ function myalarm() {
   beep1();
   setInterval(beep2, 300);
 }
+
 function mychange() {
   var dm = new Date($('#selArrMth').val());
   var nm = mymonth[dm.getMonth()];
