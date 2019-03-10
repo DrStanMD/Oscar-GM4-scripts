@@ -7,19 +7,19 @@
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
 function sendText(body) {
-  var patientCell = ''  
-  /*
+  var patientCell = '6047279112'  /*
   var confirmSend = confirm('Sending: "' + body + '" to ' + patientCell);
   if (!confirmSend) {
     return;
   }
   */
   //UPDATE THE FOLLOWING 5 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
-  var twilio_id = ''; // Twilio AccountSID
-  var twilio_auth = ''; // Twilio Auth Token
-  var twilio_number = ''; // Twilio phone number
+  var twilio_id = 'AC9fc2149fb0bba51dcae3b225ca2dab4c'; // Twilio AccountSID
+  var twilio_auth = '291cce54b6df59db9d5b2cc74558034f'; // Twilio Auth Token
+  var twilio_number = '+16042458611'; // Twilio phone number
   var url = 'https://' + twilio_id + ':' + twilio_auth + '@api.twilio.com/2010-04-01/Accounts/' + twilio_id + '/Messages';
-  //window.open(url)  //using a form in a hidden iframe to send a POST to Twilio Server. Please suggest improvement if you have a simpler way to send to twilio.
+  //window.open(url)  
+  //using a form in a hidden iframe to send a POST to Twilio Server. Please suggest improvement if you have a simpler way to send to twilio.
   var form = document.createElement('form');
   form.setAttribute('method', 'POST');
   form.setAttribute('action', url);
@@ -46,7 +46,7 @@ function sendText(body) {
   document.body.appendChild(hiddenFrame);
   form.submit();
   messageSent('Message: "' + body + '" texted to ' + patientCell);
-}//=====Get Parameters============
+} //=====Get Parameters============
 
 var params = {
 };
@@ -58,16 +58,14 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
-var p1 = (params.param1.replace(/%20/g, ' '))
-//alert(p1)
-var p2 = Number(params.param2) 
-//var p3 = Number(params.param3)
+var p1 = (params.param1.replace(/%20/g, ' '))//alert(p1)
+var p2 = Number(params.param2)//var p3 = Number(params.param3)
 d = new Date(p1) //
 //alert(d)
 //d.setDate(d.getDate() + p3);
 //alert(d)
 var cm = d.getMonth() - 1
-var cd = d.getDate() - 1
+//var cd = d.getDate() - 1
 //alert(cd)
 var cs = p2
 var mysites = [
@@ -145,8 +143,7 @@ function mychange() {
         set = 1
         myalarm()
         var y = 'Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.'
-        sendText(y + ' ' + window.location.href)        
-        //alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
+        sendText(y + ' ' + window.location.href)        //alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
       }
     }
     setTimeout(function () {
@@ -156,22 +153,16 @@ function mychange() {
     }, 10000);
   });
 }
-
-
-
-for(i=0;i<document.getElementById('selArrDay').length;i++){
-  //alert(d)
-  if(document.getElementById('selArrDay')[i].value==d){
-    //alert(document.getElementById('selArrDay')[i].value)
-    cd = (document.getElementById('selArrDay').selectedIndex)
-  }}
-
-
-
 $('#selResType').val('Frontcountry Camping')
 document.getElementById('selArrMth').selectedIndex = cm;
 $('#selArrMth').trigger('change');
 //alert(document.getElementById('selArrDay').length)
+for (i = 0; i < document.getElementById('selArrDay').length; i++) {
+  if (document.getElementById('selArrDay') [i].value == d) {
+    //alert(document.getElementById('selArrDay')[i].value)
+    cd = (document.getElementById('selArrDay') [i].index)
+  }
+}
 document.getElementById('selArrDay').selectedIndex = cd;
 //alert(document.getElementById('selArrDay')[cd].value)
 $('#selArrDay').trigger('change');
