@@ -6,8 +6,48 @@
 // @grant    none
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
+function sendText(body) {
+  var patientCell = '6047279112'  
+  /*
+  var confirmSend = confirm('Sending: "' + body + '" to ' + patientCell);
+  if (!confirmSend) {
+    return;
+  }
+  */
+  //UPDATE THE FOLLOWING 5 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
+  var twilio_id = 'AC9fc2149fb0bba51dcae3b225ca2dab4c'; // Twilio AccountSID
+  var twilio_auth = '291cce54b6df59db9d5b2cc74558034f'; // Twilio Auth Token
+  var twilio_number = '+16042458611'; // Twilio phone number
+  var url = 'https://' + twilio_id + ':' + twilio_auth + '@api.twilio.com/2010-04-01/Accounts/' + twilio_id + '/Messages';
+  //window.open(url)  //using a form in a hidden iframe to send a POST to Twilio Server. Please suggest improvement if you have a simpler way to send to twilio.
+  var form = document.createElement('form');
+  form.setAttribute('method', 'POST');
+  form.setAttribute('action', url);
+  form.target = 'hiddenFrame';
+  var fromField = document.createElement('input');
+  //fromField.type = 'hidden';
+  fromField.name = 'From';
+  fromField.value = twilio_number;
+  form.appendChild(fromField);
+  var toField = document.createElement('input');
+  toField.type = 'hidden';
+  toField.name = 'To';
+  toField.value = patientCell;
+  form.appendChild(toField);
+  var bodyField = document.createElement('input');
+  bodyField.type = 'hidden';
+  bodyField.name = 'Body';
+  bodyField.value = body;
+  form.appendChild(bodyField);
+  document.body.appendChild(form);
+  var hiddenFrame = document.createElement('iframe');
+  hiddenFrame.name = 'hiddenFrame';
+  hiddenFrame.setAttribute('hidden', true);
+  document.body.appendChild(hiddenFrame);
+  form.submit();
+  messageSent('Message: "' + body + '" texted to ' + patientCell);
+}//=====Get Parameters============
 
-//=====Get Parameters============
 var params = {
 };
 if (location.search) {
@@ -19,16 +59,20 @@ if (location.search) {
   }
 }
 var p1 = (params.param1.replace(/%20/g, ' '))
-var p2 = Number(params.param2) //var p3 = Number(params.param3)
-d = new Date(p1) //alert(d)
+//alert(p1)
+var p2 = Number(params.param2) 
+//var p3 = Number(params.param3)
+d = new Date(p1) //
+//alert(d)
 //d.setDate(d.getDate() + p3);
 //alert(d)
 var cm = d.getMonth() - 1
 var cd = d.getDate() - 1
+//alert(cd)
 var cs = p2
 var mysites = [
+  //'94','93','92','91','1',
   '90',
-  //'1',
   //'44',
   '89',
   '87',
@@ -46,7 +90,9 @@ var mysites = [
   '63',
   '61',
   '60',
-  '58'
+  '58',
+  '56',
+  '54'
 ]
 var mymonth = [
   'Jan',
@@ -83,7 +129,6 @@ function myalarm() {
   beep1();
   setInterval(beep2, 300);
 }
-
 function mychange() {
   var dm = new Date($('#selArrMth').val());
   var nm = mymonth[dm.getMonth()];
@@ -98,7 +143,9 @@ function mychange() {
       var x = $('#rce_' + mysites[i]).html()
       if (x.indexOf('rce avail') > - 1) {
         set = 1
-        myalarm()        
+        myalarm()
+        var y = 'Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.'
+        sendText(y + ' ' + window.location.href)        
         //alert('Site ' + mysites[i] + ' is available from ' + ndow + ', ' + nm + ' ' + nd + ' for ' + $('#selNumNights').val() + ' nights.')
       }
     }
@@ -109,10 +156,24 @@ function mychange() {
     }, 10000);
   });
 }
+
+
+
+for(i=0;i<document.getElementById('selArrDay').length;i++){
+  //alert(d)
+  if(document.getElementById('selArrDay')[i].value==d){
+    //alert(document.getElementById('selArrDay')[i].value)
+    cd = (document.getElementById('selArrDay').selectedIndex)
+  }}
+
+
+
 $('#selResType').val('Frontcountry Camping')
 document.getElementById('selArrMth').selectedIndex = cm;
 $('#selArrMth').trigger('change');
+//alert(document.getElementById('selArrDay').length)
 document.getElementById('selArrDay').selectedIndex = cd;
+//alert(document.getElementById('selArrDay')[cd].value)
 $('#selArrDay').trigger('change');
 $('#selNumNights').val(cs)
 $('#selNumNights').trigger('change');
