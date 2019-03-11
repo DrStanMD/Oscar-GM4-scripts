@@ -14,6 +14,7 @@ function sendText(body) {
   }
   */
   //UPDATE THE FOLLOWING 5 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
+  var patientCell = ''
   var twilio_id = ''; // Twilio AccountSID
   var twilio_auth = ''; // Twilio Auth Token
   var twilio_number = ''; // Twilio phone number
