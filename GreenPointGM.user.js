@@ -7,16 +7,16 @@
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
 function sendText(body) {
-  var patientCell = '6047279112'  /*
+  var patientCell = ''  /*
   var confirmSend = confirm('Sending: "' + body + '" to ' + patientCell);
   if (!confirmSend) {
     return;
   }
   */
   //UPDATE THE FOLLOWING 5 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
-  var twilio_id = 'AC9fc2149fb0bba51dcae3b225ca2dab4c'; // Twilio AccountSID
-  var twilio_auth = '291cce54b6df59db9d5b2cc74558034f'; // Twilio Auth Token
-  var twilio_number = '+16042458611'; // Twilio phone number
+  var twilio_id = ''; // Twilio AccountSID
+  var twilio_auth = ''; // Twilio Auth Token
+  var twilio_number = ''; // Twilio phone number
   var url = 'https://' + twilio_id + ':' + twilio_auth + '@api.twilio.com/2010-04-01/Accounts/' + twilio_id + '/Messages';
   //window.open(url)  
   //using a form in a hidden iframe to send a POST to Twilio Server. Please suggest improvement if you have a simpler way to send to twilio.
