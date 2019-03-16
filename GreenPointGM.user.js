@@ -7,14 +7,13 @@
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
 function sendText(body) {
-  var patientCell = ''  /*
+  var patientCell = '6047279112'  /*
   var confirmSend = confirm('Sending: "' + body + '" to ' + patientCell);
   if (!confirmSend) {
     return;
   }
   */
   //UPDATE THE FOLLOWING 5 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
-  var patientCell = ''
   var twilio_id = ''; // Twilio AccountSID
   var twilio_auth = ''; // Twilio Auth Token
   var twilio_number = ''; // Twilio phone number
@@ -93,6 +92,15 @@ var mysites = [
   '56',
   '54'
 ]
+
+var q = 0
+var mysites= []
+for(i=1;i<95;i++){
+mysites[q] = i
+  q = q +1
+}
+//alert(mysites)
+    
 var mymonth = [
   'Jan',
   'Feb',
