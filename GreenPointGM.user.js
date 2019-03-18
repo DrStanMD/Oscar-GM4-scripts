@@ -60,6 +60,8 @@ if (location.search) {
 }
 var p1 = (params.param1.replace(/%20/g, ' '))//alert(p1)
 var p2 = Number(params.param2)//var p3 = Number(params.param3)
+var mychecked = params.mychecked
+//alert(mychecked)
 d = new Date(p1) //
 //alert(d)
 //d.setDate(d.getDate() + p3);
@@ -93,13 +95,16 @@ var mysites = [
   '54'
 ]
 
+if(mychecked == "true"){
+//alert(mychecked)
 var q = 0
-var mysites= []
+//var mysites= []
 for(i=1;i<95;i++){
-mysites[q] = i
+//mysites[q] = i
   q = q +1
 }
-//alert(mysites)
+alert(mysites)
+}
     
 var mymonth = [
   'Jan',
