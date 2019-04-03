@@ -7,6 +7,28 @@
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
+
+
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1)) //alert(firstElement)
+vPath = ('https://' + location.host + '/' + firstElement + '/') 
+
+var inputs = document.getElementsByTagName('input');
+
+for(var i = 0; i < inputs.length; i++) {
+    if(inputs[i].type.toLowerCase() == 'button' && inputs[i].value == "DS"  ) {
+        inputs[i].style.backgroundColor = "yellow";
+        //alert(inputs[i].getAttribute('onclick'))
+      
+   //window.open(vPath +'report/reportdaysheet.jsp?dsmode=new&provider_no=1&sdate=2019-4-3')
+      
+      inputs[i].setAttribute('onclick','alert("HELLO")')
+      //alert(inputs[i].getAttribute('onclick'))
+      
+    }
+}
+
+
 var weekday = new Array(7);
 weekday[0] = 'Sunday';
 weekday[1] = 'Monday';
@@ -30,9 +52,7 @@ for (var i = 0; i < mytag.length; i++) {
     }
   }
 }
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1)) //alert(firstElement)
-vPath = ('https://' + location.host + '/' + firstElement + '/') //alert(vPath)
+
 var greenline1 = 'HereonTime'
 var greenline2 = 'HerebutLate'
 var mybtcolor = ''
