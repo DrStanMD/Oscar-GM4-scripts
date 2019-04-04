@@ -15,15 +15,16 @@ vPath = ('https://' + location.host + '/' + firstElement + '/')
 
 var inputs = document.getElementsByTagName('input');
 
+
 for(var i = 0; i < inputs.length; i++) {
     if(inputs[i].type.toLowerCase() == 'button' && inputs[i].value == "DS"  ) {
         inputs[i].style.backgroundColor = "yellow";
+        var str = inputs[i].getAttribute('onclick')
+        var res = str.split("'");
+        var DSnew = (vPath +'report/reportdaysheet.jsp?dsmode=new&provider_no='+res[1]+'&sdate='+res[3])
+        //alert(DSnew)
+        inputs[i].setAttribute('onclick','window.open("https://secure56.junoemr.com/SDHurwitzInc/report/reportdaysheet.jsp?dsmode=new&provider_no=1&sdate=2019-04-03")')
         //alert(inputs[i].getAttribute('onclick'))
-      
-   //window.open(vPath +'report/reportdaysheet.jsp?dsmode=new&provider_no=1&sdate=2019-4-3')
-      
-      inputs[i].setAttribute('onclick','alert("HELLO")')
-      //alert(inputs[i].getAttribute('onclick'))
       
     }
 }
