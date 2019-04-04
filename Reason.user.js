@@ -13,7 +13,7 @@ firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/') 
 
 var inputs = document.getElementsByTagName('input');
-
+var farray = []
 var x = 0
 for(var i = 0; i < inputs.length; i++) {
 
@@ -23,11 +23,14 @@ for(var i = 0; i < inputs.length; i++) {
         var res = str.split("'");
         inputs[i].removeAttribute("onclick");
         var dsnew = vPath +'report/reportdaysheet.jsp?dsmode=new&provider_no='+res[1]+'&sdate='+res[3]
+        farray.push(dsnew)
+        //alert(farray[x])
 
       $(inputs[i]).click(
       function() {
-      window.open(dsnew)
-      });      
+      window.open(farray[x])
+      });    
+      //x = x+1
     }
 }
 
