@@ -12,27 +12,29 @@ var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/') 
 
-var inputs = document.getElementsByTagName('input');
-var farray = []
-var x = 0
+
+function dslink(){
+window.open(vPath +'report/reportdaysheet.jsp?dsmode=new&provider_no='+this.getAttribute('foo')+'&sdate='+this.getAttribute('foo2'))
+//alert(this.getAttribute('foo'))
+//alert(this.getAttribute('foo2'))
+}
+
+var inputs = document.getElementsByTagName('input')
+
 for(var i = 0; i < inputs.length; i++) {
 
     if(inputs[i].type.toLowerCase() == 'button' && inputs[i].value == "DS"  ) {
         inputs[i].style.backgroundColor = "yellow";
         var str = inputs[i].getAttribute('onclick')
         var res = str.split("'");
-        inputs[i].removeAttribute("onclick");
-        var dsnew = vPath +'report/reportdaysheet.jsp?dsmode=new&provider_no='+res[1]+'&sdate='+res[3]
-        farray.push(dsnew)
-        //alert(farray[x])
-
-      $(inputs[i]).click(
-      function() {
-      window.open(farray[x])
-      });    
-      //x = x+1
+        inputs[i].setAttribute('foo', res[1]);
+        inputs[i].setAttribute('foo2',res[3]);
+      
+        inputs[i].removeAttribute("onclick")
+        inputs[i].addEventListener("click", dslink);     
     }
 }
+
 
 
 var weekday = new Array(7);
