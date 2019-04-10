@@ -218,7 +218,7 @@ function showAlert13()
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
   // INSERT YOU OWN form ID (fid=??) here
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=599&demographic_no=' + demo_no //alert(formPath)
+  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=601&demographic_no=' + demo_no //alert(formPath)
   window.open(formPath)
 }
 var input14 = document.createElement('input');
