@@ -81,7 +81,9 @@ function showAlert4()
       }
     }
   }
-  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('Please advise patient about appointment.')
+  x = document.getElementsByName('textarea') 
+  $(x[0]).val('Please advise patient about appointment.')
+  //$('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('Please advise patient about appointment.')
   var theDefault = 'Hurwitz, Office';
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
   for (var theOption of theOptions)
