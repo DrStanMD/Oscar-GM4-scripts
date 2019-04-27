@@ -148,11 +148,13 @@ function showAlert1()
       }
     }
   }
+  /*
   var d = new Date();
   var n = d.getFullYear();
   // alert(n)
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(2) > td:nth-child(2) > input:nth-child(1)').val(n + '-01-02');
   //  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(2) > td:nth-child(2) > input:nth-child(1)').css('background-color', 'yellow');
+  */
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'yellow');
      x = document.getElementsByName('textarea') 
     $(x[0]).val('CDM TBD')
