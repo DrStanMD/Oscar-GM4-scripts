@@ -4,7 +4,7 @@
 // @description Sets the default for Tickler SendTo, hyperlink to document, autotickler
 // @include        */tickler/ticklerAdd.jsp*
 // @include        *tickler/ForwardDemographicTickler.do*
-// @version 15.1
+// @version 15.2
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // ==/UserScript==
 //========Get Path============
@@ -176,6 +176,7 @@ input2.type = 'button';
 input2.value = 'Assign to Stan';
 input2.onclick = showAlert2;
 input2.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:400px; ');
+input2.style.background='yellow'
 document.body.appendChild(input2);
 function showAlert2()
 {
@@ -190,8 +191,8 @@ function showAlert2()
       }
     }
   }
-  $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'yellow');
-  x = document.getElementsByName('textarea')  //x = $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)')
+  //$('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'yellow');
+  x = document.getElementsByName('textarea') 
   $(x[0]).val($(x[0]).val() + ' Stan to ')
   var theDefault = 'Hurwitz, Stanley D';
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
@@ -205,6 +206,41 @@ function showAlert2()
     }
   }
 }
+
+var input20 = document.createElement('input');
+input20.type = 'button';
+input20.value = 'Prepayment';
+input20.onclick = showAlert20;
+input20.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:550px;');
+document.body.appendChild(input20);
+function showAlert20()
+{
+  var theDefault = 'Normal';
+  var theOptions = document.getElementsByName('priority') [0].options;
+  for (var theOption of theOptions)
+  {
+    if (typeof (theOption) == 'object') {
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+ x = document.getElementsByName('textarea') 
+  $(x[0]).val('Stan Awaiting Prepayment')
+  var theDefault = 'Hurwitz, Stanley D';
+  var theOptions = document.getElementsByName('task_assigned_to') [0].options;
+  for (var theOption of theOptions)
+  {
+    if (typeof (theOption) == 'object') {
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+}
+
 setTimeout(function () {
   $('textarea[name=\'textarea\']').focus()
 }, 300);
