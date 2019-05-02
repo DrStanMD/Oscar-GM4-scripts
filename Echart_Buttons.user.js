@@ -187,12 +187,14 @@ input11.value = 'Save&Exit';
 input11.onclick = showAlert11;
 input11.setAttribute('style', 'width:80px;font-size:16px;z-index:1;position:fixed;bottom:120px;right:150px;background-color: lime;border-radius: 30px;');
 document.body.appendChild(input11);
-function showAlert11() //{(document.evaluate("id('save')/span/input[contains(@src,'verify-sign.png')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue).click();}
+function showAlert11() 
+//{(document.evaluate("id('save')/span/input[contains(@src,'verify-sign.png')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue).click();}
 //{(document.evaluate("id('save')/span/input[contains(@src,'dollar-sign-icon.png')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue).click();}
 {
  
   $('#input2').click()
-  $('#save > span:nth-child(1) > input:nth-child(5)').click()
+//  $('#save > span:nth-child(1) > input:nth-child(5)').click()
+  $('#save > span:nth-child(1) > input:nth-child(6)').click()
 }
 var input12 = document.createElement('input');
 input12.type = 'button';
