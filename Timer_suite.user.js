@@ -4,7 +4,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @description Record echart time
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.1
+// @version     15.2
 // @grant       none
 // ==/UserScript==
 /*
@@ -58,7 +58,7 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
-window.onbeforeunload = reloadcookie;
+//window.onbeforeunload = reloadcookie;
 function reloadcookie() {
   var y = (6 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
