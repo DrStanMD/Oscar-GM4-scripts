@@ -4,7 +4,7 @@
 // @description Various navigation buttons for echart screen.  Set your own specific fid (form number) or Measurement groupName
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 15.1
+// @version 15.2
 // @grant       none
 // ==/UserScript==
 //window.moveTo(300, 100)
@@ -44,8 +44,8 @@ input.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;
 document.body.appendChild(input);
 function showAlert()
 {
-  //$('#menu3 > a:nth-child(12)').click()
-  window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR%20Management")
+  $('#menu3 > a:nth-child(12)').click()
+  //window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR%20Management")
     window.open(vPath + "/oscarEncounter/oscarMeasurements/SetupDisplayHistory.do?type=INR","", "width=1000,height=600,left=50,top=400")
 } 
 // INSERT YOU OWN MEASUREMENT UNIQUE SELECTOR  HERE
@@ -87,7 +87,8 @@ input4.setAttribute('style', 'width:90px;font-size:16px;z-index:1;position:fixed
 document.body.appendChild(input4);
 function showAlert4() // INSERT YOU OWN MEASUREMENT groupName=?????  below
 {
-  window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Vitals', 'VitalsWindow', 'width=1000,height=500')
+  $('#menu3 > a:nth-child(2)').click()
+  //window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Vitals', 'VitalsWindow', 'width=1000,height=500')
 }
 var input5 = document.createElement('input');
 input5.type = 'button';
@@ -179,7 +180,8 @@ input10.setAttribute('style', 'width:90px;font-size:16px;z-index:1;position:fixe
 document.body.appendChild(input10);
 function showAlert10() // INSERT YOU OWN MEASUREMENT groupName=?????  below
 {
-  window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Allergy Shots')
+  //window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Allergy Shots')
+  $('#menu3 > a:nth-child(10)').click()
 }
 var input11 = document.createElement('input');
 input11.type = 'button';
@@ -303,17 +305,11 @@ input19.setAttribute('style', 'width:70px;font-size:16px;z-index:1;position:fixe
 document.body.appendChild(input19);
 function showAlert19()
 {
-  //alert(demo_no)
-  // var formPath = vPath + "oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=20&demographic_no=" + demo_no
   var formPath = vPath + 'oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=CDM%20Labs'
-  myWindow = window.open(formPath) //$('#enclosingCol0 > input:nth-child(1)').val("1234")
-  /*  
-   setTimeout(function () {
-    myWindow.focus();
-    $('input[name=\'value(inputValue-23)\']').css('background-color', 'yellow');
-    $('input[name=\'value(inputValue-23)\']').focus()
-  }, 1500);
-  */
+  $('#menu3 > a:nth-child(4)').click()
+ // $('#menu3 > a:nth-child(6)').click()
+  //myWindow = window.open(formPath) 
+
 }
 
 var input180 = document.createElement('input');
