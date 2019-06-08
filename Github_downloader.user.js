@@ -20,6 +20,8 @@ $(myclass2[i]).css('background-color', 'yellow')
 
 */
 
+
+
 $('#login_field').val('sdhurwitz@gmail.com')
 $('#password').val('')
 
@@ -39,6 +41,7 @@ for (var i = 0; i < myclass.length; i++) {
     $(x).before(radioBtn)
   }
 }
+
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'IMPORT SCRIPTS';
@@ -54,6 +57,7 @@ function ButtonFunction1() {
     }
   }
 }
+
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Check all';
@@ -66,6 +70,7 @@ function ButtonFunction2() {
     myclass2[i].checked = true
   }
 }
+
 var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'Uncheck all';
@@ -78,10 +83,14 @@ function ButtonFunction3() {
     myclass2[i].checked = false
   }
 }
+
+
+$(document).ready(function(){
 for (i = 0; i < 200; i++) {
   xx = 'tr.js-navigation-item:nth-child(' + i + ') > td:nth-child(2)'
   x = 'tr.js-navigation-item:nth-child(' + i + ') > td:nth-child(4) > span:nth-child(1) > time-ago:nth-child(1)'
-  y = $(x).html() + 'X'  //alert(y)
+  y = $(x).html() + 'X'  //
+  //alert(y)
   //alert(y.indexOf("month"))
   if (y.indexOf('hour') > - 1) {
     $(x).css('background-color', 'yellow')
@@ -96,3 +105,5 @@ for (i = 0; i < 200; i++) {
     $(xx).css('background-color', 'lightgreen')
   }
 }
+
+});
