@@ -4,7 +4,7 @@
 // @include     *DrStanMD/Oscar-GM4-scripts*
 // @include     *DrStanMD/GM4-Snippets*
 // @include     *github.com/login*
-// @version     1.15
+// @version     15.2
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
