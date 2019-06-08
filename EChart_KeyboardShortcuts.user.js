@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           EChart_KeyboardShortcuts
 // @namespace      oscar/StansScripts
-// @version 15.1
+// @version 15.2
 // @description Various Echart shortcut buttons (Alt+ e,v,z,x,k,s,0,1,2,3,4,5,7). Set your own Measurement groupName and default population text.
 // @include        */casemgmt/forward.jsp?action=view&*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
@@ -23,7 +23,8 @@ window.addEventListener('dblclick', function () {
    // alert(e.keyCode)
     
     if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //z
-      window.open('https://secure56.junoemr.com/SDHurwitzInc//oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Vitals')
+      //window.open('https://secure56.junoemr.com/SDHurwitzInc//oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Vitals')
+        $('#menu3 > a:nth-child(2)').click()
     }
     if (e.keyCode == 86 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //v
       $('#signSaveImg').click()
@@ -32,7 +33,8 @@ window.addEventListener('dblclick', function () {
       window.open(vPath + '/scratch/index.jsp')
     }
     if (e.keyCode == 88 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //x
-      window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Screening%20Procedures', 'Screening%20ProceduresWindow', 'width=1000,height=700')
+     // window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Screening%20Procedures', 'Screening%20ProceduresWindow', 'width=1000,height=700')
+      $('#menu3 > a:nth-child(6)').click()
     }
     if (e.keyCode == 69 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //e
       //var theTarget = document.evaluate("id('save')/span/input[contains(@src,'dollar-sign-icon.png')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue;
