@@ -59,6 +59,7 @@ if (location.search) {
   }
 }
 //window.onbeforeunload = reloadcookie;
+window.addEventListener("beforeunload", reloadcookie);
 function reloadcookie() {
   var y = (6 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
