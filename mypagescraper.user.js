@@ -7,9 +7,12 @@
 // @grant       none
 // @version 15.3
 // ==/UserScript==
+
+//Reserve line in header
 var header = document.getElementById('encounterHeader');
 var headerReserve = header.innerHTML
-header.innerHTML += '<br>' //Reserve line in header
+header.innerHTML += '<br>'
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
@@ -28,6 +31,7 @@ var demoArray = [
 ]
 var demoArrayVal = [
 ]
+ 
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
@@ -39,20 +43,15 @@ function getMeasures(measure) {
       var str = xmlhttp.responseText
       if (!str) {
         return;
-      }      
+      }
       //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
       //var myReString = '<spanclass="label">' + measure + '.*/s*'
-
-      if (measure == 'Postal') {
-        var myReString = 'Postal(.|[\n])*'
-      } 
-      else {
-        var myReString = '<span class="label">' + measure + '(.|[\n])*'
-      }
+      var myReString = '<span class="label">'  + measure +  '(.|[\n])*'
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
-        y = myArray.toString() //alert(y)
+        y = myArray.toString() 
+        //alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
@@ -67,24 +66,32 @@ function getMeasures(measure) {
 $(document).ready(function () {
   for (j = 0; j < demoArray.length; j++) {
     getMeasures(demoArray[j]);
-  } //alert(demoArrayVal)
-
+  }
+  //alert(demoArrayVal)
   var HCN = demoArrayVal[7]
   res = HCN.slice(0, 4)
   res = res + ' ' + HCN.slice(4, 7)
   res = res + ' ' + HCN.slice(7)
   HCN = res
   header.innerHTML = headerReserve
-  header.innerHTML += ('Cell:'.bold() + demoArrayVal[0] + ' Addr:'.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] + ', ' + demoArrayVal[5]
-  + ' ' + 'PHN:'.bold() + HCN + 'Age:'.bold() + demoArrayVal[6] + 'eMail: '.bold() + demoArrayVal[1] + '   ' // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-  + '<button type="button" id="button10">Send email</button>'
+  var headerExtra1 = 'Cell: '
+  var headerExtra2 = ' Age: '
+  var headerExtra3 = 'File#: '
+  var headerExtra4 = 'PHN: '
+  var headerExtra5 = ' Addr: '
+  header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4]
+  + ' ' + headerExtra4.bold() + HCN +  "Age:".bold()+ demoArrayVal[6].fontcolor("red") + '   email: '.bold() + demoArrayVal[1] + '   '
+ // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+  + '<button type="button" id="button10">Send email</button>'                     
   );
-  document.getElementById('button10').onclick = do_email;
-  document.getElementById('button10').setAttribute('style', 'font-size:12px;');
-  function do_email() {
-    //alert(demoArrayVal[1])
-    var email = demoArrayVal[1]
-    var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
-    window = window.open(mailto_link, 'emailWindow')
-  }
+  document.getElementById("button10").onclick = do_email;
+  document.getElementById("button10").setAttribute('style', 'font-size:12px;');
+  
+  function do_email(){
+  //alert(demoArrayVal[1])
+  var email = demoArrayVal[1]
+  var mailto_link = 'mailto:' + email+ '?Subject=Confidential medical information'
+  window = window.open(mailto_link, 'emailWindow')  
+}
+  
 })
