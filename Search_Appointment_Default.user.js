@@ -3,6 +3,7 @@
 // @namespace   Stanscripts
 // @description Sets defaults for search appointment.  Adds day of week to date
 // @include     *appointment/appointmentsearch.jsp*
+// @version     15.1
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // ==/UserScript==
 testfor = ($('body > center:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)').html())
