@@ -8,6 +8,22 @@
 testfor = ($('body > center:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)').html())
 if (testfor == null)
 {
+  var theDefault = 'Ghobassy, Bahar';
+  var theOptions = document.getElementsByName('provider_no') [0].options;
+  for (var theOption of theOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  
+  
+  
   var theDefault = '1 - 15 Minute Appointment';
   var theOptions = document.getElementsByName('code') [0].options;
   for (var theOption of theOptions)
