@@ -4,7 +4,7 @@
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include     *lab/CA/ALL/labDisplay.jsp?demographicId*
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     2.0
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 //========Get Path============
@@ -189,9 +189,10 @@ function getMeasures(measure) {
         r++
       }
     }
-    measureArray.reverse()
-    measureDateArray.reverse()
-    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>' //*************Limit to 10 results**********************
+    //measureArray.reverse()
+    //measureDateArray.reverse()
+    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>' 
+    //*************Limit to 10 results**********************
     vlimit = 10
     if (measureArray.length < 10) {
       vlimit = measureArray.length
