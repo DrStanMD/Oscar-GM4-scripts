@@ -8,7 +8,7 @@
 // @exclude    *CaseManagementEntry.do?method=issuehistory&demographicNo*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
-// @version 15.1
+// @version 15.2
 // ==/UserScript==
 //**********************************************************
 var inputvar = 228 //form id goes here
@@ -173,60 +173,52 @@ function showAlert4() {
   $('#xml_other1_unit').val('')
   var theDefault = firsthour;
   var theOptions = document.getElementsByName('xml_starttime_hr') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
   var theDefault = firstminute;
   var theOptions = document.getElementsByName('xml_starttime_min') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
   var theDefault = hours;
   var theOptions = document.getElementsByName('xml_endtime_hr') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
   var theDefault = minutes;
   var theOptions = document.getElementsByName('xml_endtime_min') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
 }
 var input = document.createElement('input');
 input.type = 'button';
@@ -334,58 +326,50 @@ function addtime(vAddTime) {
   }
   var theDefault = firsthour;
   var theOptions = document.getElementsByName('xml_starttime_hr') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
   var theDefault = firstminute;
   var theOptions = document.getElementsByName('xml_starttime_min') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
   var theDefault = hours;
   var theOptions = document.getElementsByName('xml_endtime_hr') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
   var theDefault = minutes;
   var theOptions = document.getElementsByName('xml_endtime_min') [0].options;
-  for (var theOptionoftheOptions)
-  {
-    for (var i = 0; i < 3; i++) {
-    }
-    if (typeof (theOption) == 'object') {
-      //alert(theOption.text)
-      if (theOption.text == theDefault) {
-        theOption.selected = true;
-        break;
-      }
-    }
-  }
+
+for  (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.text==theDefault){
+			theOption.selected=true;
+			break;
+		}
+	}
+}
 }
