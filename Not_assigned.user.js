@@ -6,7 +6,7 @@
 // @include     *dms/MultiPageDocDisplay.jsp?segmentID*
 // @include     *dms/showDocument.jsp?segmentID=*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version     15.1
+// @version     15.2
 // @grant       none
 // ==/UserScript==
 //***************** Document Type must match Oscar exactly
@@ -40,8 +40,8 @@ DT[1] = [
   ' Dr. ',
   ' Dr. Cherry',
   ' Dr. Sampath',
-  ' Dr. Nguyen',
-  ' Dr. Yun',
+  ' Dr. N. Nguyen',
+  ' Dr.  J. Yun',
   ' Dr. Fu',
   ' Dr. Ebtia',
   ' Dr. Saldana',
@@ -54,6 +54,7 @@ DT[1] = [
   ' Dr. Fishman',
   ' Dr. Jakubowski',
   ' Dr. Orenstein',
+  ' Dr. Harris',
   'Orthopedics',
   'Opthalmology',
   'Cardiolology',
@@ -204,8 +205,10 @@ var Field2 = '#docType_' + IDnum
 var Field2ID = 'docType_' + IDnum
 var Field3 = '#docDesc_' + IDnum
 var CloseButton = ' #closeBtn_' + IDnum
+//alert(CloseButton)
 var AckButton = '#ackBtn_' + IDnum
 var SaveButton = '#save' + IDnum 
+//alert(SaveButton)
 var TicklerButton = '#ticklerBtn_' + IDnum
 var CommentArea = '#comment_' + IDnum
 
@@ -349,23 +352,22 @@ function Addsite() {
 var input11 = document.createElement('input');
 input11.type = 'button';
 input11.value = 'Save and Close';
-var ShowClick = (input11.value).trim()
-input11.id = 'Forms'
 input11.onclick = showAlert11;
-input11.setAttribute('style', 'font-size:12px;position:absolute;top:460px;right:180px;height:40px;background-color:  #FF00FF  ');
+input11.setAttribute('style', 'font-size:12px;position:absolute;top:600px;right:0px;height:40px;background-color:  #FF00FF  ');
 document.body.appendChild(input11);
 function showAlert11() {
   //$(TicklerButton).click()
   $(SaveButton).click()
-  $(SaveButton).click()
-  window.opener.location.reload();
-  $(CloseButton).click();
+  //$(SaveButton).click()
+  //window.opener.location.reload();
+   setTimeout(function(){
+   $(CloseButton).click();
+  }, 500);
+
 }
 var input12 = document.createElement('input');
 input12.type = 'button';
 input12.value = 'Tickler and Acknowledge';
-var ShowClick = (input12.value).trim()
-input12.id = 'Forms'
 input12.onclick = showAlert12;
 input12.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:0px;background-color:  #FF0000 ');
 document.body.appendChild(input12);
