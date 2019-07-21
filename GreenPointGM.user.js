@@ -7,13 +7,14 @@
 // ==/UserScript==
 //var mywindow = window.open("https://reservation.pc.gc.ca/PacificRim/GreenPoint/1-94")
 function sendText(body) {
-  var patientCell = '6047279112'  /*
+  /*
   var confirmSend = confirm('Sending: "' + body + '" to ' + patientCell);
   if (!confirmSend) {
     return;
   }
   */
   //UPDATE THE FOLLOWING 5 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
+  var patientCell = '' 
   var twilio_id = ''; // Twilio AccountSID
   var twilio_auth = ''; // Twilio Auth Token
   var twilio_number = ''; // Twilio phone number
@@ -66,7 +67,8 @@ d = new Date(p1) //
 //alert(d)
 //d.setDate(d.getDate() + p3);
 //alert(d)
-var cm = d.getMonth() - 1
+var cm = d.getMonth()
+//alert(cm)
 //var cd = d.getDate() - 1
 //alert(cd)
 var cs = p2
@@ -103,7 +105,7 @@ for(i=1;i<95;i++){
 //mysites[q] = i
   q = q +1
 }
-alert(mysites)
+//alert(mysites)
 }
     
 var mymonth = [
@@ -144,6 +146,7 @@ function myalarm() {
 function mychange() {
   var dm = new Date($('#selArrMth').val());
   var nm = mymonth[dm.getMonth()];
+  //alert(dm)
   //alert(nm)
   var dd = new Date($('#selArrDay').val());
   var nd = dd.getDate();
@@ -167,8 +170,18 @@ function mychange() {
     }, 10000);
   });
 }
+
+
+var d0 = new Date();
+var n0 = d0.getMonth();
+//alert(cm)
+//alert(n0)
+//alert(n0)
 $('#selResType').val('Frontcountry Camping')
-document.getElementById('selArrMth').selectedIndex = cm;
+//alert(cm - n0 + 1)
+document.getElementById('selArrMth').selectedIndex = cm - n0 + 1
+//alert(cm)
+//alert(document.getElementById('selArrMth').selectedIndex)
 $('#selArrMth').trigger('change');
 //alert(document.getElementById('selArrDay').length)
 for (i = 0; i < document.getElementById('selArrDay').length; i++) {
