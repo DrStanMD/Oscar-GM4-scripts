@@ -564,9 +564,6 @@ function renameTheLab(strOldName) {
       strNewName = '';
       break;
       //************************
-    case 'HAEM8':
-      strNewName = 'Semen';
-      break;
     case 'CHEM20':
       strNewName = 'DrugScr';
       break;
