@@ -488,6 +488,7 @@ function renameTheLab(strOldName) {
       break;
     case 'HAEM8':
       strNewName = 'SemAn';
+      break;
     case 'CHEM1':
       strNewName = 'FE';
       break;
