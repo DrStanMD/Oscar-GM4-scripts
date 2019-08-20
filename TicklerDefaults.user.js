@@ -157,9 +157,9 @@ function showAlert1()
   */
   $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'yellow');
      x = document.getElementsByName('textarea') 
-    $(x[0]).val('CDM TBD')
+    $(x[0]).val('Recall for booked CDM')
  // $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('CDM TBD')
-  var theDefault = 'Hurwitz, Side Case';
+  var theDefault = 'Hurwitz, Office';
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
   for (var theOption of theOptions)
   {
