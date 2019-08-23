@@ -565,11 +565,11 @@ function renameTheLab(strOldName) {
       strNewName = '';
       break;
       //************************
-    case 'CHEM20':
-      strNewName = 'DrugScr';
+    case 'TRANSPDF':
+      strNewName = 'ER Report';
       break;
-    case 'CHEM20':
-      strNewName = 'DrugScr';
+    case 'NOTIF':
+      strNewName = 'Hospital Notification';
       break;
     case 'CHEM20':
       strNewName = 'DrugScr';
