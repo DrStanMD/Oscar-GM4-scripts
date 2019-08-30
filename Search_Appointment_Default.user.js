@@ -10,6 +10,7 @@ testfor = ($('body > center:nth-child(3) > table:nth-child(1) > tbody:nth-child(
 if (testfor == null)
 {
   var theDefault = 'Ghobassy, Bahar';
+  //var theDefault ='Hurwitz, Stanley D';
   var theOptions = document.getElementsByName('provider_no') [0].options;
   for (var theOption of theOptions)
   {
