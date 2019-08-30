@@ -572,7 +572,7 @@ function renameTheLab(strOldName) {
       strNewName = 'Hospital Notification';
       break;
     case 'CARDIOPDF':
-      strNewName = 'ECG';
+      strNewName = 'ECG/Holter';
       break;
     case 'CHEM20':
       strNewName = 'DrugScr';
