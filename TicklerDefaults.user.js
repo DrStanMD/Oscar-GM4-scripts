@@ -4,7 +4,7 @@
 // @description Sets the default for Tickler SendTo, hyperlink to document, autotickler
 // @include        */tickler/ticklerAdd.jsp*
 // @include        *tickler/ForwardDemographicTickler.do*
-// @version 15.2
+// @version 15.3
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // ==/UserScript==
 //========Get Path============
@@ -114,9 +114,9 @@ function showAlert3()
       }
     }
   }
-    x = document.getElementsByName('textarea') 
-    $(x[0]).val($(x[0]).val() + ' PAP RECALL. ')
- // $('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(5) > td:nth-child(2) > textarea:nth-child(1)').val('PAP RECALL')
+
+  var mytextarea = document.getElementsByName('textarea') 
+  mytextarea[0].value = 'PAP RECALL. ' + mytextarea[0].value
   var theDefault = 'Hurwitz, Office';
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
   for (var theOption of theOptions)
@@ -191,9 +191,11 @@ function showAlert2()
       }
     }
   }
-  //$('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'yellow');
-  x = document.getElementsByName('textarea') 
-  $(x[0]).val($(x[0]).val() + ' Stan to ')
+  
+  var mytextarea = document.getElementsByName('textarea') 
+  mytextarea[0].value = 'Stan to ' + mytextarea[0].value
+  
+  var theDefault = 'Hurwitz, Office';
   var theDefault = 'Hurwitz, Stanley D';
   var theOptions = document.getElementsByName('task_assigned_to') [0].options;
   for (var theOption of theOptions)
