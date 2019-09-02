@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name     Email and Next appointment for tickler
-// @version  15.2
+// @version  15.1
 // @include *tickler/ticklerAdd.jsp?demographic_no*
 // @include *tickler/ForwardDemographicTickler.do*
 // @include */tickler/ticklerAdd.jsp*
@@ -124,7 +124,12 @@ if (demo_no) {
       $('#appbuttonId').text('Next office visit is ' + myappointment)
       document.getElementById('appbuttonId').setAttribute('style', 'font-size:14px;');
       $('#appbuttonId').css('background-color', '#08e8de')
+      if(mytextarea[0].value=="")
+      {mytextarea[0].value = '**Next office visit is ' + myappointment.trim() + '.' 
+      }
+      else{
       mytextarea[0].value = mytextarea[0].value + '  \n**Next office visit is ' + myappointment.trim() + '.' 
+      }
       mytextarea[0].setSelectionRange(0, 0);
       mytextarea[0].value = '\n' + mytextarea[0].value
       mytextarea[0].setSelectionRange(0, 0);
