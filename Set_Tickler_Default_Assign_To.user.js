@@ -7,7 +7,7 @@
 // ==/UserScript==
 
 var theDefault = 'Hurwitz , Stanley D';
-//var theDefault='Ghobassy , Bahar';
+var theDefault='Ghobassy , Bahar';
 //var theDefault='Ho , Wei-Ning';
 //var theDefault='Winkler , Daniella';
 var theOptions = document.getElementsByName('assignedTo') [0].options;
