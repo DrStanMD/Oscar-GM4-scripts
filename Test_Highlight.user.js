@@ -571,6 +571,9 @@ function renameTheLab(strOldName) {
     case 'NOTIF':
       strNewName = 'Hospital Notification';
       break;
+    case 'NOTIFP':
+      strNewName = 'Pap Recall';
+      break;
     case 'CARDIOPDF':
       strNewName = 'ECG/Holter';
       break;
