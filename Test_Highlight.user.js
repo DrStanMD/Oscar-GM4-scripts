@@ -577,8 +577,8 @@ function renameTheLab(strOldName) {
     case 'CARDIOPDF':
       strNewName = 'ECG/Holter';
       break;
-    case 'CHEM20':
-      strNewName = 'DrugScr';
+    case 'CHEM15.2':
+      strNewName = 'SIPS';
       break;
     case 'CHEM20':
       strNewName = 'DrugScr';
