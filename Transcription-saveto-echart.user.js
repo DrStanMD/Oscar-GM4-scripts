@@ -15,7 +15,8 @@ ExcelArray = [
   'CELLPATH',
   'BCCASMP',
   'BCCACSP',
-  'DIAG IMAGE'
+  'DIAG IMAGE',
+  'NOTIF'
 ]
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
