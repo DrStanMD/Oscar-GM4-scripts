@@ -209,9 +209,9 @@ ExcelArray = [
   'CELLPATH',
   'BCCASMP',
   'BCCACSP',
-  'DIAG IMAGE',
-  'NOTIF',
-  'TRANSPDF'
+  'DIAG IMAGE'
+  //'NOTIF',
+  //'TRANSPDF'
 ]
 function RenameLabs() {
   Labteststring = ''
