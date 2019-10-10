@@ -288,6 +288,7 @@ else {
     author = prompt('Please enter label name', '');
   }
   fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim()  //alert(fixedauthor)
+  //alert(fixedauthor)
   var input3 = document.createElement('input');
   input3.type = 'button';
   input3.value = 'Clear all';
@@ -307,6 +308,8 @@ else {
   input1.setAttribute('style', 'font-size:18px;position:fixed;top:500px;right:0px;');
   document.body.appendChild(input1);
 }
+
+
 if (teststring == 'DIAG IMAGE') {
   //**************************************Highlight 
   var SavedLines = ''
@@ -343,7 +346,6 @@ function StoreSelection() {
   ColorizeSelection('yellow');
 }
 function SaveAndExit() {
-  //alert(fixedauthor)
   SavedLines = ''
   var i = 0
   $('tr.NarrativeRes').each(function () {
@@ -355,11 +357,14 @@ function SaveAndExit() {
     }
     i += 1
   }
-  )  //alert(teststring)
-  //alert(fixedauthor)
-  if (ExcelArray.indexOf(teststring) > - 1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE') {
+  )  
+
+  alert(teststring)
+  if (ExcelArray.indexOf(teststring) > - 1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE' && teststring != 'TRANSPDF') {
     fixedauthor = teststring
   }
+  
+  
   $(AckLabel).val(fixedauthor + '  ##' + SavedLines)
   $(CreateLabel).click();
   $(CreateLabel).click();
@@ -568,7 +573,7 @@ function renameTheLab(strOldName) {
       break;
       //************************
     case 'TRANSPDF':
-      strNewName = 'ER Report';
+      strNewName = 'Hospital Report';
       break;
     case 'NOTIF':
       strNewName = 'Hospital Notification';
