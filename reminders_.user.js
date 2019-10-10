@@ -45,11 +45,13 @@ if (params.segmentID) {
     var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'    //alert($(myElement).html())
     //$(myElement).css('background-color', 'yellow')
   }
+  
   if (window.location.pathname.indexOf('labDisplay.jsp') > - 1) {
     var mydocType = 'HL7'
     var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)' //var teststring = ($('.Title2').html()).trim()
     //$(myElement).css('background-color', 'yellow')
-  }  
+  }
+  
   //alert(mydocType)
   //alert(teststring)
 
@@ -107,7 +109,7 @@ if (x.indexOf('dms/showDocument.jsp?') > - 1) { //This is a document
   //alert(demono)
 }
 if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
-  //  alert('LabReport')
+  // alert('LabReport')
   var mytag = document.getElementsByTagName('a');
   for (var i = 0; i < mytag.length; i++) {
     var onclickvalue = mytag[i].getAttribute('onclick')
@@ -120,11 +122,22 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
   }
 } 
 else if (q1 > - 1 && q2) {
-  // alert("Lab 2")
+  //alert("Lab 2")
+/*
   var NarList = document.getElementsByClassName('NarrativeRes');
-  demopos = ((NarList[1].innerHTML).indexOf('demo='))
+  if( (NarList[1].innerHTML).indexOf('demo=')){
+  //alert(NarList)
+  demopos = (NarList[1].innerHTML).indexOf('demo=')
+  alert(demopos)
   demoend = (NarList[1].innerHTML).indexOf('&', demopos)
-  demono = (NarList[1].innerHTML).substring(demopos + 5, demoend) //alert(demono)
+  demono = (NarList[1].innerHTML).substring(demopos + 5, demoend) 
+  }
+ */
+  demono=params.demographicId
+  //alert(demono)
+  
+  
+
 } 
 else if (x.indexOf('dms/MultiPageDocDisplay.jsp?segmentID') > - 1) {
   x = ($('input[tabindex=12]').attr('onclick'))
