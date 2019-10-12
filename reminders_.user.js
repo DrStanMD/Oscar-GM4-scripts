@@ -10,7 +10,7 @@
 // @include  *tickler/ForwardDemographicTickler.do*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.1
+// @version     15.2
 // @grant       none
 // ==/UserScript==
 
