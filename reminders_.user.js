@@ -123,19 +123,20 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
 } 
 else if (q1 > - 1 && q2) {
   //alert("Lab 2")
-/*
+
   var NarList = document.getElementsByClassName('NarrativeRes');
   if( (NarList[1].innerHTML).indexOf('demo=')){
   //alert(NarList)
   demopos = (NarList[1].innerHTML).indexOf('demo=')
-  alert(demopos)
+  //alert(demopos)
   demoend = (NarList[1].innerHTML).indexOf('&', demopos)
   demono = (NarList[1].innerHTML).substring(demopos + 5, demoend) 
   }
- */
+ 
+  if(!demono){
   demono=params.demographicId
   //alert(demono)
-  
+  }
   
 
 } 
