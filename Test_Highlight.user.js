@@ -359,7 +359,7 @@ function SaveAndExit() {
   }
   )  
 
-  alert(teststring)
+  //alert(teststring)
   if (ExcelArray.indexOf(teststring) > - 1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE' && teststring != 'TRANSPDF') {
     fixedauthor = teststring
   }
