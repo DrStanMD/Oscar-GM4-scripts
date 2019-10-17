@@ -4,7 +4,7 @@
 // @description Sets the default for Tickler SendTo, hyperlink to document, autotickler
 // @include        */tickler/ticklerAdd.jsp*
 // @include        *tickler/ForwardDemographicTickler.do*
-// @version 15.3
+// @version 15.4
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // ==/UserScript==
 //========Get Path============
@@ -171,6 +171,46 @@ function showAlert1()
     }
   }
 }
+
+var input22 = document.createElement('input');
+input22.type = 'button';
+input22.value = 'Stan Next';
+input22.onclick = showAlert22;
+input22.setAttribute('style', 'font-size:16px;position:fixed;top:18px;left:0px; ');
+input22.style.background='lightgreen'
+document.body.appendChild(input22);
+function showAlert22()
+{
+  var theDefault = 'Normal';
+  var theOptions = document.getElementsByName('priority') [0].options;
+  for (var theOption of theOptions)
+  {
+    if (typeof (theOption) == 'object') {
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+  
+  var mytextarea = document.getElementsByName('textarea') 
+  mytextarea[0].value = 'Stan to discuss next. ' + mytextarea[0].value
+  
+  //var theDefault = 'Hurwitz, Office';
+  var theDefault = 'Hurwitz, Stanley D';
+  var theOptions = document.getElementsByName('task_assigned_to') [0].options;
+  for (var theOption of theOptions)
+  {
+    if (typeof (theOption) == 'object') {
+      if (theOption.text == theDefault) {
+        theOption.selected = true;
+        break;
+      }
+    }
+  }
+}
+
+
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Assign to Stan';
