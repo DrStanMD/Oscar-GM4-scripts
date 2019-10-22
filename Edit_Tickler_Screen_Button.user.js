@@ -5,7 +5,7 @@
 // @include     */tickler/ticklerEdit.jsp?*
 // @include      *tickler/ForwardDemographicTickler.do?docType=*
                  
-// @version     1
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 var elements = (window.location.pathname.split('/', 2))
@@ -54,3 +54,5 @@ function showAlert3()
 {
   unsafeWindow.addMonth(3)
 }
+
+window.resizeTo(800, 600);
