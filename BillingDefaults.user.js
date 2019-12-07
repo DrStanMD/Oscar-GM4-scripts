@@ -8,6 +8,11 @@
 // @version     15.1
 // ==/UserScript==
 
+
+$("input[name='xml_diagnostic_detail2']").attr('disabled','disabled');
+$("input[name='xml_diagnostic_detail3']").attr('disabled','disabled');
+
+
 var theDefault='Refer To'; 
 var theOptions = document.getElementsByName('refertype1')[0].options;
 
