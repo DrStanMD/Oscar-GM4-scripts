@@ -7,7 +7,7 @@
 // @include     *billing/CA/BC/billingManageReferralDoc*
 // @include       *oscarEncounter/oscarConsultationRequest/ConsultationFormRequest*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 15.1
+// @version 15.2
 // ==/UserScript==
 function setCookie(cname, cvalue, exdays, cpath)
 {
@@ -75,6 +75,6 @@ if (x.indexOf('billingAddReferralDoc') > - 1) {
   setCookie('fax', qfax, 1, 'path=/');
   setCookie('refno', qrefno, 1, 'path=/');
   //alert('cookie set')
-  window.close()
   window.open(vPath + '/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp')
+  window.close()
 }
