@@ -171,6 +171,7 @@ function getMeasures(measure, arrayno) {
       measureDateArray = [
       ]
       var myRe = /<td align="right">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
+      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement
       var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
       var r = 0
       var myArray;
