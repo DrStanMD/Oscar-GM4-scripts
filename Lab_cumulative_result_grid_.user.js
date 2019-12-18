@@ -180,7 +180,7 @@ function getMeasures(measure) {
       var myArray;
       while ((myArray = myRe.exec(str)) !== null) {
         pend = myArray[0].indexOf('</td>')
-        measureArray[r] = '<b>' + myArray[0].substring(18, pend) + '</b>'
+        measureArray[r] = '<b>' + myArray[0].substring(19, pend) + '</b>'
         r++
       }
       var r = 0
