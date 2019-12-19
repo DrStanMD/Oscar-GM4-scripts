@@ -171,13 +171,13 @@ function getMeasures(measure, arrayno) {
       measureDateArray = [
       ]
       var myRe = /<td align="right">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
-      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement
+      //var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement
       var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
       var r = 0
       var myArray;
       while ((myArray = myRe.exec(str)) !== null) {
         pend = myArray[0].indexOf('</td>')
-        measureArray[r] = '<b>' + myArray[0].substring(19, pend) + '</b>'
+        measureArray[r] = '<b>' + myArray[0].substring(18, pend) + '</b>'
         r++
       }
       var r = 0
