@@ -178,7 +178,7 @@ function getMeasures(measure, arrayno) {
       while ((myArray = myRe.exec(str)) !== null) {
         pend = myArray[0].indexOf('</td>')
         measureArray[r] = '<b>' + myArray[0].substring(19, pend) + '</b>'
-        alert(measureArray[r])
+        //alert(measureArray[r])
         r++
       }
       var r = 0
