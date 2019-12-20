@@ -51,7 +51,8 @@ var HEPArray = [
   '5195-3',
   '16935-9',
   '16933-4',
-  '51913-2'
+  '51913-2',
+  '13954-3'
 ]
 var INFArray = [
   '2871-2',
@@ -171,8 +172,24 @@ function getMeasures(measure, arrayno) {
       measureDateArray = [
       ]
       //var myRe = /<td align="right">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
-      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement
+      var myRe = /<td align="center">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
       var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
+      //alert(myRe.exec(str))
+      var q = myRe.exec(str).toString()
+
+      /*
+      if(!isNaN(q.substring(19,20))){
+      var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric
+      var q = myRe.exec(str).toString() 
+      //alert(q.substring(19,28))
+      }
+      */
+      
+      var q = myRe.exec(str).toString()
+      //alert(q.substring(19,20))
+      if(isNaN(q)){
+      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
+      }
       var r = 0
       var myArray;
       while ((myArray = myRe.exec(str)) !== null) {
