@@ -6,7 +6,7 @@
 // @description Lab Grid Alphabetical Sort
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version     15.1
+// @version     15.3
 // ==/UserScript==
 //========Get Path============
 
@@ -174,28 +174,30 @@ function getMeasures(measure, arrayno) {
       //var myRe = /<td align="right">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
       var myRe = /<td align="center">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
       var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
-      //alert(myRe.exec(str))
-      var q = myRe.exec(str).toString()
 
-      /*
-      if(!isNaN(q.substring(19,20))){
-      var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric
-      var q = myRe.exec(str).toString() 
-      //alert(q.substring(19,28))
-      }
-      */
-      
       var q = myRe.exec(str).toString()
-      //alert(q.substring(19,20))
-      if(isNaN(q)){
+      var res = myRe.exec(str)
+      //alert(res)
+      
+      if(!isNaN(res)){
+      var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric
+      }
+
+      if(isNaN(res)){
       var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
       }
+      
       var r = 0
       var myArray;
+      //var xx = myRe.exec(str) //makes it work somehow
       while ((myArray = myRe.exec(str)) !== null) {
         pend = myArray[0].indexOf('</td>')
         measureArray[r] = '<b>' + myArray[0].substring(19, pend) + '</b>'
-        //alert(measureArray[r])
+        /*
+        if(measureArray[r]=="<b>A</b>" || measureArray[r]=="<b></b>"){
+        alert(measureArray[r])
+          ((myArray = myRe.exec(str)) !== null) == false
+        }*/
         r++
       }
       var r = 0
