@@ -27,6 +27,7 @@ if (teststring == 'TRANSCRIP' || teststring == 'CELLPATH') {
 }
 var printthis = '<br>'
 var input3 = document.createElement('input');
+
 /*
 input3.type = 'text';
 input3.id = 'input3'
@@ -42,6 +43,7 @@ input4.setAttribute('style', 'font-size:10px;width:120px;position:fixed;top:52px
 document.body.appendChild(input4);
 document.getElementById('input4').readOnly = true;
 */
+
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Cumulative report by column';
@@ -190,25 +192,10 @@ function getMeasures(measure) {
       var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
       }
       
-      
-       /*
-      var myRe = /<td align="center">([\D]+)<\/td>/g; //for the measurement non-numeric
-      var x = (myRe.exec(str)).toString()
-      //alert(x.substring(19,25))
-      if(x.substring(19,25)=="N</td>" || x.substring(19,25)==null || x.substring(19,25)=="A</td>"){ 
-      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
-      var xx = myRe.exec(str) //makes it work somehow
-      //alert(myRe.exec(str))
-      }
-     */
-      
-      
-      var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
       var r = 0
       var myArray;
       //alert(str)
       //alert(myRe.exec(str))
-      var xx = myRe.exec(str) //makes it work somehow
       while ((myArray= myRe.exec(str)) !== null) {
         //alert(myArray[0])
         pend = myArray[0].indexOf('</td>')
