@@ -11,6 +11,9 @@
 //========Get Path============
 
 var formID='414' //  ENTER YOUR SPECIFIC POPUPWINDOW FORM ID NUMBER HERE
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+var vPath = ('https://' + location.host + '/' + firstElement + '/')
 
 //===============================
 var mylink = 'eform/efmshowform_data.jsp?fid='+formID
@@ -368,9 +371,7 @@ document.body.appendChild(input2);
 function showAlert2() {
   myDisplay()
 }
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
+ //=====Get Parameters============
 var params = {
 };
 if (location.search) {
