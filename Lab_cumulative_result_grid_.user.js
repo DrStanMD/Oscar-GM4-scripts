@@ -196,6 +196,16 @@ function getMeasures(measure) {
       var myArray;
       //alert(str)
       //alert(myRe.exec(str))
+      
+        if(q.indexOf('<br />')>-1){ //for HIV result
+        //alert(q)
+        q = q.replace(/<br \/>/g,'');
+        //alert(q)
+        str = (q+'</td>').toString()     
+        //alert(str)
+        var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric  
+        } 
+      
       while ((myArray= myRe.exec(str)) !== null) {
         //alert(myArray[0])
         pend = myArray[0].indexOf('</td>')
