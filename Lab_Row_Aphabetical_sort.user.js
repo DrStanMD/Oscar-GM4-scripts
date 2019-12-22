@@ -185,7 +185,8 @@ function getMeasures(measure, arrayno) {
       }
 
       if(isNaN(res)){
-      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
+      //var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
+      var myRe = /<td align="right">([\d,\.]+)<\/td>/g; //for the measurement numeric  
       }
       
       var r = 0
