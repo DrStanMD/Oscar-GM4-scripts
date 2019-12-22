@@ -194,7 +194,16 @@ function getMeasures(measure, arrayno) {
       
       var r = 0
       var myArray;
-      //var xx = myRe.exec(str) //makes it work somehow
+      
+        if(q.indexOf('<br />')>-1){ //for HIV result
+        //alert(q)
+        q = q.replace(/<br \/>/g,'');
+        //alert(q)
+        str = (q+'</td>').toString()     
+        //alert(str)
+        var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric  
+        } 
+      
       while ((myArray = myRe.exec(str)) !== null) {
         pend = myArray[0].indexOf('</td>')
         measureArray[r] = '<b>' + myArray[0].substring(19, pend) + '</b>'
