@@ -482,20 +482,20 @@ function CCBox() {
         q.checked = false;
       } //*****************
 
+      qq = document.getElementById('CBC')
+      if (CBCArray.indexOf(q.value) > - 1 && qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (CBCArray.indexOf(q.value) > - 1 && qq.checked == false) {
+        q.checked = false;
+      } //*****************
+      
       q = document.getElementById(('myCheckBox' + i))
       qq = document.getElementById('CDM')
       if (CDMArray.indexOf(q.value) > - 1 && qq.checked == true) {
         q.checked = true;
       } 
       else if (CDMArray.indexOf(q.value) > - 1 && qq.checked == false) {
-        q.checked = false;
-      } //*****************
-
-      qq = document.getElementById('CBC')
-      if (CBCArray.indexOf(q.value) > - 1 && qq.checked == true) {
-        q.checked = true;
-      } 
-      else if (CBCArray.indexOf(q.value) > - 1 && qq.checked == false) {
         q.checked = false;
       } //*****************
 
