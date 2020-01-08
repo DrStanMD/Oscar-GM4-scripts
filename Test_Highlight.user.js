@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 15.3
+// @version 15.4
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
@@ -209,8 +209,8 @@ ExcelArray = [
   'CELLPATH',
   'BCCASMP',
   'BCCACSP',
-  'DIAG IMAGE'
-  //'NOTIF',
+  'DIAG IMAGE',
+  'NOTIF'
   //'TRANSPDF'
 ]
 function RenameLabs() {
@@ -224,10 +224,15 @@ function RenameLabs() {
     Labteststring = (LabList[i].innerHTML).trim() // alert(Labteststring)
     NamedLab = NamedLab + renameTheLab(Labteststring) + ' '
   }
+  //alert($(AckLabel).val)
+  //alert($(LabelSpan).text())
+  if($(LabelSpan).text()==="Label:  "){
   $(AckLabel).val(NamedLab)  //$('.MainTableTopRowRightColumn > input:nth-child(7)').val(NamedLab)
+  //alert($(AckLabel).val)
   setTimeout(function () {
-    $(CreateLabel).click();
+  $(CreateLabel).click();
   }, 500);
+  }
 }
 function ResetNames() {
   $(AckLabel).val('')
