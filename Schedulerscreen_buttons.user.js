@@ -6,7 +6,7 @@
 // @include     *provider/receptionistfindprovider.jsp*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.1
+// @version 15.2
 // ==/UserScript==
 
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
@@ -334,5 +334,10 @@ function showAlert13() {
   setCookie("theDefault",theDefault,360,"path=/");
 }
 
+//link to Ocus
+$('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > a:nth-child(2)').attr('onclick', '');
+$('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > a:nth-child(2)').click(function() {
+window.open('http://www.oscarcanada.org')
+});
 
 
