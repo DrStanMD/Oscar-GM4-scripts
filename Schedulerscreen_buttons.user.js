@@ -334,10 +334,14 @@ function showAlert13() {
   setCookie("theDefault",theDefault,360,"path=/");
 }
 
-//link to Ocus
+//link to PBX
 $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > a:nth-child(2)').attr('onclick', '');
 $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > a:nth-child(2)').click(function() {
-window.open('http://www.oscarcanada.org')
+window.open('https://sdhurwitz.ucantalk.net/login.htm')
 });
 
-
+//link to Ocus
+$('#helpLink').attr('onclick', '');
+$('#helpLink').click(function() {
+window.open('http://www.oscarcanada.org')
+});
