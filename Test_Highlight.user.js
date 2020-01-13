@@ -210,8 +210,8 @@ ExcelArray = [
   'BCCASMP',
   'BCCACSP',
   'DIAG IMAGE',
-  'NOTIF'
-  //'TRANSPDF'
+  'NOTIF',
+  'TRANSPDF'
 ]
 function RenameLabs() {
   Labteststring = ''
