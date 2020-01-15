@@ -225,8 +225,9 @@ function RenameLabs() {
     NamedLab = NamedLab + renameTheLab(Labteststring) + ' '
   }
   //alert($(AckLabel).val)
-  //alert($(LabelSpan).text())
-  if($(LabelSpan).text()==="Label:  "){
+//  alert($(LabelSpan).text())
+
+  if($(LabelSpan).text().trim()==="Label:" || $(LabelSpan).text()==="Label: (not set) "){
   $(AckLabel).val(NamedLab)  //$('.MainTableTopRowRightColumn > input:nth-child(7)').val(NamedLab)
   //alert($(AckLabel).val)
   setTimeout(function () {
