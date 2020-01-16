@@ -4,7 +4,7 @@
 // @description Various navigation buttons for echart screen.  Set your own specific fid (form number) or Measurement groupName
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 15.2
+// @version 15.1
 // @grant       none
 // ==/UserScript==
 //window.moveTo(300, 100)
@@ -170,6 +170,7 @@ function showAlert9()
   $('#imgmeasurements5').click()
   $('#imgdocs5').click()
   $('#imglabs5').click()
+  $('#imgpreventions5').click()
 }
 
 var input10 = document.createElement('input');
