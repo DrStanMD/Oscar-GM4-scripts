@@ -3,7 +3,7 @@
 // @namespace      StansScripts
 // @include        *tickler/ticklerMain.jsp*
 // @description Sets Tickler Default Assign To
-// version 15.1
+// version 15.2
 // ==/UserScript==
 
 var theDefault = 'Hurwitz , Stanley D';
@@ -21,6 +21,10 @@ for (var theOption of theOptions)
     }
   }
 }
+
+
+window.resizeTo(1400, 800);
+window.moveTo(400, 100)
 
 //$('.mbttn').click()
 /*
