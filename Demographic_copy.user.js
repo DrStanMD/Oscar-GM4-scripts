@@ -3,16 +3,35 @@
 // @namespace   StansScripts
 // @description Copies and pastes address/phone form master screen new demographic.  Can be set to copy mum's PHN for newborn. Inserts Dymo label button.
 // @include     *demographic/demographiccontrol.jsp?demographic_no*
+// @include     *demographic/demographiccontrol.jsp?displaymode=add*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.1
+// @version     15.2
 // ==/UserScript==
+
+//=========Check for Quebec============
+var theDefault='QC-Quebec';
+var theOptions = document.getElementsByName('hc_type')[0].options;
+
+for (var theOption of theOptions)
+{for (var i=0; i<3; i++) {}
+	if(typeof(theOption)=='object'){
+		if(theOption.selected==true){      
+    if(theOption.text==theDefault){
+     alert('We are unable to accept Quebec Medical.  Please hand the card back to the patient and advise that this a private pay service.')
+			break;
+     }
+		}
+	}
+}
+
+
 function validateEmail(emailField) {
   if (emailField != '') {
     var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     var x = re.test(String(emailField)) //alert(x)
     if (x == false)
     {
-      alert('Invalid Email Address');
+      //alert('Invalid Email Address');
       return false;
     }
   }
