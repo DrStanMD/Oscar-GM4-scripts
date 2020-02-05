@@ -56,6 +56,7 @@ if (testfor == null)
   }
   
   
+  
 }
 $('body > form:nth-child(2) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(2) > select:nth-child(1)').css('background-color', 'yellow');
 var weekday = new Array(7);
