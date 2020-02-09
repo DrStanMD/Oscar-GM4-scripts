@@ -1,0 +1,42 @@
+// ==UserScript==
+// @name        Expand Click2
+// @namespace   Stanscript
+// @include     *casemgmt/forward.jsp?action*
+// @version     15.1
+// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @grant       none
+// ==/UserScript==
+
+
+
+//========Buttons============
+
+var input1=document.createElement("input");
+input1.type="button";
+input1.value="AUTO-EXPAND";
+input1.onclick = ButtonFunction1;
+input1.setAttribute("style", "font-size:12px;position:fixed;bottom:0px;left:120px;");
+document.body.appendChild(input1); 
+
+function ButtonFunction1(){   
+var i = 1;                     //  set your counter to 1
+
+function myLoop () {           //  create a loop function
+   setTimeout(function () {    //  call a 1s setTimeout when the loop is called
+ 
+      //alert($('#encMainDiv').scrollTop());       
+      if($('#encMainDiv').scrollTop()==3){
+      //alert($('#encMainDiv').scrollTop());  
+      return false
+      }
+      $('#encMainDiv').scrollTop(0);         //  your code here 
+      i++;                     //  increment the counter
+      if (i < 100) {            //  if the counter < 10, call the loop function
+         myLoop();             //  ..  again which will trigger another 
+      }                        //  ..  setTimeout()
+   }, 200)
+}
+
+myLoop();         
+  
+}  
