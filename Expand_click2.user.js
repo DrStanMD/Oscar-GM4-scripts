@@ -25,7 +25,7 @@ function ButtonFunction1() {
         setTimeout(function() { //  call a 1s setTimeout when the loop is called
         //$("#save > div:nth-child(3) > button:nth-child(4)").text($('#encMainDiv').scrollTop());  
         //$("#save > div:nth-child(3) > button:nth-child(4)").css("background-color","red");
-       input1.value="AUTO-EXPAND @ "+($('#encMainDiv').scrollTop());  
+       input1.value="AUTO-EXPAND @ "+($('#encMainDiv').scrollTop()+" loops "+i );  
        $("#mybutton1").css("background-color","pink");
           
             //alert($('#encMainDiv').scrollTop());       
@@ -35,10 +35,10 @@ function ButtonFunction1() {
             }
             $('#encMainDiv').scrollTop(0); //  your code here 
             i++; //  increment the counter
-            if (i < 100) { //  if the counter < 10, call the loop function
+            if (i < 500) { //  if the counter < 10, call the loop function
                 myLoop(); //  ..  again which will trigger another 
             } //  ..  setTimeout()
-        }, 200)
+        }, 300)
     }
 
     myLoop();
