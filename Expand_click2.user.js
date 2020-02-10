@@ -7,8 +7,6 @@
 // @grant       none
 // ==/UserScript==
 
-
-
 //========Buttons============
 var input1 = document.createElement("input");
 input1.id = "mybutton1"
@@ -23,14 +21,14 @@ function ButtonFunction1() {
 
     function myLoop() { //  create a loop function
         setTimeout(function() { //  call a 1s setTimeout when the loop is called
-        //$("#save > div:nth-child(3) > button:nth-child(4)").text($('#encMainDiv').scrollTop());  
-        //$("#save > div:nth-child(3) > button:nth-child(4)").css("background-color","red");
-       input1.value="AUTO-EXPAND @ "+($('#encMainDiv').scrollTop()+" loops "+i );  
-       $("#mybutton1").css("background-color","pink");
-          
+            //$("#save > div:nth-child(3) > button:nth-child(4)").text($('#encMainDiv').scrollTop());  
+            //$("#save > div:nth-child(3) > button:nth-child(4)").css("background-color","red");
+            input1.value = "AUTO-EXPAND @ " + ($('#encMainDiv').scrollTop() + " loops " + i);
+            $("#mybutton1").css("background-color", "pink");
+
             //alert($('#encMainDiv').scrollTop());       
             if ($('#encMainDiv').scrollTop() == 3) {
-               // alert($('#encMainDiv').scrollTop());  
+                // alert($('#encMainDiv').scrollTop());  
                 return false
             }
             $('#encMainDiv').scrollTop(0); //  your code here 
