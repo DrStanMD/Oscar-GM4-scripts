@@ -21,7 +21,6 @@ document.addEventListener('keydown', function(e) {
 }, false);
 })();
 
-
 //window.resizeTo(1280, 780);
 window.resizeTo(1500, 800);
 var DT = [
