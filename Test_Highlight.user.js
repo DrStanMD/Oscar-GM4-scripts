@@ -374,7 +374,7 @@ function SaveAndExit() {
     for (i = 0; i < 2; i++) {
         var testname = document.getElementsByTagName("a")[i];
         if (testname.innerHTML == "Colon Screening Program Reminder") {
-            alert(testname.innerHTML)
+            //alert(testname.innerHTML)
             fixedauthor = testname.innerHTML
         }
     }
