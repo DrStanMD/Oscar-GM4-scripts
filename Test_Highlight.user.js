@@ -7,7 +7,6 @@
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
-
 var fixedauthor = ''
 var count = $('#tblDiscs tr').length;
 
@@ -370,17 +369,17 @@ function SaveAndExit() {
     if (ExcelArray.indexOf(teststring) > -1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE' && teststring != 'TRANSPDF') {
         fixedauthor = teststring
     }
-  
-//*************************************************************2020-Feb-28
-for(i=0;i<2;i++){
-var testname = document.getElementsByTagName("a")[i];
-if(testname.innerHTML == "Colon Screening Program Reminder"){
-alert(testname.innerHTML)
-fixedauthor = testname.innerHTML
-}
-}
-//*************************************************************  2020-Feb-28
-  
+
+    //*************************************************************2020-Feb-28
+    for (i = 0; i < 2; i++) {
+        var testname = document.getElementsByTagName("a")[i];
+        if (testname.innerHTML == "Colon Screening Program Reminder") {
+            alert(testname.innerHTML)
+            fixedauthor = testname.innerHTML
+        }
+    }
+    //*************************************************************  2020-Feb-28
+
 
 
     $(AckLabel).val(fixedauthor + '  ##' + SavedLines)
