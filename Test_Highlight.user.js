@@ -387,6 +387,16 @@ function SaveAndExit() {
         }
     }
   
+       for (i = 0; i < 2; i++) {
+        var testname = document.getElementsByTagName("a")[i];
+        if (testname.innerHTML == "Physician Discharge Notification") {
+            //alert(testname.innerHTML)
+            fixedauthor = testname.innerHTML
+            fixedauthor = "Colonoscopy cancelled"
+        }
+    }
+  
+  
   
    
     //*************************************************************  2020-Feb-28
@@ -417,8 +427,7 @@ function ClearStoredSelections() {
     $(CreateLabel).click();
     $(CreateLabel).click();
 }
-///*********************************************************************
-
+//*********************************************************************
 
 (function() {
     document.addEventListener('keydown', function(e) {
@@ -438,66 +447,8 @@ function ClearStoredSelections() {
     }, false);
 })();
 
-
-/*
-window.addEventListener('keypress', function (theEvent) {
-  var theKeyCode = theEvent.charCode;
-  var theKey = String.fromCharCode(theKeyCode);
-  var theAltKey = theEvent.altKey;
-  var theCtrlKey = theEvent.ctrlKey;
-  var theShiftKey = theEvent.shiftKey;
-  switch (true) {
-    case theShiftKey && theKey == 'Q':
-      //Save Selected text to Label
-      //$('#acklabel').val(fixedauthor + "  ##" + SavedLines )
-      $(Acklabel).val($(Acklabel).val())
-      $(CreateLabel).click();
-      //unsafeWindow.getComment('ackLab')
-      unsafeWindow.getComment('ackLab', IDnum);
-      break;
-    case ShiftKey && theKey == 'W':
-      //
-      function getSelectionText() {
-        var text = '';
-        if (window.getSelection) {
-          text = window.getSelection().toString();
-        } else if (document.selection && document.selection.type != 'Control') {
-          text = document.selection.createRange().text;
-        }
-        $(Acklabel).val((text).trim())
-        $(CreateLabel).click();
-        //unsafeWindow.getComment('ackLab')
-        unsafeWindow.getComment('ackLab', IDnum);
-        return text;
-      }
-      getSelectionText()
-      break;
-    case theAltKey && theKey == 'z':
-      //Open comment textbox
-      //unsafeWindow.getComment('ackLab')
-      unsafeWindow.getComment('ackLab', IDnum);
-      //$(AckLabel).click()
-      break;
-    case theShiftKey && theKey == 'Z':
-      SaveAndExit()
-      break;
-    case ShiftKey && theKey == 'T':
-      //Click on Tickler button
-      $('input:nth-child(13)').css('background-color', 'yellow');
-      $('input:nth-child(13)').click();
-      break;
-    case ShiftKey && theKey == 'X':
-      //Click on Tickler button
-      fixedauthor = $(Acklabel).val()
-      $(CreateLabel).click();
-      $(CreateLabel).click();
-      SaveAndExit()
-      break;
-  }
-},
-true); 
-*/
 //****************************************************************************
+
 function renameTheLab(strOldName) {
     var strNewName = strOldName;
     switch (strOldName) {
