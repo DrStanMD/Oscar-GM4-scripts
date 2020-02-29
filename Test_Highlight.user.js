@@ -378,6 +378,17 @@ function SaveAndExit() {
             fixedauthor = testname.innerHTML
         }
     }
+  
+      for (i = 0; i < 2; i++) {
+        var testname = document.getElementsByTagName("a")[i];
+        if (testname.innerHTML == "Colonoscopy (Rectum+Colon)") {
+            //alert(testname.innerHTML)
+            fixedauthor = testname.innerHTML
+        }
+    }
+  
+  
+   
     //*************************************************************  2020-Feb-28
 
 
