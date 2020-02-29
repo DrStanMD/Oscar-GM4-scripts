@@ -397,6 +397,7 @@ function SaveAndExit() {
         switch (testname) {
             case 'Colon Screening Program Reminder':
                 fixedauthor = testname
+                fixedauthor = 'Colon Screening Reminder'
                 break;
             case 'Colonoscopy (Rectum+Colon)':
                 fixedauthor = testname
