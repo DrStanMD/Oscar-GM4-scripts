@@ -369,35 +369,24 @@ function SaveAndExit() {
     if (ExcelArray.indexOf(teststring) > -1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE' && teststring != 'TRANSPDF') {
         fixedauthor = teststring
     }
+  
 
     //*************************************************************2020-Feb-28
     for (i = 0; i < 2; i++) {
         var testname = document.getElementsByTagName("a")[i];
+      
         if (testname.innerHTML == "Colon Screening Program Reminder") {
-            //alert(testname.innerHTML)
             fixedauthor = testname.innerHTML
         }
-    }
-  
-      for (i = 0; i < 2; i++) {
-        var testname = document.getElementsByTagName("a")[i];
         if (testname.innerHTML == "Colonoscopy (Rectum+Colon)") {
-            //alert(testname.innerHTML)
             fixedauthor = testname.innerHTML
         }
-    }
-  
-       for (i = 0; i < 2; i++) {
-        var testname = document.getElementsByTagName("a")[i];
-        if (testname.innerHTML == "Physician Discharge Notification") {
-            //alert(testname.innerHTML)
+         if (testname.innerHTML == "Physician Discharge Notification") {
             fixedauthor = testname.innerHTML
             fixedauthor = "Colonoscopy cancelled"
-        }
+        }     
+ 
     }
-  
-  
-  
    
     //*************************************************************  2020-Feb-28
 
