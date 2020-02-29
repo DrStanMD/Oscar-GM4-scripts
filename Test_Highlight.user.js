@@ -369,25 +369,50 @@ function SaveAndExit() {
     if (ExcelArray.indexOf(teststring) > -1 && teststring != 'TRANSCRIP' && teststring != 'DIAG IMAGE' && teststring != 'TRANSPDF') {
         fixedauthor = teststring
     }
-  
+
 
     //*************************************************************2020-Feb-28
-    for (i = 0; i < 2; i++) {
-        var testname = document.getElementsByTagName("a")[i];
+    /*  
+        for (i = 0; i < 2; i++) {
+            var testname = document.getElementsByTagName("a")[i];
+
+            if (testname.innerHTML == "Colon Screening Program Reminder") {
+                fixedauthor = testname.innerHTML
+            }
+            if (testname.innerHTML == "Colonoscopy (Rectum+Colon)") {
+                fixedauthor = testname.innerHTML
+            }
+            if (testname.innerHTML == "Physician Discharge Notification") {
+                fixedauthor = testname.innerHTML
+                fixedauthor = "Colonoscopy cancelled"
+            }
+
+        }
       
-        if (testname.innerHTML == "Colon Screening Program Reminder") {
-            fixedauthor = testname.innerHTML
+    */
+  
+    for (i = 0; i < 2; i++) {
+        var testname = document.getElementsByTagName("a")[i].innerHTML;
+        //alert(testname)
+        switch (testname) {
+            case 'Colon Screening Program Reminder':
+                fixedauthor = testname
+                break;
+            case 'Colonoscopy (Rectum+Colon)':
+                fixedauthor = testname
+                break;
+            case 'Physician Discharge Notification':
+                fixedauthor = testname
+                fixedauthor = "Colonoscopy cancelled"
+                break;
+            default:
+                // fixedauthor = 'General';
+                break
         }
-        if (testname.innerHTML == "Colonoscopy (Rectum+Colon)") {
-            fixedauthor = testname.innerHTML
-        }
-         if (testname.innerHTML == "Physician Discharge Notification") {
-            fixedauthor = testname.innerHTML
-            fixedauthor = "Colonoscopy cancelled"
-        }     
- 
+
     }
-   
+
+
     //*************************************************************  2020-Feb-28
 
 
