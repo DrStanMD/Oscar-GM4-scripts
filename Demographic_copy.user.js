@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Demographic copy
 // @namespace   StansScripts
-// @description Copies and pastes address/phone form master screen new demographic.  Can be set to copy mum's PHN for newborn. Inserts Dymo label button.
+// @description Copies and pastes address/phone form master screen new demographic.  Adds email link. Inserts Dymo label button.
 // @include     *demographic/demographiccontrol.jsp?demographic_no*
 // @include     *demographic/demographiccontrol.jsp?displaymode=add*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
