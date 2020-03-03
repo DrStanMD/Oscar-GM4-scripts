@@ -5,7 +5,7 @@
 // @include     *demographic/demographiccontrol.jsp?demographic_no*
 // @include     *demographic/demographiccontrol.jsp?displaymode=add*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.2
+// @version     15.3
 // ==/UserScript==
 
 //=========Check for Quebec============
@@ -138,6 +138,7 @@ function showAlert()
   setCookie('postal', qqpostal, 360, 'path=/');
   setCookie('phn', qqphn, 360, 'path=/');
   setCookie('lastname', qqlastname, 360, 'path=/');
+  setCookie('firstname', qqfirstname, 360, 'path=/');
   setCookie('email', qqemail, 360, 'path=/');
   window.close() //window.open(vPath + "/demographic/search.jsp","","width=900, height=600")
 }
@@ -146,6 +147,7 @@ var qqcity = $('input[name=\'city\']').val();
 var qqpostal = $('input[name=\'postal\']').val();
 var qqhomephone = $('input[name=\'phone\']').val();
 var qqlastname = $('input[name=\'last_name\']').val();
+var qqfirstname = $('input[name=\'first_name\']').val();
 var qqaddress = $('input[name=\'address\']').val();
 var qqphn = $('input[name=\'hin\']').val();
 var qqworkphone = $('input[name=\'phone2\']').val();
@@ -170,6 +172,6 @@ $('input[name=\'email\']').css('background-color', 'yellow');
 var x = $('input[name=\'email\']').val()//alert(x)
 setCookie('adobe_email', x, 360, 'path=/');
 localStorage.setItem('adobe_email', x);
-var z = '<a href="mailto:' + x + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+var z = '<a href="mailto:' + x + '?Subject='+qqfirstname+' '+qqlastname+' - Confidential medical information" target="_blank">Send Mail</a>'
 $('#contactInformation > ul:nth-child(2) > li:nth-child(9) > span:nth-child(2)').html(x + ' ' + z)
 $('input[name=\'hin\']').css('background-color', 'pink');
