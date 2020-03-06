@@ -86,12 +86,15 @@ $(document).ready(function () {
   );
   document.getElementById("button10").onclick = do_email;
   document.getElementById("button10").setAttribute('style', 'font-size:12px;');
-  var ptname = $('.Header > a:nth-child(1)').text()
+  var str = $('.Header > a:nth-child(1)').text()
+  var res = str.split(" ");
+  var ptname = res[1]+' '+res[0]
+  ptname = ptname.replace(",", " ");
   //alert(ptname)
   function do_email(){
   //alert(demoArrayVal[1])
-  var email = demoArrayVal[1]
-  //var email = ptname+'<'+demoArrayVal[1]+'>'
+  //var email = demoArrayVal[1]
+  var email = ptname+'<'+demoArrayVal[1]+'>'
   var mailto_link = 'mailto:' + email+ '?Subject=Confidential medical information'
   window = window.open(mailto_link, 'emailWindow')  
 }
