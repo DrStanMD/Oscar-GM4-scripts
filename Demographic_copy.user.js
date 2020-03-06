@@ -5,7 +5,7 @@
 // @include     *demographic/demographiccontrol.jsp?demographic_no*
 // @include     *demographic/demographiccontrol.jsp?displaymode=add*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.3
+// @version     15.3.1
 // ==/UserScript==
 
 //=========Check for Quebec============
@@ -169,9 +169,16 @@ $('input[name=\'postal\']').css('background-color', 'yellow');
 $('input[name=\'phone\']').css('background-color', 'yellow');
 $('input[name=\'phone2\']').css('background-color', 'yellow');
 $('input[name=\'email\']').css('background-color', 'yellow');
-var x = $('input[name=\'email\']').val()//alert(x)
-setCookie('adobe_email', x, 360, 'path=/');
-localStorage.setItem('adobe_email', x);
-var z = '<a href="mailto:' + x + '?Subject='+qqfirstname+' '+qqlastname+' - Confidential medical information" target="_blank">Send Mail</a>'
+
+var x = $('input[name=\'email\']').val()
+var y = qqfirstname+' '+qqlastname+'<'+$('input[name=\'email\']').val()+'>'
+//alert(x)
+//setCookie('adobe_email',y, 360, 'path=/');
+//alert(getCookie('adobe_email'))
+//localStorage.setItem('adobe_email', x);
+//localStorage.setItem("FullName", "Harvey Smith");
+
+var z = '<a href="mailto:' + y + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+//var z = '<a href="mailto:' + x + '?Subject='+qqfirstname+' '+qqlastname+' - Confidential medical information&body=www.cnn.com" target="_blank">Send Mail</a>'
 $('#contactInformation > ul:nth-child(2) > li:nth-child(9) > span:nth-child(2)').html(x + ' ' + z)
 $('input[name=\'hin\']').css('background-color', 'pink');
