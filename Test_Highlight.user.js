@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 15.5.2
+// @version 15.6
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
@@ -597,6 +597,7 @@ function renameTheLab(strOldName) {
         case 'CHEM20':
             strNewName = 'DrugScr';
             break;
+          
             //************************************************************
             //Use an uncommentted copy of the following 3 lines for each test name you want to map
             //case 'USER_UNFRIENDLY_TEST_NAME':
