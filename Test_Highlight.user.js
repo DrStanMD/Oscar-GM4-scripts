@@ -588,6 +588,9 @@ function renameTheLab(strOldName) {
         case 'MICRO14':
             strNewName = 'Flu/RSV/CoV';
             break;
+        case 'HAEM6':
+            strNewName = 'ABO-Rh';
+            break;
         case 'CHEM20':
             strNewName = 'DrugScr';
             break;
