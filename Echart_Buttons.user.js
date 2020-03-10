@@ -142,7 +142,7 @@ function showAlert7() // INSERT YOU OWN MEASUREMENT groupName=?????  below
   var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=42&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
+  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=654&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
   //alert(formPath)
   window.open(formPath)
 }
