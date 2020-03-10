@@ -21,6 +21,7 @@ document.addEventListener('keydown', function(e) {
 }, false);
 })();
 
+
 //window.resizeTo(1280, 780);
 window.resizeTo(1500, 800);
 var DT = [
@@ -39,8 +40,8 @@ DT[1] = [
   ' Dr. ',
   ' Dr. Cherry',
   ' Dr. Sampath',
-  ' Dr. N. Nguyen',
-  ' Dr.  J. Yun',
+  ' Dr. Nguyen',
+  ' Dr. Yun',
   ' Dr. Fu',
   ' Dr. Ebtia',
   ' Dr. Saldana',
@@ -53,7 +54,6 @@ DT[1] = [
   ' Dr. Fishman',
   ' Dr. Jakubowski',
   ' Dr. Orenstein',
-  ' Dr. Harris',
   'Orthopedics',
   'Opthalmology',
   'Cardiolology',
@@ -78,6 +78,7 @@ DT[2] = [
   'APS',
   'CPP',
   'Disability',
+  'WCB',
 ]
 DT[3] = [
   'legal',
@@ -204,10 +205,8 @@ var Field2 = '#docType_' + IDnum
 var Field2ID = 'docType_' + IDnum
 var Field3 = '#docDesc_' + IDnum
 var CloseButton = ' #closeBtn_' + IDnum
-//alert(CloseButton)
 var AckButton = '#ackBtn_' + IDnum
 var SaveButton = '#save' + IDnum 
-//alert(SaveButton)
 var TicklerButton = '#ticklerBtn_' + IDnum
 var CommentArea = '#comment_' + IDnum
 
@@ -351,22 +350,23 @@ function Addsite() {
 var input11 = document.createElement('input');
 input11.type = 'button';
 input11.value = 'Save and Close';
+var ShowClick = (input11.value).trim()
+input11.id = 'Forms'
 input11.onclick = showAlert11;
-input11.setAttribute('style', 'font-size:12px;position:absolute;top:280px;right:0px;height:40px;background-color:  #FF00FF  ');
+input11.setAttribute('style', 'font-size:12px;position:absolute;top:460px;right:180px;height:40px;background-color:  #FF00FF  ');
 document.body.appendChild(input11);
 function showAlert11() {
   //$(TicklerButton).click()
   $(SaveButton).click()
-  //$(SaveButton).click()
-  //window.opener.location.reload();
-   setTimeout(function(){
-   $(CloseButton).click();
-  }, 500);
-
+  $(SaveButton).click()
+  window.opener.location.reload();
+  $(CloseButton).click();
 }
 var input12 = document.createElement('input');
 input12.type = 'button';
 input12.value = 'Tickler and Acknowledge';
+var ShowClick = (input12.value).trim()
+input12.id = 'Forms'
 input12.onclick = showAlert12;
 input12.setAttribute('style', 'font-size:16px;position:fixed;bottom:0px;right:0px;background-color:  #FF0000 ');
 document.body.appendChild(input12);
