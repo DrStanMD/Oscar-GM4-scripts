@@ -32,5 +32,5 @@ $('input[name=\'every_min\']').val(params.time)
 if(params.time){
 setTimeout(function(){ 
 $('body > form:nth-child(1) > div:nth-child(3) > input:nth-child(1)').click()
-}, 500);
+}, 200);
 }
