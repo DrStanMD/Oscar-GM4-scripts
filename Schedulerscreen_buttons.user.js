@@ -6,7 +6,7 @@
 // @include     *provider/receptionistfindprovider.jsp*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.2
+// @version 15.3
 // ==/UserScript==
 
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
@@ -100,28 +100,64 @@ function mySetDate(interval) {
     //alert(vCal)
     window.open(vCal, '_self');
 }
+
+
+var input99 = document.createElement('input');
+input99.type = 'button';
+input99.value = '5m';
+input99.onclick = showAlert99;
+input99.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:485px;');
+document.body.appendChild(input99);
+
+function showAlert99() {
+    window.open(vPath + '/provider/providerpreference.jsp?time='+"5")
+}
+
+
 var input = document.createElement('input');
 input.type = 'button';
-input.value = 'Prefs';
+input.value = '15m';
 input.onclick = showAlert;
-input.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:0px;');
+input.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:425px;');
 document.body.appendChild(input);
 
 function showAlert() {
-    $('#navlist > li:nth-child(9) > a:nth-child(1)').click()
-    //window.print()
-    //qqappdate=getCookie("appdate")
-    //qqapptime=getCookie("apptime")
-    //qqappdoc=getCookie("appdoc")
-    //alert(qqappdate+" @ " +qqapptime+ " with Dr. " + qqappdoc)
-    //window.open(vPath + "eform/efmshowform_data.jsp?fid=60")
+    window.open(vPath + '/provider/providerpreference.jsp?time='+"15")
+  /*
+    function getMeasures(measure) {
+        window.open(vPath + '/provider/providerpreference.jsp?time='+measure)
+        xmlhttp = new XMLHttpRequest();
+        var newURL = vPath + '/provider/providerpreference.jsp?' + measure;
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var str = xmlhttp.responseText; //local variable
+                //alert(str)
+                if (!str) {
+                    return;
+                }
+                var myRe = /<INPUT TYPE="TEXT" NAME="every_min" VALUE='15' size="2" maxlength="2">/g; //for the measurement
+                var timeslot = myRe.exec(str).toString()
+                //alert(timeslot)
+                var n = timeslot.indexOf("VALUE='15'");
+                //alert(n)
+                
+            }
+        }
+        xmlhttp.open("GET", newURL, false);
+        xmlhttp.send();
+    }
+   getMeasures("5")
+   */
 }
+
+
+
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Search';
 input2.id = 'input2'
 input2.onclick = showAlert2;
-input2.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:410px;');
+input2.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:345px;');
 document.body.appendChild(input2);
 document.getElementById('input2').style.backgroundColor = 'Lime ';
 
@@ -132,7 +168,7 @@ var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'Assign Docs';
 input3.onclick = showAlert3;
-input3.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:158px;');
+input3.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:98px;');
 document.body.appendChild(input3);
 
 function showAlert3() {
@@ -142,7 +178,7 @@ var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Upload Docs';
 input4.onclick = showAlert4;
-input4.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:280px;');
+input4.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:220px;');
 document.body.appendChild(input4);
 
 function showAlert4() {
@@ -275,7 +311,7 @@ var input100 = document.createElement('input');
 input100.type = 'button';
 input100.value = 'Specialist';
 input100.onclick = showAlert100;
-input100.setAttribute('style', 'font-size:18px;z-index:1;position:fixed;bottom:0px;right:60px; ');
+input100.setAttribute('style', 'font-size:18px;z-index:1;position:fixed;bottom:0px;right:0px; ');
 document.body.appendChild(input100);
 
 function showAlert100() {
