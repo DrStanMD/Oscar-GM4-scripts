@@ -4,7 +4,6 @@
 // @description Alerts when CDM code was last billed
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 15.1
 // @grant       none
 // ==/UserScript==
 function fillfield(data1, data2) {
@@ -80,7 +79,7 @@ $(document).ready(function () {
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
-      fillfield('red', measureArray[z] + ' last billed on ' + measureDateArray[z])
+      fillfield('red', measureArray[z] + ' last ' + measureDateArray[z])
     }
   }
   var z = measureArray.indexOf('14075')
@@ -91,7 +90,7 @@ $(document).ready(function () {
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
-      fillfield('red', measureArray[z] + ' last billed on ' + measureDateArray[z])
+      fillfield('red', measureArray[z] + ' last ' + measureDateArray[z])
     }
   }
 });
