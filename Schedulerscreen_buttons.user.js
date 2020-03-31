@@ -12,10 +12,10 @@
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
 //ADD YOUR OWN RBT NAME HERE
 var input15text = 'CDM\'s today'
-var input18text = 'DVL'
+var input18text = 'CDM List' //'DVL'
 //ADD TEMPLATE ID HERE
 var input15var = 2
-var input18var = 56
+var input18var = 22 //56
 
 function setCookie(cname, cvalue, exdays, cpath) {
     var d = new Date();
