@@ -5,7 +5,7 @@
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
 // @include          *CaseManagementEntry.do*
-// @version     15.1
+// @version     15.2
 // ==/UserScript==
 
 
