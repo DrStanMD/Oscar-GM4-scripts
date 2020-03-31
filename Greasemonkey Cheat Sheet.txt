@@ -53,19 +53,18 @@ alert("Hello World!")
 //*************************************************************
 
 
-//=========Option List Default============
-var theDefault='Hurwitz, Stanley D';
-var theOptions = document.getElementsByName('xml_provider')[0].options;
 
-for (var theOption of theOptions)
-{for (var i=0; i<3; i++) {}
-	if(typeof(theOption)=='object'){
-//alert(theOption.text)
-		if(theOption.text==theDefault){
-			theOption.selected=true;
-			break;
-		}
-	}
+//=========Option List Default============
+var theDefault = 'Refer To';
+var theOptions = document.getElementsByName('refertype1')[0].options;
+
+for (var theOption of theOptions) {
+    if (typeof(theOption) == 'object') {
+        if (theOption.text == theDefault) {
+            theOption.selected = true;
+            break;
+        }
+    }
 }
 //*****************************************************************
 
@@ -168,22 +167,79 @@ return "";
 $("input[name='value(FieldName)']").val();
 //by Id or Unique Selector
 $('#txt_name').val();
+$('input[name=\'every_min\']').css('background-color', 'yellow');
 
 //***********************************
+function dateCalc(addDays){
+ var month = new Array(11);
+ month[0]=  "Jan";
+ month[1]=  "Feb";
+ month[2]=  "Mar";
+ month[3]=  "Apr";
+ month[4]=  "May";
+ month[5]=  "Jun";
+ month[6]=  "Jul";
+ month[7]=  "Aug";
+ month[8]=  "Sep";
+ month[9]=  "Oct";
+ month[10]=  "Nov";
+ month[11]=  "Dec";
 
+var d = new Date(ProjLMP.value)
+//alert(d)
+cycleAdjust = cycle.value-28
+//  d.setTime(d.getTime()+(addDays*oneDay)+(cycleAdjust*oneDay))
+  d.setTime(d.getTime()+(addDays*oneDay))
+  d = new Date(d)
+var yyyy = d.getFullYear().toString();
+//var mm = (d.getMonth()+1).toString();
+var mm = d.getMonth()
+var dd  = d.getDate().toString()
+//var mmChars = mm.split('');
+var ddChars = dd.split('');
+//datestring = yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);   
+datestring = (ddChars[1]?dd:"0"+ddChars[0]) + ' '  + month[mm] + ', ' + yyyy 
+}
+
+//----------------------------------
+<script>
+function dateReformat(mydate){
 //Today's date
-var today = new Date();
+
+ var month = new Array(11);
+ month[0]=  "Jan";
+ month[1]=  "Feb";
+ month[2]=  "Mar";
+ month[3]=  "Apr";
+ month[4]=  "May";
+ month[5]=  "Jun";
+ month[6]=  "Jul";
+ month[7]=  "Aug";
+ month[8]=  "Sep";
+ month[9]=  "Oct";
+ month[10]=  "Nov";
+ month[11]=  "Dec";
+
+var today = new Date(mydate);
+alert(today)
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
-
+    var mmm = month[today.getMonth()]
+    var yy = today.getFullYear().toString().substr(-2);
     var yyyy = today.getFullYear();
+
     if(dd<10){
         dd='0'+dd
     } 
     if(mm<10){
         mm='0'+mm
     } 
-    var today = yyyy+'-'+mm+'-'+dd;
+    var today = yyyy+'-'+mmm+'-'+dd;
+	
+alert(today)
+}
+dateReformat("2019/02/11")
+</script>
 
 //************************************
 
