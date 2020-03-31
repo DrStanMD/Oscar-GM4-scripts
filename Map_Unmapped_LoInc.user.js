@@ -20,9 +20,8 @@ $(document).ready(function () {
     //********************************************
     var theDefault = prompt('Please enter part of the string to search (capitalize the first letter)');
     var theOptions = document.getElementsByName('identifier') [0].options;
-    for (var theOption in theOptions)
+    for (var theOption of theOptions)
     {
-      for (var i = 0; i < 3; i++) {}
       if (typeof (theOption) == 'object') {
         if (theOption.text.indexOf(theDefault) > - 1) {
           var mySelect = confirm(theOption.text);
