@@ -9,7 +9,7 @@
 // @grant       none
 // ==/UserScript==
 $(document).ready(function () {
-  alert()
+  //alert()
   var input1 = document.createElement('input');
   input1.type = 'button';
   input1.value = 'Search for unmapped code';
