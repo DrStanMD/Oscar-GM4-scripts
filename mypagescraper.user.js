@@ -11,7 +11,7 @@
 //Reserve line in header
 var header = document.getElementById('encounterHeader');
 var headerReserve = header.innerHTML
-//header.innerHTML += '<br>'
+header.innerHTML += '<br>'
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
