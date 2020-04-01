@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.3.1
+// @version 15.4
 // ==/UserScript==
 
 //Reserve line in header
@@ -86,7 +86,9 @@ $(document).ready(function () {
   );
   document.getElementById("button10").onclick = do_email;
   document.getElementById("button10").setAttribute('style', 'font-size:12px;');
-  var str = $('.Header > a:nth-child(1)').text()
+  //var str = $('.Header > a:nth-child(1)').text()
+  var str = document.querySelector('[title="Master Record"]').innerHTML;
+  //alert(str)
   var res = str.split(" ");
   var ptname = res[1]+' '+res[0]
   ptname = ptname.replace(",", " ");
