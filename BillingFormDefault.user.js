@@ -5,7 +5,7 @@
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
 // @include          *CaseManagementEntry.do*
-// @version     15.2
+// @version     15.3
 // ==/UserScript==
 
 //=====Get Parameters============
@@ -19,8 +19,24 @@ if (location.search) {
     }
 }
 
+var y = document.createElement("SELECT");
+y.setAttribute("id", "mySelect2");
+y.setAttribute("style", "font-size:12px;position:absolute;top:15px;left:0px;")
+document.body.appendChild(y);
+document.getElementById("mySelect2").style.backgroundColor = "lime";
+
+
+//localStorage.clear();
 //alert(params.billForm)
 //alert(localStorage.getItem("default_index"));
+//alert(localStorage.getItem("default_bform"))
+
+if(!localStorage.getItem("default_bform")){
+alert("Default billing form has not been set on this computer.  Setting default to GP.")
+localStorage.setItem("default_bform", "('GP'),'GP'");
+localStorage.setItem("default_index", "2");
+}
+
 var default_index = ""
 var default_bform = ""
 default_index = localStorage.getItem("default_index");
@@ -37,12 +53,6 @@ if (params.billForm != newdefault) {
     //location.replace(res) //COMMENT THIS LINE OUT TO DISABLE
 }
 
-
-
-var y = document.createElement("SELECT");
-y.setAttribute("id", "mySelect2");
-y.setAttribute("style", "font-size:12px;position:absolute;top:15px;left:0px;")
-
 var regExp = /\(([^)]+)\)/; //get value between parentheses
 var formlist = []
 var mytag = document.getElementsByTagName('a');
@@ -54,7 +64,7 @@ for (var i = 0; i < mytag.length; i++) {
         //  alert(matches)
         //formlist[i]=matches
 
-        document.body.appendChild(y);
+
         var x = document.getElementById("mySelect2");
         var option = document.createElement("option");
         option.text = matches;
@@ -72,4 +82,3 @@ function showAlert10() {
     location.reload();
 }
 document.getElementById("mySelect2").selectedIndex = default_index
-document.getElementById("mySelect2").style.backgroundColor = "lime";
