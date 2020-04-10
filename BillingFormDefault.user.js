@@ -26,15 +26,15 @@ var default_bform = ""
 default_index = localStorage.getItem("default_index");
 default_bform = localStorage.getItem("default_bform");
 var yy = default_bform.split(",")[1]
-alert(yy.replace(/'/g,''))
+//alert(yy.replace(/'/g,''))
 var newdefault = yy.replace(/'/g, '')
 
 if (params.billForm != newdefault) {
     var str = window.location.href;
     var res = str.replace("&billForm=" + params.billForm, "&billForm=" + newdefault)
-    alert(res)
-    //unsafeWindow.updateBillForm(default_bform)
-    location.replace(res) //COMMENT THIS LINE OUT TO DISABLE
+    //alert(res)
+    unsafeWindow.updateBillForm(newdefault)
+    //location.replace(res) //COMMENT THIS LINE OUT TO DISABLE
 }
 
 
