@@ -40,10 +40,10 @@ for (var i = 0; i < mytag.length; i++) {
     var hrefvalue = mytag[i].href
     if (hrefvalue.indexOf("updateBillForm") > -1) {
         var firstmatch = regExp.exec(hrefvalue);
-        firstmatch = regExp2.exec(firstmatch).toString();
-        firstmatch = firstmatch.replace(/'/g, '').toString()
-        firstmatch = firstmatch.replace("(", '').toString()
-        firstmatch = firstmatch.replace(")", '').toString()
+        firstmatch = regExp2.exec(firstmatch).toString();     //removes '
+        firstmatch = firstmatch.replace(/'/g, '').toString(); //removes '
+        firstmatch = firstmatch.replace("(", '').toString();  //removes (
+        firstmatch = firstmatch.replace(")", '').toString();  //removes )
         billinglist[j] = firstmatch
         j = j + 1
         //alert(firstmatch)
