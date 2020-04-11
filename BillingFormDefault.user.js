@@ -5,7 +5,7 @@
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
 // @include          *CaseManagementEntry.do*
-// @version     15.4
+// @version     15.5
 // ==/UserScript==
 
 //=====Get Parameters============
@@ -29,37 +29,42 @@ document.getElementById("mySelect2").style.backgroundColor = "lime";
 //localStorage.clear(); //Comment this line out after first use to reset local storage
 //***************************
 
+var billinglist = []
 var firstmatch
 var regExp = /\(([^)]+)\)/; //get value between parentheses
+var regExp2 = /\('[^)]+'\)/; //get value between parentheses
 var mytag = document.getElementsByTagName('a');
+var j = 0
 for (var i = 0; i < mytag.length; i++) {
     //alert(mytag[i].href)
     var hrefvalue = mytag[i].href
     if (hrefvalue.indexOf("updateBillForm") > -1) {
         var firstmatch = regExp.exec(hrefvalue);
+        firstmatch = regExp2.exec(firstmatch).toString();
+        firstmatch = firstmatch.replace(/'/g, '').toString()
+        firstmatch = firstmatch.replace("(", '').toString()
+        firstmatch = firstmatch.replace(")", '').toString()
+        billinglist[j] = firstmatch
+        j = j + 1
         //alert(firstmatch)
-        i = 1000
     }
 }
-
-
+//alert(billinglist)
 //alert(params.billForm)
 //alert(localStorage.getItem("default_index"));
 //alert(localStorage.getItem("default_bform"))
 
 if (!localStorage.getItem("default_bform")) {
-    alert("Default billing form has not been set on this computer.  Setting default to first match.")
-    localStorage.setItem("default_bform", firstmatch);
-    localStorage.setItem("default_index", "0");
+    alert("Default billing form has not been set on this computer.  Setting default to GP.")
+    localStorage.setItem("default_bform", firstmatch[2]);
+    localStorage.setItem("default_index", "2");
 }
 
 var default_index = ""
 var default_bform = ""
 default_index = localStorage.getItem("default_index");
 default_bform = localStorage.getItem("default_bform");
-var yy = default_bform.split(",")[1]
-//alert(yy.replace(/'/g,''))
-var newdefault = yy.replace(/'/g, '')
+var newdefault = default_bform 
 
 if (params.billForm != newdefault) {
     var str = window.location.href;
@@ -69,26 +74,16 @@ if (params.billForm != newdefault) {
     //location.replace(res) //COMMENT THIS LINE OUT TO DISABLE
 }
 
-var regExp = /\(([^)]+)\)/; //get value between parentheses
-var formlist = []
-var mytag = document.getElementsByTagName('a');
-for (var i = 0; i < mytag.length; i++) {
-    //alert(mytag[i].href)
-    var hrefvalue = mytag[i].href
-    if (hrefvalue.indexOf("updateBillForm") > -1) {
-        var matches = regExp.exec(hrefvalue);
-        //alert(matches)
-        //formlist[i]=matches
 
-
-        var x = document.getElementById("mySelect2");
-        var option = document.createElement("option");
-        option.text = matches;
-        option.onclick = showAlert10;
-        x.add(option);
-
-    }
+for (i = 0; i < billinglist.length; i++) {
+    var x = document.getElementById("mySelect2");
+    var option = document.createElement("option");
+    //alert(billinglist[i])
+    option.text = billinglist[i];
+    option.onclick = showAlert10;
+    x.add(option);
 }
+
 
 function showAlert10() {
     alert(this.value + " is now set as the default billing form on this computer.")
