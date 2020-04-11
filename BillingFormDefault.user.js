@@ -5,7 +5,7 @@
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
 // @include          *CaseManagementEntry.do*
-// @version     15.3
+// @version     15.4
 // ==/UserScript==
 
 //=====Get Parameters============
@@ -25,16 +25,32 @@ y.setAttribute("style", "font-size:12px;position:absolute;top:15px;left:0px;")
 document.body.appendChild(y);
 document.getElementById("mySelect2").style.backgroundColor = "lime";
 
+//*************Troubleshooting**************
+localStorage.clear(); Comment this line out after first use to reset local storage
+//***************************
 
-//localStorage.clear();
+var firstmatch
+var regExp = /\(([^)]+)\)/; //get value between parentheses
+var mytag = document.getElementsByTagName('a');
+for (var i = 0; i < mytag.length; i++) {
+    //alert(mytag[i].href)
+    var hrefvalue = mytag[i].href
+    if (hrefvalue.indexOf("updateBillForm") > -1) {
+        var firstmatch = regExp.exec(hrefvalue);
+        //alert(firstmatch)
+        i = 1000
+    }
+}
+
+
 //alert(params.billForm)
 //alert(localStorage.getItem("default_index"));
 //alert(localStorage.getItem("default_bform"))
 
-if(!localStorage.getItem("default_bform")){
-alert("Default billing form has not been set on this computer.  Setting default to GP.")
-localStorage.setItem("default_bform", "('GP'),'GP'");
-localStorage.setItem("default_index", "2");
+if (!localStorage.getItem("default_bform")) {
+    alert("Default billing form has not been set on this computer.  Setting default to first match.")
+    localStorage.setItem("default_bform", firstmatch);
+    localStorage.setItem("default_index", "0");
 }
 
 var default_index = ""
