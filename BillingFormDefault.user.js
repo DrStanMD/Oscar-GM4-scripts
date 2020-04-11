@@ -61,7 +61,7 @@ for (var i = 0; i < mytag.length; i++) {
     var hrefvalue = mytag[i].href
     if (hrefvalue.indexOf("updateBillForm") > -1) {
         var matches = regExp.exec(hrefvalue);
-        alert(matches)
+        //alert(matches)
         //formlist[i]=matches
 
 
