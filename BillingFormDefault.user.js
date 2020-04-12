@@ -57,7 +57,7 @@ alert(billinglist)
 
 if (!localStorage.getItem("default_bform")) {
     alert("Default billing form has not been set on this computer.  Setting default to GP.")
-    localStorage.setItem("default_bform", firstmatch[2]);
+    localStorage.setItem("default_bform", billinglist[2]);
     localStorage.setItem("default_index", "2");
 }
 
