@@ -39,6 +39,7 @@ for (var i = 0; i < mytag.length; i++) {
     //alert(mytag[i].href)
     var hrefvalue = mytag[i].href
     if (hrefvalue.indexOf("updateBillForm") > -1) {
+        alert(mytag[i].href)
         var firstmatch = regExp.exec(hrefvalue);
         firstmatch = regExp2.exec(firstmatch).toString();     //removes duplicate
         firstmatch = firstmatch.replace(/'/g, '').toString(); //removes '
@@ -49,7 +50,7 @@ for (var i = 0; i < mytag.length; i++) {
         //alert(firstmatch)
     }
 }
-//alert(billinglist)
+alert(billinglist)
 //alert(params.billForm)
 //alert(localStorage.getItem("default_index"));
 //alert(localStorage.getItem("default_bform"))
