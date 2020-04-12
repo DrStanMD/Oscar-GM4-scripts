@@ -26,7 +26,7 @@ document.body.appendChild(y);
 document.getElementById("mySelect2").style.backgroundColor = "lime";
 
 //*************Troubleshooting**************
-localStorage.clear(); //Comment this line out after first use to reset local storage
+//localStorage.clear(); //Comment this line out after first use to reset local storage
 //***************************
 
 var billinglist = []
