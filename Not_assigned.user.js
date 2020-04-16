@@ -38,6 +38,8 @@ DT[0] = [
 DT[1] = [
   'consult',
   ' Dr. ',
+  ' Dr. Ahmed',
+  ' Dr. Rapoport',
   ' Dr. Cherry',
   ' Dr. Sampath',
   ' Dr. Nguyen',
