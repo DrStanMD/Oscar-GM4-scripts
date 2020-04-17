@@ -151,6 +151,7 @@ DT[12] = [
   'Refills',
   'Vaccine notification',
   'Cannimed',
+  'Triplicate',
 ]
 //*******XRAY TYPES*************************************************************  
 xType = [
