@@ -16,7 +16,7 @@
 // ==/UserScript==
 
 window.resizeTo(1280, 780);
-window.moveTo(400, 100)
+window.moveTo(400, 150)
 //window.resizeTo(1320,900);
 //window.resizeTo(1300,900);
 //window.resizeTo(1280, 780);
