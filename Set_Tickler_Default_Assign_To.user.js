@@ -32,5 +32,5 @@ function showAlert8() {
     location.reload();
 }
 
-//window.resizeTo(1400, 800);
-//window.moveTo(400, 100)
+window.resizeTo(1400, 800);
+window.moveTo(400, 100)
