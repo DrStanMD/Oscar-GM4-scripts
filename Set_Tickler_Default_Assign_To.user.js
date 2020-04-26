@@ -2,73 +2,35 @@
 // @name           Set Tickler Default Assign To
 // @namespace      StansScripts
 // @include        *tickler/ticklerMain.jsp*
+// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @description Sets Tickler Default Assign To
-// version 15.2
+// version 15.3
 // ==/UserScript==
 
-var theDefault = 'Hurwitz , Stanley D';
-var theDefault='Ghobassy , Bahar';
-//var theDefault='Ho , Wei-Ning';
-var theDefault='Hurwitz , Office';
-var theOptions = document.getElementsByName('assignedTo') [0].options;
-for (var theOption of theOptions)
-{
-  if (typeof (theOption) == 'object') {
-    //alert(theOption.text)
-    if (theOption.text == theDefault) {
-      theOption.selected = true;
-      break;
-    }
-  }
+//localStorage.clear();
+$('select[name=assignedTo]').css("background-color", "yellow");
+if (localStorage.getItem("tdefault_doc")) {
+    document.getElementById("assignedTo").selectedIndex = localStorage.getItem("tdefault_doc")
+} else {
+    alert("The default provider is not set for this session on this computer.  \nSelect the default provider from the list, then click STORE.")
 }
 
 
-window.resizeTo(1400, 800);
-window.moveTo(400, 100)
+var input8 = document.createElement("input");
+input8.type = "button";
+input8.value = "Store default Provider";
+input8.onclick = showAlert8;
+input8.setAttribute("style", "font-size:12px;position:absolute;top:30px;right:80px;");
+document.body.appendChild(input8);
 
-//$('.mbttn').click()
-/*
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
-var input = document.createElement('input');
-input.type = 'button';
-input.value = 'Add Tickler';
-input.onclick = showAlert;
-input.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:600px;');
-document.body.appendChild(input);
-function showAlert() {
-  window.open(vPath + 'tickler/ticklerAdd.jsp')
+function showAlert8() {
+    var Set_Default = document.getElementById("assignedTo").selectedIndex
+    localStorage.setItem("tdefault_doc", Set_Default);
+    var sel = document.getElementById("assignedTo")
+    var x = sel.options[sel.selectedIndex].text;
+    alert(x + " is now set as the default billing doctor on this computer.")
+    location.reload();
 }
-var input1 = document.createElement('input');
-input1.type = 'button';
-input1.value = 'Complete';
-input1.onclick = showAlert1;
-input1.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:520px;');
-document.body.appendChild(input1);
-function showAlert1() {
-  document.forms['ticklerform'].submit_form.value = 'Complete';
-  document.forms['ticklerform'].submit();
-  value = 'Complete';
-}
-var input2 = document.createElement('input');
-input2.type = 'button';
-input2.value = 'Delete';
-input2.onclick = showAlert2;
-input2.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:460px;');
-document.body.appendChild(input2);
-function showAlert2() {
-  document.forms['ticklerform'].submit_form.value = 'Delete';
-  document.forms['ticklerform'].submit();
-  value = 'Delete';
-}
-var input3 = document.createElement('input');
-input3.type = 'button';
-input3.value = 'Cancel';
-input3.onclick = showAlert3;
-input3.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:400px;');
-document.body.appendChild(input3);
-function showAlert3() {
-  window.close()
-}
-*/
+
+//window.resizeTo(1400, 800);
+//window.moveTo(400, 100)
