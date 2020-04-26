@@ -18,7 +18,7 @@ if (localStorage.getItem("tdefault_doc")) {
 
 var input8 = document.createElement("input");
 input8.type = "button";
-input8.value = "Store default Provider";
+input8.value = "Store Default Assign To";
 input8.onclick = showAlert8;
 input8.setAttribute("style", "font-size:12px;position:absolute;top:30px;right:80px;");
 document.body.appendChild(input8);
@@ -28,7 +28,7 @@ function showAlert8() {
     localStorage.setItem("tdefault_doc", Set_Default);
     var sel = document.getElementById("assignedTo")
     var x = sel.options[sel.selectedIndex].text;
-    alert(x + " is now set as the default billing doctor on this computer.")
+    alert(x + " is now set as the Default Assign To on this computer.")
     location.reload();
 }
 
