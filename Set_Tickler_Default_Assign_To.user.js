@@ -8,7 +8,7 @@
 // ==/UserScript==
 
 //localStorage.clear();
-$('select[name=assignedTo]').css("background-color", "yellow");
+$('select[name=assignedTo]').css("background-color", "lightyellow");
 if (localStorage.getItem("tdefault_doc")) {
     document.getElementById("assignedTo").selectedIndex = localStorage.getItem("tdefault_doc")
 } else {
