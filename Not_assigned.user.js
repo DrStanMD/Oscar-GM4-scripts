@@ -73,7 +73,8 @@ DT[1] = [
   'Nephrology',
   'Dermatology',
   'Rheumatology',
-  
+  'Paediatric',
+  ' Dr. G. Huston',  
 ]
 DT[2] = [
   'insurance',
@@ -115,6 +116,7 @@ DT[6] = [
 DT[7] = [
   'others',
   'Appointment notification',
+  'Appointment not accepted',
   'Notes',
   'WIC',
   'Referral',
@@ -152,6 +154,8 @@ DT[12] = [
   'Vaccine notification',
   'Cannimed',
   'Triplicate',
+  'Special Authority',
+  'Adaptation',
 ]
 //*******XRAY TYPES*************************************************************  
 xType = [
