@@ -93,7 +93,7 @@ function myFunction() {
   //*****
   var x1 = document.createElement('SELECT');
   x1.setAttribute('id', 'mySelect1');
-  x1.setAttribute('style', 'width:40px;font-size:12px;position:fixed;top:18px;right:730px;background-color: lime; ');
+  x1.setAttribute('style', 'width:44px;font-size:12px;position:fixed;top:18px;right:730px;background-color: lime; ');
   for (i = 0; i < 60; i++) {
     document.body.appendChild(x1);
     var z1 = document.createElement('option');
