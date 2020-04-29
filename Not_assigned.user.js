@@ -74,7 +74,7 @@ DT[1] = [
   'Dermatology',
   'Rheumatology',
   'Paediatric',
-  ' Dr. G. Huston',  
+  ' Dr. G. Houston',  
 ]
 DT[2] = [
   'insurance',
@@ -117,6 +117,7 @@ DT[7] = [
   'others',
   'Appointment notification',
   'Appointment not accepted',
+  'Appointment postponed',
   'Notes',
   'WIC',
   'Referral',
