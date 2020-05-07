@@ -6,9 +6,10 @@
 // @version     15.2
 // @grant       none
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @require     emailtextengine_V15.js
-// @require     emailtextengine_credentials_V15.js
-// @require     mandrill_nostringify_V15.js
+// @require     [your image path goes here]/eform/displayImage.do?imagefile=emailtextengine_V15.js
+// @require     [your image path goes here]/eform/displayImage.do?imagefile=emailtextengine_credentials_V15.js
+// @require     [your image path goes here]/eform/displayImage.do?imagefile=mandrill_nostringify_V15.js
+
 
 // ==/UserScript==
 
