@@ -126,6 +126,7 @@ DT[7] = [
   'Special Authority',
   'Faxed referral RMH',
   'email consent',
+  'BP readings',
 ]
 DT[8] = [
   'photo',
