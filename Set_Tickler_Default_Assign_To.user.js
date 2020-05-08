@@ -33,5 +33,6 @@ function showAlert8() {
 }
 
 $('body').width(1800)
-window.resizeTo(screen.width, screen.height);
-window.moveTo(100, 100)
+window.resizeTo(screen.width-75, screen.height);
+window.moveTo(50, 50)
+
