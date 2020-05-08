@@ -32,8 +32,8 @@ function showAlert8() {
     location.reload();
 }
 
-$('body').width(1800)
-window.resizeTo(screen.width-75, screen.height);
+$('body > form:nth-child(3) > table:nth-child(1))').width(1400)
+window.resizeTo(1400,800);
 window.moveTo(50, 50)
 /*
 $('body').width(1300)
