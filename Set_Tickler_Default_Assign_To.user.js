@@ -35,4 +35,8 @@ function showAlert8() {
 $('body').width(1800)
 window.resizeTo(screen.width-75, screen.height);
 window.moveTo(50, 50)
-
+/*
+$('body').width(1300)
+window.resizeTo(1300, screen.height);
+window.moveTo(50, 50)
+*/
