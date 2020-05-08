@@ -34,7 +34,7 @@ function showAlert8() {
 
 $('body > form:nth-child(3) > table:nth-child(1))').width(1400)
 window.resizeTo(1400,800);
-window.moveTo(50, 50)
+window.moveTo(200, 50)
 /*
 $('body').width(1300)
 window.resizeTo(1300, screen.height);
