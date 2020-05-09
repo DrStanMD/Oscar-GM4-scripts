@@ -38,7 +38,7 @@ if (params.docType) {
   input4.type = 'button';
   input4.value = 'Add Hyperlink';
   input4.onclick = showAlert4;
-  input4.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:0px; ');
+  input4.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:0px; ');
   document.body.appendChild(input4);
 }
 function showAlert4()
@@ -66,7 +66,7 @@ var input4 = document.createElement('input');
 input4.type = 'button';
 input4.value = 'Advise Appointment';
 input4.onclick = showAlert4;
-input4.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:0px; ');
+input4.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:0px; ');
 document.body.appendChild(input4);
 function showAlert4()
 {
@@ -99,7 +99,7 @@ var input3 = document.createElement('input');
 input3.type = 'button';
 input3.value = 'Pap Recall';
 input3.onclick = showAlert3;
-input3.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:180px; ');
+input3.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:142px; ');
 document.body.appendChild(input3);
 function showAlert3()
 {
@@ -133,7 +133,7 @@ var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'CDM TBD';
 input1.onclick = showAlert1;
-input1.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:300px; ');
+input1.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:230px; ');
 document.body.appendChild(input1);
 function showAlert1()
 {
@@ -176,7 +176,7 @@ var input22 = document.createElement('input');
 input22.type = 'button';
 input22.value = 'Stan Next';
 input22.onclick = showAlert22;
-input22.setAttribute('style', 'font-size:16px;position:fixed;top:18px;left:0px; ');
+input22.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:525px; ');
 input22.style.background='lightgreen'
 document.body.appendChild(input22);
 function showAlert22()
@@ -215,7 +215,7 @@ var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Assign to Stan';
 input2.onclick = showAlert2;
-input2.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:400px; ');
+input2.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:315px; ');
 input2.style.background='yellow'
 document.body.appendChild(input2);
 function showAlert2()
@@ -253,7 +253,7 @@ var input20 = document.createElement('input');
 input20.type = 'button';
 input20.value = 'Prepayment';
 input20.onclick = showAlert20;
-input20.setAttribute('style', 'font-size:16px;position:fixed;top:18px;right:550px;');
+input20.setAttribute('style', 'font-size:12px;position:fixed;top:18px;right:425px;');
 document.body.appendChild(input20);
 function showAlert20()
 {
