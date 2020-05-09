@@ -3,7 +3,7 @@
 // @namespace   StansScripts
 // @description Copies and pastes address/phone form master screen new demographic.  Adds email link. Inserts Dymo label button.
 // @include     *demographic/demographiccontrol.jsp?demographic_no*
-// @include     *demographic/demographiccontrol.jsp?displaymode=add*
+// @include     *demographic/demographiccontrol.jsp?displaymode=*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     15.3.1
 // ==/UserScript==
