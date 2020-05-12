@@ -362,7 +362,7 @@ input11.value = 'Save and Close';
 var ShowClick = (input11.value).trim()
 input11.id = 'Forms'
 input11.onclick = showAlert11;
-input11.setAttribute('style', 'font-size:12px;position:absolute;top:460px;right:180px;height:40px;background-color:  #FF00FF  ');
+input11.setAttribute('style', 'font-size:12px;position:absolute;top:460px;right:0px;height:40px;background-color:  #FF00FF  ');
 document.body.appendChild(input11);
 function showAlert11() {
   //$(TicklerButton).click()
