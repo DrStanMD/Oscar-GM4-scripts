@@ -4,7 +4,7 @@
 // @description Various navigation buttons for echart screen.  Set your own specific fid (form number) or Measurement groupName
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 15.1
+// @version 15.2
 // @grant       none
 // ==/UserScript==
 //window.moveTo(300, 100)
@@ -32,7 +32,11 @@ function getCookie(cname)
 var myWindow = ''
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1)) //alert(firstElement)
-vPath = ('https://' + location.host + '/' + firstElement + '/') //alert(vPath)
+vPath = ('https://' + location.host + '/' + firstElement + '//') 
+
+
+//alert(vPath)
+
 var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
 var res = myParam.indexOf('&')
 var demo_no = myParam.substring(0, res) //var myWindow = window.open("","","width=200,height=100");
@@ -112,7 +116,7 @@ function showAlert6()
   var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=37&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=37&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
   //alert(formPath)
   window.open(formPath)
 }
@@ -142,7 +146,7 @@ function showAlert7() // INSERT YOU OWN MEASUREMENT groupName=?????  below
   var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=654&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=654&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
   //alert(formPath)
   window.open(formPath)
 }
@@ -208,7 +212,7 @@ document.body.appendChild(input12);
 function showAlert12() //{window.open(vPath  + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Allergy Shots 0')}
 {
   //https://secure10.oscarhost.ca/SDHurwitzInc/eform/efmformadd_data.jsp?fid=68&demographic_no=640&appointment=
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=68&demographic_no=' + demo_no
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=68&demographic_no=' + demo_no
   window.open(formPath,'Popup_Window', 'width=800,height=800,left = 800,top = 0')
 }
 var input13 = document.createElement('input');
@@ -223,7 +227,7 @@ function showAlert13()
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
   // INSERT YOU OWN form ID (fid=??) here
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=601&demographic_no=' + demo_no //alert(formPath)
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=601&demographic_no=' + demo_no //alert(formPath)
   window.open(formPath)
 }
 var input14 = document.createElement('input');
@@ -238,7 +242,7 @@ function showAlert14()
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
   // INSERT YOU OWN form ID (fid=??) here
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=172&demographic_no=' + demo_no //var formPath = vPath + "eform/efmformadd_data.jsp?fid=81&demographic_no=" + demo_no
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=172&demographic_no=' + demo_no //var formPath = vPath + "/eform/efmformadd_data.jsp?fid=81&demographic_no=" + demo_no
   //alert(formPath)
   window.open(formPath)
 }
@@ -254,7 +258,7 @@ function showAlert15()
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
   // INSERT YOU OWN form ID (fid=??) here
-  var formPath = vPath + 'eform/efmformslistadd.jsp?group_view=Imaging&demographic_no=' + demo_no + '&parentAjaxId=eforms' //alert(formPath)
+  var formPath = vPath + '/eform/efmformslistadd.jsp?group_view=Imaging&demographic_no=' + demo_no + '&parentAjaxId=eforms' //alert(formPath)
   window.open(formPath)
 }
 var input16 = document.createElement('input');
@@ -269,7 +273,7 @@ function showAlert16()
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
   // INSERT YOU OWN form ID (fid=??) here
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=96&demographic_no=' + demo_no //window.open(formPath)
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=96&demographic_no=' + demo_no //window.open(formPath)
   window.open(formPath, 'Popup_Window', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=400,height=300,left = 312,top = 234');
 }
 var input17 = document.createElement('input');
@@ -293,7 +297,7 @@ function showAlert18()
   var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
   var res = myParam.indexOf('&')
   var demo_no = myParam.substring(0, res) //alert (demo_no)
-  var formPath = vPath + 'eform/efmformadd_data.jsp?fid=458&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
+  var formPath = vPath + '/eform/efmformadd_data.jsp?fid=458&demographic_no=' + demo_no // INSERT YOU OWN form ID (fid=??) here
   //alert(formPath)
   window.open(formPath) 
 }
