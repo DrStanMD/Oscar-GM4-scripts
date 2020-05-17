@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.4
+// @version 15.5
 // ==/UserScript==
 
 //Reserve line in header
