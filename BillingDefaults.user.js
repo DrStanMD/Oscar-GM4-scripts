@@ -4,6 +4,7 @@
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
+// @include        *billing/CA/BC/adjustBill.jsp*
 // @include          *CaseManagementEntry.do*
 // @version     15.2
 // ==/UserScript==
