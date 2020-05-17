@@ -10,8 +10,9 @@
 
 
 //Facility sub number
-$("input[name='facilityNum']").val("OADDD"); //your facility number goes here
-
+setTimeout(function(){
+$("input[name='facilityNum']").val("XXXXX"); //your facility number goes here
+ }, 500);
 //$("input[name='xml_diagnostic_detail2']").attr('disabled','disabled');
 //$("input[name='xml_diagnostic_detail3']").attr('disabled','disabled');
 
