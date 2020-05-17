@@ -4,6 +4,7 @@
 // @description Alerts when CDM code was last billed
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @version 15.2
 // @grant       none
 // ==/UserScript==
 function fillfield(data1, data2) {
@@ -28,7 +29,7 @@ function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
   //alert(demo_no)
-  var newURL = vPath + 'billing/CA/BC/billStatus.jsp?lastName=' + '' + '&firstName=' + '' + '&filterPatient=true&demographicNo=' + demo_no  //window.open(newURL)
+  var newURL = vPath + '/billing/CA/BC/billStatus.jsp?lastName=' + '' + '&firstName=' + '' + '&filterPatient=true&demographicNo=' + demo_no  //window.open(newURL)
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       var str = xmlhttp.responseText; //local variable
@@ -79,7 +80,7 @@ $(document).ready(function () {
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
-      fillfield('red', measureArray[z] + ' last ' + measureDateArray[z])
+      fillfield('red', measureArray[z] + ' last billed on ' + measureDateArray[z])
     }
   }
   var z = measureArray.indexOf('14075')
@@ -90,7 +91,7 @@ $(document).ready(function () {
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
-      fillfield('red', measureArray[z] + ' last ' + measureDateArray[z])
+      fillfield('red', measureArray[z] + ' last billed on ' + measureDateArray[z])
     }
   }
 });
