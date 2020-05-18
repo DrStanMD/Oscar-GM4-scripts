@@ -374,3 +374,20 @@ $('#helpLink').attr('onclick', '');
 $('#helpLink').click(function() {
     window.open('http://www.oscarcanada.org')
 });
+
+var input26 = document.createElement('input');
+input26.type = 'button';
+input26.value = 'DYMO';
+input26.onclick = showAlert26;
+input26.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;bottom:120px;right:0px;background-color: #FE2EF7; ');
+document.body.appendChild(input26);
+function showAlert26()
+{
+  //var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
+  //var res = myParam.indexOf('&')
+  //var demo_no = myParam.substring(0, res) //alert (demo_no)
+  var formPath = vPath +  '/eform/efmshowform_data.jsp?fid=696'
+
+  //alert(formPath)
+  window.open(formPath)
+}
