@@ -22,7 +22,7 @@ var add_one = 0
 function getMeasures(measure) {
   xmlhttp = new XMLHttpRequest();
   var pathArray = window.location.pathname.split('/');
-  var newURL = vPath + 'demographic/demographiccontrol.jsp?demographic_no=' + demoNo + '&displaymode=edit&dboperation=search_detail'
+  var newURL = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demoNo + '&displaymode=edit&dboperation=search_detail'
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       //alert(xmlhttp.responseText)
@@ -121,7 +121,7 @@ function doLink2() {
   
   window.open(vPath + '/demographic/search.jsp?vaddress=' + address)
 }
-if (x.indexOf('demographic/demographiccontrol.jsp') > - 1) {
+if (x.indexOf('/demographic/demographiccontrol.jsp') > - 1) {
   //alert("We are in the Master Demographic Page")
   var theTarget = document.getElementById('header');
   var linkButton = document.createElement('input');
