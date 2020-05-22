@@ -9,14 +9,14 @@
 // @version     15.2
 // ==/UserScript==
 
-
+/*
 //Facility sub number
 setTimeout(function(){
 $("input[name='facilityNum']").val("XXXXX"); //your facility number goes here
  }, 500);
 //$("input[name='xml_diagnostic_detail2']").attr('disabled','disabled');
 //$("input[name='xml_diagnostic_detail3']").attr('disabled','disabled');
-
+*/
 
 var theDefault = 'Refer To';
 var theOptions = document.getElementsByName('refertype1')[0].options;
