@@ -280,7 +280,11 @@ function myFunction(itemnum) {
     z.appendChild(t);
     z.onclick = AddList
     document.getElementById('mySelect').appendChild(z);
-    document.getElementById('mySelect').size = DT[itemnum].length-15;
+    document.getElementById('mySelect').size = DT[itemnum].length;
+    //document.getElementById('mySelect').size = DT[itemnum].length-15;
+    if(DT[itemnum].length>30){
+    document.getElementById('mySelect').size = 30
+    }
     document.getElementById('mySelect').style.backgroundColor = 'pink';
     //  document.getElementById('mySelect') .focus()
     $(Field1).css('background-color', 'yellow');
