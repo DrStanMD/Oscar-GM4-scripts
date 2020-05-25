@@ -372,7 +372,7 @@ function showAlert11() {
   //$(TicklerButton).click()
   $(SaveButton).click()
   $(SaveButton).click()
-  window.opener.location.reload();
+  //window.opener.location.reload();
   $(CloseButton).click();
 }
 var input12 = document.createElement('input');
