@@ -66,7 +66,7 @@ function getMeasures(measure) {
 
 function videolink(){
   window.open( "https://video.rivercityclinic.ca/,_blank")
-  $('.Header > a:nth-child(3) > span:nth-child(1)').click();
+  $('.Header > a:nth-child(3) > span:nth-child(1)').click(); //comment out this line stop the appointment window from opening.
   }
 
 
