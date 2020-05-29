@@ -66,8 +66,8 @@ function getMeasures(measure) {
 }
 
 function videolink(){
-  window.open( "https://video.rivercityclinic.ca/,_blank")
-  $('.Header > a:nth-child(3) > span:nth-child(1)').click(); //comment out this line stop the appointment window from opening.
+  window.open( "https://video.rivercityclinic.ca/demographic_no_" + demo_no)
+  //$('.Header > a:nth-child(3) > span:nth-child(1)').click(); //comment out this line stop the appointment window from opening.
   }
 
 
@@ -91,8 +91,9 @@ $(document).ready(function () {
   + ' ' + headerExtra4.bold() + HCN +  "Age:".bold()+ demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
  // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
   + '<button type="button" id="button10">Send email</button>'
-  + '<button type="button" id="button20" style="background-color: #FE2EF7;">Send invite/videolink</button>' 
+  + '<button type="button" id="button20" style="background-color: #FE2EF7;">Start Video</button>' 
   );
+  document.getElementById("button20").setAttribute("style", "width:90px; font-size:14px; position:fixed;z-index:200; top:20px; right:0px; background-color: #E6E0F8;");
   document.getElementById("button20").onclick = videolink
   document.getElementById("button10").onclick = do_email;
   document.getElementById("button10").setAttribute('style', 'font-size:12px;');
