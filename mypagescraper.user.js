@@ -15,7 +15,8 @@ header.innerHTML += '<br>'
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
+//vPath = ('https://' + location.host + '/' + firstElement + '/')
+vPath = '../'
 var myParam = location.search.split('demographicNo=') [1]
 var res = myParam.indexOf('&')
 var demo_no = myParam.substring(0, res)
