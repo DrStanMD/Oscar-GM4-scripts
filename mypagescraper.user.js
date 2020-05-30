@@ -52,7 +52,7 @@ function getMeasures(measure) {
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
         y = myArray.toString() 
-        //alert(y)
+        alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
