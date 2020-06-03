@@ -44,7 +44,7 @@ for(i=0;i<x.length;i++){
   if(x[i].value == z){
     //alert(x[i].value)
     $(x[i]).closest('tr').css('background-color', 'yellow')
-    x[i].click()
+    //x[i].click()
   }
   if(x[i].value == q){
   //alert(x[i].value)
