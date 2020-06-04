@@ -9,7 +9,14 @@
 // ==/UserScript==
 
 var age = $('body > form:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)').html()
+if(age){
+ // alert(age)
+}
+else{
+var age = $('body > form:nth-child(6) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2)').html()
 //alert(age)
+}
+
 var z
 var q
 switch (true) {
@@ -44,7 +51,7 @@ for(i=0;i<x.length;i++){
   if(x[i].value == z){
     //alert(x[i].value)
     $(x[i]).closest('tr').css('background-color', 'yellow')
-    //x[i].click()
+    x[i].click()
   }
   if(x[i].value == q){
   //alert(x[i].value)
