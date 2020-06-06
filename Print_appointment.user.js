@@ -121,7 +121,7 @@ function showAlert() {
     setCookie('apptime', qapptime, 100, 'path=/');
     setCookie('appdoc', qappdoc, 100, 'path=/');
     setCookie('apppt', qapppt, 100, 'path=/');
-    setCookie('qemail', myemail, 10, 'path=/');
+    setCookie('qemail', myemail, 100, 'path=/');
     qqappdate = getCookie('appdate')
     qqapptime = getCookie('apptime')
     qqappdoc = getCookie('appdoc') //window.open(vPath + "/eform/efmformadd_data.jsp?fid="+myFID+"&demographic_no=1&appointment=" + app_prov_no)
