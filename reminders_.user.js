@@ -403,8 +403,15 @@ function ButtonFunction3() {
             }
         }
     });
-} //*******************************************************************************
-//Rx screen shortcut
+} 
+//*******************************************************************************
+
+//Hide or show buttons for this screen
+
+if (x.indexOf('tickler/ticklerAdd.jsp') > -1) {
+    document.getElementById('AutoReminders').style.visibility = 'hidden';
+    document.getElementById('AutoTickler').style.visibility = 'hidden';
+}
 
 if (x.indexOf('ForwardDemographicTickler') > -1) {
     document.getElementById('AutoReminders').style.visibility = 'hidden';
