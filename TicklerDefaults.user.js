@@ -143,7 +143,6 @@ function showAlert1() {
         }
     }
 
-    //$('body > table:nth-child(3) > tbody:nth-child(4) > tr:nth-child(4) > td:nth-child(2) > font:nth-child(1) > select:nth-child(1)').css('background-color', 'red');
     x = document.getElementsByName('textarea')
     $(x[0]).val('Recall for booked CDM')
 
