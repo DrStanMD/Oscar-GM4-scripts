@@ -87,7 +87,7 @@ $(document).ready(function () {
   if (z > - 1) {
     var d = new Date(measureDateArray[z])
     if (d.getFullYear() == currentyear) {
-      fillfield('ligthgreen', '14075 billed this year') //alert('14075 billed this year')
+      fillfield('lightgreen', '14075 billed this year') //alert('14075 billed this year')
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
