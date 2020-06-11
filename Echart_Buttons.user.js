@@ -61,7 +61,7 @@ input1.setAttribute('style', 'width:90px;font-size:16px;z-index:1;position:fixed
 document.body.appendChild(input1);
 function showAlert1()
 {
-  window.open(vPath + 'billing/CA/BC/billingManageReferralDoc.jsp')
+  window.open(vPath + '/billing/CA/BC/billingManageReferralDoc.jsp')
 }
 var input2 = document.createElement('input');
 input2.type = 'button';
