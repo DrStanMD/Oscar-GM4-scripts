@@ -18,7 +18,7 @@
             unsafeWindow.checkScratch()
           
             setTimeout(function() {
-                alert("Saved")
+               // alert("Saved")
                 window.close()
             }, 300);
         }
