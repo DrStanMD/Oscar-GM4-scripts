@@ -1,30 +1,26 @@
 // ==UserScript==
 // @name        ScratchPad Screen Shortcuts
 // @namespace   StansScripts
-// @description Shortcut key for save on Scratch pad (Alt-s) 
+// @description Shortcut key for save on Scratch pad (Alt-z) 
 // @include   *scratch/index.jsp
-// @version     1
+// @version    15.1
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
 
+(function() {
+    document.addEventListener('keydown', function(e) {
 
-window.addEventListener('keypress', function (theEvent) {
-  var theKeyCode = theEvent.charCode; // || event.which;
-  var theKey = String.fromCharCode(theKeyCode);
-  var theAltKey = theEvent.altKey;
-  var theCtrlKey = theEvent.ctrlKey;
-  var theShiftKey = theEvent.shiftKey;
-  //var theDownKey= theEvent.PgDnKey;
+        //alert(e.keyCode)
 
-  switch (true) {
-    case theAltKey && theKey == 'z': 
-    // $('#savebutton').click()
-     unsafeWindow.checkScratch()
-     //alert("Saved")
-     setTimeout(function(){
-     window.close()
-               }, 300);
-      break;
-  }
-},
-true);
+        if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //alt-z
+
+            $('#savebutton').click()
+            unsafeWindow.checkScratch()
+          
+            setTimeout(function() {
+                alert("Saved")
+                window.close()
+            }, 300);
+        }
+    }, false);
+})();
