@@ -68,7 +68,8 @@ function getMeasures(measure) {
 function videolink(){
  // window.open( "https://video.rivercityclinic.ca/demographic_no_" + demo_no)
   //$('.Header > a:nth-child(3) > span:nth-child(1)').click(); //comment out this line stop the appointment window from opening.
-  window.open("https://zoom.us/profile")
+    document.getElementById("button10").click()
+    window.open("https://zoom.us/profile")
   }
 
 
