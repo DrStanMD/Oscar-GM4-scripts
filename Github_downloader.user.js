@@ -4,7 +4,7 @@
 // @include     *DrStanMD/Oscar-GM4-scripts*
 // @include     *DrStanMD/GM4-Snippets*
 // @include     *github.com/login*
-// @version     15.2
+// @version     15.3
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
@@ -88,7 +88,8 @@ function ButtonFunction3() {
 $(document).ready(function(){
 for (i = 0; i < 200; i++) {
   xx = 'tr.js-navigation-item:nth-child(' + i + ') > td:nth-child(2)'
-  x = 'tr.js-navigation-item:nth-child(' + i + ') > td:nth-child(4) > span:nth-child(1) > time-ago:nth-child(1)'
+  //x = 'tr.js-navigation-item:nth-child(' + i + ') > td:nth-child(4) > span:nth-child(1) > time-ago:nth-child(1)'
+  x = 'div.Box-row:nth-child(' + i + ') > div:nth-child(4) > time-ago:nth-child(1)'
   y = $(x).html() + 'X'  //
   //alert(y)
   //alert(y.indexOf("month"))
