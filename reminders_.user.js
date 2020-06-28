@@ -54,7 +54,13 @@ if (!myParam) {
         var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;"));
         //alert(demo_no)
     }
-
+   var x = document.getElementsByClassName("NarrativeRes");
+      if (x) {
+        var y = x[0].innerHTML
+        //alert(y)
+        var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;labType=HL7"));
+        //alert(demo_no)
+    }
 
 } else {
     var res = myParam.indexOf('&')
