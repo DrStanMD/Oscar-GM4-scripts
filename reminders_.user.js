@@ -20,6 +20,7 @@ if (inputvar == 0) {
     return false
 }
 var dd = 0 //Button position
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
@@ -33,21 +34,35 @@ if (location.search) {
     }
 }
 
+//get demo_no*********************************************
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 //vPath = ('https://' + location.host + '/' + firstElement + '/')
 vPath = '../'
 var myParam = location.search.split('demographicId=')[1]
+
 if (!myParam) {
     //alert("NO DEMO NO")
     var x = document.getElementsByName("demog");
-    //alert(x[0].value)
-    var demo_no = x[0].value
+    if (x[0]) {
+        var demo_no = x[0].value
+        //alert(demo_no)
+    }
+    var x = document.querySelector('[title="Annotation"]');
+    if (x) {
+        var y = x.outerHTML
+        var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;"));
+        //alert(demo_no)
+    }
+
+
 } else {
     var res = myParam.indexOf('&')
     var demo_no = myParam.substring(0, res)
     //alert(demo_no)
 }
+//end get demo_no**************************************************
+
 
 var demoArray = [
     'FirstName',
