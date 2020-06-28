@@ -21,14 +21,14 @@ var myParam = location.search.split('demographicNo=') [1]
 var res = myParam.indexOf('&')
 var demo_no = myParam.substring(0, res)
 var demoArray = [
-  'Cell Phone',
+  'CellPhone',
   'Email',
   'Phone(H)',
   'Address',
   'City',
   'Postal',
   'Age',
-  'Health Ins'
+  'HealthIns'
 ]
 var demoArrayVal = [
 ]
@@ -40,14 +40,14 @@ function getMeasures(measure) {
   xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
       //alert(xmlhttp.responseText)
-      //var str = xmlhttp.responseText.replace(/\s/g, '')
-      var str = xmlhttp.responseText
+      var str = xmlhttp.responseText.replace(/\s/g, '')
+      //var str = xmlhttp.responseText
       if (!str) {
         return;
       }
       //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
-      //var myReString = '<spanclass="label">' + measure + '.*/s*'
-      var myReString = '<span class="label">'  + measure +  '(.|[\n])*'
+      var myReString = '<spanclass="label">' + measure + '.*/s*'
+      //var myReString = '<span class="label">'  + measure +  '(.|[\n])*'
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
