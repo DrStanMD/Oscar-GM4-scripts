@@ -55,7 +55,7 @@ if (!myParam) {
         //alert(demo_no)
     }
    var x = document.getElementsByClassName("NarrativeRes");
-      if (x) {
+      if (x[0]) {
         var y = x[0].innerHTML
         //alert(y)
         var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;labType=HL7"));
