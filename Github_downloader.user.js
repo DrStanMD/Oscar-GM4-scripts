@@ -97,6 +97,9 @@ $(document).ready(function() {
         if (y.indexOf('minute') > -1) {
             $(x).css('background-color', 'lightgreen')
         }
+        if (y.indexOf('seconds') > -1) {
+            $(x).css('background-color', 'aquamarine')
+        }
     }
 
 });
