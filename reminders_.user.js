@@ -71,8 +71,8 @@ if (!myParam) {
 
 
 var demoArray = [
-    'FirstName',
-    'LastName',
+    'First Name',
+    'Last Name',
     'Email'
 ]
 
@@ -87,14 +87,14 @@ function getMeasures(measure) {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             //alert(xmlhttp.responseText)
-            var str = xmlhttp.responseText.replace(/\s/g, '')
-            //var str = xmlhttp.responseText
+            //var str = xmlhttp.responseText.replace(/\s/g, '')
+            var str = xmlhttp.responseText
             if (!str) {
                 return;
             }
             //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
-            var myReString = '<spanclass="label">' + measure + '.*/s*'
-            //var myReString = '<span class="label">' + measure + '(.|[\n])*'
+            //var myReString = '<spanclass="label">' + measure + '.*/s*'
+            var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
             var myRe = new RegExp(myReString, 'g');
             var myArray
             while ((myArray = myRe.exec(str)) !== null) {
