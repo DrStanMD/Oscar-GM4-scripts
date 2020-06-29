@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        myPagescraper
+// @name        myPagescraper with videolink
 // @namespace   Stanscripts
 // @description adds demographic details to echart
 // @include     */casemgmt/forward.jsp?action=view&demographic*
