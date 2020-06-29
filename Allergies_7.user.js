@@ -124,10 +124,10 @@ input1.onclick = ButtonFunction1;
 input1.setAttribute('style', 'font-size:8px;position:absolute;top:0px;right:50px;background-color: #00FF00');
 document.body.appendChild(input1);
 function ButtonFunction1() {
-  myWindow = window.open(vPath + 'oscarRx/showAllergy.do?demographicNo=' + demoNo + '&view=All', 'myWindow');
+  myWindow = window.open(vPath + '/oscarRx/showAllergy.do?demographicNo=' + demoNo + '&view=All', 'myWindow');
   // Opens a new window
   setTimeout(function () {
-    myWindow2 = window.open(vPath + 'oscarRx/addReaction2.do?ID=0&type=0&name=NKDA', 'myWindow2')
+    myWindow2 = window.open(vPath + '/oscarRx/addReaction2.do?ID=0&type=0&name=NKDA', 'myWindow2')
     myWindow.close();
   }, 200);
 }
@@ -158,10 +158,10 @@ function ButtonFunction2() {
       if (document.getElementById(xyz).checked) {
         addthis = AA[i][1]        //alert(addthis)
         $(myElement).html(RestoreHTML)
-        myWindow = window.open(vPath + 'oscarRx/showAllergy.do?demographicNo=' + demoNo + '&view=All', 'myWindow');
+        myWindow = window.open(vPath + '/oscarRx/showAllergy.do?demographicNo=' + demoNo + '&view=All', 'myWindow');
         // Opens a new window
         setTimeout(function () {
-          myWindow2 = window.open(vPath + 'oscarRx/addReaction2.do?' + addthis, 'myWindow2')
+          myWindow2 = window.open(vPath + '/oscarRx/addReaction2.do?' + addthis, 'myWindow2')
           myWindow.close();
         }, 200);
       }
