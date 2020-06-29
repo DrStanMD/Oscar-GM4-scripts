@@ -112,5 +112,5 @@ input11.setAttribute("style", "font-size:12px;position:fixed;top:17px;right:0px;
 document.body.appendChild(input11);
 
 function ButtonFunction11() {
-    window.open("https://zoom.us/")
+     window.open("https://zoom.us/", "newWindow", target="_blank")
 }
