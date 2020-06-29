@@ -86,19 +86,23 @@ function ButtonFunction3() {
 $(document).ready(function() {
     var lis = document.querySelectorAll("time-ago");
     for (i = 0; i < lis.length; i++) {
-        x = lis[i]
-        y = x.innerHTML
+        xx = lis[i]
+        y = xx.innerHTML
         if (y.indexOf('hour') > -1) {
-            $(x).css('background-color', 'yellow')
+            $(xx).css('background-color', 'yellow')
+            $(myclass[i+3]).css('background-color', 'yellow')
         }
         if (y.indexOf('day') > -1) {
-            $(x).css('background-color', 'pink')
+            $(xx).css('background-color', 'pink')
+            $(myclass[i+3]).css('background-color', 'pink')
         }
         if (y.indexOf('minute') > -1) {
-            $(x).css('background-color', 'lightgreen')
+            $(xx).css('background-color', 'lightgreen')
+            $(myclass[i+3]).css('background-color', 'lightgreen')
         }
         if (y.indexOf('seconds') > -1) {
-            $(x).css('background-color', 'aquamarine')
+            $(xx).css('background-color', 'aquamarine')
+           $(myclass[i+3]).css('background-color', 'aquamarine')
         }
     }
 
