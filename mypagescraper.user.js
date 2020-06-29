@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.5
+// @version 15.6
 // ==/UserScript==
 
 //Reserve line in header
@@ -47,12 +47,12 @@ function getMeasures(measure) {
       }
       //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
       //var myReString = '<spanclass="label">' + measure + '.*/s*'
-      var myReString = '<span class="label">'  + measure +  '(.|[\n])*'
+      var myReString = '<span class="label">[\n\r\t]*\s*'  + measure +  '(.|[\n])*'
       var myRe = new RegExp(myReString, 'g');
       var myArray
       while ((myArray = myRe.exec(str)) !== null) {
         y = myArray.toString() 
-        alert(y)
+        //alert(y)
         var z = y.indexOf('info')
         var mycode = y.substring(z + 6)
         var mycode2 = mycode.indexOf('</span>')
