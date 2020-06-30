@@ -23,7 +23,9 @@ var dd = 0 //Button position
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
+vPath = ('https://' + location.host + '/' + firstElement + '/') 
+
+//=====Get Parameters============
 //vPath = '../'
 var params = {};
 if (location.search) {
@@ -39,7 +41,6 @@ if (location.search) {
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
-//vPath = '../'
 var myParam = location.search.split('demographicId=')[1]
 
 if (!myParam) {
