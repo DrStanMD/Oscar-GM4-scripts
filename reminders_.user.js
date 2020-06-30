@@ -10,7 +10,7 @@
 // @include  *dms/showDocument.jsp?segmentID*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.6
+// @version     15.7
 // @grant       none
 // ==/UserScript==
 var inputvar = 226 //form id goes here
@@ -24,6 +24,7 @@ var dd = 0 //Button position
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
+//vPath = '../'
 var params = {};
 if (location.search) {
     var parts = location.search.substring(1).split('&');
@@ -37,8 +38,8 @@ if (location.search) {
 //get demo_no*********************************************
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-//vPath = ('https://' + location.host + '/' + firstElement + '/')
-vPath = '../'
+vPath = ('https://' + location.host + '/' + firstElement + '/')
+//vPath = '../'
 var myParam = location.search.split('demographicId=')[1]
 
 if (!myParam) {
@@ -68,11 +69,11 @@ if (!myParam) {
     //alert(demo_no)
 }
 //end get demo_no**************************************************
-
+//alert(demo_no)
 
 var demoArray = [
-    'FirstName',
-    'LastName',
+    'First Name',
+    'Last Name',
     'Email'
 ]
 
@@ -87,13 +88,14 @@ function getMeasures(measure) {
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             //alert(xmlhttp.responseText)
-            var str = xmlhttp.responseText.replace(/\s/g, '')
-            //var str = xmlhttp.responseText
+            //var str = xmlhttp.responseText.replace(/\s/g, '')
+            var str = xmlhttp.responseText
             if (!str) {
                 return;
             }
-            var myReString = '<spanclass="label">' + measure + '.*/s*'
-            //var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
+            //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
+            //var myReString = '<spanclass="label">' + measure + '.*/s*'
+            var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
             var myRe = new RegExp(myReString, 'g');
             var myArray
             while ((myArray = myRe.exec(str)) !== null) {
