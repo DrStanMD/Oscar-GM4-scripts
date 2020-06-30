@@ -10,7 +10,7 @@
 // @include  *dms/showDocument.jsp?segmentID*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.5
+// @version     15.6
 // @grant       none
 // ==/UserScript==
 var inputvar = 226 //form id goes here
