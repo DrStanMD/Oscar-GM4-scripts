@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Reminders
+// @name        Reminders legacy Version
 // @namespace   Stanscript
 // @include  *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include  *lab/CA/ALL/labDisplay.jsp?demographicId*
@@ -23,8 +23,7 @@ var dd = 0 //Button position
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-//vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
-vPath = '../'
+vPath = ('https://' + location.host + '/' + firstElement + '/') //=====Get Parameters============
 var params = {};
 if (location.search) {
     var parts = location.search.substring(1).split('&');
@@ -72,8 +71,8 @@ if (!myParam) {
 
 
 var demoArray = [
-    'First Name',
-    'Last Name',
+    'FirstName',
+    'LastName',
     'Email'
 ]
 
@@ -84,19 +83,17 @@ function getMeasures(measure) {
     var pathArray = window.location.pathname.split('/');
     var newURL = vPath + '/demographic/demographiccontrol.jsp?demographic_no=' + demo_no + '&displaymode=edit&dboperation=search_detail'
     //window.open(newURL)
-    
 
     xmlhttp.onreadystatechange = function() {
         if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             //alert(xmlhttp.responseText)
-            //var str = xmlhttp.responseText.replace(/\s/g, '')
-            var str = xmlhttp.responseText
+            var str = xmlhttp.responseText.replace(/\s/g, '')
+            //var str = xmlhttp.responseText
             if (!str) {
                 return;
             }
-            //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
-            //var myReString = '<spanclass="label">' + measure + '.*/s*'
-            var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
+            var myReString = '<spanclass="label">' + measure + '.*/s*'
+            //var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
             var myRe = new RegExp(myReString, 'g');
             var myArray
             while ((myArray = myRe.exec(str)) !== null) {
@@ -130,27 +127,14 @@ if (params.segmentID) {
     var IDnum = params.segmentID
     if (window.location.pathname.indexOf('showDocument.jsp') > -1) {
         var mydocType = 'DOC'
-        //var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)' 
-        //alert($(myElement).html())
-        var x = document.getElementsByClassName("FieldData");
-        var myElement = x
+        var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)' //alert($(myElement).html())
         //$(myElement).css('background-color', 'yellow')
     }
 
     if (window.location.pathname.indexOf('labDisplay.jsp') > -1) {
         var mydocType = 'HL7'
-        //var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)' //var teststring = ($('.Title2').html()).trim()
-        var x = document.getElementsByClassName("FieldData");
-        var myElement = x
-   
-       /*
-        $(myElement).css('background-color', 'yellow')
-        var x = document.getElementsByClassName("FieldData");
-        alert(x[28].innerHTML)
-        for(i=0;i<x.length;i++){
-       alert(i+": "+x[i].innerHTML)
-       }
-       */
+        var myElement = '#acknowledgeForm_' + IDnum + ' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)' //var teststring = ($('.Title2').html()).trim()
+        //$(myElement).css('background-color', 'yellow')
     }
 
     //alert(mydocType)
