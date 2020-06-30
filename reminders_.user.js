@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name        Reminders legacy Version
+// @name        Reminders
 // @namespace   Stanscript
 // @include  *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include  *lab/CA/ALL/labDisplay.jsp?demographicId*
