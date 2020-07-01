@@ -23,10 +23,10 @@ var dd = 0 //Button position
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') 
-
+//vPath = ('https://' + location.host + '/' + firstElement + '/') 
+vPath = '../'
 //=====Get Parameters============
-//vPath = '../'
+
 var params = {};
 if (location.search) {
     var parts = location.search.substring(1).split('&');
@@ -40,7 +40,7 @@ if (location.search) {
 //get demo_no*********************************************
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
+//vPath = ('https://' + location.host + '/' + firstElement + '/')
 var myParam = location.search.split('demographicId=')[1]
 
 if (!myParam) {
