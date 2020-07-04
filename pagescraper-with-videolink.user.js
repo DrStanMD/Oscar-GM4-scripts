@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.7
+// @version 15.8
 // ==/UserScript==
 
 //Reserve line in header
@@ -81,12 +81,11 @@ $(document).ready(function() {
     var headerExtra5 = ' Addr: '
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
         ' ' + headerExtra4.bold() + HCN + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
-        // + '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-        +
-        '<button type="button" id="button10">Send email</button>'
+        //+ '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+        + '<button type="button" id="button10">Send email</button>'
     );
     document.getElementById("button10").onclick = do_email;
-    document.getElementById("button10").setAttribute('style', 'font-size:12px;');
+    document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;');//background-color:#FC74FD
     //var str = $('.Header > a:nth-child(1)').text()
     var str = document.querySelector('[title="Master Record"]').innerHTML;
     //alert(str)
@@ -108,9 +107,10 @@ var input11 = document.createElement("input");
 input11.type = "button";
 input11.value = "OPEN ZOOM";
 input11.onclick = ButtonFunction11;
-input11.setAttribute("style", "font-size:12px;position:fixed;top:17px;right:0px;");
+input11.setAttribute("style", "font-size:12px;position:fixed;top:17px;right:0px;z-index:100");
 document.body.appendChild(input11);
 
 function ButtonFunction11() {
-     window.open("https://zoom.us/", "newWindow", target="_blank")
+     $('#button10').click()
+     window.open("https://zoom.us/", "newWindow", "_blank")
 }
