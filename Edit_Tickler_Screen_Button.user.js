@@ -8,6 +8,21 @@
 // @version     15.1
 // @grant       none
 // ==/UserScript==
+
+(function () {
+  document.addEventListener('keydown', function (e) {
+    
+    //alert(e.keyCode)
+    
+    if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //alt-z to save
+   var list = document.getElementsByName("Button");
+   //alert(list.length)
+   $(list[1]).css('color','red');
+   $(list[1]).click();
+    }
+  }, false);
+}) ();
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 //alert(firstElement)
