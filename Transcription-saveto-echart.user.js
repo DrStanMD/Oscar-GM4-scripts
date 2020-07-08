@@ -5,7 +5,7 @@
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include   *lab/CA/ALL/labDisplay.jsp?demographicId*
 // @include     */annotation/annotation.jsp?display*
-// @version  15.2
+// @version  15.3
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
