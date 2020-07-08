@@ -5,7 +5,7 @@
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include   *lab/CA/ALL/labDisplay.jsp?demographicId*
 // @include     */annotation/annotation.jsp?display*
-// @version  15.3
+// @version  15.4
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
@@ -36,6 +36,7 @@ var IDnum = params.segmentID //
 //alert(IDnum)
 var AckForm = '#acknowledgeForm_' + IDnum
 //********************************************************************************
+  
 newLine = ''
 var author = ''
 var fixedauthor = ''
@@ -114,6 +115,12 @@ function getSelectionText() {
   }
 }
 function showAlert() {
+  
+  if (ExcelArray.indexOf("TRANSPDF") > - 1) {
+  window.open(vPath+'/annotation/annotation.jsp?display=Lab Reports&amp;table_id='+ IDnum + '&amp;other_id=0-9','anwin','width=400,height=500');
+  return
+  }
+  
   getSelectionText()
   var a_href = $('tr.NarrativeRes:nth-child(3) > td:nth-child(1) > a:nth-child(1)').attr('href')
   var params = {
