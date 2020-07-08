@@ -125,13 +125,14 @@ function getSelectionText() {
 }
 
 function showAlert() {
-
+/*
     if (ExcelArray.indexOf("TRANSPDF") > -1) {
         var x = document.getElementsByClassName("FieldData");
         var vDOS1 = $(x[19]).html()
         window.open(vPath + '/annotation/annotation.jsp?display=Lab Reports&amp;table_id=' + IDnum + '&amp;other_id=0-9' + '&AnnotText' + 'Report Extract (' + fixedauthor + ' - ' + vDOS1 + '): \n\r' + newLine, 'anwin', 'width=400,height=500');
         return
     }
+ */
 
     getSelectionText()
     var a_href = $('tr.NarrativeRes:nth-child(3) > td:nth-child(1) > a:nth-child(1)').attr('href')
