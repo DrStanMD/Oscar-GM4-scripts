@@ -4,6 +4,7 @@
 // @include *tickler/ticklerAdd.jsp?demographic_no*
 // @include *tickler/ForwardDemographicTickler.do*
 // @include */tickler/ticklerAdd.jsp*
+// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant    none
 // ==/UserScript==
 //========Get Path============
