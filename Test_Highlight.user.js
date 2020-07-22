@@ -240,9 +240,10 @@ function ResetNames() {
     $(AckLabel).val('')
     $(CreateLabel).click();
     $(CreateLabel).click();
-} //window.resizeTo(1200, 800);
+} 
+//window.resizeTo(1200, 800);
 
-window.moveTo(300, 100) //author = prompt("Please enter label name", "");
+//window.moveTo(300, 100) //author = prompt("Please enter label name", "");
 //Get line numbers from label and apply highlights************
 //GetLabel = $(AckLabel).val()
 GetLabel = $(LabelSpan).html() //GetLabel = $('.MainTableTopRowRightColumn > input:nth-child(7)').val()
