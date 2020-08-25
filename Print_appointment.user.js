@@ -5,12 +5,36 @@
 // @include     *appointment/appointmentcontrol.jsp*
 // @include     *appointment/addappointment.jsp*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version 15.2
+// @version 15.3
 // @grant       none
 // ==/UserScript==
 //************************************************************
 var myFID = '61' // INSERT YOU OWN FORM ID (fid=??) HERE
 //************************************************************
+
+function ReasonRequired(){
+var x = document.getElementById("reason")
+var y = $('input[name=\'keyword\']')
+if(y.val() && !x.value){  
+alert("Reason for appointment is required")
+x.style.backgroundColor = 'yellow';
+x.focus()  
+} 
+}  
+
+if(document.getElementById('updateButton')){
+document.getElementById('updateButton').addEventListener("mouseover", function(){ 
+ReasonRequired()
+}); 
+}
+
+if(document.getElementById('addButton')){
+document.getElementById('addButton').addEventListener("mouseover", function(){ 
+ReasonRequired()
+});
+}
+
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1)) //alert(firstElement)
 vPath = ('https://' + location.host + '/' + firstElement + '/') //get parameters
@@ -35,7 +59,7 @@ var demoArray = [
     //'City',
     //'Postal',
     //'Age',
-    //'HealthIns.#'
+    //'HealthIns.#',
     'Email'
 ]
 var demoArrayVal = []
@@ -108,7 +132,8 @@ var input = document.createElement('input');
 input.type = 'button';
 input.value = 'Save Appointment and Print Label';
 input.onclick = showAlert;
-input.setAttribute('style', 'font-size:18px;position:fixed;bottom:20px;right:100px; ');
+input.onmouseover = ReasonRequired;
+input.setAttribute('style', 'font-size:18px;position:fixed;bottom:20px;right:0px; ');
 document.body.appendChild(input);
 
 function showAlert() {
@@ -126,6 +151,64 @@ function showAlert() {
     qqapptime = getCookie('apptime')
     qqappdoc = getCookie('appdoc') //window.open(vPath + "/eform/efmformadd_data.jsp?fid="+myFID+"&demographic_no=1&appointment=" + app_prov_no)
     window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + myFID)
+    $('#addButton').click()
+    $('#updateButton').click()
+}
+
+
+var input1 = document.createElement('input');
+input1.type = 'button';
+input1.value = 'Save Appointment and Print Label with ZOOM';
+input1.onclick = showAlert1;
+input1.onmouseover = ReasonRequired;
+input1.setAttribute('style', 'font-size:14px;position:fixed;bottom:20px;right:300px; ');
+document.body.appendChild(input1);
+
+function showAlert1() {
+    qappdate = $("input[name='appointment_date']").val();
+    qapptime = $("input[name='start_time']").val();
+    qappdoc = $("input[name='doctorNo']").val();
+    qapppt = $("input[name='keyword']").val();
+
+    setCookie('appdate', qappdate.toString(), 100, 'path=/');
+    setCookie('apptime', qapptime, 100, 'path=/');
+    setCookie('appdoc', qappdoc, 100, 'path=/');
+    setCookie('apppt', qapppt, 100, 'path=/');
+    setCookie('qemail', myemail, 100, 'path=/');
+    qqappdate = getCookie('appdate')
+    qqapptime = getCookie('apptime')
+    qqappdoc = getCookie('appdoc') 
+    window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + 766)
+    //window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + 768)
+    $('#addButton').click()
+    $('#updateButton').click()
+}
+
+var input2 = document.createElement('input');
+input2.type = 'button';
+input2.value = 'Print Label with ZOOM today';
+input2.onclick = showAlert2;
+input2.onmouseover = ReasonRequired;
+input2.setAttribute('style', 'font-size:14px;position:fixed;bottom:20px;left:0px; ');
+document.body.appendChild(input2);
+
+
+function showAlert2() {
+    qappdate = $("input[name='appointment_date']").val();
+    qapptime = $("input[name='start_time']").val();
+    qappdoc = $("input[name='doctorNo']").val();
+    qapppt = $("input[name='keyword']").val();
+
+    setCookie('appdate', qappdate.toString(), 100, 'path=/');
+    setCookie('apptime', qapptime, 100, 'path=/');
+    setCookie('appdoc', qappdoc, 100, 'path=/');
+    setCookie('apppt', qapppt, 100, 'path=/');
+    setCookie('qemail', myemail, 100, 'path=/');
+    qqappdate = getCookie('appdate')
+    qqapptime = getCookie('apptime')
+    qqappdoc = getCookie('appdoc') 
+    //window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + 766)
+    window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + 768)
     $('#addButton').click()
     $('#updateButton').click()
 }
