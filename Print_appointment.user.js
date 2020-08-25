@@ -16,7 +16,7 @@ function ReasonRequired(){
 var x = document.getElementById("reason")
 var y = $('input[name=\'keyword\']')
 if(y.val() && !x.value){  
-alert("Reason for appointment is required")
+alert("Please enter Reason for appointment")
 x.style.backgroundColor = 'yellow';
 x.focus()  
 } 
