@@ -88,11 +88,12 @@ $(document).ready(function() {
     for (i = 0; i < lis.length; i++) {
         xx = lis[i]
         y = xx.innerHTML
+      //alert(y)
         if (y.indexOf('hour') > -1) {
             $(xx).css('background-color', 'yellow')
             $(myclass[i+3]).css('background-color', 'yellow')
         }
-        if (y.indexOf('day') > -1) {
+        if (y.indexOf('months') > -1) {   // if (y.indexOf('day') > -1) { 
             $(xx).css('background-color', 'pink')
             $(myclass[i+3]).css('background-color', 'pink')
         }
