@@ -12,15 +12,16 @@
 // @include    *dms/showDocument.jsp?inWindow=true&segmentID*
 // @include    *dms/MultiPageDocDisplay.jsp?segmentID*
 // @include    *casemgmt/forward.jsp?action=view&demographicNo*
+// @include    *appointment.jsp*
 // @grant       none
 // ==/UserScript==
 
 window.resizeTo(1280, 780);
-window.moveTo(400, 150)
+//window.moveTo(10, 10)
 //window.resizeTo(1320,900);
 //window.resizeTo(1300,900);
 //window.resizeTo(1280, 780);
-//window.moveTo(200, 50)
+window.moveTo(200, 100)
 //window.resizeTo(1300,1000);
 //alert('hi')
 
