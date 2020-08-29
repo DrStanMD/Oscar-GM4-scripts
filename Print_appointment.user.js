@@ -10,13 +10,14 @@
 // ==/UserScript==
 //************************************************************
 var myFID = '61' // INSERT YOU OWN FORM ID (fid=??) HERE
+var myZOOMFID = '766' // INSERT YOU OWN FORM ID (fid=??) HERE
 //************************************************************
 
 function ReasonRequired(){
 var x = document.getElementById("reason")
 var y = $('input[name=\'keyword\']')
 if(y.val() && !x.value){  
-alert("Please enter Reason for appointment")
+alert("Reason for appointment is required")
 x.style.backgroundColor = 'yellow';
 x.focus()  
 } 
@@ -178,8 +179,7 @@ function showAlert1() {
     qqappdate = getCookie('appdate')
     qqapptime = getCookie('apptime')
     qqappdoc = getCookie('appdoc') 
-    window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + 766)
-    //window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + 768)
+    window.open(vPath + '/eform/efmshowform_data.jsp?fid=' + myZOOMFID) //766
     $('#addButton').click()
     $('#updateButton').click()
 }
