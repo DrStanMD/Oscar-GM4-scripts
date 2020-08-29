@@ -184,6 +184,8 @@ function showAlert1() {
     $('#updateButton').click()
 }
 
+
+/*
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Print Label with ZOOM today';
@@ -212,3 +214,4 @@ function showAlert2() {
     $('#addButton').click()
     $('#updateButton').click()
 }
+*/
