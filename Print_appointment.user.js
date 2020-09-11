@@ -10,7 +10,7 @@
 // ==/UserScript==
 //************************************************************
 var myFID = '61' // INSERT YOU OWN FORM ID (fid=??) HERE
-var myZOOMFID = '766' // INSERT YOU OWN FORM ID (fid=??) HERE
+//var myZOOMFID = '766' // INSERT YOU OWN FORM ID (fid=??) HERE
 //************************************************************
 
 function ReasonRequired(){
@@ -156,7 +156,7 @@ function showAlert() {
     $('#updateButton').click()
 }
 
-
+/*
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Save Appointment and Print Label with ZOOM';
@@ -184,8 +184,6 @@ function showAlert1() {
     $('#updateButton').click()
 }
 
-
-/*
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Print Label with ZOOM today';
