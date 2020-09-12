@@ -12,7 +12,7 @@ var string1 = 'recall'.toUpperCase() // orange when high priority
 var string2 = 'appointment'.toUpperCase() //lightgreen but orange when high priority
 var string3 = 'appt'.toUpperCase() //lightgreen but orange when high priority
 var string4 = 'payment'.toUpperCase() //pink
-var string5 = 'in office'.toUpperCase() //bluish
+var string5 = 'in office'.toUpperCase() //blue pastel
 //high priority is yellow
 
 var myemail = ''
@@ -223,7 +223,7 @@ function highP(myclass) {
             }
             if (myP[i].innerHTML.toUpperCase().indexOf(string5) > -1) {
                 for (ii = 1; ii < 11; ii++) {
-                    myP[i - 9 + ii].style.backgroundColor = '#33FFEC';
+                    myP[i - 9 + ii].style.backgroundColor = '#95E6E6';
                 }
             }
         }
