@@ -15,6 +15,8 @@
 // ==/UserScript==
 
 var inputvar = 226 //form id goes here
+var providername = "Dr. Hurwitz"
+var providerphone = "604-275-8228"
 //**********************************************************
 
 var elements = (window.location.pathname.split('/', 2))
@@ -35,13 +37,14 @@ if (location.search) {
 
 //alert(params.providerNo)
 
+
 var ResultList = ["INR"]
 
 function ResultEmail(){
 var ebody = "Dear "+ demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
 //alert(ebody)
-var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at 604-275-8228."
-var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + "Dr. Hurwitz Office" 
+var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at " + providerphone + "."
+var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + providername+ " Office" 
 var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
 var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
 window = window.open(mailto_link, 'emailWindow')  
