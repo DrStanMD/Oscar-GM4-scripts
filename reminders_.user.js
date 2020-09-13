@@ -10,11 +10,50 @@
 // @include  *dms/showDocument.jsp?segmentID*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.7
+// @version     15.8
 // @grant       none
 // ==/UserScript==
+
 var inputvar = 226 //form id goes here
 //**********************************************************
+
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+vPath = ('https://' + location.host + '/' + firstElement + '/') 
+
+var ResultList = ["INR"]
+
+function ResultEmail(){
+var ebody = "Dear "+ demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
+//alert(ebody)
+var efooter = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A Dr. Hurwitz."   
+var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
+var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + efooter
+window = window.open(mailto_link, 'emailWindow')  
+$('input[type="button"][value=" E-Chart"]').click();  
+$(document).ready(function(){
+$('#caseNote_note0').focus()
+window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management'+'&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1]+' -  Please continue with your current Warfarin dosing and monthly INR testing.')  
+//$('#caseNote_note0').val(ebody + efooter)  
+//var activeNote = document.getElementsByName("caseNote_note")[0];
+//activeNote.value += ebody + efooter;
+});
+
+}  
+ 
+var tableRow = $("td").filter(function() {
+    return $(this).text() == ResultList[0];
+}).closest("tr").next("tr");
+//tableRow.css('background-color', 'yellow')
+tableRow.before("<input type='button' id="+ResultList[0]+"  style='background-color:lime;color:black;' value='Send Email'>")
+//alert(tableRow.html()) 
+var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
+var results = myRe.exec(tableRow.html())
+document.getElementById(ResultList[0]).title = 'Your ' + ResultList[0] + ' result is ' + results[1]
+document.getElementById(ResultList[0]).onclick = ResultEmail
+document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
+//alert('Your ' + ResultList[0] + ' result is ' + results[1])
+
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
     return false
