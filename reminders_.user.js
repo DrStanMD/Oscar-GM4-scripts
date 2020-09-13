@@ -21,14 +21,29 @@ var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/') 
 
+//=====Get Parameters============
+//vPath = '../'
+var params = {};
+if (location.search) {
+    var parts = location.search.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+}
+
+//alert(params.providerNo)
+
 var ResultList = ["INR"]
 
 function ResultEmail(){
 var ebody = "Dear "+ demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
 //alert(ebody)
-var efooter = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A Dr. Hurwitz."   
+var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at 604-275-8228."
+var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + "Dr. Hurwitz Office" 
 var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
-var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + efooter
+var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
 window = window.open(mailto_link, 'emailWindow')  
 $('input[type="button"][value=" E-Chart"]').click();  
 $(document).ready(function(){
@@ -54,27 +69,13 @@ document.getElementById(ResultList[0]).onclick = ResultEmail
 document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
 //alert('Your ' + ResultList[0] + ' result is ' + results[1])
 
+
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
     return false
 }
 var dd = 0 //Button position
 
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') 
-
-//=====Get Parameters============
-//vPath = '../'
-var params = {};
-if (location.search) {
-    var parts = location.search.substring(1).split('&');
-    for (var i = 0; i < parts.length; i++) {
-        var nv = parts[i].split('=');
-        if (!nv[0]) continue;
-        params[nv[0]] = nv[1] || true;
-    }
-}
 
 //get demo_no*********************************************
 var elements = (window.location.pathname.split('/', 2))
