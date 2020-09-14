@@ -8,6 +8,30 @@
 // @version 15.8
 // ==/UserScript==
 
+//****Future use to write to the current Encounter note
+var params = {};
+if (location.search) {
+    var parts = location.search.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+}
+
+if(params.instructions){
+//alert(params.instructions)
+var str = params.instructions.replace(/%0D%0A/g, ' ')
+str = str.replace(/%20/g, ' ');
+//alert(str)
+$(document).ready(function(){
+$('#caseNote_note0').focus()
+var activeNote = document.getElementsByName("caseNote_note")[0];
+activeNote.value += str
+});
+}
+//****End Future use to write to the current Encounter note
+
 //Reserve line in header
 var header = document.getElementById('encounterHeader');
 var headerReserve = header.innerHTML
@@ -111,6 +135,7 @@ input11.setAttribute("style", "font-size:12px;position:fixed;top:17px;right:0px;
 document.body.appendChild(input11);
 
 function ButtonFunction11() {
-     //$('#button10').click()
+     $('#button10').click()
      window.open("https://zoom.us/", "newWindow", "_blank")
+     //window.open("https://phsa.zoom.us/j/94846610525?pwd=M3lNeUkwc0FHbEpmRENFdktDTi9CQT09")
 }
