@@ -35,10 +35,11 @@ if (location.search) {
     }
 }
 
-//alert(params.providerNo)
-var demoNo = params.demographicId
-//alert(demoNo)
 
+if(params.demographicId){
+var demoNo = params.demographicId
+alert(params.providerNo)
+alert(demoNo)
 var ResultList = ["INR"]
 
 function ResultEmail(){
@@ -55,7 +56,6 @@ $(document).ready(function(){
 $('#caseNote_note0').focus()
 window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management'+'&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1]+' -  Please continue with your current Warfarin dosing and monthly INR testing.')  
 });
-
 } 
  
 var tableRow = $("td").filter(function() {
@@ -70,7 +70,8 @@ document.getElementById(ResultList[0]).title = 'Your ' + ResultList[0] + ' resul
 document.getElementById(ResultList[0]).onclick = ResultEmail
 document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
 //alert('Your ' + ResultList[0] + ' result is ' + results[1])
-
+}
+  
 
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
