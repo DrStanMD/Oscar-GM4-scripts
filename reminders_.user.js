@@ -36,7 +36,8 @@ if (location.search) {
 }
 
 //alert(params.providerNo)
-
+var demoNo = params.demographicId
+//alert(demoNo)
 
 var ResultList = ["INR"]
 
@@ -48,16 +49,14 @@ var emessage = "Please continue with your current Warfarin dosing and monthly IN
 var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
 var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
 window = window.open(mailto_link, 'emailWindow')  
-$('input[type="button"][value=" E-Chart"]').click();  
+//$('input[type="button"][value=" E-Chart"]').click(); 
+window.open(vPath+"/casemgmt/forward.jsp?action=view&demographicNo="+demoNo+"&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview="+"&instructions="+ebody+emessage)
 $(document).ready(function(){
 $('#caseNote_note0').focus()
 window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management'+'&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1]+' -  Please continue with your current Warfarin dosing and monthly INR testing.')  
-//$('#caseNote_note0').val(ebody + efooter)  
-//var activeNote = document.getElementsByName("caseNote_note")[0];
-//activeNote.value += ebody + efooter;
 });
 
-}  
+} 
  
 var tableRow = $("td").filter(function() {
     return $(this).text() == ResultList[0];
