@@ -38,8 +38,8 @@ if (location.search) {
 //INR snippet******
 if(params.demographicId){
 var demoNo = params.demographicId
-alert(params.providerNo)
-alert(demoNo)
+//alert(params.providerNo)
+//alert(demoNo)
 var ResultList = ["INR"]
 
 function ResultEmail(){
