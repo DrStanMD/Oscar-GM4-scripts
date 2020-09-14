@@ -35,7 +35,7 @@ if (location.search) {
     }
 }
 
-
+//INR snippet******
 if(params.demographicId){
 var demoNo = params.demographicId
 alert(params.providerNo)
@@ -71,7 +71,7 @@ document.getElementById(ResultList[0]).onclick = ResultEmail
 document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
 //alert('Your ' + ResultList[0] + ' result is ' + results[1])
 }
-  
+//End INR snippet*****  
 
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
