@@ -14,8 +14,8 @@
 // @grant       none
 // ==/UserScript==
 var inputvar = 226 //form id goes here
-var providername = "Dr. Hurwitz" //your name goes here
-var providerphone = "604-275-8228" //your office phone goes here
+var providername = "Dr. Hurwitz"
+var providerphone = "604-275-8228"
 //**********************************************************
 
 var elements = (window.location.pathname.split('/', 2))
@@ -69,17 +69,17 @@ if (!myParam) {
 //INR snippet******
 if (demo_no) {
     demoNo = demo_no
-    // alert("derived" +demoNo)
+     //alert("derived" +demoNo)
 }
 if (params.demographicId) {
     var demoNo = params.demographicId
-    //  alert("Params" + demoNo)
+     // alert("Params" + demoNo)
 }
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     //if (params.demographicId){
     var ResultList = ["INR"]
-
+//alert(demoNo)
     function ResultEmail() {
         var ebody = "Dear " + demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
         //alert(ebody)
@@ -89,8 +89,10 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
         window = window.open(mailto_link, 'emailWindow')
         //$('input[type="button"][value=" E-Chart"]').click(); 
-        window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
-        $(document).ready(function() {
+       // window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
+        window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=&appointmentNo=0&reason=Lab+Results-Notes&appointmentDate=&start_time=&apptProvider=none&providerview= " + "&instructions=" + ebody + emessage)
+      
+      $(document).ready(function() {
             $('#caseNote_note0').focus()
             window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
         });
