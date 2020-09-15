@@ -14,8 +14,8 @@
 // @grant       none
 // ==/UserScript==
 var inputvar = 226 //form id goes here
-var providername = "Dr. Hurwitz"
-var providerphone = "604-275-8228"
+var providername = "Dr. Hurwitz" //your name goes here
+var providerphone = "604-275-8228" //your office phone goes here
 //**********************************************************
 
 var elements = (window.location.pathname.split('/', 2))
