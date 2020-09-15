@@ -10,10 +10,9 @@
 // @include  *dms/showDocument.jsp?segmentID*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.8
+// @version     15.9
 // @grant       none
 // ==/UserScript==
-
 var inputvar = 226 //form id goes here
 var providername = "Dr. Hurwitz"
 var providerphone = "604-275-8228"
@@ -21,7 +20,7 @@ var providerphone = "604-275-8228"
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/') 
+vPath = ('https://' + location.host + '/' + firstElement + '/')
 
 //=====Get Parameters============
 //vPath = '../'
@@ -35,55 +34,7 @@ if (location.search) {
     }
 }
 
-//INR snippet******
-if(params.demographicId){
-var demoNo = params.demographicId
-//alert(params.providerNo)
-//alert(demoNo)
-var ResultList = ["INR"]
-
-function ResultEmail(){
-var ebody = "Dear "+ demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
-//alert(ebody)
-var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at " + providerphone + "."
-var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + providername+ " Office" 
-var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
-var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
-window = window.open(mailto_link, 'emailWindow')  
-//$('input[type="button"][value=" E-Chart"]').click(); 
-window.open(vPath+"/casemgmt/forward.jsp?action=view&demographicNo="+demoNo+"&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview="+"&instructions="+ebody+emessage)
-$(document).ready(function(){
-$('#caseNote_note0').focus()
-window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management'+'&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1]+' -  Please continue with your current Warfarin dosing and monthly INR testing.')  
-});
-} 
- 
-var tableRow = $("td").filter(function() {
-    return $(this).text() == ResultList[0];
-}).closest("tr").next("tr");
-//tableRow.css('background-color', 'yellow')
-tableRow.before("<input type='button' id="+ResultList[0]+"  style='background-color:lime;color:black;' value='Send Email'>")
-//alert(tableRow.html()) 
-var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
-var results = myRe.exec(tableRow.html())
-document.getElementById(ResultList[0]).title = 'Your ' + ResultList[0] + ' result is ' + results[1]
-document.getElementById(ResultList[0]).onclick = ResultEmail
-document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
-//alert('Your ' + ResultList[0] + ' result is ' + results[1])
-}
-//End INR snippet*****  
-
-if (inputvar == 0) {
-    alert('Set the specific HTML form Id for your Oscar system')
-    return false
-}
-var dd = 0 //Button position
-
-
 //get demo_no*********************************************
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
 var myParam = location.search.split('demographicId=')[1]
 
 if (!myParam) {
@@ -99,8 +50,8 @@ if (!myParam) {
         var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;"));
         //alert(demo_no)
     }
-   var x = document.getElementsByClassName("NarrativeRes");
-      if (x[0]) {
+    var x = document.getElementsByClassName("NarrativeRes");
+    if (x[0]) {
         var y = x[0].innerHTML
         //alert(y)
         var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;labType=HL7"));
@@ -114,6 +65,59 @@ if (!myParam) {
 }
 //end get demo_no**************************************************
 //alert(demo_no)
+
+//INR snippet******
+if (demo_no) {
+    demoNo = demo_no
+    // alert("derived" +demoNo)
+}
+if (params.demographicId) {
+    var demoNo = params.demographicId
+    //  alert("Params" + demoNo)
+}
+//alert(window.location)
+if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
+    //if (params.demographicId){
+    var ResultList = ["INR"]
+
+    function ResultEmail() {
+        var ebody = "Dear " + demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
+        //alert(ebody)
+        var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at " + providerphone + "."
+        var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + providername + " Office"
+        var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
+        var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
+        window = window.open(mailto_link, 'emailWindow')
+        //$('input[type="button"][value=" E-Chart"]').click(); 
+        window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
+        $(document).ready(function() {
+            $('#caseNote_note0').focus()
+            window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+        });
+    }
+
+    var tableRow = $("td").filter(function() {
+        return $(this).text() == ResultList[0];
+    }).closest("tr").next("tr");
+    //tableRow.css('background-color', 'yellow')
+    tableRow.before("<input type='button' id=" + ResultList[0] + "  style='background-color:lime;color:black;' value='Send Email'>")
+    //alert(tableRow.html()) 
+    var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
+    var results = myRe.exec(tableRow.html())
+    document.getElementById(ResultList[0]).title = 'Your ' + ResultList[0] + ' result is ' + results[1]
+    document.getElementById(ResultList[0]).onclick = ResultEmail
+    document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
+    //alert('Your ' + ResultList[0] + ' result is ' + results[1])
+}
+//End INR snippet*****  
+
+if (inputvar == 0) {
+    alert('Set the specific HTML form Id for your Oscar system')
+    return false
+}
+var dd = 0 //Button position
+
+
 
 var demoArray = [
     'First Name',
@@ -568,7 +572,8 @@ if (demono > -1) {
 
     function ButtonFunction4() {
         window.open(vPath + '/oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
-    } //Create invoice
+    } 
+  //Create invoice
     /*var mytag = document.getElementsByTagName('a');
     for (var i = 0; i < mytag.length; i++) {
       var onclickvalue = mytag[i].getAttribute('onclick')
