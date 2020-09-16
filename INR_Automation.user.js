@@ -20,8 +20,8 @@ if (location.search) {
 }
 //alert(params.measurementValue)
 if (params.measurementValue) {
-  str = params.instructions.replace(/%20/g, ' ');
-$("input[name='value(comments-0)']").val(str);
+    str = params.instructions.replace(/%20/g, ' ');
+    $("input[name='value(comments-0)']").val(str);
     $('input[name=\'value(inputValue-0)\']').val(params.measurementValue)
 } else {
     var y = ($('.note > td:nth-child(3)').html())
