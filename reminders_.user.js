@@ -102,7 +102,7 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         return $(this).text() == ResultList[0];
     }).closest("tr").next("tr");
     //tableRow.css('background-color', 'yellow')
-    tableRow.before("<input type='button' id=" + ResultList[0] + "  style='background-color:lime;color:black;' value='Send Email'>")
+    //tableRow.before("<input type='button' id=" + ResultList[0] + "  style='background-color:lime;color:black;' value='Send Email'>")
     //alert(tableRow.html()) 
     var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
     var results = myRe.exec(tableRow.html())
