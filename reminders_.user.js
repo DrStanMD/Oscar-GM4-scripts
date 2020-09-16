@@ -69,17 +69,17 @@ if (!myParam) {
 //INR snippet******
 if (demo_no) {
     demoNo = demo_no
-     //alert("derived" +demoNo)
+    //alert("derived" +demoNo)
 }
 if (params.demographicId) {
     var demoNo = params.demographicId
-     // alert("Params" + demoNo)
+    // alert("Params" + demoNo)
 }
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     //if (params.demographicId){
     var ResultList = ["INR"]
-//alert(demoNo)
+    //alert(demoNo)
     function ResultEmail() {
         var ebody = "Dear " + demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
         //alert(ebody)
@@ -89,10 +89,10 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
         window = window.open(mailto_link, 'emailWindow')
         //$('input[type="button"][value=" E-Chart"]').click(); 
-       // window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
+        // window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
         window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=&appointmentNo=0&reason=Lab+Results-Notes&appointmentDate=&start_time=&apptProvider=none&providerview= " + "&instructions=" + ebody + emessage)
-      
-      $(document).ready(function() {
+
+        $(document).ready(function() {
             $('#caseNote_note0').focus()
             window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
         });
@@ -102,14 +102,16 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         return $(this).text() == ResultList[0];
     }).closest("tr").next("tr");
     //tableRow.css('background-color', 'yellow')
-    //tableRow.before("<input type='button' id=" + ResultList[0] + "  style='background-color:lime;color:black;' value='Send Email'>")
+    tableRow.before("<input type='button' id=" + ResultList[0] + "  style='background-color:lime;color:black;' value='Send Email'>")
     //alert(tableRow.html()) 
-    var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
-    var results = myRe.exec(tableRow.html())
-    document.getElementById(ResultList[0]).title = 'Your ' + ResultList[0] + ' result is ' + results[1]
-    document.getElementById(ResultList[0]).onclick = ResultEmail
-    document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
-    //alert('Your ' + ResultList[0] + ' result is ' + results[1])
+    if (tableRow.html()) {
+        var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
+        var results = myRe.exec(tableRow.html())
+        document.getElementById(ResultList[0]).title = 'Your ' + ResultList[0] + ' result is ' + results[1]
+        document.getElementById(ResultList[0]).onclick = ResultEmail
+        document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
+        //alert('Your ' + ResultList[0] + ' result is ' + results[1])
+    }
 }
 //End INR snippet*****  
 
@@ -574,8 +576,8 @@ if (demono > -1) {
 
     function ButtonFunction4() {
         window.open(vPath + '/oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
-    } 
-  //Create invoice
+    }
+    //Create invoice
     /*var mytag = document.getElementsByTagName('a');
     for (var i = 0; i < mytag.length; i++) {
       var onclickvalue = mytag[i].getAttribute('onclick')
