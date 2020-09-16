@@ -18,9 +18,13 @@ if (location.search) {
         params[nv[0]] = nv[1] || true;
     }
 }
-
-var y = ($('.note > td:nth-child(3)').html())
-$('input[name=\'value(inputValue-0)\']').val(y)
+//alert(params.measurementValue)
+if (params.measurementValue) {
+    $('input[name=\'value(inputValue-0)\']').val(params.measurementValue)
+} else {
+    var y = ($('.note > td:nth-child(3)').html())
+    $('input[name=\'value(inputValue-0)\']').val(y)
+}
 
 str = params.instructions.replace(/%20/g, ' ');
 //alert(str)
