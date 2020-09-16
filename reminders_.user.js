@@ -66,7 +66,7 @@ if (!myParam) {
 //end get demo_no**************************************************
 //alert(demo_no)
 
-//INR snippet******
+//INR snippet*******************************************************************************
 if (demo_no) {
     demoNo = demo_no
     //alert("derived" +demoNo)
@@ -114,7 +114,7 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     }
     $('#' + ResultList[0]).hide()
 }
-//End INR snippet*****  
+//End INR snippet************************************************************************  
 
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
