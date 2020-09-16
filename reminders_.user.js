@@ -112,6 +112,7 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
         //alert('Your ' + ResultList[0] + ' result is ' + results[1])
     }
+    $('#' + ResultList[0]).hide()
 }
 //End INR snippet*****  
 
