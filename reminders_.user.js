@@ -16,8 +16,8 @@
 
 //**********************************************************
 var inputvar = 226 //"Push to Reminder" form id goes here
-var providername = "Dr. Hurwitz"  //Provider Name goes here
-var providerphone = "604-275-8228"  //Office phone goes here
+var providername = "Dr. Hurwitz" //Provider Name goes here
+var providerphone = "604-275-8228" //Office phone goes here
 //**********************************************************
 
 var elements = (window.location.pathname.split('/', 2))
@@ -79,24 +79,26 @@ if (params.demographicId) {
 }
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
-    //if (params.demographicId){
     var ResultList = ["INR"]
     //alert(demoNo)
     function ResultEmail() {
         var ebody = "Dear " + demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
+        //var encounterbody = "Dear " + demoArrayVal[0] + ", \nYour latest " + ResultList[0] + " result is " + results[1] + "\n"
+        var encounterbody = "Email to Patient - Your latest " + ResultList[0] + " result is " + results[1] + "  "
         //alert(ebody)
         var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at " + providerphone + "."
         var emessage = "Please continue with your current Warfarin dosing and monthly or bimonthly INR testing.%0D%0A%0D%0A" + providername + " Office"
+        //var encountermessage = "Please continue with your current Warfarin dosing and monthly or bimonthly INR testing.\n" + providername + " Office"
+        var encountermessage = "Please continue with your current Warfarin dosing and monthly or bimonthly INR testing."
         var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
         window = window.open(mailto_link, 'emailWindow')
-        //$('input[type="button"][value=" E-Chart"]').click(); 
-        // window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
-        window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=&appointmentNo=0&reason=Lab+Results-Notes&appointmentDate=&start_time=&apptProvider=none&providerview= " + "&instructions=" + ebody + emessage)
+        localStorage.setItem("instructions" + demoNo, encounterbody + encountermessage)
+        $('input[type="button"][value=" E-Chart"]').click();
 
         $(document).ready(function() {
             $('#caseNote_note0').focus()
-            window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+            //window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&measurementValue=' + results[1] + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
         });
     }
 
@@ -114,7 +116,7 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
         //alert('Your ' + ResultList[0] + ' result is ' + results[1])
     }
-    $('#' + ResultList[0]).hide()
+    //$('#' + ResultList[0]).hide()
 }
 //End INR snippet************************************************************************  
 
