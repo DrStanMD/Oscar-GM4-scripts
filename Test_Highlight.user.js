@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 15.6
+// @version 15.5
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
@@ -240,10 +240,9 @@ function ResetNames() {
     $(AckLabel).val('')
     $(CreateLabel).click();
     $(CreateLabel).click();
-} 
-//window.resizeTo(1200, 800);
+} //window.resizeTo(1200, 800);
 
-//window.moveTo(300, 100) //author = prompt("Please enter label name", "");
+window.moveTo(300, 100) //author = prompt("Please enter label name", "");
 //Get line numbers from label and apply highlights************
 //GetLabel = $(AckLabel).val()
 GetLabel = $(LabelSpan).html() //GetLabel = $('.MainTableTopRowRightColumn > input:nth-child(7)').val()
@@ -371,50 +370,14 @@ function SaveAndExit() {
         fixedauthor = teststring
     }
 
-
     //*************************************************************2020-Feb-28
-    /*  
-        for (i = 0; i < 2; i++) {
-            var testname = document.getElementsByTagName("a")[i];
-
-            if (testname.innerHTML == "Colon Screening Program Reminder") {
-                fixedauthor = testname.innerHTML
-            }
-            if (testname.innerHTML == "Colonoscopy (Rectum+Colon)") {
-                fixedauthor = testname.innerHTML
-            }
-            if (testname.innerHTML == "Physician Discharge Notification") {
-                fixedauthor = testname.innerHTML
-                fixedauthor = "Colonoscopy cancelled"
-            }
-
-        }
-      
-    */
-  
     for (i = 0; i < 2; i++) {
-        var testname = document.getElementsByTagName("a")[i].innerHTML;
-        //alert(testname)
-        switch (testname) {
-            case 'Colon Screening Program Reminder':
-                fixedauthor = testname
-                fixedauthor = 'Colon Screening Reminder'
-                break;
-            case 'Colonoscopy (Rectum+Colon)':
-                fixedauthor = testname
-                break;
-            case 'Physician Discharge Notification':
-                fixedauthor = testname
-                fixedauthor = "Colonoscopy cancelled"
-                break;
-            default:
-                // fixedauthor = 'General';
-                break
+        var testname = document.getElementsByTagName("a")[i];
+        if (testname.innerHTML == "Colon Screening Program Reminder") {
+            //alert(testname.innerHTML)
+            fixedauthor = testname.innerHTML
         }
-
     }
-
-
     //*************************************************************  2020-Feb-28
 
 
@@ -443,7 +406,8 @@ function ClearStoredSelections() {
     $(CreateLabel).click();
     $(CreateLabel).click();
 }
-//*********************************************************************
+///*********************************************************************
+
 
 (function() {
     document.addEventListener('keydown', function(e) {
@@ -454,7 +418,8 @@ function ClearStoredSelections() {
         }
 
         if (e.keyCode == 90 && !e.shiftKey && !e.ctrlKey && e.altKey && !e.metaKey) { //z
-            unsafeWindow.getComment('ackLab', IDnum);
+            // unsafeWindow.getComment('ackLab', IDnum);
+            SaveAndExit()
         }
 
         if (e.keyCode == 90 && e.shiftKey && !e.ctrlKey && !e.altKey && !e.metaKey) { //Z
@@ -463,8 +428,8 @@ function ClearStoredSelections() {
     }, false);
 })();
 
-//****************************************************************************
 
+//****************************************************************************
 function renameTheLab(strOldName) {
     var strNewName = strOldName;
     switch (strOldName) {
@@ -586,19 +551,12 @@ function renameTheLab(strOldName) {
         case 'CYTO':
             strNewName = 'Pap test';
             break;
-        case 'MICRO14':
-            strNewName = 'Flu/RSV/CoV';
-            break;
-        case 'HAEM6':
-            strNewName = 'ABO-Rh';
-            break;
         case 'CHEM20':
             strNewName = 'DrugScr';
             break;
         case 'CHEM20':
             strNewName = 'DrugScr';
             break;
-          
             //************************************************************
             //Use an uncommentted copy of the following 3 lines for each test name you want to map
             //case 'USER_UNFRIENDLY_TEST_NAME':
