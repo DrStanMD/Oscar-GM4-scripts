@@ -8,8 +8,7 @@
 // @version 15.8
 // ==/UserScript==
 
-//****Future use to write to the current Encounter note
-var params = {};
+var params = {};  //Get Params
 if (location.search) {
     var parts = location.search.substring(1).split('&');
     for (var i = 0; i < parts.length; i++) {
@@ -19,16 +18,23 @@ if (location.search) {
     }
 }
 
-if(params.instructions){
-//alert(params.instructions)
-var str = params.instructions.replace(/%0D%0A/g, ' ')
-str = str.replace(/%20/g, ' ');
-//alert(str)
-$(document).ready(function(){
-$('#caseNote_note0').focus()
-var activeNote = document.getElementsByName("caseNote_note")[0];
-activeNote.value += str
-});
+//****Future use to open Measurement and write to the current Encounter note
+var str = localStorage.getItem("instructions" + params.demographicNo)
+if (str) {
+    $(document).ready(function() {
+        //str = str.replace(/%20/g, ' ');
+        //window.open(vPath+ '/oscarEncounter/oscarMeasurements/SetupDisplayHistory.do?type=INR')  
+        //$('#caseNote_note0').focus()
+        //var activeNote = document.getElementsByName("caseNote_note")[0];
+        //alert(str)
+        window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
+        activeNote.value += str
+      /*
+        setTimeout(function(){
+        localStorage.setItem("instructions" + demoNo, "")
+        }, 3000);
+        */
+    });
 }
 //****End Future use to write to the current Encounter note
 
@@ -106,10 +112,11 @@ $(document).ready(function() {
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
         ' ' + headerExtra4.bold() + HCN + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
         //+ '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-        + '<button type="button" id="button10">Send email</button>'
+        +
+        '<button type="button" id="button10">Send email</button>'
     );
     document.getElementById("button10").onclick = do_email;
-    document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;');//background-color:#FC74FD
+    document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;'); //background-color:#FC74FD
     //var str = $('.Header > a:nth-child(1)').text()
     var str = document.querySelector('[title="Master Record"]').innerHTML;
     //alert(str)
@@ -135,6 +142,7 @@ input11.setAttribute("style", "font-size:12px;position:fixed;top:17px;right:0px;
 document.body.appendChild(input11);
 
 function ButtonFunction11() {
-     $('#button10').click()
-     window.open("https://zoom.us/", "newWindow", "_blank")
+    $('#button10').click()
+    window.open("https://zoom.us/", "newWindow", "_blank")
+
 }
