@@ -19,23 +19,6 @@ $(myclass2[i]).css('background-color', 'yellow')
 }
 
 */
-$('#login_field').val('sdhurwitz@gmail.com')
-$('#password').val('')
-
-
-var myclass = document.getElementsByClassName('js-navigation-open');
-var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
-var myArray = []
-var myFArray = []
-for (var i = 0; i < myclass.length; i++) {
-    var onclickvalue = myclass[i].getAttribute('title')
-    if (myclass[i].id) {
-        x = '#' + myclass[i].id
-        myArray[i] = x
-        var radioBtn = $('<input type=\'checkbox\' class=\'mycheckbox\'   id= ' + onclickvalue + ' value =' + onclickvalue + '>');
-        $(x).before(radioBtn)
-    }
-}
 
 var input1 = document.createElement('input');
 input1.type = 'button';
@@ -84,26 +67,41 @@ function ButtonFunction3() {
 
 
 $(document).ready(function() {
+
+    var myclass = document.getElementsByClassName('js-navigation-open');
+    var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
+    var myArray = []
+    var myFArray = []
+    for (var i = 0; i < myclass.length; i++) {
+        var onclickvalue = myclass[i].getAttribute('title')
+        if (myclass[i].id) {
+            x = '#' + myclass[i].id
+            myArray[i] = x
+            var radioBtn = $('<input type=\'checkbox\' class=\'mycheckbox\'   id= ' + onclickvalue + ' value =' + onclickvalue + '>');
+            $(x).before(radioBtn)
+        }
+    }
+
     var lis = document.querySelectorAll("time-ago");
     for (i = 0; i < lis.length; i++) {
         xx = lis[i]
         y = xx.innerHTML
-      //alert(y)
+        //alert(y)
         if (y.indexOf('hour') > -1) {
             $(xx).css('background-color', 'yellow')
-            $(myclass[i+3]).css('background-color', 'yellow')
+            $(myclass[i + 3]).css('background-color', 'yellow')
         }
-        if (y.indexOf('months') > -1) {   // if (y.indexOf('day') > -1) { 
+        if (y.indexOf('months') > -1) { // if (y.indexOf('day') > -1) { 
             $(xx).css('background-color', 'pink')
-            $(myclass[i+3]).css('background-color', 'pink')
+            $(myclass[i + 3]).css('background-color', 'pink')
         }
         if (y.indexOf('minute') > -1) {
             $(xx).css('background-color', 'lightgreen')
-            $(myclass[i+3]).css('background-color', 'lightgreen')
+            $(myclass[i + 3]).css('background-color', 'lightgreen')
         }
         if (y.indexOf('seconds') > -1) {
             $(xx).css('background-color', 'aquamarine')
-           $(myclass[i+3]).css('background-color', 'aquamarine')
+            $(myclass[i + 3]).css('background-color', 'aquamarine')
         }
     }
 
