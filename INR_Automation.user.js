@@ -35,23 +35,3 @@ if (str) {
     }, 3000);
 }
 
-/*
-//alert(params.measurementValue)
-if (params.measurementValue) {
-  str = params.instructions.replace(/%20/g, ' ');
-$("input[name='value(comments-0)']").val(str);
-    $('input[name=\'value(inputValue-0)\']').val(params.measurementValue)
-} 
-else {
-    var y = ($('.note > td:nth-child(3)').html())
-    $('input[name=\'value(inputValue-0)\']').val(y)
-}
-//alert()
-
-//$("input[value='value(Button)']").css('background-color', 'red');
-//$("input[name='value(Button)']").attr("onclick","return check();window.close()");
-
-//$('input[value="Submit"]').css('color', 'red');
-//$('input[value="Submit"]').removeAttr("onclick");
-//$('input[value="Submit"]').attr("onclick","alert()");
-*/
