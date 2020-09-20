@@ -4,7 +4,7 @@
 // @include     *DrStanMD/Oscar-GM4-scripts*
 // @include     *DrStanMD/GM4-Snippets*
 // @include     *github.com/login*
-// @version     15.2
+// @version     15.3
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
@@ -19,7 +19,6 @@ $(myclass2[i]).css('background-color', 'yellow')
 }
 
 */
-
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'IMPORT SCRIPTS';
@@ -66,7 +65,7 @@ function ButtonFunction3() {
 }
 
 
-$(document).ready(function() {
+setTimeout(function() {
 
     var myclass = document.getElementsByClassName('js-navigation-open');
     var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
@@ -105,4 +104,5 @@ $(document).ready(function() {
         }
     }
 
-});
+    ;
+}, 1000);
