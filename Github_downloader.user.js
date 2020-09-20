@@ -86,7 +86,7 @@ setTimeout(function() {
         xx = lis[i]
         y = xx.innerHTML
         //alert(y)
-        if (y.indexOf('hour') > -1) {
+        if (y.indexOf('hour') > -1 || y.indexOf('yesterday') > -1) {
             $(xx).css('background-color', 'yellow')
             $(myclass[i + 3]).css('background-color', 'yellow')
         }
