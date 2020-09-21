@@ -4,7 +4,7 @@
 // @include     *DrStanMD/Oscar-GM4-scripts*
 // @include     *DrStanMD/GM4-Snippets*
 // @include     *github.com/login*
-// @version     15.3
+// @version     15.2
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
@@ -86,7 +86,7 @@ setTimeout(function() {
         xx = lis[i]
         y = xx.innerHTML
         //alert(y)
-        if (y.indexOf('hour') > -1 || y.indexOf('yesterday') > -1) {
+        if (y.indexOf('hour') > -1 || y.indexOf('yesterday') > -1 || y.indexOf('days') > -1){
             $(xx).css('background-color', 'yellow')
             $(myclass[i + 3]).css('background-color', 'yellow')
         }
