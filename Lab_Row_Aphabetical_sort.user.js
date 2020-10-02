@@ -6,7 +6,7 @@
 // @description Lab Grid Alphabetical Sort
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version     15.3
+// @version     15.4
 // ==/UserScript==
 //========Get Path============
 
@@ -21,7 +21,8 @@ var radioBtn1 = $('<input type= "checkbox" name="CDM" id="CDM" value ="CDM" chec
 var radioBtn2 = $('<input type="checkbox" name="CBC" id="CBC" value ="CBC"   />');
 var radioBtn3 = $('<input type="checkbox" name="INF" id="INF" value ="INF"   />');
 var radioBtn4 = $('<input type="checkbox" name="HEP" id="HEP" value ="HEP"   />');
-var radioBtn5 = $('<input type="checkbox" name="ALL" id="ALL" value ="ALL"   />');
+var radioBtn5 = $('<input type="checkbox" name="TOX" id="TOX" value ="TOX"   />');
+var radioBtn6 = $('<input type="checkbox" name="ALL" id="ALL" value ="ALL"   />');
 $('.TopStatusBar').append(radioBtn1)
 $('.TopStatusBar').append('CDM_Group')
 $('.TopStatusBar').append(radioBtn2)
@@ -31,7 +32,19 @@ $('.TopStatusBar').append('Inflammatory_Group')
 $('.TopStatusBar').append(radioBtn4)
 $('.TopStatusBar').append('Hepatic_Group')
 $('.TopStatusBar').append(radioBtn5)
+$('.TopStatusBar').append('Toxicology Group')
+$('.TopStatusBar').append(radioBtn6)
 $('.TopStatusBar').append('Select_All')
+
+var TOXArray = [
+   'XBC3734-9',
+   '14639-9',
+   '60297-9',
+   'XBC3714-1',
+   'XBC3712-5',
+   '14946-8'
+  ]
+
 var HEPArray = [
   '1742-6',
   '1920-8',
@@ -177,7 +190,7 @@ function getMeasures(measure, arrayno) {
       measureDateArray = [
       ]
       var myRe = /<td align="right">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
-      //var myRe = /<td align="center">(.*?)([\d,\.]+)<\/td>/g; //for the measurement ***UNCOMMENT THIS LINE FOR JUNO***
+      var myRe = /<td align="center">(.*?)([\d,\.]+)<\/td>/g; //for the measurement ***UNCOMMENT THIS LINE FOR JUNO***
       var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
 
       var q = myRe.exec(str).toString()
@@ -187,12 +200,12 @@ function getMeasures(measure, arrayno) {
       if(!isNaN(res)){
       
       var myRe = /<td align="right">(\D+)<\/td>/g; //for the measurement non-numeric
-      //var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric ***UNCOMMENT THIS LINE FOR JUNO***
+      var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric ***UNCOMMENT THIS LINE FOR JUNO***
       }
 
       if(isNaN(res)){
       var myRe = /<td align="right">([\d,\.]+)<\/td>/g; //for the measurement numeric  
-      //var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric ***UNCOMMENT THIS LINE FOR JUNO***
+      var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric ***UNCOMMENT THIS LINE FOR JUNO***
       }
       
       var r = 0
@@ -515,6 +528,14 @@ function CCBox() {
         q.checked = true;
       } 
       else if (HEPArray.indexOf(q.value) > - 1 && qq.checked == false) {
+        q.checked = false;
+      } //*****************
+      
+        qq = document.getElementById('TOX')
+      if (TOXArray.indexOf(q.value) > - 1 && qq.checked == true) {
+        q.checked = true;
+      } 
+      else if (TOXArray.indexOf(q.value) > - 1 && qq.checked == false) {
         q.checked = false;
       } //*****************
 
