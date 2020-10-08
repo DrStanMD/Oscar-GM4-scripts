@@ -5,10 +5,9 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.8
+// @version 15.9
 // ==/UserScript==
-
-var params = {};  //Get Params
+var params = {}; //Get Params
 if (location.search) {
     var parts = location.search.substring(1).split('&');
     for (var i = 0; i < parts.length; i++) {
@@ -19,24 +18,36 @@ if (location.search) {
 }
 
 //****Future use to open Measurement and write to the current Encounter note
+var inputgroupno
 var str = localStorage.getItem("instructions" + params.demographicNo)
+$(document).ready(function() {
+    //Find INR input group number  
+    for (i = 0; i < 100; i++) {
+        var x = ($('#menu3 > a:nth-child(' + i + ')').html())
+        if (x) {
+            //alert(x)
+            if (x.indexOf('INR') > -1) { //search for this group
+                inputgroupno = i
+            }
+        }
+    }
+    //alert(inputgroupno) 
+    //alert($('#menu3 > a:nth-child(' + inputgroupno + ')').html())
+});
+
 if (str) {
     $(document).ready(function() {
-        //str = str.replace(/%20/g, ' ');
-        //window.open(vPath+ '/oscarEncounter/oscarMeasurements/SetupDisplayHistory.do?type=INR')  
-        //$('#caseNote_note0').focus()
-        //var activeNote = document.getElementsByName("caseNote_note")[0];
-        //alert(str)
-        window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
-        activeNote.value += str
-      /*
-        setTimeout(function(){
-        localStorage.setItem("instructions" + demoNo, "")
-        }, 3000);
-        */
+        setTimeout(function() {
+            //window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
+            $('#menu3 > a:nth-child(' + inputgroupno + ')').click() //to click on the INR
+            //activeNote.value += str
+            localStorage.setItem("instructions" + demoNo, "")
+        }, 500);
+
     });
 }
 //****End Future use to write to the current Encounter note
+
 
 //Reserve line in header
 var header = document.getElementById('encounterHeader');
