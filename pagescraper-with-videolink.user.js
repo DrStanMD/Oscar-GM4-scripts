@@ -41,7 +41,7 @@ if (str) {
             //window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
             $('#menu3 > a:nth-child(' + inputgroupno + ')').click() //to click on the INR
             //activeNote.value += str
-            localStorage.setItem("instructions" + demoNo, "")
+            //localStorage.setItem("instructions" + demoNo, "")
         }, 500);
 
     });
