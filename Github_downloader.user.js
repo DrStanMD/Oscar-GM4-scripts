@@ -19,6 +19,8 @@ $(myclass2[i]).css('background-color', 'yellow')
 }
 
 */
+var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
+
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'IMPORT SCRIPTS';
