@@ -11,13 +11,33 @@ var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement)
 
-setTimeout(function(){ 
+//alert(document.getElementById("signatureFrame"))
+
+if(document.getElementById("signatureFrame")){
+//alert()
+//var iframe0 = document.getElementById("preview2");  
+var iframe = document.getElementById("signatureFrame");
+//alert(iframe)
+var innerDoc = iframe.contentDocument || iframe.contentWindow.document;  
+//alert(innerDoc)
+var ctx = iframe.contentWindow.document.getElementById('canvas').getContext('2d') 
+//alert(ctx)
+}
+
+//alert(window.frames[0].location)
 if(document.getElementById('canvas').getContext('2d')){
 var ctx = document.getElementById('canvas').getContext('2d')
+//alert(ctx)
+}
+  
+setTimeout(function(){ 
+if(document.getElementById('canvas').getContext('2d')){
 base_image = new Image();
 base_image.src = vPath + '/eform/displayImage.do?imagefile=My Signature.jpg'
-  //alert("Hello")
+
+setTimeout(function(){ 
   ctx.drawImage(base_image, 0, 0, 500, 100);
+
   ctx.beginPath();
   ctx.lineWidth = '2';
   ctx.strokeStyle = 'green'; // Green path
@@ -32,6 +52,7 @@ base_image.src = vPath + '/eform/displayImage.do?imagefile=My Signature.jpg'
   ctx.moveTo(rnd1, 0);
   ctx.lineTo(150, 130);
   ctx.stroke(); // Draw it
+      }, 500);
 }
-  }, 2000);
+  }, 500);
 
