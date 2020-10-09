@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.9
+// @version 15.8
 // ==/UserScript==
 var params = {}; //Get Params
 if (location.search) {
