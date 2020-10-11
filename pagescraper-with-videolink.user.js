@@ -28,6 +28,7 @@ $(document).ready(function() {
             //alert(x)
             if (x.indexOf('INR') > -1) { //search for this group
                 inputgroupno = i
+                return
             }
         }
     }
