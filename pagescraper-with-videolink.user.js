@@ -43,7 +43,7 @@ if (str) {
             $('#menu3 > a:nth-child(' + inputgroupno + ')').click() //to click on the INR
             //activeNote.value += str
             //localStorage.setItem("instructions" + demoNo, "")
-        }, 500);
+        }, 2000);
 
     });
 }
