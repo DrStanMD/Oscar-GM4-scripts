@@ -13,6 +13,7 @@ var string2 = 'appointment'.toUpperCase() //lightgreen but orange when high prio
 var string3 = 'appt'.toUpperCase() //lightgreen but orange when high priority
 var string4 = 'payment'.toUpperCase() //pink
 var string5 = 'in office'.toUpperCase() //blue pastel
+var string6 = 'pap'.toUpperCase() //blue pastel
 //high priority is yellow
 
 var myemail = ''
@@ -221,7 +222,7 @@ function highP(myclass) {
                     myP[i - 9 + ii].style.backgroundColor = 'pink';
                 }
             }
-            if (myP[i].innerHTML.toUpperCase().indexOf(string5) > -1) {
+            if (myP[i].innerHTML.toUpperCase().indexOf(string5) > -1  || myP[i].innerHTML.toUpperCase().indexOf(string6) > -1) {
                 for (ii = 1; ii < 11; ii++) {
                     myP[i - 9 + ii].style.backgroundColor = '#95E6E6';
                 }
