@@ -222,7 +222,7 @@ function highP(myclass) {
                     myP[i - 9 + ii].style.backgroundColor = 'pink';
                 }
             }
-            if (myP[i].innerHTML.toUpperCase().indexOf(string5) > -1  || myP[i].innerHTML.toUpperCase().indexOf(string6) > -1) {
+            if (myP[i].innerHTML.toUpperCase().indexOf(string5) > -1 ) {
                 for (ii = 1; ii < 11; ii++) {
                     myP[i - 9 + ii].style.backgroundColor = '#95E6E6';
                 }
