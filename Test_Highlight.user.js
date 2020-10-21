@@ -433,6 +433,9 @@ function ClearStoredSelections() {
 function renameTheLab(strOldName) {
     var strNewName = strOldName;
     switch (strOldName) {
+        case 'MICRO14':
+            strNewName = 'Cov/Flu';
+            break;
         case 'MICRO16':
             strNewName = 'HPyl';
             break;
