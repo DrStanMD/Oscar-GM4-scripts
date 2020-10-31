@@ -4,7 +4,7 @@
 // @include     *DrStanMD/Oscar-GM4-scripts*
 // @include     *DrStanMD/GM4-Snippets*
 // @include     *github.com/login*
-// @version     15.2
+// @version     15.3
 // @description Download multiple files from Github
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
@@ -73,10 +73,14 @@ setTimeout(function() {
     var vPath = 'https://github.com/DrStanMD/Oscar-GM4-scripts/raw/master/'
     var myArray = []
     var myFArray = []
+    //alert(myclass.length)
     for (var i = 0; i < myclass.length; i++) {
         var onclickvalue = myclass[i].getAttribute('title')
-        if (myclass[i].id) {
-            x = '#' + myclass[i].id
+        //alert(onclickvalue)
+        //alert(myclass[i])
+        if (myclass[i]) {
+            x =myclass[i]
+            //alert(x)
             myArray[i] = x
             var radioBtn = $('<input type=\'checkbox\' class=\'mycheckbox\'   id= ' + onclickvalue + ' value =' + onclickvalue + '>');
             $(x).before(radioBtn)
