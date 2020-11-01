@@ -80,7 +80,7 @@ $(document).ready(function () {
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
-      fillfield('red', measureArray[z] + ' last billed on ' + measureDateArray[z])
+      fillfield('red', measureArray[z] + ' last ' + measureDateArray[z])
     }
   }
   var z = measureArray.indexOf('14075')
@@ -91,7 +91,7 @@ $(document).ready(function () {
     } 
     else {
       //alert(measureArray[z] + ' last billed on ' + measureDateArray[z])
-      fillfield('red', measureArray[z] + ' last billed on ' + measureDateArray[z])
+      fillfield('red', measureArray[z] + ' last ' + measureDateArray[z])
     }
   }
 });
