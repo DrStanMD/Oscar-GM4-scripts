@@ -9,7 +9,7 @@
 // ==/UserScript==
 
 $(document).ready(function() {
-    $('#enTemplate').width("200px"); //widens search field
+   // $('#enTemplate').width("200px"); //widens search field
 });
 
 var params = {}; //Get Params
