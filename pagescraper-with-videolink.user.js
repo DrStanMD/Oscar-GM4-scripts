@@ -7,6 +7,11 @@
 // @grant       none
 // @version 15.8
 // ==/UserScript==
+
+$(document).ready(function() {
+    $('#enTemplate').width("200px"); //widens search field
+});
+
 var params = {}; //Get Params
 if (location.search) {
     var parts = location.search.substring(1).split('&');
