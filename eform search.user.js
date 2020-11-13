@@ -29,7 +29,8 @@ var newURL = vPath + "/eform/efmformslistadd.jsp?group_view=&demographic_no=" + 
 $(document).ready(function() {
     //$('#enTemplate').width("200px"); //widens search field
     var searchbar = "<input id='referral_name' style ='background-color: white;' list='CP' name='referral_name' placeholder='any new eform (wildcard search)' type='text'><datalist id='CP'></datalist>"
-    $('#cppBoxes').append(searchbar)
+    $('#cppBoxes').append(searchbar) //append to top row
+    //$('#toolbar').prepend(searchbar) //append to bottom row
     $('#referral_name').width("250px")
 
     $("#referral_name").change(function() {
