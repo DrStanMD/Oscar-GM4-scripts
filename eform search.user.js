@@ -62,7 +62,7 @@ $(document).ready(function() {
                 }
                 //alert(str)
 
-                var myRe = /<td width="30%" style="padding-left: 7px">\n\s*<.*\n\s*.*\n\s*.*/g; //for the measurement
+                var myRe = /<td width="30%" style="padding-left: 7px">\n\s*<.*\n\s*.*\n\s*.*/g; //for the form html
                 var myRe2 = /efmformadd.*&appointment/g; //for onclickvalue
                 var myArray;
                 var myArray2
