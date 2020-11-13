@@ -27,11 +27,11 @@ var newURL = vPath + "/eform/efmformslistadd.jsp?group_view=&demographic_no=" + 
 //window.open(newURL)
 
 $(document).ready(function() {
-    //$('#enTemplate').width("200px"); //widens search field
+    //$('#enTemplate').width("250px"); //widens search field
     var searchbar = "<input id='referral_name' style ='background-color: white;' list='CP' name='referral_name' placeholder='any new eform (wildcard search)' type='text'><datalist id='CP'></datalist>"
     $('#cppBoxes').append(searchbar) //append to top row
     //$('#toolbar').prepend(searchbar) //append to bottom row
-    $('#referral_name').width("250px")
+    $('#referral_name').width("202px")
 
     $("#referral_name").change(function() {
         //alert(this.text)
@@ -62,7 +62,7 @@ $(document).ready(function() {
                 }
                 //alert(str)
 
-                var myRe = /<td width="30%" style="padding-left: 7px">\n\s*<.*\n\s*.*\n\s*.*/g; //for the form html
+                var myRe = /<td width="30%" style="padding-left: 7px">\n\s*<.*\n\s*.*\n\s*.*/g; //for the measurement
                 var myRe2 = /efmformadd.*&appointment/g; //for onclickvalue
                 var myArray;
                 var myArray2
@@ -71,7 +71,7 @@ $(document).ready(function() {
                     myArray2 = myRe2.exec(str)
                     y = $(myArray.toString()).text()
                     //alert(y)
-                    z = myArray2.toString()
+                    z = myArray2.toString()+ "=&parentAjaxId=eforms"
                     //alert(z)
                     var cpvalue = y
                     var cptext = z
