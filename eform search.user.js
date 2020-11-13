@@ -21,7 +21,7 @@ if (location.search) {
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement)
+vPath = ('https://' + location.host + '/' + firstElement + '/')
 var newURL = vPath + "/eform/efmformslistadd.jsp?group_view=&demographic_no=" + params.demographicNo + "&parentAjaxId=eforms"
 //alert(newURL)	
 //window.open(newURL)
