@@ -21,7 +21,7 @@ if (location.search) {
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')
+vPath = ('https://' + location.host + '/' + firstElement)
 var newURL = vPath + "/eform/efmformslistadd.jsp?group_view=&demographic_no=" + params.demographicNo + "&parentAjaxId=eforms"
 //alert(newURL)	
 //window.open(newURL)
@@ -40,7 +40,7 @@ $(document).ready(function() {
     $("#referral_name").select(function() {
         $('#cppBoxes').focus()
         //alert($(this).val())
-        window.open(vPath + "/eform/" + $(this).val())
+        window.open(vPath + "eform/" + $(this).val())
         /*  
         var parser = new DOMParser();
         var htmlDoc = parser.parseFromString($(this).val(), 'text/html');  //get the text
