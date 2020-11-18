@@ -5,12 +5,16 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.8
+// @version 15.9
 // ==/UserScript==
 
+/*
 $(document).ready(function() {
-   // $('#enTemplate').width("200px"); //widens search field
+  //$('#enTemplate').width("200px"); //widens search field
+ var searchbar = "<input id='referral_name' style ='background-color: white;' list='CP' name='referral_name' onblur='this.style.width = /200px/' onchange='getValues(this.value)' onfocus='this.style.width = '400px'' onselect='$(/#textTextArea/) focus();this.focus()' placeholder='any eform info' style='width: 200px; font-size: 12px; background: transparent;' type='text'><datalist id='CP'></datalist>" 
+$('#cppBoxes').append(searchbar)  
 });
+*/
 
 var params = {}; //Get Params
 if (location.search) {
@@ -25,20 +29,25 @@ if (location.search) {
 //****Future use to open Measurement and write to the current Encounter note
 var inputgroupno
 var str = localStorage.getItem("instructions" + params.demographicNo)
+//alert(str)
 $(document).ready(function() {
     //Find INR input group number  
     for (i = 0; i < 100; i++) {
+    
         var x = ($('#menu3 > a:nth-child(' + i + ')').html())
         if (x) {
             //alert(x)
             if (x.indexOf('INR') > -1) { //search for this group
                 inputgroupno = i
-                return
+              //alert(i)
+                break;
             }
         }
     }
-    //alert(inputgroupno) 
-    //alert($('#menu3 > a:nth-child(' + inputgroupno + ')').html())
+
+  //inputgroupno = 12
+   //alert(inputgroupno) 
+   //alert($('#menu3 > a:nth-child(' + inputgroupno + ')').html())
 });
 
 if (str) {
@@ -47,7 +56,7 @@ if (str) {
             //window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
             $('#menu3 > a:nth-child(' + inputgroupno + ')').click() //to click on the INR
             //activeNote.value += str
-            //localStorage.setItem("instructions" + demoNo, "")
+          setTimeout(function() {localStorage.setItem("instructions" + demographicNo, "")}, 500);
         }, 2000);
 
     });
@@ -159,7 +168,7 @@ input11.setAttribute("style", "font-size:12px;position:fixed;top:17px;right:0px;
 document.body.appendChild(input11);
 
 function ButtonFunction11() {
-    $('#button10').click()
+    //$('#button10').click()
     window.open("https://zoom.us/", "newWindow", "_blank")
 
 }
