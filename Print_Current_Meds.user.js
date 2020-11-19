@@ -12,18 +12,76 @@
 //alert($('prescrip_51802').text())
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-vPath = ('https://' + location.host + '/' + firstElement + '/')//rxlabel = vPath+'/eform/efmformadd_data.jsp?fid=416&demographic_no=3685&rxdata1=test1&rxdata2=test2'
+vPath = ('https://' + location.host + '/' + firstElement + '/') //rxlabel = vPath+'/eform/efmformadd_data.jsp?fid=416&demographic_no=3685&rxdata1=test1&rxdata2=test2'
 //window.open(rxlabel)
 var input1 = document.createElement('input');
 input1.type = 'button';
+input1.id = 'Button'
 input1.value = 'Print Current Medication List';
 input1.onclick = showAlert1;
-input1.setAttribute('style', 'font-size:20px;position:fixed;top:0px;right:0px;');
+input1.setAttribute('style', 'font-size:14px;position:fixed;top:0px;right:0px;');
 document.body.appendChild(input1);
-function showAlert1()
-{
-  unsafeWindow.popupWindow(720, 700, 'PrintDrugProfile2.jsp')
-}/*
+
+function showAlert1() {
+    unsafeWindow.popupWindow(720, 700, 'PrintDrugProfile2.jsp')
+}
+
+
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+vPath = ('https://' + location.host + '/' + firstElement + '/')
+var newURL = vPath + "/oscarRx/SelectPharmacy2.jsp"
+//alert(newURL)	
+//window.open(newURL)
+
+$(document).ready(function() {
+    var searchbar = "<input id='fax' style ='background-color: white;' name='fax' type='text'>"
+    $('#Calcs').after("Fax#"+searchbar)
+    $('#fax').width("80px")
+    $('#fax').click(function() {
+    this.select();
+    document.execCommand('copy');
+    $(this).css('background-color', 'yellow')
+    })
+
+
+function getMeasures(measure) {
+    xmlhttp = new XMLHttpRequest();
+
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            var str = xmlhttp.responseText; //local variable
+            if (!str) {
+                return;
+            }
+            //alert(str)
+
+            var myRe = /\"phone2\"\:\"\"\,\"fax\".*?\"\,\"email/g; //for the fax
+            var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
+          
+            var myArray;
+            var i = 0;
+            while ((myArray = myRe.exec(str)) !== null) {
+                y = myArray.toString()
+                //alert(y)
+                //z = myRe2.exec(y)
+                y = parseInt(y.replace(/[^0-9]/g,'')).toString()
+                y  = y.substring(1)
+                //alert(z)
+                i = i + 1;
+                break  //first occurrence only
+            }
+        }
+    }
+    xmlhttp.open("GET", newURL, false);
+    xmlhttp.send();
+}
+getMeasures()
+$('#fax').val(y)
+
+  });
+
+/*
   alert($('#prescrip_51813').text())
   var rxprint = $('#rxText').text();
   rxprint = rxprint.split('Ingredient:')
