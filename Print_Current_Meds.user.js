@@ -40,6 +40,7 @@ $(document).ready(function() {
     $('#fax').after(messagebar)
     $('#message').width("40px")
     $('#message').css('background-color', 'lime')
+    $('#message').css("borderRadius","25px");
     $("#message").hide()
     $('#fax').width("85px")
     $('#fax').click(function() {
