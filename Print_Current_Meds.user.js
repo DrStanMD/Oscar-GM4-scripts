@@ -41,7 +41,7 @@ $(document).ready(function() {
     $('#message').width("40px")
     $('#message').css('background-color', 'lime')
     $("#message").hide()
-    $('#fax').width("80px")
+    $('#fax').width("85px")
     $('#fax').click(function() {
         this.select();
         document.execCommand('copy');
@@ -62,8 +62,10 @@ $(document).ready(function() {
                 }
                 //alert(str)
 
-                //var myRe = /"phone2":"","fax".*","email/g; //for the fax
-                var myRe = /"fax".*","email/g; //for the fax   
+                //var myRe = /\"phone2\"\:\"\",\"fax\".*\"\,\"email/g; //for the fax
+                // var myRe = /"phone2":"","fax".*","email/g; //for the fax
+                var myRe = /"fax".*","email/g; //for the fax      
+
                 //var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
 
                 var myArray;
@@ -73,8 +75,12 @@ $(document).ready(function() {
                     //alert(y)
                     //z = myRe2.exec(y)
                     y = parseInt(y.replace(/[^0-9]/g, '')).toString()
-                    y = y.substring(1)
-                    //alert(z)
+                    //y = y.substring(1).toString()
+                    y = y.trim()
+                    x = y.length
+                   //alert(x)
+                    y = y.substring(0,x-7)+"-"+y.substring(x-7,x-4)+"-"+y.substring(x-4)
+                    //alert(y)
                     i = i + 1;
                     break //first occurrence only
                 }
