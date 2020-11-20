@@ -8,8 +8,7 @@
 // @grant       none
 // ==/UserScript==
 //========Get Path============
-//alert($('#prescrip_51814').text())
-//alert($('prescrip_51802').text())
+
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/') //rxlabel = vPath+'/eform/efmformadd_data.jsp?fid=416&demographic_no=3685&rxdata1=test1&rxdata2=test2'
