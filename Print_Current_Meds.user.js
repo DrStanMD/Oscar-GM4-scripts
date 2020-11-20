@@ -19,7 +19,7 @@ input1.type = 'button';
 input1.id = 'Button'
 input1.value = 'Print Current Medication List';
 input1.onclick = showAlert1;
-input1.setAttribute('style', 'font-size:14px;position:fixed;top:0px;right:0px;');
+input1.setAttribute('style', 'font-size:14px;position:fixed;top:55px;right:0px;');
 document.body.appendChild(input1);
 
 function showAlert1() {
@@ -41,7 +41,7 @@ $(document).ready(function() {
     $('#fax').click(function() {
     this.select();
     document.execCommand('copy');
-    $(this).css('background-color', 'yellow')
+    $(this).css('background-color', 'pink')
     })
 
 
@@ -80,58 +80,3 @@ getMeasures()
 $('#fax').val(y)
 
   });
-
-/*
-  alert($('#prescrip_51813').text())
-  var rxprint = $('#rxText').text();
-  rxprint = rxprint.split('Ingredient:')
-  rxprint = rxprint[1].split('Method:')
-  var rxdrug=rxprint[0].trim()
-  alert(rxdrug
-  */
-/*  
-  var rxprint = $('#rxText').text();
-  //alert(rxprint)
-  rxprint = rxprint.split('Frequency:')
-  rxprint = rxprint[1].split('Min:')
-  var rxfreq=rxprint[0].trim()
-  alert(rxfreq)
-  
-  var rxprint = $('#rxText').text();
-  alert(rxprint)
-  rxprint = rxprint.split('Frequency:')
-  rxprint = rxprint[1].split('Min:')
-  var rxfreq=rxprint[0].trim()
-  alert(rxfreq)
-*/
-/*
-  rxprint = rxprint[1].split('Method:')
-   alert(rxprint)
-  var rxfreq=rxprint[0].trim()
-  alert(rxfreq)
-
-  
-  
-//  rxprint3 = (rxprint2.replace(/<br>/g, '  ')).trim()
-  //alert(rxprint3)
-  qend = rxprint3.search('Repeats')
-  qsplit = rxprint3.search('Qty:')
-  //alert(rxprint3.split(qsplit))
-  qty = rxprint3.substring(rxprint3.search('Qty:') + 4, qend - 1)
-  qtyInwords = ucFirst(inWords(qty))
-  rxprint3 = rxprint3.slice(0, qend)
-  rxprint4 = rxprint3.replace('Qty:' + qty.toString(), 'Qty:' + qty.toString() + '(' + qtyInwords + ')  ')
-  qsplit = rxprint4.search('Qty:')
-  rx1 = rxprint4.slice(0, qsplit).trim()
-  rx2 = rxprint4.slice(qsplit).trim()
-  
-  
-  
- // S('.DivContentSectionHead > a:nth-child(1)').click()
- // window.open(vPath + 'oscarRx/PrintDrugProfile2.jsp', '', 'width=800,height=800')
-  rxlabel = vPath+'/eform/efmformadd_data.jsp?fid=416&demographic_no=3685&rxdata1=digoxin&rxdata2=5555'
-  //rxlabel = 'https://secure10.oscarhost.ca/SDHurwitzInc/eform/efmformadd_data.jsp?fid=416&demographic_no=' + demoNo + '&rxdata1=' + rx1 + '&rxdata2=' + rx2
-  alert(rxlabel)
-  //window.open(rxlabel)
-}
-*/
