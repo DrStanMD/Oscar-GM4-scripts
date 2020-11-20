@@ -8,7 +8,7 @@
 // @grant       none
 // ==/UserScript==
 //========Get Path============
-
+window.resizeTo(1200, 800);
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/') //rxlabel = vPath+'/eform/efmformadd_data.jsp?fid=416&demographic_no=3685&rxdata1=test1&rxdata2=test2'
@@ -35,47 +35,54 @@ var newURL = vPath + "/oscarRx/SelectPharmacy2.jsp"
 
 $(document).ready(function() {
     var searchbar = "<input id='fax' style ='background-color: white;' name='fax' type='text'>"
-    $('#Calcs').after("Fax#"+searchbar)
+    var messagebar = "<input id='message' style ='background-color: white;' name='fax' type='text' value = 'copied' >"
+    $('#Calcs').after("Fax#" + searchbar)
+    $('#fax').after(messagebar)
+    $('#message').width("40px")
+    $('#message').css('background-color', 'lime')
+    $("#message").hide()
     $('#fax').width("80px")
     $('#fax').click(function() {
-    this.select();
-    document.execCommand('copy');
-    $(this).css('background-color', 'pink')
+        this.select();
+        document.execCommand('copy');
+        //$(this).css('background-color', 'pink')
+        $("#message").fadeIn("slow");
+        $("#message").fadeOut("slow");
     })
 
 
-function getMeasures(measure) {
-    xmlhttp = new XMLHttpRequest();
+    function getMeasures(measure) {
+        xmlhttp = new XMLHttpRequest();
 
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            var str = xmlhttp.responseText; //local variable
-            if (!str) {
-                return;
-            }
-            //alert(str)
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var str = xmlhttp.responseText; //local variable
+                if (!str) {
+                    return;
+                }
+                //alert(str)
 
-            var myRe = /\"phone2\"\:\"\"\,\"fax\".*?\"\,\"email/g; //for the fax
-            var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
-          
-            var myArray;
-            var i = 0;
-            while ((myArray = myRe.exec(str)) !== null) {
-                y = myArray.toString()
-                //alert(y)
-                //z = myRe2.exec(y)
-                y = parseInt(y.replace(/[^0-9]/g,'')).toString()
-                y  = y.substring(1)
-                //alert(z)
-                i = i + 1;
-                break  //first occurrence only
+                var myRe = /"phone2":"","fax".*","email/g; //for the fax
+                var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
+
+                var myArray;
+                var i = 0;
+                while ((myArray = myRe.exec(str)) !== null) {
+                    y = myArray.toString()
+                    //alert(y)
+                    //z = myRe2.exec(y)
+                    y = parseInt(y.replace(/[^0-9]/g, '')).toString()
+                    y = y.substring(1)
+                    //alert(z)
+                    i = i + 1;
+                    break //first occurrence only
+                }
             }
         }
+        xmlhttp.open("GET", newURL, false);
+        xmlhttp.send();
     }
-    xmlhttp.open("GET", newURL, false);
-    xmlhttp.send();
-}
-getMeasures()
-$('#fax').val(y)
+    getMeasures()
+    $('#fax').val(y)
 
-  });
+});
