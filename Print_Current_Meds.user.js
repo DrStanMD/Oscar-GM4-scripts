@@ -62,8 +62,9 @@ $(document).ready(function() {
                 }
                 //alert(str)
 
-                var myRe = /"phone2":"","fax".*","email/g; //for the fax
-                var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
+                //var myRe = /"phone2":"","fax".*","email/g; //for the fax
+                var myRe = /"fax".*","email/g; //for the fax   
+                //var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
 
                 var myArray;
                 var i = 0;
