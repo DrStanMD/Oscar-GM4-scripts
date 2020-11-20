@@ -61,24 +61,14 @@ $(document).ready(function() {
                     return;
                 }
                 //alert(str)
-
-                //var myRe = /\"phone2\"\:\"\",\"fax\".*\"\,\"email/g; //for the fax
-                // var myRe = /"phone2":"","fax".*","email/g; //for the fax
-                var myRe = /"fax".*","email/g; //for the fax      
-
-                //var myRe2 = /^\(\d{3}\) \d{3}-\d{4}$/
-
+                var myRe = /"fax".*","email/g; //for the fax     
                 var myArray;
                 var i = 0;
                 while ((myArray = myRe.exec(str)) !== null) {
                     y = myArray.toString()
-                    //alert(y)
-                    //z = myRe2.exec(y)
                     y = parseInt(y.replace(/[^0-9]/g, '')).toString()
-                    //y = y.substring(1).toString()
                     y = y.trim()
                     x = y.length
-                   //alert(x)
                     y = y.substring(0,x-7)+"-"+y.substring(x-7,x-4)+"-"+y.substring(x-4)
                     //alert(y)
                     i = i + 1;
