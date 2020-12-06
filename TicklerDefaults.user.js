@@ -113,7 +113,7 @@ function showAlert3() {
 
     var mytextarea = document.getElementsByName('textarea')
     mytextarea[0].value = 'PAP RECALL. ' + mytextarea[0].value
-    var theDefault = 'Hurwitz, Office';
+    var theDefault = 'Dr. Hurwitz, Telehealth';
     var theOptions = document.getElementsByName('task_assigned_to')[0].options;
     for (var theOption of theOptions) {
         if (typeof(theOption) == 'object') {
