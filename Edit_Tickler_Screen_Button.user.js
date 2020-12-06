@@ -9,6 +9,27 @@
 // @grant       none
 // ==/UserScript==
 
+
+/*
+  var theDefault ='999998';
+  var theOptions = document.getElementsByName('assignedToProviders') [0].options;
+
+  for (var theOption of theOptions)
+  {
+    for (var i = 0; i < 3; i++) {
+    }
+    if (typeof (theOption) == 'object') {
+      //alert(theOption.value)
+      if (theOption.value == theDefault) {
+        theOption.selected = true;   
+        document.getElementsByName('assignedToProviders')[0].style.backgroundColor = "yellow";
+        break;
+      }
+    }
+  }
+*/
+
+
 (function () {
   document.addEventListener('keydown', function (e) {
     
