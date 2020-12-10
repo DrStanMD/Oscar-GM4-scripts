@@ -9,13 +9,14 @@
 // @grant       none
 // ==/UserScript==
 
-
+$(document).ready(function() {
 var y = document.getElementsByClassName('righty');
     $(y).click(function() {
         this.select();
         document.execCommand('copy');
-        //$(this).css('background-color', 'red').fadeIn("slow");
+        $(this).css('background-color', 'pink').fadeIn("slow");
         //$("#message").fadeIn("fast");
         //$("#message").fadeOut("slow");
     })
 
+    })
