@@ -144,7 +144,7 @@ function showAlert1() {
     }
 
     x = document.getElementsByName('textarea')
-    $(x[0]).val('Book CDM telehealth 30 min')
+    $(x[0]).val('Book CDM telehealth 30 min in 2021')
 
     var theDefault = 'Hurwitz, Office';
     var theOptions = document.getElementsByName('task_assigned_to')[0].options;
