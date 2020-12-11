@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version 15.9
+// @version 15.8
 // ==/UserScript==
 
 /*
@@ -15,7 +15,6 @@ $(document).ready(function() {
 $('#cppBoxes').append(searchbar)  
 });
 */
-
 var params = {}; //Get Params
 if (location.search) {
     var parts = location.search.substring(1).split('&');
@@ -29,34 +28,40 @@ if (location.search) {
 //****Future use to open Measurement and write to the current Encounter note
 var inputgroupno
 var str = localStorage.getItem("instructions" + params.demographicNo)
-//alert(str)
-$(document).ready(function() {
-    //Find INR input group number  
-    for (i = 0; i < 100; i++) {
-    
-        var x = ($('#menu3 > a:nth-child(' + i + ')').html())
-        if (x) {
-            //alert(x)
-            if (x.indexOf('INR') > -1) { //search for this group
-                inputgroupno = i
-              //alert(i)
-                break;
-            }
-        }
-    }
-
-  //inputgroupno = 12
-   //alert(inputgroupno) 
-   //alert($('#menu3 > a:nth-child(' + inputgroupno + ')').html())
-});
-
 if (str) {
+    //alert(str)
+
+    $(document).ready(function() {
+        //Find INR input group number  
+        /*
+          for (i = 0; i < 100; i++) {
+          
+              var x = ($('#menu3 > a:nth-child(' + i + ')').html())
+              if (x) {
+                  //alert(x)
+                  if (x.indexOf('INR') > -1) { //search for this group
+                      inputgroupno = i
+                    alert(i)
+                      break;
+                  }
+              }
+          }
+          */
+
+        inputgroupno = 12
+        //alert(inputgroupno)
+        $('#menu3 > a:nth-child(' + inputgroupno + ')').html()
+    });
+
+
     $(document).ready(function() {
         setTimeout(function() {
             //window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
             $('#menu3 > a:nth-child(' + inputgroupno + ')').click() //to click on the INR
             //activeNote.value += str
-          setTimeout(function() {localStorage.setItem("instructions" + demographicNo, "")}, 500);
+            setTimeout(function() {
+                localStorage.setItem("instructions" + demographicNo, "")
+            }, 500);
         }, 2000);
 
     });
@@ -152,6 +157,11 @@ $(document).ready(function() {
     //alert(ptname)
     function do_email() {
         //alert(demoArrayVal[1])
+        /*
+            var x  = demoArrayVal[1].split(";")
+            alert(x.length)
+            alert(x[0])
+        */
         //var email = demoArrayVal[1]
         var email = ptname + '<' + demoArrayVal[1] + '>'
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
@@ -170,5 +180,4 @@ document.body.appendChild(input11);
 function ButtonFunction11() {
     //$('#button10').click()
     window.open("https://zoom.us/", "newWindow", "_blank")
-
 }
