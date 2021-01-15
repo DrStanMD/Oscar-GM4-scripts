@@ -8,7 +8,7 @@
 // @include  *tickler/ForwardDemographicTickler.do*
 // @include  *tickler/ticklerAdd.jsp*
 // @include  *dms/showDocument.jsp?segmentID*
-// @description Adds Reminders for screening follow up,link to Rx and invoice
+// @description Adds Reminders for screening follow up, INR group
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     15.9
 // @grant       none
@@ -265,7 +265,7 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
         }
     }
 } else if (q1 > -1 && q2) {
-    //alert("Lab 2")
+    //alert("Lab 2")  //2020-Oct-28
 
     var NarList = document.getElementsByClassName('NarrativeRes');
     if ((NarList[1].innerHTML).indexOf('demo=')) {
