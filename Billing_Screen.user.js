@@ -8,12 +8,24 @@
 // @exclude    *CaseManagementEntry.do?method=issuehistory&demographicNo*
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
-// @version 15.2
+// @version 15.3
 // ==/UserScript==
 //**********************************************************
 var inputvar = 228 //form id goes here
 //**********************************************************
 
+var x = $('body > form:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > input:nth-child(1)')
+
+x.mouseover(function(){
+    if ($('input[name=\'xml_other1\']').val() == "14033" || $('input[name=\'xml_other1\']').val() == "14075") {
+        $('input[name=\'shortClaimNote\']').val('Via video technology')
+    }
+    if ($('input[name=\'xml_other2\']').val() == "14033" || $('input[name=\'xml_other2\']').val() == "14075") {
+        $('input[name=\'shortClaimNote\']').val('Via video technology')
+    }
+});
+
+/*
 $('input[name=\'xml_other1\']').blur(function() {
     if ($('input[name=\'xml_other1\']').val() == "14033" || $('input[name=\'xml_other1\']').val() == "14075") {
         $('input[name=\'shortClaimNote\']').val('Via video technology')
@@ -24,6 +36,7 @@ $('input[name=\'xml_other2\']').blur(function() {
         $('input[name=\'shortClaimNote\']').val('Via video technology')
     }
 });
+*/
 
 
 //******************************
