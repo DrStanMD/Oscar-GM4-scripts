@@ -4,18 +4,53 @@
 // @description Adds navigation buttons to scheduler screen
 // @include     *provider/providercontrol.jsp?year*
 // @include     *provider/receptionistfindprovider.jsp*
-// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @require  https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js
 // @grant       none
 // @version 15.3
 // ==/UserScript==
 
+/*
+    var sql2pass="SELECT provider_no, last_name, first_name FROM provider WHERE provider_no='000000'";
+//alert(sql2pass)
+    $(document).ready(function () { 
+      alert(sql2pass)
+        $.ajax({  
+            url: "https://secure56.junoemr.com/SDHurwitzInc/oscarReport/RptByExample.do" ,
+            data: { sql: sql2pass }
+        }).then(function(data) {  
+           alert(data)
+           var elements = $(data);
+           var found = elements.find('.MainTableRightColumn table table');
+alert(found.text())
+           $("p").append(found);
+        });  
+    });  
+*/
+
+/*
+var x = $('#appointmentTable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(3) > a:nth-child(3)')
+var y = "<button type='button' id= 'CE' >CE</button>"
+x.before(y)
+$('#CE').click(function(){
+mywindow = window.open('https://secure56.junoemr.com/SDHurwitzInc/demographic/demographiccontrol.jsp?demographic_no=863&apptProvider=1&appointment=69578&displaymode=edit&dboperation=search_detail')
+mywindow.focus()
+});
+*/
+
+/*
+var x = $('#appointmentTable > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(6) > td:nth-child(3) > a:nth-child(3)')
+var y = "<a href=\"javascript: void();\" onclick= \"onmousedown=\"callEligibilityWebService('../billing/CA/BC/ManageTeleplan.do','eligibilityMsg', event);\" style=\"background-color: yellow; cursor: pointer;\">Check Eligibility</a>"
+//var y = "<button type='button' id= 'CE' >CE</button>"
+x.before(y)
+*/
+
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
 //ADD YOUR OWN RBT NAME HERE
-var input15text = 'CDM\'s today'
-var input18text = 'CDM List' //'DVL'
+var input15text = 'CELL' //'CDM\'s today'
+var input18text = 'CDM\'s today' // 'CDM List' //'DVL'
 //ADD TEMPLATE ID HERE
-var input15var = 2
-var input18var = 22 //56
+var input15var = 65 //2
+var input18var = 2 // 22 //56
 
 function setCookie(cname, cvalue, exdays, cpath) {
     var d = new Date();
@@ -110,7 +145,7 @@ input99.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:48
 document.body.appendChild(input99);
 
 function showAlert99() {
-    window.open(vPath + '/provider/providerpreference.jsp?time='+"5")
+    window.open(vPath + '/provider/providerpreference.jsp?time=' + "5")
 }
 
 
@@ -122,32 +157,32 @@ input.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:425p
 document.body.appendChild(input);
 
 function showAlert() {
-    window.open(vPath + '/provider/providerpreference.jsp?time='+"15")
-  /*
-    function getMeasures(measure) {
-        window.open(vPath + '/provider/providerpreference.jsp?time='+measure)
-        xmlhttp = new XMLHttpRequest();
-        var newURL = vPath + '/provider/providerpreference.jsp?' + measure;
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var str = xmlhttp.responseText; //local variable
-                //alert(str)
-                if (!str) {
-                    return;
-                }
-                var myRe = /<INPUT TYPE="TEXT" NAME="every_min" VALUE='15' size="2" maxlength="2">/g; //for the measurement
-                var timeslot = myRe.exec(str).toString()
-                //alert(timeslot)
-                var n = timeslot.indexOf("VALUE='15'");
-                //alert(n)
-                
-            }
-        }
-        xmlhttp.open("GET", newURL, false);
-        xmlhttp.send();
-    }
-   getMeasures("5")
-   */
+    window.open(vPath + '/provider/providerpreference.jsp?time=' + "15")
+    /*
+      function getMeasures(measure) {
+          window.open(vPath + '/provider/providerpreference.jsp?time='+measure)
+          xmlhttp = new XMLHttpRequest();
+          var newURL = vPath + '/provider/providerpreference.jsp?' + measure;
+          xmlhttp.onreadystatechange = function() {
+              if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                  var str = xmlhttp.responseText; //local variable
+                  //alert(str)
+                  if (!str) {
+                      return;
+                  }
+                  var myRe = /<INPUT TYPE="TEXT" NAME="every_min" VALUE='15' size="2" maxlength="2">/g; //for the measurement
+                  var timeslot = myRe.exec(str).toString()
+                  //alert(timeslot)
+                  var n = timeslot.indexOf("VALUE='15'");
+                  //alert(n)
+                  
+              }
+          }
+          xmlhttp.open("GET", newURL, false);
+          xmlhttp.send();
+      }
+     getMeasures("5")
+     */
 }
 
 
@@ -321,7 +356,7 @@ var input18 = document.createElement('input');
 input18.type = 'button';
 input18.value = input18text;
 input18.onclick = showAlert18;
-input18.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:259');
+input18.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:200');
 document.body.appendChild(input18);
 
 function showAlert18() {
@@ -349,7 +384,8 @@ function showAlert19() {
 }
 var input13 = document.createElement('input');
 input13.type = 'button';
-input13.value = 'Locum';
+//input13.value = 'Locum';
+input13.value = 'Pharmacy';
 input13.id = 'input13'
 input13.onclick = showAlert13;
 input13.setAttribute('style', 'font-size:18px;position:fixed;bottom:90px;right:0px;');
@@ -357,10 +393,13 @@ document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 
 function showAlert13() {
-    unsafeWindow.findProvider()
-    var theDefault = 6 // 'Ghobassy, Bahar';
-    window.location.href = vPath + 'provider/providercontrol.jsp?year=2020&month=02&day=12&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
-    setCookie("theDefault", theDefault, 360, "path=/");
+
+    var myWindow = window.open(vPath + '/eform/efmshowform_data.jsp?fid=916', "", "width=600,height=400");
+
+    // unsafeWindow.findProvider()
+    // var theDefault = 6 // 'Ghobassy, Bahar';
+    // window.location.href = vPath + 'provider/providercontrol.jsp?year=2020&month=02&day=12&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
+    // setCookie("theDefault", theDefault, 360, "path=/");
 }
 
 //link to PBX
@@ -381,13 +420,25 @@ input26.value = 'DYMO';
 input26.onclick = showAlert26;
 input26.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;bottom:120px;right:0px;background-color: #FE2EF7; ');
 document.body.appendChild(input26);
-function showAlert26()
-{
-  //var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
-  //var res = myParam.indexOf('&')
-  //var demo_no = myParam.substring(0, res) //alert (demo_no)
-  var formPath = vPath +  '/eform/efmshowform_data.jsp?fid=696'
 
-  //alert(formPath)
-  window.open(formPath)
+function showAlert26() {
+    //var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
+    //var res = myParam.indexOf('&')
+    //var demo_no = myParam.substring(0, res) //alert (demo_no)
+    var formPath = vPath + '/eform/efmshowform_data.jsp?fid=696'
+
+    //alert(formPath)
+    window.open(formPath)
+}
+
+var input115 = document.createElement('input');
+input115.type = 'button';
+input115.value = 'New Apps';
+input115.id = 'input115'
+input115.onclick = showAlert115;
+input115.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:410px;');
+document.body.appendChild(input115);
+//document.getElementById("input115").style.backgroundColor = "white"; 
+function showAlert115() {
+    window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + '88' + '&flag=1')
 }
