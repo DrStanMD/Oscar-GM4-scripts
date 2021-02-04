@@ -433,7 +433,7 @@ function showAlert26() {
 
 var input115 = document.createElement('input');
 input115.type = 'button';
-input115.value = 'New Apps';
+input115.value = 'New Appts';
 input115.id = 'input115'
 input115.onclick = showAlert115;
 input115.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:410px;');
