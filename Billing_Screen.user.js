@@ -45,6 +45,11 @@ mybutton = '<input id=\'mybutton\'    type=\'button\'  value=\'2\'>'
 mybutton2 = '<input id=\'mybutton2\'    type=\'button\'  value=\'3\'>'
 $('input[name=\'xml_other1\']').after(mybutton)
 $('input[name=\'xml_other1\']').after(mybutton2)
+var allergy = "body > form:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
+//$(allergy).css("background-color", "lightyellow");
+$(allergy).append(mybutton)
+$(allergy).append(mybutton2)
+
 document.getElementById('mybutton').addEventListener('click', function() {
     $('#xml_other1_unit').val('2');
 });
