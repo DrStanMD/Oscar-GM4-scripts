@@ -84,13 +84,16 @@ var demo_no = myParam.substring(0, res)
 var demoArray = [
     'Cell Phone',
     'Email',
-    'Phone(H)',
+    'Blank for backward compatibility',
     'Address',
     'City',
     'Postal',
     'Age',
-    'Health Ins'
+    'Health Ins',
+    'PhoneH',
+    'PhoneW'
 ]
+
 var demoArrayVal = []
 
 function getMeasures(measure) {
@@ -105,9 +108,20 @@ function getMeasures(measure) {
             if (!str) {
                 return;
             }
-            //var myReString = '<li><spanclass="label">' + measure + ':</span><spanclass="info">.*/s*'
-            //var myReString = '<spanclass="label">' + measure + '.*/s*'
-            var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
+
+
+            switch (measure) {
+                case "PhoneH":
+                    var myReString = '<span class="label">[\n\r\t]*\s*' + 'Phone' + '[(][H][)]' + '(.|[\n])*'
+                    break;
+                case "PhoneW":
+                    var myReString = '<span class="label">[\n\r\t]*\s*' + 'Phone' + '[(][W][)]' + '(.|[\n])*'
+                    break;
+                default:
+                    var myReString = '<span class="label">[\n\r\t]*\s*' + measure + '(.|[\n])*'
+            }
+
+
             var myRe = new RegExp(myReString, 'g');
             var myArray
             while ((myArray = myRe.exec(str)) !== null) {
@@ -116,7 +130,8 @@ function getMeasures(measure) {
                 var z = y.indexOf('info')
                 var mycode = y.substring(z + 6)
                 var mycode2 = mycode.indexOf('</span>')
-                var mycode3 = mycode.substring(mycode + 9, mycode2) //alert(j+measure + ' is ' + mycode3)
+                var mycode3 = mycode.substring(mycode + 9, mycode2)
+                alert(j + measure + ' is ' + mycode3)
                 demoArrayVal[j] = mycode3
             }
         }
@@ -126,6 +141,8 @@ function getMeasures(measure) {
 }
 $(document).ready(function() {
     for (j = 0; j < demoArray.length; j++) {
+        //demoArray[j]= demoArray[j].replace(/"/g, "").replace(/'/g, "").replace(/\(|\)/g, "");  //remove parentheses
+        //alert(demoArray[j])
         getMeasures(demoArray[j]);
     }
     //alert(demoArrayVal)
@@ -180,4 +197,6 @@ document.body.appendChild(input11);
 function ButtonFunction11() {
     //$('#button10').click()
     window.open("https://zoom.us/", "newWindow", "_blank")
+
+
 }
