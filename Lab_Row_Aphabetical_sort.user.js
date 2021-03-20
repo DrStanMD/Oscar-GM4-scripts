@@ -8,7 +8,10 @@
 // @grant       none
 // @version     15.4
 // ==/UserScript==
-//========Get Path============
+
+$(document).ready(function(){
+myDisplay()
+  });
 
 var formID='414' //  ENTER YOUR SPECIFIC POPUPWINDOW FORM ID NUMBER HERE
 var elements = (window.location.pathname.split('/', 2))
