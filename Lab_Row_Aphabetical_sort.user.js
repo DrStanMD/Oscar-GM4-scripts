@@ -9,11 +9,11 @@
 // @version     15.4
 // ==/UserScript==
 
-/*
+if (window.location.toString().indexOf("CumulativeLabValue") > -1) {
 $(document).ready(function(){
 myDisplay()
   });
-*/
+}
 
 var formID='414' //  ENTER YOUR SPECIFIC POPUPWINDOW FORM ID NUMBER HERE
 var elements = (window.location.pathname.split('/', 2))
