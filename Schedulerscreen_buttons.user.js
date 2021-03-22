@@ -393,7 +393,6 @@ document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 
 function showAlert13() {
-//window.open("https://phsa.zoom.us/my/drhurwitztelehealth?pwd=bko1QStVUzhkZXh0NGdQRXVFYzRTdz09")
 var myWindow = window.open(vPath+'/eform/efmshowform_data.jsp?fid=916', "", "width=600,height=400");
 
    // unsafeWindow.findProvider()
