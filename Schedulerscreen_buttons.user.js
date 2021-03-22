@@ -46,11 +46,11 @@ x.before(y)
 
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
 //ADD YOUR OWN RBT NAME HERE
-var input15text = 'CELL' //'CDM\'s today'
-var input18text = 'CDM\'s today' // 'CDM List' //'DVL'
+var input15text = 'CELL'//'CDM\'s today'
+var input18text =  'CDM\'s today' // 'CDM List' //'DVL'
 //ADD TEMPLATE ID HERE
-var input15var = 65 //2
-var input18var = 2 // 22 //56
+var input15var = 65//2
+var input18var =  2 // 22 //56
 
 function setCookie(cname, cvalue, exdays, cpath) {
     var d = new Date();
@@ -145,7 +145,7 @@ input99.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:48
 document.body.appendChild(input99);
 
 function showAlert99() {
-    window.open(vPath + '/provider/providerpreference.jsp?time=' + "5")
+    window.open(vPath + '/provider/providerpreference.jsp?time='+"5")
 }
 
 
@@ -157,32 +157,32 @@ input.setAttribute('style', 'font-size:18px;position:fixed;bottom:0px;right:425p
 document.body.appendChild(input);
 
 function showAlert() {
-    window.open(vPath + '/provider/providerpreference.jsp?time=' + "15")
-    /*
-      function getMeasures(measure) {
-          window.open(vPath + '/provider/providerpreference.jsp?time='+measure)
-          xmlhttp = new XMLHttpRequest();
-          var newURL = vPath + '/provider/providerpreference.jsp?' + measure;
-          xmlhttp.onreadystatechange = function() {
-              if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                  var str = xmlhttp.responseText; //local variable
-                  //alert(str)
-                  if (!str) {
-                      return;
-                  }
-                  var myRe = /<INPUT TYPE="TEXT" NAME="every_min" VALUE='15' size="2" maxlength="2">/g; //for the measurement
-                  var timeslot = myRe.exec(str).toString()
-                  //alert(timeslot)
-                  var n = timeslot.indexOf("VALUE='15'");
-                  //alert(n)
-                  
-              }
-          }
-          xmlhttp.open("GET", newURL, false);
-          xmlhttp.send();
-      }
-     getMeasures("5")
-     */
+    window.open(vPath + '/provider/providerpreference.jsp?time='+"15")
+  /*
+    function getMeasures(measure) {
+        window.open(vPath + '/provider/providerpreference.jsp?time='+measure)
+        xmlhttp = new XMLHttpRequest();
+        var newURL = vPath + '/provider/providerpreference.jsp?' + measure;
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                var str = xmlhttp.responseText; //local variable
+                //alert(str)
+                if (!str) {
+                    return;
+                }
+                var myRe = /<INPUT TYPE="TEXT" NAME="every_min" VALUE='15' size="2" maxlength="2">/g; //for the measurement
+                var timeslot = myRe.exec(str).toString()
+                //alert(timeslot)
+                var n = timeslot.indexOf("VALUE='15'");
+                //alert(n)
+                
+            }
+        }
+        xmlhttp.open("GET", newURL, false);
+        xmlhttp.send();
+    }
+   getMeasures("5")
+   */
 }
 
 
@@ -340,7 +340,7 @@ input15.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:1
 document.body.appendChild(input15);
 //document.getElementById("input15").style.backgroundColor = "white"; 
 function showAlert15() {
-    window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input15var + '&flag=1')
+    window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input15var + '&flag=0')
 }
 var input100 = document.createElement('input');
 input100.type = 'button';
@@ -393,13 +393,13 @@ document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 
 function showAlert13() {
+//window.open("https://phsa.zoom.us/my/drhurwitztelehealth?pwd=bko1QStVUzhkZXh0NGdQRXVFYzRTdz09")
+var myWindow = window.open(vPath+'/eform/efmshowform_data.jsp?fid=916', "", "width=600,height=400");
 
-    var myWindow = window.open(vPath + '/eform/efmshowform_data.jsp?fid=916', "", "width=600,height=400");
-
-    // unsafeWindow.findProvider()
-    // var theDefault = 6 // 'Ghobassy, Bahar';
-    // window.location.href = vPath + 'provider/providercontrol.jsp?year=2020&month=02&day=12&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
-    // setCookie("theDefault", theDefault, 360, "path=/");
+   // unsafeWindow.findProvider()
+   // var theDefault = 6 // 'Ghobassy, Bahar';
+   // window.location.href = vPath + 'provider/providercontrol.jsp?year=2020&month=02&day=12&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
+   // setCookie("theDefault", theDefault, 360, "path=/");
 }
 
 //link to PBX
@@ -420,15 +420,15 @@ input26.value = 'DYMO';
 input26.onclick = showAlert26;
 input26.setAttribute('style', 'width:60px;font-size:16px;z-index:1;position:fixed;bottom:120px;right:0px;background-color: #FE2EF7; ');
 document.body.appendChild(input26);
+function showAlert26()
+{
+  //var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
+  //var res = myParam.indexOf('&')
+  //var demo_no = myParam.substring(0, res) //alert (demo_no)
+  var formPath = vPath +  '/eform/efmshowform_data.jsp?fid=696'
 
-function showAlert26() {
-    //var myParam = location.search.split('demographicNo=') [1] //alert(myParam)
-    //var res = myParam.indexOf('&')
-    //var demo_no = myParam.substring(0, res) //alert (demo_no)
-    var formPath = vPath + '/eform/efmshowform_data.jsp?fid=696'
-
-    //alert(formPath)
-    window.open(formPath)
+  //alert(formPath)
+  window.open(formPath)
 }
 
 var input115 = document.createElement('input');
@@ -441,4 +441,22 @@ document.body.appendChild(input115);
 //document.getElementById("input115").style.backgroundColor = "white"; 
 function showAlert115() {
     window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + '88' + '&flag=1')
+}
+
+var input113 = document.createElement('input');
+input113.type = 'button';
+input113.value = 'Locum';
+//input113.value = 'Zoom';
+//input113.id = 'input113'
+input113.onclick = showAlert113;
+input113.setAttribute('style', 'font-size:18px;position:fixed;bottom:150px;right:0px;');
+document.body.appendChild(input113);
+document.getElementById('input113').style.backgroundColor = 'lightgray';
+//document.getElementById('input113').style.backgroundColor = '#CCFF00';
+
+function showAlert113() {
+unsafeWindow.findProvider()
+var theDefault = 7 // 'Ghobassy, Telehealth';
+window.location.href = vPath + 'provider/providercontrol.jsp?year=2021&month=03&day=29&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
+setCookie("theDefault", theDefault, 360, "path=/");
 }
