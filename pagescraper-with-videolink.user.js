@@ -131,7 +131,7 @@ function getMeasures(measure) {
                 var mycode = y.substring(z + 6)
                 var mycode2 = mycode.indexOf('</span>')
                 var mycode3 = mycode.substring(mycode + 9, mycode2)
-                alert(j + measure + ' is ' + mycode3)
+                //alert(j + measure + ' is ' + mycode3)
                 demoArrayVal[j] = mycode3
             }
         }
