@@ -456,6 +456,6 @@ document.getElementById('input113').style.backgroundColor = 'lightgray';
 function showAlert113() {
 unsafeWindow.findProvider()
 var theDefault = 7 // 'Ghobassy, Telehealth';
-window.location.href = vPath + 'provider/providercontrol.jsp?year=2021&month=03&day=29&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
+window.location.href = vPath + 'provider/providercontrol.jsp?year=2021&month=04&day=06&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
 setCookie("theDefault", theDefault, 360, "path=/");
 }
