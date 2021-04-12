@@ -68,7 +68,6 @@ DT[1] = [
   ' Dr. Bartlett',
   'Sleep Clinic',
   'LifeMark',
-  'SportMed',
   'Spine Clinic',
   'Neurology',
   'Nephrology',
