@@ -38,6 +38,7 @@ DT[0] = [
 DT[1] = [
   'consult',
   ' Dr. ',
+  ' Dr. Larry Cheung',
   ' Dr. Ahmed',
   ' Dr. Rapoport',
   ' Dr. Cherry',
@@ -118,8 +119,8 @@ DT[7] = [
   'Appointment notification',
   'Appointment not accepted',
   'Appointment postponed',
-  'Notes',
-  'WIC',
+  'Email/Notes',
+  'WIC/Telehealth',
   'Referral',
   'Drivers Med',
   'Faxed Requests',
