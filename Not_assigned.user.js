@@ -67,7 +67,6 @@ DT[1] = [
   'Gastroenterology',
   ' Dr. Bartlett',
   'Sleep Clinic',
-  'LifeMark',
   'Spine Clinic',
   'Neurology',
   'Nephrology',
