@@ -52,9 +52,11 @@ $(allergy).append(mybutton2)
 
 document.getElementById('mybutton').addEventListener('click', function() {
     $('#xml_other1_unit').val('2');
+    $(this).css("background-color", "pink");
 });
 document.getElementById('mybutton2').addEventListener('click', function() {
-    $('#xml_other1_unit').val('3');
+   $('#xml_other1_unit').val('3');
+   $(this).css("background-color", "pink");
 });
 //******************************************************************
 if (inputvar == 0) {
@@ -409,4 +411,3 @@ function addtime(vAddTime) {
         }
     }
 }
-
