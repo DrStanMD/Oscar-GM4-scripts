@@ -8,16 +8,17 @@
 // @include  *tickler/ForwardDemographicTickler.do*
 // @include  *tickler/ticklerAdd.jsp*
 // @include  *dms/showDocument.jsp?segmentID*
-// @description Adds Reminders for screening follow up, INR group
+// @description Adds Reminders for screening follow up,link to Rx and invoice
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.9
+// @version     15.10
 // @grant       none
 // ==/UserScript==
 
-//**********************************************************
-var inputvar = 226 //"Push to Reminder" form id goes here
-var providername = "Dr. Hurwitz" //Provider Name goes here
-var providerphone = "604-275-8228" //Office phone goes here
+var inputvar = 226 //form id goes here
+var providername = "Dr. Hurwitz"
+var providerphone = "604-275-8228"
+//open about:config and set the following to true.
+//dom.allow_scripts_to_close_windows
 //**********************************************************
 
 var elements = (window.location.pathname.split('/', 2))
@@ -68,37 +69,33 @@ if (!myParam) {
 //end get demo_no**************************************************
 //alert(demo_no)
 
-//INR snippet*******************************************************************************
+//INR snippet******
 if (demo_no) {
     demoNo = demo_no
-    //alert("derived" +demoNo)
+    // alert("derived" +demoNo)
 }
 if (params.demographicId) {
     var demoNo = params.demographicId
-    // alert("Params" + demoNo)
+    //  alert("Params" + demoNo)
 }
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
+    //if (params.demographicId){
     var ResultList = ["INR"]
-    //alert(demoNo)
+
     function ResultEmail() {
         var ebody = "Dear " + demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
-        //var encounterbody = "Dear " + demoArrayVal[0] + ", \nYour latest " + ResultList[0] + " result is " + results[1] + "\n"
-        var encounterbody = "Email to Patient - Your latest " + ResultList[0] + " result is " + results[1] + "  "
         //alert(ebody)
         var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at " + providerphone + "."
-        var emessage = "Please continue with your current Warfarin dosing and monthly or bimonthly INR testing.%0D%0A%0D%0A" + providername + " Office"
-        //var encountermessage = "Please continue with your current Warfarin dosing and monthly or bimonthly INR testing.\n" + providername + " Office"
-        var encountermessage = "Please continue with your current Warfarin dosing and monthly or bimonthly INR testing."
+        var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + providername + " Office"
         var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
         window = window.open(mailto_link, 'emailWindow')
-        localStorage.setItem("instructions" + demoNo, encounterbody + encountermessage)
-        $('input[type="button"][value=" E-Chart"]').click();
-
+        //$('input[type="button"][value=" E-Chart"]').click(); 
+        window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
         $(document).ready(function() {
             $('#caseNote_note0').focus()
-            //window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&measurementValue=' + results[1] + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+            window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
         });
     }
 
@@ -107,7 +104,6 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     }).closest("tr").next("tr");
     //tableRow.css('background-color', 'yellow')
     tableRow.before("<input type='button' id=" + ResultList[0] + "  style='background-color:lime;color:black;' value='Send Email'>")
-    //alert(tableRow.html()) 
     if (tableRow.html()) {
         var myRe = /<td align="right">([\d,\.]+)<\/td>/; //for the measurement
         var results = myRe.exec(tableRow.html())
@@ -116,17 +112,15 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         document.getElementById(ResultList[0]).value = "Send Email for NO CHANGE in " + ResultList[0] + " management"
         //alert('Your ' + ResultList[0] + ' result is ' + results[1])
     }
-    //$('#' + ResultList[0]).hide()
 }
-//End INR snippet************************************************************************  
+//End INR snippet*****  
+//alert("Params" + demoNo)
 
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
     return false
 }
 var dd = 0 //Button position
-
-
 
 var demoArray = [
     'First Name',
@@ -182,7 +176,7 @@ $(document).ready(function() {
 //*****Determine type of document and not the tickler screen*******
 
 if (params.segmentID) {
-    // alert(params.segmentID)
+    //alert(params.segmentID)
     var IDnum = params.segmentID
     if (window.location.pathname.indexOf('showDocument.jsp') > -1) {
         var mydocType = 'DOC'
@@ -198,8 +192,10 @@ if (params.segmentID) {
 
     //alert(mydocType)
     //alert(teststring)
+    //alert(demoNo)
+} 
 
-} //*************AUTOTICKLER screen**********************************************************
+//*************AUTOTICKLER screen**********************************************************
 
 if (params.myparam1) {
     screen1 = params.myparam1
@@ -252,6 +248,7 @@ if (x.indexOf('dms/showDocument.jsp?') > -1) { //This is a document
     demono = $('input[name=demog]').val();
     //alert(demono)
 }
+
 if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
     // alert('LabReport')
     var mytag = document.getElementsByTagName('a');
@@ -265,22 +262,58 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
         }
     }
 } else if (q1 > -1 && q2) {
-    //alert("Lab 2")  //2020-Oct-28
-
-    var NarList = document.getElementsByClassName('NarrativeRes');
-    if ((NarList[1].innerHTML).indexOf('demo=')) {
-        //alert(NarList)
-        demopos = (NarList[1].innerHTML).indexOf('demo=')
-        //alert(demopos)
-        demoend = (NarList[1].innerHTML).indexOf('&', demopos)
-        demono = (NarList[1].innerHTML).substring(demopos + 5, demoend)
+    //alert("Lab 2")
+    if (demoNo) { //2021-Aug-21
+        demono = demoNo
     }
 
-    if (!demono) {
-        demono = params.demographicId
-        //alert(demono)
+    if (!demoNo) {
+        var NarList = document.getElementsByClassName('NarrativeRes');
+        if ((NarList[1].innerHTML).indexOf('demo=')) {
+            //alert(NarList)
+            demopos = (NarList[1].innerHTML).indexOf('demo=')
+            //alert(demopos)
+            demoend = (NarList[1].innerHTML).indexOf('&', demopos)
+            demono = (NarList[1].innerHTML).substring(demopos + 5, demoend)
+        }
     }
 
+    if (!parseInt(demoNo)) {
+
+        myWindow = window.open(vPath + "oscarMDS/SearchPatient.do?labType=HL7&segmentID=" + params.segmentID + "&name=")
+        setTimeout(function() {
+            myWindow.close();
+        }, 500);
+
+
+
+        setTimeout(function() {
+            var params2 = {};
+            if (myWindow.location.search) {
+                var parts = myWindow.location.search.substring(1).split('&');
+                for (var i = 0; i < parts.length; i++) {
+                    var nv = parts[i].split('=');
+                    if (!nv[0]) continue;
+                    params2[nv[0]] = nv[1] || true;
+                }
+            }
+            //alert(params2.demographicNo)
+            //alert(myWindow.location)
+            demoNo = params2.demographicNo
+            demono = params2.demographicNo
+            //localStorage.setItem("DemoNo", demoNo);
+        }, 500);
+
+        /*
+        unsafeWindow.handleLab('', params.segmentID, 'ticklerLab') //open one of the buttons to get the demo no
+        setTimeout(function() {
+            demono = localStorage.getItem("DemoNo")
+            localStorage.setItem("DemoNo", "");
+            //demoNo = localStorage.getItem("DemoNo")
+        }, 500);
+        */
+
+    }
 
 } else if (x.indexOf('dms/MultiPageDocDisplay.jsp?segmentID') > -1) {
     x = ($('input[tabindex=12]').attr('onclick'))
@@ -449,7 +482,8 @@ function ButtonFunction2() {
 
             }
         }
-    }); //****set default times*****
+    }); 
+    //****set default times*****
     $('#Aller1').focus(function() {
         $('#Time3').click() //alert(this.id)
     });
@@ -530,7 +564,8 @@ function ButtonFunction3() {
 
             }
         }
-    }); //****set default times for pap*****
+    }); 
+    //****set default times for pap*****
     $('#Aller1').focus(function() {
         $('#Time3').click() //alert(this.id)
     });
@@ -560,6 +595,11 @@ if (x.indexOf('tickler/ticklerAdd.jsp') > -1) {
 }
 
 if (x.indexOf('ForwardDemographicTickler') > -1) {
+    //get demonumber 2021-Aug-21
+    //alert(params.demographic_no)
+    localStorage.setItem("DemoNo", params.demographic_no);
+    //alert(window.name)
+
     document.getElementById('AutoReminders').style.visibility = 'hidden';
     document.getElementById('AutoTickler').style.visibility = 'hidden';
 }
