@@ -301,6 +301,7 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
             //alert(myWindow.location)
             demoNo = params2.demographicNo
             demono = params2.demographicNo
+            demo_no = params2.demographicNo  //2021-Aug-27
             //localStorage.setItem("DemoNo", demoNo);
         }, 500);
 
