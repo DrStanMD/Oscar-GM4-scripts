@@ -80,7 +80,7 @@ if (!myParam) {
 //end get demo_no**************************************************
 //alert(demo_no)
 
-//INR snippet******
+
 
 if (demo_no) {
     demoNo = demo_no
@@ -90,6 +90,9 @@ if (params.demographicId) {
     var demoNo = params.demographicId
     //  alert("Params" + demoNo)
 }
+
+/*
+//INR snippet******
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     //if (params.demographicId){
@@ -126,8 +129,9 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     }
 }
 
-//End INR snippet*****  
-//alert("Params" + demoNo)
+//End INR snippet***** 
+*/
+
 
 if (inputvar == 0) {
     alert('Set the specific HTML form Id for your Oscar system')
@@ -336,25 +340,8 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
     var pend = x.lastIndexOf('tickler')
     demono = x.substring(pstart + 15, pend - 3).toString() //alert(demono)
 }
-/*
-  else if (x.indexOf('dms/showDocument.jsp?inWindow') > - 1) {
-  alert("HI")
-  demono = $('input[name=demog]').val();
-  alert(demono)
-} 
-*/
-/*
- else {
-  z = document.getElementById('msgBtn_' + params.segmentID)
-  z = ($(z).attr('onclick'))
-  z = (z.toString())
-  var pstart = z.search('demographic_no')
-  var pend = z.search('&docId')
-  demono = z.substring(pstart + 15, pend).toString()
-   alert("the else")
-  alert(demono)
-}
-*/
+
+
 var addthis = ''
 var addthis2 = '360'
 AA = []
@@ -450,14 +437,7 @@ var addthis = ''
 var addthis2 = '360'
 
 function ButtonFunction2() {
-    //alert(demono)
-    //alert(params.demoName)
-    /*
-  var myElement = '#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
-  if (typeof params.demoName != 'undefined') {
-  myElement = myElement2    //var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
-  }
- */
+
     var RestoreHTML = $(myElement).html()
     $(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
     document.getElementById('mybutton').addEventListener('click', function() {
@@ -529,15 +509,7 @@ var addthis = ''
 var addthis2 = '360'
 
 function ButtonFunction3() {
-    // alert(demono)
-    /*
-     var myElement = '#acknowledgeForm'+IDnum+' > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1)'
-     $(myElement).css('background-color', 'red')
-     alert(params.demoName)
-     if (typeof params.demoName != 'undefined') {
-     myElement = myElement2  // var myElement = '.docTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > fieldset:nth-child(3)'
-     }
-    */
+
     var RestoreHTML = $(myElement).html() //$(myElement).html('<table bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
     $(myElement).html('<table align=\'center\' bgcolor=\'yellow\'><td><div align=\'left\'>' + myRadio + '</td>' + '<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td><td>' + myRadio2 + '</td></div></table>')
     document.getElementById('mybutton').addEventListener('click', function() {
@@ -637,7 +609,8 @@ if (demono > -1) {
         window.open(vPath + '/oscarRx/choosePatient.do?providerNo=1&demographicNo=' + demono)
     }
     //Create invoice
-    /*var mytag = document.getElementsByTagName('a');
+    /*
+    var mytag = document.getElementsByTagName('a');
     for (var i = 0; i < mytag.length; i++) {
       var onclickvalue = mytag[i].getAttribute('onclick')
       alert(onclickvalue)
@@ -663,7 +636,7 @@ if (demono > -1) {
     input50.onclick = ButtonFunction50;
     input50.setAttribute('style', 'font-size:16px;position:absolute;top:' + (310 + dd) + 'px;right:0px;background-color: orange;');
     document.body.appendChild(input50);
-     if (!parseInt(demoNo)) {
+     if (!parseInt(demono)) {
      document.getElementById('emailbutton').style.visibility = 'hidden';
      }
 
