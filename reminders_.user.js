@@ -659,9 +659,13 @@ if (demono > -1) {
     var input50 = document.createElement('input');
     input50.type = 'button';
     input50.value = 'Send Email';
+    input.id = 'emailbutton'
     input50.onclick = ButtonFunction50;
     input50.setAttribute('style', 'font-size:16px;position:absolute;top:' + (310 + dd) + 'px;right:0px;background-color: orange;');
     document.body.appendChild(input50);
+     if (!parseInt(demoNo)) {
+     document.getElementById('emailbutton').style.visibility = 'hidden';
+     }
 
     function ButtonFunction50() {
         var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
