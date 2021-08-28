@@ -70,6 +70,7 @@ if (!myParam) {
 //alert(demo_no)
 
 //INR snippet******
+/*
 if (demo_no) {
     demoNo = demo_no
     // alert("derived" +demoNo)
@@ -113,6 +114,7 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
         //alert('Your ' + ResultList[0] + ' result is ' + results[1])
     }
 }
+*/
 //End INR snippet*****  
 //alert("Params" + demoNo)
 
