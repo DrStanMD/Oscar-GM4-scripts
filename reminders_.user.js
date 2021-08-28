@@ -14,12 +14,16 @@
 // @grant       none
 // ==/UserScript==
 
-var inputvar = 226 //form id goes here
-var providername = "Dr. Hurwitz"
-var providerphone = "604-275-8228"
-//open about:config and set the following to true.
-//dom.allow_scripts_to_close_windows
-//**********************************************************
+/*
+open about:config and set the following to true.
+dom.allow_scripts_to_close_windows
+Requires Push to Reminders eform found at:
+https://github.com/DrStanMD/Oscar-GM4-scripts/blob/master/Push_to_Reminder.zip
+*/
+
+var inputvar = 226 //"Push to Reminders" form id goes here
+var providername = "Your name"
+var providerphone = "You office phone"
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
