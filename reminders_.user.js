@@ -27,8 +27,8 @@ Patient Independent
 */
 
 var inputvar = 226 //form id goes here
-var providername = "Dr. Hurwitz"
-var providerphone = "604-275-8228"
+var providername = "Your name"
+var providerphone = "Your phone"
 
 //**********************************************************
 
