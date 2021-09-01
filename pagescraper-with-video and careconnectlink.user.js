@@ -1,11 +1,13 @@
 // ==UserScript==
-// @name        Pagescraper with videolink
+// @name        Pagescraper with videolink and careconnect link
 // @namespace   Stanscripts
 // @description adds demographic details to echart
 // @include     */casemgmt/forward.jsp?action=view&demographic*
+// @include  *careconnect*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @grant       none
-// @version 15.8
+// @grant       GM.setValue
+// @grant       GM.getValue
+// @version 16
 // ==/UserScript==
 
 /*
@@ -15,6 +17,18 @@ $(document).ready(function() {
 $('#cppBoxes').append(searchbar)  
 });
 */
+
+if (window.location.href.indexOf("careconnect") != -1) {
+    (async () => {
+        var phn = await GM.getValue("LinkPHN");
+        if (phn != undefined) {
+            console.log("Filled PHN from GM global value");
+            $('#search').val(phn);
+        }
+    })();
+}
+
+
 var params = {}; //Get Params
 if (location.search) {
     var parts = location.search.substring(1).split('&');
@@ -25,6 +39,7 @@ if (location.search) {
     }
 }
 
+/*
 //****Future use to open Measurement and write to the current Encounter note
 var inputgroupno
 var str = localStorage.getItem("instructions" + params.demographicNo)
@@ -33,7 +48,7 @@ if (str) {
 
     $(document).ready(function() {
         //Find INR input group number  
-        /*
+        
           for (i = 0; i < 100; i++) {
           
               var x = ($('#menu3 > a:nth-child(' + i + ')').html())
@@ -46,7 +61,7 @@ if (str) {
                   }
               }
           }
-          */
+          
 
         inputgroupno = 12
         //alert(inputgroupno)
@@ -67,7 +82,7 @@ if (str) {
     });
 }
 //****End Future use to write to the current Encounter note
-
+*/
 
 //Reserve line in header
 var header = document.getElementById('encounterHeader');
@@ -90,8 +105,8 @@ var demoArray = [
     'Postal',
     'Age',
     'Health Ins',
-    'PhoneH',
-    'PhoneW'
+    'Phone(H)',
+    'Phone(W)'
 ]
 
 var demoArrayVal = []
@@ -111,10 +126,10 @@ function getMeasures(measure) {
 
 
             switch (measure) {
-                case "PhoneH":
-                    var myReString = '<span class="label">[\n\r\t]*\s*' + 'Phone' + '[(][H][)]' + '(.|[\n])*'
+                case "Phone(H)":
+                    var myReString = '<span class="label">[\n\r\t]*\s*' + 'Phone' + '[(][' + 'H' + '][)]' + '(.|[\n])*'
                     break;
-                case "PhoneW":
+                case "Phone(W)":
                     var myReString = '<span class="label">[\n\r\t]*\s*' + 'Phone' + '[(][W][)]' + '(.|[\n])*'
                     break;
                 default:
@@ -140,12 +155,52 @@ function getMeasures(measure) {
     xmlhttp.send();
 }
 $(document).ready(function() {
+    //$('.Header > a:nth-child(3) > span:nth-child(1))').click()  //2021-Aug-23 for appointment history
     for (j = 0; j < demoArray.length; j++) {
         //demoArray[j]= demoArray[j].replace(/"/g, "").replace(/'/g, "").replace(/\(|\)/g, "");  //remove parentheses
         //alert(demoArray[j])
+
         getMeasures(demoArray[j]);
     }
-    //alert(demoArrayVal)
+
+
+    var passPHN = demoArrayVal[7].substr(0, 10);
+    localStorage.setItem("LinkPHN", passPHN); //STORE PHN
+    GM.setValue("LinkPHN", passPHN);
+    //alert(passPHN)
+    console.log(`Saved PHN to GM global values: ${passPHN}`);
+
+    var input21 = document.createElement("input");
+    input21.type = "button";
+    input21.value = "CareC";
+    input21.onclick = ButtonFunction21;
+    input21.setAttribute("style", "font-size:11px;position:absolute;top:0px;right:180px;");
+    document.body.appendChild(input21);
+
+    function ButtonFunction21() {
+        window.open("https://health.careconnect.ca?" + passPHN, "newWindow", target = "_blank")
+    }
+
+    /*
+    var Clipboard=document.createElement("input");
+    Clipboard.type="button";
+    Clipboard.value="Clipboard:";
+    Clipboard.setAttribute("style", "position:absolute; top:32px; left:580px; width:75px; font-size:12px; text-align:center; background-color:pink;");
+    document.body.appendChild(Clipboard);
+
+    $(".copyable").click(function() {
+    var textArea = document.createElement("textarea");
+    textArea.value = this.innerHTML;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    $(this).css('background-color', 'pink')
+    textArea.setAttribute('style', 'position:absolute; top:32px; left:660px; width:120px; height:13px; font-size:13px; resize:none;');
+    textArea.setAttribute('title', 'Clipboard');
+    // textArea.remove();  // to hide text area
+    })
+    */
+
     var HCN = demoArrayVal[7]
     res = HCN.slice(0, 4)
     res = res + ' ' + HCN.slice(4, 7)
@@ -157,8 +212,13 @@ $(document).ready(function() {
     var headerExtra3 = 'File#: '
     var headerExtra4 = 'PHN: '
     var headerExtra5 = ' Addr: '
+    /*
+    $demoArrayVal[4].click(function()){
+    alert(this.value);
+    }); 
+    */
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
-        ' ' + headerExtra4.bold() + HCN + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
+        ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
         //+ '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
         +
         '<button type="button" id="button10">Send email</button>'
@@ -197,6 +257,4 @@ document.body.appendChild(input11);
 function ButtonFunction11() {
     //$('#button10').click()
     window.open("https://zoom.us/", "newWindow", "_blank")
-
-
 }
