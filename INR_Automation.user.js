@@ -3,7 +3,7 @@
 // @namespace   Stanscript
 // @include  *oscarMeasurements/SetupMeasurements.do?groupName=INR*
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.1
+// @version     15.2
 // @grant       none
 // ==/UserScript==
 var y = ($('.note > td:nth-child(3)').html())
@@ -21,15 +21,18 @@ if (location.search) {
     }
 }
 
+var str = params.instructions
+
 var demoNo = $('input[name="value(demographicNo)"]').val()
 //alert(demoNo)
-var str = localStorage.getItem("instructions" + demoNo)
+//var str = localStorage.getItem("instructions" + demoNo)
 //alert(str)
 if (str) {
     str = str.replace(/%20/g, ' ');
     //alert(str)
     $("input[name='value(comments-0)']").val(str);
 
+  
     setTimeout(function() {
         localStorage.setItem("instructions" + demoNo, "")
     }, 3000);
