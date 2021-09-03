@@ -10,9 +10,9 @@
 // ==/UserScript==
 
 //UPDATE THE FOLLOWING 4 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
-//var twilio_id = ''; // Twilio AccountSID
-//var twilio_auth = ''; // Twilio Auth Token
-//var twilio_number = '+1604xxxxxxx'; // Twilio phone number
+var twilio_id = ''; // Twilio AccountSID
+var twilio_auth = ''; // Twilio Auth Token
+var twilio_number = '+1604xxxxxxx'; // Twilio phone number
 
 var doctor = ""
 
