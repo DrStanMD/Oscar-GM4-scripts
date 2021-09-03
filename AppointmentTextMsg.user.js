@@ -7,9 +7,14 @@
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
-var demoArrayVal = []
-var ptcell
-var doctor = "Doctor's Lastname"
+
+//UPDATE THE FOLLOWING 4 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
+var twilio_id = ''; // Twilio AccountSID
+var twilio_auth = ''; // Twilio Auth Token
+var twilio_number = '+1604xxxxxxx'; // Twilio phone number
+
+var doctor = "Doctor Lastname"
+
 var myTextMessage = "Appointment reminder." +
     "                                          \n" +
     "Your telephone appointment with Dr. " + doctor + " will commence shortly.  \n" +
@@ -20,31 +25,18 @@ var myTextMessage = "Appointment reminder." +
     "Dr. " + doctor + "'s office."
 
 //alert(myTextMessage)
+var demoArrayVal = []
+var ptcell
 
 function AppMsg() {
     function sendText(patientCell) {
-
-        //Disable trilio confirm logon
-        //http://forums.mozillazine.org/viewtopic.php?p=978207
-        //1. Type about:config on the location bar and press Enter.
-        //2. Right-click in the empty space and select New|Integer.
-        //3. Input network.http.phishy-userpass-length as the name and 1024 as the value. 
-
-        //UPDATE THE FOLLOWING 4 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
-        var twilio_id = ''; // Twilio AccountSID
-        var twilio_auth = ''; // Twilio Auth Token
-        var twilio_number = '+1604XXXXXX'; // Twilio phone number
-
         /*
         var confirmSend = confirm('Sending: "' + myTextMessage + '" to ' + patientCell);
         if (!confirmSend) {
           return;
         }
         */
-
-
         var url = 'https://' + twilio_id + ':' + twilio_auth + '@api.twilio.com/2010-04-01/Accounts/' + twilio_id + '/Messages';
-        //window.open(url)  //using a form in a hidden iframe to send a POST to Twilio Server. Please suggest improvement if you have a simpler way to send to twilio.
         var form = document.createElement('form');
         form.setAttribute('method', 'POST');
         form.setAttribute('action', url);
@@ -79,7 +71,6 @@ function AppMsg() {
         var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
         var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
         if (match) {
-            //return '(' + match[1] + ') ' + match[2] + '-' + match[3];
             //alert( '(' + match[1] + ') ' + match[2] + '-' + match[3]);
             return match[1] + '-' + match[2] + '-' + match[3];
         }
@@ -167,10 +158,10 @@ function AppMsg() {
 
 var input113 = document.createElement('input');
 input113.type = 'button';
-input113.value = 'Send Text';
+input113.value = 'Update TM';
 input113.id = 'sendText';
 input113.onclick = showAlert113;
-input113.setAttribute('style', 'font-size:18px;position:fixed;bottom:200px;right:0px;');
+input113.setAttribute('style', 'font-size:18px;position:fixed;top:60px;right:0px;');
 document.body.appendChild(input113);
 document.getElementById('sendText').style.backgroundColor = 'lime';
 
