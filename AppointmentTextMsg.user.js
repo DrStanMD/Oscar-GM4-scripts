@@ -137,6 +137,7 @@ function AppMsg() {
         $(myclass[i]).before('&nbsp; <button type=\'button\' id=\'OTB\'>' + "☎" + '</button>')
         $(document.getElementById('OTB')).css('background-color', "pink");
         $(document.getElementById('OTB')).css('font-size', '80%');
+        $(document.getElementById('OTB')).attr('title', demoArrayVal[i]);
         $(document.getElementById('OTB')).attr('id', 'OTB' + i);
         //$(document.getElementById('OTB' + i)).val(demoNo +":"+demoArrayVal[i]);
         $(document.getElementById('OTB' + i)).val(demoArrayVal[i]);
