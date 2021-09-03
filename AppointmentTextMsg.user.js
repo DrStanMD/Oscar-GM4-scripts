@@ -3,7 +3,7 @@
 // @namespace   Stanscript
 // @include     *providercontrol.jsp?year*
 // @description Sends Text to alert appointment ready
-// @version     15.0
+// @version     15.1
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
 // ==/UserScript==
