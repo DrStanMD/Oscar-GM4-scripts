@@ -5,15 +5,16 @@
 // @description Sends Text to alert appointment ready
 // @version     15.1
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+
 // @grant       none
 // ==/UserScript==
 
 //UPDATE THE FOLLOWING 4 PARAMETERS USING YOUR OWN ACCOUNT INFORMATION
-var twilio_id = ''; // Twilio AccountSID
-var twilio_auth = ''; // Twilio Auth Token
-var twilio_number = '+1604xxxxxxx'; // Twilio phone number
+//var twilio_id = ''; // Twilio AccountSID
+//var twilio_auth = ''; // Twilio Auth Token
+//var twilio_number = '+1604xxxxxxx'; // Twilio phone number
 
-var doctor = "Doctor Lastname"
+var doctor = ""
 
 var myTextMessage = "Appointment reminder." +
     "                                          \n" +
@@ -27,6 +28,34 @@ var myTextMessage = "Appointment reminder." +
 //alert(myTextMessage)
 var demoArrayVal = []
 var ptcell
+
+
+//===========Cookies===============
+
+function setCookie(cname,cvalue,exdays,cpath)
+{
+var d = new Date();
+ //d.setTime(d.getTime()+(exdays*24*60*60*1000));
+ d.setTime(d.getTime()+(exdays*5000));
+var expires = "expires="+d.toGMTString();
+//alert(expires)
+document.cookie = cname + "=" + cvalue + "; " + expires +  "; " + cpath
+ }
+//setCookie("homephone",qqhomephone,360,"path=/");
+
+function getCookie(cname)
+{
+var name = cname + "=";
+var ca = document.cookie.split(';');
+for(var i=0; i<ca.length; i++) 
+  {
+  var c = ca[i].trim();
+  if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+}
+return "";
+}
+//*****************************************************************
+
 
 function AppMsg() {
     function sendText(patientCell) {
@@ -145,14 +174,19 @@ function AppMsg() {
         element.css({
             "padding": "1px"
         }) //remove padding
-        document.getElementById('OTB' + i).addEventListener('click', function() {
-            //alert(this.value)
+
+        //setCookie('OTB' + i,"SET",0,"path=/");        
+        if(getCookie('OTB' + i)== "SET"){
+        element.css("background-color", "red");
+        }
+
+       document.getElementById('OTB' + i).addEventListener('click', function() {
             $(this).css("background-color", "red");
+            //alert(this.id)
+            setCookie(this.id,"SET",1,"path=/");
+            //unsafeWindow.refreshSameLoc('providercontrol.jsp?appointment_no=83307&provider_no=999998&status=&statusch=T&year=2021&month=9&day=3&view=0&displaymode=addstatus&dboperation=updateapptstatus&viewall=null');
             sendText(this.value)
         });
-
-        //alert(formatPhoneNumber(ptcell))
-        //alert(demoArrayVal[i])
 
     }
 }
