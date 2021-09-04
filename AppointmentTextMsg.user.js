@@ -144,6 +144,7 @@ function AppMsg() {
     for (var i = 0; i < myclass.length; i++) {
         var onclickvalue = myclass[i].getAttribute('onclick')
         //alert(onclickvalue)
+        
         var x = "start_time="
         var z = "&demographic_no"
         var y = "&displaymode"
@@ -158,6 +159,15 @@ function AppMsg() {
             onclickvalue.indexOf(z) + 16,
             onclickvalue.indexOf(y)
         );
+      
+        var xx = "appointment_no="
+        var zz = "&provider_no"
+
+        var appNo = onclickvalue.substring(
+            onclickvalue.indexOf(xx) + 15,
+            onclickvalue.indexOf(zz)
+        );
+        //alert("AppNo is "+appNo)
 
         getMeasures('Cell Phone', demoNo);
         //alert("DemoNo " + demoNo + "  Cell " + formatPhoneNumber(ptcell))
@@ -167,6 +177,7 @@ function AppMsg() {
         $(document.getElementById('OTB')).css('background-color', "pink");
         $(document.getElementById('OTB')).css('font-size', '80%');
         $(document.getElementById('OTB')).attr('title', demoArrayVal[i]);
+        $(document.getElementById('OTB')).attr('name', appNo);
         $(document.getElementById('OTB')).attr('id', 'OTB' + i);
         //$(document.getElementById('OTB' + i)).val(demoNo +":"+demoArrayVal[i]);
         $(document.getElementById('OTB' + i)).val(demoArrayVal[i]);
@@ -175,15 +186,17 @@ function AppMsg() {
             "padding": "1px"
         }) //remove padding
 
-        //setCookie('OTB' + i,"SET",0,"path=/");        
-        if(getCookie('OTB' + i)== "SET"){
+        //setCookie(appNo,"SET",0,"path=/"); 
+       
+        if(getCookie(appNo)== "SET"){
         element.css("background-color", "red");
         }
 
        document.getElementById('OTB' + i).addEventListener('click', function() {
             $(this).css("background-color", "red");
-            //alert(this.id)
-            setCookie(this.id,"SET",1,"path=/");
+            //alert(this.name)
+            setCookie(this.name,"SET",60,"path=/");
+            //alert(getCookie(this.name))
             //unsafeWindow.refreshSameLoc('providercontrol.jsp?appointment_no=83307&provider_no=999998&status=&statusch=T&year=2021&month=9&day=3&view=0&displaymode=addstatus&dboperation=updateapptstatus&viewall=null');
             sendText(this.value)
         });
