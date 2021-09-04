@@ -195,7 +195,7 @@ function AppMsg() {
        document.getElementById('OTB' + i).addEventListener('click', function() {
             $(this).css("background-color", "red");
             //alert(this.name)
-            setCookie(this.name,"SET",60,"path=/");
+            setCookie(this.name,"SET",360,"path=/");
             //alert(getCookie(this.name))
             //unsafeWindow.refreshSameLoc('providercontrol.jsp?appointment_no=83307&provider_no=999998&status=&statusch=T&year=2021&month=9&day=3&view=0&displaymode=addstatus&dboperation=updateapptstatus&viewall=null');
             sendText(this.value)
