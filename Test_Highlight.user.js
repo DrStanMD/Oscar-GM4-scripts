@@ -434,7 +434,7 @@ function renameTheLab(strOldName) {
     var strNewName = strOldName;
     switch (strOldName) {
         case 'MICRO14':
-            strNewName = 'Cov/Flu';
+            strNewName = 'Viral';
             break;
         case 'MICRO16':
             strNewName = 'HPyl';
