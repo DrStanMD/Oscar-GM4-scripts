@@ -1,21 +1,111 @@
+Resources:
+https://stackoverflow.com/
+https://www.w3schools.com/js/
+https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+
+
+// ==UserScript==
+// @name        aaGM demo
+// @namespace   Stanscripts
+// @description GM cheatsheat demostration
+// @include     *
+// @include     *billing/CA/BC/billStatus.jsp*
+// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require     https://secure56.junoemr.com/SDHurwitzInc/eform/displayImage.do?imagefile=MyPersonalData.js
+// @grant       none
+// ==/UserScript==
+
+
+//===== a word of Caution when using @require ========
+alert("My Bank Account Number is " +myBankNumber)
+
+//=====Get Parameters============
+var params = {};
+if (location.search) {
+    var parts = location.search.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+}
+
+alert(params.year)
+
+
+//========Get Path============
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+//alert(firstElement)
+vPath = ("https://" + location.host + "/" + firstElement + "/")
+alert(vPath)
+//*****************************************************************
+
+
+
+//========Buttons============
+var input1 = document.createElement("input");
+input1.type = "button";
+input1.value = "BUTTON NAME";
+input1.id = "testbutton";
+input1.onclick = ButtonFunction1;
+input1.setAttribute("style", "font-size:12px; position:fixed; top:200px; left:100px; background-color: lime;");
+//input1.setAttribute("style", "font-size:12px; position:absolute; top:200px; left:100px; background-color: lime;");
+document.body.appendChild(input1);
+
+
+function ButtonFunction1() {
+    alert("Hello World!")
+    //change button color
+    document.getElementById('testbutton').style.backgroundColor = 'red';
+
+    //open form
+    var formPath = vPath + '/eform/efmformadd_data.jsp?fid=999&demographic_no=' + 1 // INSERT YOU OWN form ID (fid=??) here
+    //alert(formPath)
+    window.open(formPath)
+}
+
+
+//*******Store value on this computer*************
+var myData = "Good Morning"
+localStorage.setItem("myItem", myData)
+var myDataString = localStorage.getItem("myItem");
+alert(myDataString)
+//**********************
+
+//***********************************************************************
+
+
+// ==UserScript==
+// @name        Invoice Screen
+// @namespace   Stanscripts
+// @description Create multiline statements
+// @include     *billing/CA/BC/billStatus.jsp?lastName=*
+// @include             *billing/CA/BC/billStatus.jsp*
+// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @grant       none
+// ==/UserScript==
 
 // GM4 does not allow changing the innerhtml of another window. (mywindow.document.body.innerHTML = data)
 //Use the following code:
   var data = "some html code"
   myWindow = window.open('data:text/html,' + encodeURIComponent(data), '_blank', 'width=800');
 
-unsafeWindow.
+to activate a function with OSCAR
+unsafeWindow.functionName
 
-
+//********************
 localStorage.setItem("myItem", "myData")
-   var myDataString = localStorage.getItem("myItem");
+var myDataString = localStorage.getItem("myItem");
+//**********************
 
 
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
   var onclickvalue = mytag[i].getAttribute('onclick')
 }
-//***************************************************
+
 var myclass = document.getElementsByClassName('js-navigation-open');
 alert(myclass.length)
 for (var i = 0; i < myclass.length; i++) {
@@ -35,7 +125,6 @@ function ButtonFunction1(){
 alert("Hello World!")
 }
 //*************************************************************
-
 
 
 //=========Option List Default============
