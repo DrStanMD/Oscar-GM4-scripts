@@ -4,19 +4,24 @@
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @description Sets the default billing physician and date today when billing from Master screen.
 // @include        *billing.do?billRegion=BC&billForm*
-// @include        *billing/CA/BC/adjustBill.jsp*
+// @include         *billing/CA/BC/adjustBill.jsp*
 // @include          *CaseManagementEntry.do*
-// @version     15.2
+// @include      *billing/CA/BC/billingBC.jsp*
+// @version     15.3
 // ==/UserScript==
+
 
 /*
 //Facility sub number
 setTimeout(function(){
-$("input[name='facilityNum']").val("XXXXX"); //your facility number goes here
+$("input[name='facilityNum']").val("OA342"); //your facility number goes here
+//$("#facility-number").css("background-color", "lime";
  }, 500);
+*/  
+  
 //$("input[name='xml_diagnostic_detail2']").attr('disabled','disabled');
 //$("input[name='xml_diagnostic_detail3']").attr('disabled','disabled');
-*/
+
 
 var theDefault = 'Refer To';
 var theOptions = document.getElementsByName('refertype1')[0].options;
@@ -29,6 +34,21 @@ for (var theOption of theOptions) {
         }
     }
 }
+
+//Location default
+    $('select[name=xml_visittype]').css("background-color", "yellow");
+
+    var theDefault='L|Longitudinal Primary Care Practice (e.g. GP family practice or PCN clinic)';
+    var theOptions = document.getElementsByName('xml_visittype')[0].options;
+
+    for (var theOption of theOptions) {
+        if (typeof(theOption) == 'object') {
+            if (theOption.text == theDefault) {
+                theOption.selected = true;
+                break;
+            }
+        }
+    }
 
 
 //===========Cookies===============
@@ -116,4 +136,4 @@ function showAlert7() {
 
 //Highlight billing codes
 var allergy = "body > form:nth-child(5) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(7) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(5) > td:nth-child(1)"
-$(allergy).css("background-color", "lightyellow");
+//$(allergy).css("background-color", "lightyellow");
