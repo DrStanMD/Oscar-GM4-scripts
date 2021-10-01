@@ -242,7 +242,8 @@ $(document).ready(function() {
         //var email = demoArrayVal[1]
         var email = ptname + '<' + demoArrayVal[1] + '>'
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
-        window = window.open(mailto_link, 'emailWindow')
+        //window = window.open(mailto_link, 'emailWindow')
+        window = window.open(mailto_link, 'emailWindow', target="_blank")
     }
 
 })
