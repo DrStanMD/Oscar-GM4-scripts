@@ -7,7 +7,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       GM.setValue
 // @grant       GM.getValue
-// @version 16
+// @version     16.1
 // ==/UserScript==
 
 /*
