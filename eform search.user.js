@@ -40,7 +40,7 @@ $(document).ready(function() {
     $("#referral_name").select(function() {
         $('#cppBoxes').focus()
         //alert($(this).val())
-        window.open(vPath + "eform/" + $(this).val())
+        window.open(vPath + "/eform/" + $(this).val())
         /*  
         var parser = new DOMParser();
         var htmlDoc = parser.parseFromString($(this).val(), 'text/html');  //get the text
