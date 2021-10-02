@@ -5,7 +5,7 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @description Search Eforms
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.0
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 var params = {}; //Get Params
