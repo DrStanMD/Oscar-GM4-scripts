@@ -228,7 +228,7 @@ $(document).ready(function() {
   
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
         ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
-        + '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+        //+ '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
         + '<button type="button" id="button10">Send email</button>'
     );
     document.getElementById("button10").onclick = do_email;
