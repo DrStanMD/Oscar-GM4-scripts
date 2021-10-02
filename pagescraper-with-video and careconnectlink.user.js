@@ -7,7 +7,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       GM.setValue
 // @grant       GM.getValue
-// @version     16.1
+// @version 16.2
 // ==/UserScript==
 
 /*
@@ -39,7 +39,7 @@ if (location.search) {
     }
 }
 
-/*
+
 //****Future use to open Measurement and write to the current Encounter note
 var inputgroupno
 var str = localStorage.getItem("instructions" + params.demographicNo)
@@ -82,7 +82,7 @@ if (str) {
     });
 }
 //****End Future use to write to the current Encounter note
-*/
+
 
 //Reserve line in header
 var header = document.getElementById('encounterHeader');
@@ -217,14 +217,7 @@ $(document).ready(function() {
     alert(this.value);
     }); 
     */
-    header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
-        ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
-        //+ '<a href="mailto:' + demoArrayVal[1] + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-        +
-        '<button type="button" id="button10">Send email</button>'
-    );
-    document.getElementById("button10").onclick = do_email;
-    document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;'); //background-color:#FC74FD
+    
     //var str = $('.Header > a:nth-child(1)').text()
     var str = document.querySelector('[title="Master Record"]').innerHTML;
     //alert(str)
@@ -232,6 +225,15 @@ $(document).ready(function() {
     var ptname = res[1] + ' ' + res[0]
     ptname = ptname.replace(",", " ");
     //alert(ptname)
+  
+    header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
+        ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
+        + '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+        + '<button type="button" id="button10">Send email</button>'
+    );
+    document.getElementById("button10").onclick = do_email;
+    document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;'); //background-color:#FC74FD
+
     function do_email() {
         //alert(demoArrayVal[1])
         /*
@@ -242,8 +244,7 @@ $(document).ready(function() {
         //var email = demoArrayVal[1]
         var email = ptname + '<' + demoArrayVal[1] + '>'
         var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
-        //window = window.open(mailto_link, 'emailWindow')
-        window = window.open(mailto_link, 'emailWindow', target="_blank")
+        window = window.open(mailto_link, 'emailWindow')
     }
 
 })
