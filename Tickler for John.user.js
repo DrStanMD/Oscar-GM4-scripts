@@ -1,5 +1,5 @@
 ﻿// ==UserScript==
-// @name        Tickler Screen Buttons
+// @name        Tickler Screen Buttons for WELL
 // @namespace   Stanscripts
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
