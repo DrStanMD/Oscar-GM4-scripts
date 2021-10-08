@@ -1,5 +1,5 @@
-﻿// ==UserScript==
-// @name        Tickler Screen Buttons for WELL
+// ==UserScript==
+// @name        Tickler Screen Buttons
 // @namespace   Stanscripts
 // @description Places Add, Delete, Complete buttons at top of screen, Echart link, high highlight
 // @include     *tickler/ticklerMain.jsp*
@@ -158,26 +158,28 @@ $('#input0').after(mycheckbox0)
 var input1 = document.createElement('input');
 input1.type = 'button';
 input1.value = 'Complete';
-input1.onclick = unsafeWindow.updateTicklerStatus('Complete');  //2021-Oct-07
+input1.onclick = showAlert1;
 input1.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:520px;');
 document.body.appendChild(input1);
 
 function showAlert1() {
-    document.forms['ticklerform'].submit_form.value = 'Complete';
-    document.forms['ticklerform'].submit();
-    value = 'Complete';
+    //document.forms['ticklerform'].submit_form.value = 'Complete';
+    //document.forms['ticklerform'].submit();
+    unsafeWindow.updateTicklerStatus('Complete');
+    //value = 'Complete';
 }
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Delete';
-input2.onclick = unsafeWindow.updateTicklerStatus('Delete');  //2021-Oct-07
+input2.onclick = showAlert2;
 input2.setAttribute('style', 'font-size:12px;position:fixed;top:28px;right:460px;');
 document.body.appendChild(input2);
 
 function showAlert2() {
-    document.forms['ticklerform'].submit_form.value = 'Delete';
-    document.forms['ticklerform'].submit();
-    value = 'Delete';
+    //document.forms['ticklerform'].submit_form.value = 'Delete';
+    //document.forms['ticklerform'].submit();
+    unsafeWindow.updateTicklerStatus('Delete');
+    //value = 'Delete';
 }
 var input3 = document.createElement('input');
 input3.type = 'button';
