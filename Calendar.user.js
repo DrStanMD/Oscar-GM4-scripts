@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     Calendar
 // @include      *SetupMeasurements.do?groupName*
-// @version  15.0
+// @version  15.1
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @require  https://secure56.junoemr.com/SDHurwitzInc/share/calendar/calendar.js
 // @require  https://secure56.junoemr.com/SDHurwitzInc/share/calendar/lang/calendar-en.js
