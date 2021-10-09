@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name     Calendar
 // @include      *SetupMeasurements.do?groupName*
-// @version  15.1
+// @version  15.2
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @require  /share/calendar/calendar.js
 // @require  /share/calendar/lang/calendar-en.js
