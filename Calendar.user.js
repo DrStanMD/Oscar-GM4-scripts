@@ -4,7 +4,7 @@
 // @version  15.0
 
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @require  /share/calendar/calendar.js
+// @require  calendar.js
 
 // @grant    GM_addStyle
 // ==/UserScript==
