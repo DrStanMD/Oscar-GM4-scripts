@@ -3,9 +3,9 @@
 // @include      *SetupMeasurements.do?groupName*
 // @version  15.1
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @require  https://secure56.junoemr.com/SDHurwitzInc/share/calendar/calendar.js
-// @require  https://secure56.junoemr.com/SDHurwitzInc/share/calendar/lang/calendar-en.js
-// @require  https://secure56.junoemr.com/SDHurwitzInc/share/calendar/calendar-setup.js
+// @require  /share/calendar/calendar.js
+// @require  /share/calendar/lang/calendar-en.js
+// @require  /share/calendar/calendar-setup.js
 // @grant    GM_addStyle
 // ==/UserScript==
 
