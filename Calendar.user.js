@@ -4,13 +4,11 @@
 // @version  15.0
 
 // @require  http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @require  /share/calendar/calendar.js
-// @require  /share/calendar/lang/calendar-en.js
-// @require  /share/calendar/calendar-setup.js
+// @require  calendar.js
+// @require  calendar-en.js
+// @require  calendar-setup.js
 // @grant    GM_addStyle
 // ==/UserScript==
-
-// @require  /share/calendar/calendar.css
 
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
