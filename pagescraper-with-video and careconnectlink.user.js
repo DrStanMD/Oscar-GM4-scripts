@@ -235,7 +235,7 @@ $(document).ready(function() {
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
         ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
         + '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-        //+ '<button type="button" id="button10">Send email</button>'
+        + '<button type="button" id="button10">Send email</button>'
     );
     document.getElementById("button10").onclick = do_email;
     document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;'); //background-color:#FC74FD
@@ -249,8 +249,10 @@ $(document).ready(function() {
         */
         //var email = demoArrayVal[1]
         var email = ptname + '<' + demoArrayVal[1] + '>'
-        var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
-        window = window.open(mailto_link, 'emailWindow')
+        //var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
+        //window.open(mailto_link, 'emailWindow',target="_blank")
+        var mailto_link = "mailto&su=Confidential+medical+information&to=" + email
+        window.open("https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=" + mailto_link)
     }
 
 })
