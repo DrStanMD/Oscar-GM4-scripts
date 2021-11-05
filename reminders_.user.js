@@ -642,10 +642,9 @@ if (demono > -1) {
 
     function ButtonFunction50() {
         var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
-        var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
-        window = window.open(mailto_link, 'emailWindow')
+        //var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
+        //window = window.open(mailto_link, 'emailWindow')
+        var mailto_link = "mailto&su=Confidential+medical+information&to=" + email
+        window.open("https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=" + mailto_link)
     }
-
-
-
 }
