@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name        eform search
+// @name        eform search2
 // @namespace   Stanscript
 // @include    *efmformslistadd.jsp*
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @description Search Eforms
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.1
+// @version     16.0  FF ESR 91 compatible
 // @grant       none
 // ==/UserScript==
 var params = {}; //Get Params
@@ -17,18 +17,16 @@ if (location.search) {
         params[nv[0]] = nv[1] || true;
     }
 }
-//alert(params.demographicNo)
+
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
 var newURL = vPath + "/eform/efmformslistadd.jsp?group_view=&demographic_no=" + params.demographicNo + "&parentAjaxId=eforms"
-//alert(newURL)	
-//window.open(newURL)
 
 $(document).ready(function() {
     //$('#enTemplate').width("250px"); //widens search field
-    var searchbar = "<input id='referral_name' style ='background-color: white;' list='CP' name='referral_name' placeholder='New eform wildcard search' type='text'><datalist id='CP'></datalist>"
+    var searchbar = "<input id='referral_name' style ='background-color: white; color:green;' list='CP' name='referral_name' placeholder='eForm name (or partial name)' type='text'><datalist id='CP'></datalist>"
     $('#cppBoxes').append(searchbar) //append to top row
     //$('#toolbar').prepend(searchbar) //append to bottom row
     $('#referral_name').width("202px")
@@ -37,19 +35,14 @@ $(document).ready(function() {
         //alert(this.text)
     });
 
-    $("#referral_name").select(function() {
-        $('#cppBoxes').focus()
-        //alert($(this).val())
-        window.open(vPath + "/eform/" + $(this).val())
-        /*  
-        var parser = new DOMParser();
-        var htmlDoc = parser.parseFromString($(this).val(), 'text/html');  //get the text
-        //alert($(htmlDoc).text())  
-        $(this).val($(htmlDoc).text().trim())
-        */
-        $(this).val("")
-        this.focus()
-    });
+    // https://stackoverflow.com/a/64392933
+    document.getElementById("referral_name").addEventListener("input", function(event) {
+        if (event.inputType == "insertReplacementText" || event.inputType == null) {
+            window.open(vPath + "eform/" + $(this).val())
+            $(this).val("")
+            this.focus()
+        }
+    })
 
     function getMeasures(measure) {
         xmlhttp = new XMLHttpRequest();
@@ -71,7 +64,7 @@ $(document).ready(function() {
                     myArray2 = myRe2.exec(str)
                     y = $(myArray.toString()).text()
                     //alert(y)
-                    z = myArray2.toString()+ "=&parentAjaxId=eforms"
+                    z = myArray2.toString() + "=&parentAjaxId=eforms"
                     //alert(z)
                     var cpvalue = y
                     var cptext = z
@@ -87,43 +80,3 @@ $(document).ready(function() {
     }
     getMeasures()
 });
-
-/*
-//*********Parse Table*************
-var formFields = []
-function myFunction() {
-    var formTable = $('table .elements')
-    formTable.attr('id', 'formTable');
-
-    var tableRows = $('#formTable tr').length;
-    var tableLength = document.getElementById("formTable").rows.length;
-    var cellsLength = document.getElementById("formTable").rows[1].cells.length;
-    //alert(tableLength)
-
-    for (i = 1; i < tableLength; i++) {
-        var firstcell = document.getElementById("formTable").rows[i].cells[0].innerHTML
-        //alert(firstcell)
-        if (firstcell) {
-            formFields[i] = new Array(0)
-            var firstcell = document.getElementById("formTable").rows[i].cells[0].innerHTML
-            var y = document.getElementById("formTable").rows[i].cells[0].innerHTML
-            var z = $(document.getElementById("formTable").rows[i].cells[0]).text()
-            alert(y)
-            alert(z)
-            formFields[i] = y
-        }
-    }
-
-    //alert(formFields.length)
-    for (i = 1; i < formFields.length; i++) {
-        //alert(formFields[i])
-        var cpvalue = formFields[i]
-        var cptext = $(formFields[i]).text()
-        alert(cpvalue)
-        alert(cptext)
-        //$('#CP').append($("<option>").attr('value', cptext).text(cpvalue));
-    }
-    //alert(headers)
-}
-myFunction()
-*/
