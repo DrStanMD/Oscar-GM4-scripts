@@ -10,6 +10,12 @@
 // @version 16.2
 // ==/UserScript==
 
+/************************
+for email to function properly:
+set about:config
+network.protocol-handler.expose.mailto      to true
+/****************************
+
 /*
 $(document).ready(function() {
   //$('#enTemplate').width("200px"); //widens search field
