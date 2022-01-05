@@ -20,7 +20,7 @@ firstElement = (elements.slice(1))
 vPath = "href=" + "'" + "https://" + location.host + "/" + firstElement + "/share/calendar/calendar.css" + "'"
 //alert(vPath)
 myPath = "https://" + location.host + "/" + firstElement
-//alert(myPath)
+alert(myPath)
 
 
 var elements = (window.location.href)
