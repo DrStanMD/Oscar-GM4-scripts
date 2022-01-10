@@ -7,7 +7,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       GM.setValue
 // @grant       GM.getValue
-// @version 16.3
+// @version 16.4
 // ==/UserScript==
 
 /************************
@@ -103,7 +103,7 @@ var myParam = location.search.split('demographicNo=')[1]
 var res = myParam.indexOf('&')
 var demo_no = myParam.substring(0, res)
 var demoArray = [
-    'Cell Phone',
+    'Blank for backward compatibility',
     'Email',
     'Blank for backward compatibility',
     'Address',
@@ -112,7 +112,8 @@ var demoArray = [
     'Age',
     'Health Ins',
     'Phone(H)',
-    'Phone(W)'
+    'Phone(W)',
+    'Cell Phone'
 ]
 
 var demoArrayVal = []
@@ -161,11 +162,17 @@ function getMeasures(measure) {
     xmlhttp.send();
 }
 $(document).ready(function() {
+  
+  /*
+   setTimeout(function() {
+     alert()
+         }, 100);     
+  */
+  
     //$('.Header > a:nth-child(3) > span:nth-child(1))').click()  //2021-Aug-23 for appointment history
     for (j = 0; j < demoArray.length; j++) {
         //demoArray[j]= demoArray[j].replace(/"/g, "").replace(/'/g, "").replace(/\(|\)/g, "");  //remove parentheses
         //alert(demoArray[j])
-
         getMeasures(demoArray[j]);
     }
 
@@ -232,9 +239,9 @@ $(document).ready(function() {
     ptname = ptname.replace(",", " ");
     //alert(ptname)
   
-    header.innerHTML += (headerExtra1.bold() + demoArrayVal[0] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
+    header.innerHTML += (headerExtra1.bold() + demoArrayVal[10] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
         ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
-        + '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+       //+ '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
         + '<button type="button" id="button10">Send email</button>'
     );
     document.getElementById("button10").onclick = do_email;
