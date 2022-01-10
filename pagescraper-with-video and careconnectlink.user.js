@@ -7,7 +7,7 @@
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       GM.setValue
 // @grant       GM.getValue
-// @version 16.4
+// @version 16.3
 // ==/UserScript==
 
 /************************
@@ -104,7 +104,7 @@ var res = myParam.indexOf('&')
 var demo_no = myParam.substring(0, res)
 var demoArray = [
     'Blank for backward compatibility',
-    'Email',
+    'Blank for backward compatibility',
     'Blank for backward compatibility',
     'Address',
     'City',
@@ -113,7 +113,8 @@ var demoArray = [
     'Health Ins',
     'Phone(H)',
     'Phone(W)',
-    'Cell Phone'
+    'Cell Phone',
+    'Email'
 ]
 
 var demoArrayVal = []
@@ -240,7 +241,7 @@ $(document).ready(function() {
     //alert(ptname)
   
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[10] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
-        ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[1] + '   '
+        ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[11] + '   '
        //+ '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
         + '<button type="button" id="button10">Send email</button>'
     );
