@@ -256,7 +256,7 @@ $(document).ready(function() {
             alert(x[0])
         */
         //var email = demoArrayVal[1]
-        var email = ptname + '<' + demoArrayVal[1] + '>'
+        var email = ptname + '<' + demoArrayVal[11] + '>'
         //var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information'
         //window.open(mailto_link, 'emailWindow',target="_blank")
         var mailto_link = "mailto&su=Confidential+medical+information&to=" + email
