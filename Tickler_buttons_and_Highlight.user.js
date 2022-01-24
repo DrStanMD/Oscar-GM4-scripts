@@ -12,7 +12,8 @@ var string1 = 'recall'.toUpperCase() // orange when high priority
 var string2 = 'appointment'.toUpperCase() //lightgreen but orange when high priority
 var string3 = 'appt'.toUpperCase() //lightgreen but orange when high priority
 var string4 = 'payment'.toUpperCase() //pink
-var string5 = 'in office'.toUpperCase() //blue pastel
+//var string5 = 'in office'.toUpperCase() //blue pastel
+var string5 = 'special recall'.toUpperCase() //blue pastel
 var string6 = 'DMER'.toUpperCase() //blue pastel
 //high priority is yellow
 
