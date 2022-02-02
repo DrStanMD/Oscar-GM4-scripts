@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 15.5
+// @version 15.6
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
@@ -324,7 +324,7 @@ if (teststring == 'DIAG IMAGE') {
         author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
     }
     if (!author) {
-        author = prompt('Please enter label name', '');
+        //author = prompt('Please enter label name', '');
     } //alert(author)
 
     fixedauthor = (author.replace('Procedure: ', '')).trim() //alert(fixedauthor)
