@@ -4,7 +4,7 @@
 // @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
 // @include     *lab/CA/ALL/labDisplay.jsp?demographicId*
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.3
+// @version     15.4
 // @grant       none
 // ==/UserScript==
 //========Get Path============
@@ -50,12 +50,25 @@ input1.value = 'Cumulative report by column';
 input1.onclick = ButtonFunction1;
 input1.setAttribute('style', 'font-size:13px;position:fixed;top:58px;right:0px;');
 document.body.appendChild(input1);
+
 var input2 = document.createElement('input');
 input2.type = 'button';
 input2.value = 'Cumulative report by row';
 input2.onclick = ButtonFunction2;
 input2.setAttribute('style', 'font-size:13px;position:fixed;top:35px;right:0px;');
 document.body.appendChild(input2);
+
+var input3 = document.createElement('input');
+input3.type = 'button';
+input3.value = 'Covid-19 positive';
+input3.onclick = ButtonFunction3;
+input3.setAttribute('style', 'font-size:13px;position:fixed;top:12px;right:0px;');
+document.body.appendChild(input3);
+
+function ButtonFunction3() {
+  window.open(vPath + '/oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=80')
+}
+
 function ButtonFunction1() {
   /*
   r = confirm('Loading can take up to 60 seconds.  Click to continue......')
