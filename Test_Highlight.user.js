@@ -290,7 +290,7 @@ if (ExcelArray.indexOf(teststring) == -1) {
         author = $('#acknowledgeForm_' + IDnum + '> table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
     }
     if (!author) {
-        author = prompt('Please enter label name', '');
+        //author = prompt('Please enter label name', '');
     }
     fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim() //alert(fixedauthor)
     //alert(fixedauthor)
