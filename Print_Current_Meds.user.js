@@ -18,7 +18,7 @@ input1.type = 'button';
 input1.id = 'Button'
 input1.value = 'Print Current Medication List';
 input1.onclick = showAlert1;
-input1.setAttribute('style', 'font-size:14px;position:fixed;top:55px;right:0px;');
+input1.setAttribute('style', 'font-size:14px;position:fixed;top:15px;right:0px;');
 document.body.appendChild(input1);
 
 function showAlert1() {
