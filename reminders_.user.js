@@ -25,10 +25,9 @@ Show Only Latest Revision of eForm Template
 Show Only Latest Revision of eForm Instance
 Patient Independent
 */
-
 var inputvar = 226 //form id goes here
-var providername = "Your name"
-var providerphone = "Your phone"
+var providername = "your name"
+var providerphone = "your phone"
 
 //**********************************************************
 
@@ -88,30 +87,44 @@ if (demo_no) {
 }
 if (params.demographicId) {
     var demoNo = params.demographicId
-    //  alert("Params" + demoNo)
+    //alert("Params" + demoNo)
 }
 
+//alert("demoNo="+demoNo)
+//alert("demono="+demono)
+
 /*
-//INR snippet******
+//INR snippet***********************************************************
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
     //if (params.demographicId){
     var ResultList = ["INR"]
 
     function ResultEmail() {
+      //alert("demoNo="+demoNo)
+      //alert("demono="+demono)
         var ebody = "Dear " + demoArrayVal[0] + ", %0D%0A Your latest " + ResultList[0] + " result is " + results[1] + "%0D%0A%0D%0A"
         //alert(ebody)
         var efooter = "%0D%0A%0D%0AReplies to this message are routed to an unmonitored mailbox intended only to receive your confirmation of appointment notification. %0D%0AWe are unable to respond to any email queries.  If you have questions please call us at " + providerphone + "."
         var emessage = "Please continue with your current Warfarin dosing and monthly INR testing.%0D%0A%0D%0A" + providername + " Office"
         var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
-        var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
-        window = window.open(mailto_link, 'emailWindow')
-        //$('input[type="button"][value=" E-Chart"]').click(); 
-        window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo=" + demoNo + "&providerNo=1&providerName=appointmentNo=&reason=Tel-Progress+Notes&appointmentDate=&start_time=&apptProvider=&providerview=" + "&instructions=" + ebody + emessage)
-        $(document).ready(function() {
-            $('#caseNote_note0').focus()
-            window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
-        });
+        //var mailto_link = 'mailto:' + email + '?Subject=Confidential medical information&body=' + ebody + emessage + efooter
+        //window = window.open(mailto_link, 'emailWindow')
+      //****2021-Dec-02
+        var mailto_link = "mailto&su=Confidential+medical+information&to=" + email + '&body=' + ebody + emessage + efooter
+        window.open("https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=" + mailto_link)
+      //****
+      
+        $('input[type="button"][value=" E-Chart"]').click(); 
+        setTimeout(function() {
+        //myWindow = window.open(vPath + "/casemgmt/forward.jsp?action=view&demographicNo="  + demoNo + "&providerNo=1" + "&instructions=" + ebody + emessage)
+        //$('#menu3 > a:nth-child(12)').click()
+        //window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management' + '&instructions=Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+        //2022-Jan-12
+        localStorage.setItem('instructions' + demoNo, 'Emailed: Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+        //alert(localStorage.getItem('instructions' + demoNo))
+        //$('#caseNote_note0').val('Emailed - Your latest ' + ResultList[0] + ' result is ' + results[1] + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+        }, 1000);
     }
 
     var tableRow = $("td").filter(function() {
@@ -210,7 +223,7 @@ if (params.segmentID) {
     //alert(mydocType)
     //alert(teststring)
     //alert(demoNo)
-} 
+}
 
 //*************AUTOTICKLER screen**********************************************************
 
@@ -318,7 +331,7 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
             //alert(myWindow.location)
             demoNo = params2.demographicNo
             demono = params2.demographicNo
-            demo_no = params2.demographicNo  //2021-Aug-27
+            demo_no = params2.demographicNo //2021-Aug-27
             //localStorage.setItem("DemoNo", demoNo);
         }, 500);
 
@@ -469,6 +482,7 @@ function ButtonFunction2() {
                 }
                 if (vPrev) {
                     window.open(vPath + '/oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
+                    //2021-Dec-17
                     setTimeout(function() {
                         // alert('Timeout')
                     }, 2000);
@@ -476,7 +490,7 @@ function ButtonFunction2() {
 
             }
         }
-    }); 
+    });
     //****set default times*****
     $('#Aller1').focus(function() {
         $('#Time3').click() //alert(this.id)
@@ -546,11 +560,14 @@ function ButtonFunction3() {
                 }
                 if (vPrev) {
                     window.open(vPath + '/oscarPrevention/AddPreventionData.jsp?prevention=' + vPrev + '&demographic_no=' + demono + '&prevResultDesc=' + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500')
+                   //2021-Dec-17
+                    //window.open(vPath + '/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=Immunizations' + '&instructions=Your latest ' + addthis + ' result is ' + addthis2 + ' -  Please continue with your current Warfarin dosing and monthly INR testing.')
+      
                 } //************END PREVENTION*****************
 
             }
         }
-    }); 
+    });
     //****set default times for pap*****
     $('#Aller1').focus(function() {
         $('#Time3').click() //alert(this.id)
@@ -636,9 +653,9 @@ if (demono > -1) {
     input50.onclick = ButtonFunction50;
     input50.setAttribute('style', 'font-size:16px;position:absolute;top:' + (310 + dd) + 'px;right:0px;background-color: orange;');
     document.body.appendChild(input50);
-     if (!parseInt(demono)) {
-     document.getElementById('emailbutton').style.visibility = 'hidden';
-     }
+    if (!parseInt(demono)) {
+        document.getElementById('emailbutton').style.visibility = 'hidden';
+    }
 
     function ButtonFunction50() {
         var email = demoArrayVal[0] + " " + demoArrayVal[1] + '<' + demoArrayVal[2] + '>'
@@ -647,4 +664,7 @@ if (demono > -1) {
         var mailto_link = "mailto&su=Confidential+medical+information&to=" + email
         window.open("https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=" + mailto_link)
     }
+
+
+
 }
