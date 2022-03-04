@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Not Book
 // @namespace   Stanscripts
-// @description Block T Appointments
+// @description Block T-slots
 // @include     */provider/providercontrol.jsp*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
@@ -12,11 +12,12 @@ var dd = String(today.getDate()).padStart(2, '0');
 var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
-today = yyyy + '-' + dd + '-' + mm;
-
-
-var mydate = document.getElementsByClassName('dateAppointment');
-var canbook = $(mydate).text().indexOf(today)
+today = yyyy + '-' + mm + '-' + dd;
+//alert(today)
+var mydate = $(document.getElementsByClassName('dateAppointment')).text()
+//alert(mydate)
+var canbook = mydate.indexOf(today)
+//var canbook = today.indexOf(mydate)
 //alert(canbook)
 
 if(canbook == -1){
