@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Not Book
 // @namespace   Stanscripts
-// @description GM cheatsheat demostration
+// @description Block T Appointments
 // @include     */provider/providercontrol.jsp*
 // @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
