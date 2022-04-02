@@ -26,8 +26,8 @@ Show Only Latest Revision of eForm Instance
 Patient Independent
 */
 var inputvar = 226 //form id goes here
-var providername = "your name"
-var providerphone = "your phone"
+var providername = "Dr. Hurwitz"
+var providerphone = "604-275-8228"
 
 //**********************************************************
 
@@ -93,7 +93,7 @@ if (params.demographicId) {
 //alert("demoNo="+demoNo)
 //alert("demono="+demono)
 
-/*
+
 //INR snippet***********************************************************
 //alert(window.location)
 if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
@@ -143,7 +143,7 @@ if (window.location.toString().indexOf("lab/CA/ALL/labDisplay") > -1) {
 }
 
 //End INR snippet***** 
-*/
+
 
 
 if (inputvar == 0) {
