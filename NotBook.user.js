@@ -31,7 +31,7 @@ for (var i = 0; i < myclass.length; i++) {
   var onclickvalue = myclass[i].getAttribute('title')
   if($(myclass[i]).parent().next('td').attr('title')=="Telehealth" || $(myclass[i]).parent().next('td').attr('title')=="NOT BOOK"){
       $(myclass[i]).attr("disabled", true);
-      $(myclass[i]).click(function(){ alert("Online booking only - PLEASE DO NOT BOOK BY PHONE") });
+      $(myclass[i]).click(function(){ alert("PLEASE DO NOT BOOK") });
       //$(myclass[i]).css('background-color', 'yellow');
       $(myclass[i]).removeAttr('onclick');
   }
