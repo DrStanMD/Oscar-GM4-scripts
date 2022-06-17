@@ -62,12 +62,12 @@ if (y > -1) {
         $(x).css('background-color', 'lightyellow');
         $(x).attr("id", "newId" + i)
       
-     // alert(window.location.toString().indexOf('oscarMeasurements'))
-  //  if (window.location.toString().indexOf('Screening Procedures') > -1){
+     //alert(window.location.toString().indexOf('Procedures'))
+    if (window.location.toString().indexOf('Procedures') > -1){
         var y = document.getElementsByName('value(inputValue-8)');
         $(y).css('background-color', 'lightyellow');
         $(y).attr("id", "newId8")
-  //  }
+    }
 
 
         Calendar.setup({
