@@ -14,7 +14,7 @@ var twilio_id = ''; // Twilio AccountSID
 var twilio_auth = ''; // Twilio Auth Token
 var twilio_number = '+1604xxxxxxx'; // Twilio phone number
 
-var doctor = ""
+var doctor = "Your Lastname"
 
 var myTextMessage = "Appointment reminder." +
     "                                          \n" +
