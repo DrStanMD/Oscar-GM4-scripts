@@ -3,7 +3,7 @@
 // @namespace   Stanscripts
 // @description Highlights lines on Transcription reports and Names the Labs
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-// @version 15.6
+// @version 15.7
 //@grant       none
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // ==/UserScript==
@@ -290,7 +290,7 @@ if (ExcelArray.indexOf(teststring) == -1) {
         author = $('#acknowledgeForm_' + IDnum + '> table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
     }
     if (!author) {
-        //author = prompt('Please enter label name', '');
+        author = prompt('Please enter label name', '');
     }
     fixedauthor = (author.replace(' <strong>Requesting Client: </strong>', '')).trim() //alert(fixedauthor)
     //alert(fixedauthor)
@@ -323,8 +323,21 @@ if (teststring == 'DIAG IMAGE') {
     if (!author) {
         author = $('#acknowledgeForm > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(4) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(1)').html()
     }
+    //2022-Jul-25
+    if (author.indexOf("FRASER HEALTH AUTHORITY") > -1) {
+        alert(author)
+        var myclass = document.getElementsByClassName('NarrativeRes');
+        //alert(myclass.length)
+        for (var i = 0; i < myclass.length; i++) {
+            var onclickvalue = $(myclass[i]).html()
+            if (onclickvalue.indexOf("EXAM TYPE") > -1) {
+                //alert($(myclass[i + 1]).text())
+                author = $(myclass[i + 1]).text()
+            }
+        }
+    }
     if (!author) {
-        //author = prompt('Please enter label name', '');
+        author = prompt('Please enter label name', '');
     } //alert(author)
 
     fixedauthor = (author.replace('Procedure: ', '')).trim() //alert(fixedauthor)
@@ -518,7 +531,7 @@ function renameTheLab(strOldName) {
             strNewName = 'CUL';
             break;
         case 'REFER2':
-            strNewName = 'HepHIV.HPyl';
+            strNewName = 'HepHIV.HPyl.Covid';
             break;
         case 'MICRO15':
             strNewName = 'HepHiv';
