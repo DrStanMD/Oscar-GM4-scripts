@@ -325,7 +325,7 @@ if (teststring == 'DIAG IMAGE') {
     }
     //2022-Jul-25
     if (author.indexOf("FRASER HEALTH AUTHORITY") > -1) {
-        alert(author)
+        //alert(author)
         var myclass = document.getElementsByClassName('NarrativeRes');
         //alert(myclass.length)
         for (var i = 0; i < myclass.length; i++) {
