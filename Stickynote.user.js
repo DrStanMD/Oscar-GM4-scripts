@@ -121,7 +121,7 @@ function getMeasures(measure) {
   }
   xmlhttp.open('GET', newURL, false);
   xmlhttp.send();
-  if (measure > - 1) {
+  if (measure > - 1 && mymsgId != '') {
     xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', vPath + 'oscarMessenger/ViewMessage.do?messageID=' + mymsgId, false);
     xmlhttp.send();
