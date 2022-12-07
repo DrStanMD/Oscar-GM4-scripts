@@ -91,7 +91,8 @@ if (str) {
 
 
 //Reserve line in header
-var header = document.getElementById('encounterHeader');
+//var header = document.getElementById('encounterHeader');
+var header = document.getElementById('encounterPageData')
 var headerReserve = header.innerHTML
 header.innerHTML += '<br>'
 
