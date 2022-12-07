@@ -3,6 +3,7 @@
 // @namespace   Stanscripts
 // @description adds demographic details to echart
 // @include     */casemgmt/forward.jsp?action=view&demographic*
+// @include   *oscarEncounter*
 // @include  *careconnect*
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       GM.setValue
