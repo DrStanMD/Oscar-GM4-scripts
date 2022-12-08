@@ -3,6 +3,7 @@
 // @namespace   Stanscript
 // @include    *efmformslistadd.jsp*
 // @include     */casemgmt/forward.jsp?action=view&demographic*
+// @include   *oscarEncounter*
 // @description Search Eforms
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @version     16.0  FF ESR 91 compatible
