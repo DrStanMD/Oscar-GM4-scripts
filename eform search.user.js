@@ -39,7 +39,7 @@ $(document).ready(function() {
     // https://stackoverflow.com/a/64392933
     document.getElementById("referral_name").addEventListener("input", function(event) {
         if (event.inputType == "insertReplacementText" || event.inputType == null) {
-            window.open(vPath + "eform/" + $(this).val())
+            window.open(vPath + "/eform/" + $(this).val())
             $(this).val("")
             this.focus()
         }
