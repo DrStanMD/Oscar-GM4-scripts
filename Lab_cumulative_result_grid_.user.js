@@ -188,7 +188,7 @@ function getMeasures(measure) {
       ]
       measureDateArray = [
       ]
-      
+     
       //var myRe = /<td align="right">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
       var myRe = /<td align="center">(.*?)([\d,\.]+)<\/td>/g; //for the measurement
       var myRe2 = /<td align="center">(\d{4})-(\d{2})-(\d{2}) (\d{2}):(\d{2}):(\d{2})<\/td>/g; //the observation date
@@ -196,7 +196,7 @@ function getMeasures(measure) {
       var q = myRe.exec(str).toString()
       var res = myRe.exec(str)
       //alert(res)
-      
+     
       if(!isNaN(res)){
       var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric
       }
@@ -204,28 +204,28 @@ function getMeasures(measure) {
       if(isNaN(res)){
       var myRe = /<td align="center">([\d,\.]+)<\/td>/g; //for the measurement numeric
       }
-      
+     
       var r = 0
       var myArray;
       //alert(str)
       //alert(myRe.exec(str))
-      
+     
         if(q.indexOf('<br />')>-1){ //for HIV result
         //alert(q)
         q = q.replace(/<br \/>/g,'');
         //alert(q)
-        str = (q+'</td>').toString()     
+        str = (q+'</td>').toString()    
         //alert(str)
         var myRe = /<td align="center">(\D+)<\/td>/g; //for the measurement non-numeric  
-        } 
-      
+        }
+     
       while ((myArray= myRe.exec(str)) !== null) {
         //alert(myArray[0])
         pend = myArray[0].indexOf('</td>')
         measureArray[r] = '<b>' + myArray[0].substring(19, pend) + '</b>'
         r++
       }
-      
+     
       var r = 0
       var myArray2;
       while ((myArray2 = myRe2.exec(str)) !== null) {
@@ -235,7 +235,7 @@ function getMeasures(measure) {
     }
     //measureArray.reverse()
     //measureDateArray.reverse()
-    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>' 
+    alldata[ii] = '<u>' + abrLabName + '</u>' + ':' + '<br>'
     //*************Limit to 10 results**********************
     vlimit = 10
     if (measureArray.length < 10) {
