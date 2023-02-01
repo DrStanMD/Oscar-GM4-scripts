@@ -3,10 +3,12 @@
 // @namespace   Stanscript
 // @include     *lab/CumulativeLabValues.jsp*
 // @include     *casemgmt/forward.jsp?action*
+// @include   *oscarEncounter*
+// @exclude  *oscarConsultationRequest*
 // @description Lab Grid Alphabetical Sort
 // @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
 // @grant       none
-// @version     15.4
+// @version     15.5
 // ==/UserScript==
 
 if (window.location.toString().indexOf("CumulativeLabValue") > -1) {
@@ -93,7 +95,9 @@ var INFArray = [
   '5351-2',
   '5353-8',
   '5348-8',
-  '94309-2'
+  '94309-2',
+  '1988-5', //CRP
+  '30522-7' //hsCRP
 ]
 var CBCArray = [
   '704-7',
@@ -147,9 +151,10 @@ var CDMArray = [
   '14933-6',
   '1871-3',
   '32309-7',
-  '718-7',
-  '1988-5',
-  'X10367' //Hb
+  '718-7', //hb
+  '1988-5', //CRP
+  '30522-7', //hsCRP
+  'X10367' //GFR
 ]
 function showAlert5() {
   window.open(vPath + '/lab/CumulativeLabValues.jsp?mysort=sort&demographic_no=' + params.demographicNo, '_blank', 'width=1000, scrollbars=yes, resizable=yes')
