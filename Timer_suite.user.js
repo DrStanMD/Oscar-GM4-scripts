@@ -2,9 +2,11 @@
 // @name        Timer Suite
 // @namespace   Stanscript
 // @include     */casemgmt/forward.jsp?action=view&demographic*
+// @include   *oscarEncounter*
+// @exclude  *oscarConsultationRequest*
 // @description Record echart time
 // @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @version     15.2
+// @version     15.3
 // @grant       none
 // ==/UserScript==
 /*
@@ -18,7 +20,6 @@ Using any parts of the code implies you fully understand the code and the risks 
 */
 //**********************************************************
 var inputvar = 377 //form id goes here
-//var inputvar = 252 //form id goes here
 //**********************************************************
 if (inputvar == 0) {
   alert('Set the specific HTML form Id for your Oscar system')
@@ -58,6 +59,12 @@ if (location.search) {
     params[nv[0]] = nv[1] || true;
   }
 }
+
+window.addEventListener("blur", reloadcookie);
+function reloadcookie() {
+  var y = (6 / 86400) //10 seconds
+  setCookie('RELOAD', 'RELOAD', y, 'path=/') // myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo)
+}
 //window.onbeforeunload = reloadcookie;
 window.addEventListener("beforeunload", reloadcookie);
 function reloadcookie() {
@@ -73,7 +80,7 @@ input130.setAttribute('style', 'font-size:18px;position:fixed;z-index:1;bottom:2
 document.body.appendChild(input130);
 document.getElementById('input130').style.backgroundColor = 'yellow';
 function showAlert130() {
-  var y = (6 / 86400) //10 seconds
+  var y = (10 / 86400) //10 seconds
   setCookie('RELOAD', 'RELOAD', y, 'path=/') //alert(input202.value)
   location.reload();
 }
@@ -102,8 +109,11 @@ function ButtonFunction2() {
     t=window.innerHeight-height
     l=window.innerWidth-width
   //******************
+ var startTime = new Date(getCookie('LOAD'))
+ //alert("Start before eform" + startTime)
  myWindow = window.open(vPath + '/eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, '', 'height='+height+', width='+width+', right='+l+', top='+t );
  //myWindow = window.open(vPath + 'eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, "MsgWindow", "width=10,height=10,right=200,top=0")
+  //alert(vPath + '/eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + params.demographicNo, '', 'height='+height+', width='+width+', right='+l+', top='+t );
 } 
 
 //===========Timer==========
@@ -126,16 +136,20 @@ String.prototype.toHHMMSS = function () {
 }
 if (!getCookie('RELOAD')) {
   var x = 0
- // alert(x)
+  //alert(getCookie('LOAD'))
   setCookie('LOAD', Date(), 360, 'path=/')
 } 
 else {
   var x = parseInt(getCookie('TIMER'))
+  //alert(x)
+  var startTime = new Date(getCookie('LOAD'))
+  //alert("Start " + startTime)
 }
 mytimer = setInterval(myMethod, 1000);
 var toRGB = 'set'
 function myMethod()
 {
+  input2.title = x
   x = x + 1
   n = x.toString()
   input2.onclick = '';
