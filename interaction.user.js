@@ -3,7 +3,6 @@
 // @namespace   Stanscript
 // @include     *REST/rxcui*
 // @include     *REST/interaction*
-// @include     *google*
 // @version     1
 // @grant       none
 // ==/UserScript==
