@@ -5,7 +5,7 @@
 // @include     *REST/interaction*
 // @include     *oscarRx/choosePatient.do*
 // @description Shows drug interactions
-// @version     1.2
+// @version     1.3
 // @grant       none
 // ==/UserScript==
 
@@ -46,7 +46,11 @@ if (URL.indexOf("oscarRx/choosePatient") > -1) {
         for (var i = 0; i < mytag.length; i++) {
             if (mytag[i].innerText.indexOf("Ingredient") > -1) {
                 y = mytag[i].innerText.substring(12)
+              //alert(y)
+                y = y.replace(/&nbsp;/g,' ').trim()
+              //alert(y)
                 y = y.split("/")
+
 
                 for (j = 0; j < y.length; j++) {
                     y[j] = y[j].trim()
