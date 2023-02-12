@@ -4,6 +4,7 @@
 // @include     *REST/rxcui*
 // @include     *REST/interaction*
 // @include     *oscarRx/choosePatient.do*
+// @description Shows drug interactions
 // @version     1.1
 // @grant       none
 // ==/UserScript==
