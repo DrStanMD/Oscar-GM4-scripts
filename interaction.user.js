@@ -5,7 +5,7 @@
 // @include     *REST/interaction*
 // @include     *oscarRx/choosePatient.do*
 // @description Shows drug interactions
-// @version     1.1
+// @version     1.2
 // @grant       none
 // ==/UserScript==
 
@@ -65,6 +65,7 @@ if (URL.indexOf("oscarRx/choosePatient") > -1) {
 }
 
 if (URL.indexOf("REST/interaction") > -1) {
+    var alertlist = ""
     //alert("HELLO")
     var parser, xmlDoc;
     var text = new XMLSerializer().serializeToString(document)
@@ -75,8 +76,10 @@ if (URL.indexOf("REST/interaction") > -1) {
     y = xmlDoc.getElementsByTagName("description").length
 
     for (x = 0; x < y; x++) {
-        alert(xmlDoc.getElementsByTagName("description")[x].childNodes[0].nodeValue);
+        z = (xmlDoc.getElementsByTagName("description")[x].childNodes[0].nodeValue);
+        alertlist = alertlist + "\n\n" + z
     }
+    alert(alertlist)
     window.close()
 }
 
