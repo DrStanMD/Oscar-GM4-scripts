@@ -1,11 +1,11 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @name        Interactions_O19
 // @namespace   Stanscript
 // @include     *REST/rxcui*
 // @include     *REST/interaction*
 // @include     *oscarRx/choosePatient.do*
 // @description Shows drug interactions
-// @version     1.2
+// @version     1.O19
 // @grant       none
 // ==/UserScript==
 
@@ -44,22 +44,17 @@ if (URL.indexOf("oscarRx/choosePatient") > -1) {
         var druglist = ["newsession"]
         var mytag = document.getElementsByTagName('a');
         for (var i = 0; i < mytag.length; i++) {
-            var onclickvalue = mytag[i].getAttribute('onclick')
-            //alert(onclickvalue)
-
-            if (onclickvalue.indexOf("https://online.epocrates.com") > -1) {
-                y = mytag[i].innerText
-                //alert(y)
-                // y = y.replace(/&nbsp;/g,' ').trim()
-                //alert(y)
+            if (mytag[i].outerHTML.indexOf("query=") > -1) {
+                y = mytag[i].innerHTML
+              
                 y = y.split("/")
 
                 for (j = 0; j < y.length; j++) {
                     y[j] = y[j].trim()
                     newword = y[j].match(/(?:^|(?:\.\s))(\w+)/)
-                    //alert(newword[0])
+                    alert(newword[0])
                     druglist.push(newword[0])
-                    //alert(druglist)
+                    alert(druglist)
                 }
             }
 
