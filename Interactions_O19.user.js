@@ -52,9 +52,9 @@ if (URL.indexOf("oscarRx/choosePatient") > -1) {
                 for (j = 0; j < y.length; j++) {
                     y[j] = y[j].trim()
                     newword = y[j].match(/(?:^|(?:\.\s))(\w+)/)
-                    alert(newword[0])
+                    //alert(newword[0])
                     druglist.push(newword[0])
-                    alert(druglist)
+                    //alert(druglist)
                 }
             }
 
