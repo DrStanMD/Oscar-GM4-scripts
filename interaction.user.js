@@ -5,7 +5,7 @@
 // @include     *REST/interaction*
 // @include     *oscarRx/choosePatient.do*
 // @description Shows drug interactions
-// @version     1.3
+// @version     1.6
 // @grant       none
 // ==/UserScript==
 
@@ -44,13 +44,15 @@ if (URL.indexOf("oscarRx/choosePatient") > -1) {
         var druglist = ["newsession"]
         var mytag = document.getElementsByTagName('a');
         for (var i = 0; i < mytag.length; i++) {
-            if (mytag[i].innerText.indexOf("Ingredient") > -1) {
+            if ((mytag[i].innerText.indexOf("Ingredient") > -1) || mytag[i].outerHTML.indexOf("query=") > -1) {       
+                y = mytag[i].innerText.replace(/&nbsp;/g,' ').trim()
+              
+                if (mytag[i].innerText.indexOf("Ingredient") > -1) {
                 y = mytag[i].innerText.substring(12)
-              //alert(y)
-                y = y.replace(/&nbsp;/g,' ').trim()
-              //alert(y)
+                   //alert(y)
+                }
+              
                 y = y.split("/")
-
 
                 for (j = 0; j < y.length; j++) {
                     y[j] = y[j].trim()
