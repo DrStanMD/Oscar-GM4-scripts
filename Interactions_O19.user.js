@@ -1,5 +1,5 @@
 ﻿// ==UserScript==
-// @name        Interactions
+// @name        Interactions_O19
 // @namespace   Stanscript
 // @include     *REST/rxcui*
 // @include     *REST/interaction*
