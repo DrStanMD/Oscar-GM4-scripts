@@ -98,7 +98,7 @@ if (URL.indexOf("oscarRx/choosePatient") > -1) {
 
 if (URL.indexOf("REST/interaction") > -1) {
     var alertlist = ""
-    //alert("HELLO")
+    
     var parser, xmlDoc;
     var text = new XMLSerializer().serializeToString(document)
 
