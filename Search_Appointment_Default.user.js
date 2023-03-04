@@ -9,9 +9,9 @@
 testfor = ($('body > center:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1)').html())
 if (testfor == null)
 {
-  var theDefault = 'Ghobassy, Bahar';
+  //var theDefault = 'Ghobassy, Bahar';
   //var theDefault ='Hurwitz, Stanley D';
-  
+  var theDefault = 'Dr. Hurwitz, Telehealth'
   var theOptions = document.getElementsByName('provider_no') [0].options;
   for (var theOption of theOptions)
   {
@@ -27,7 +27,8 @@ if (testfor == null)
   
   
   
-  var theDefault = '1 - 15 Minute Appointment';
+  //var theDefault = '1 - 15 Minute Appointment';
+  var theDefault = 'C - CDM Slot - 30 min'
   var theOptions = document.getElementsByName('code') [0].options;
   for (var theOption of theOptions)
   {
@@ -54,7 +55,6 @@ if (testfor == null)
       }
     }
   }
-  
   
   
 }
