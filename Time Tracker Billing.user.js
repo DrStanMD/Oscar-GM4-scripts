@@ -9,7 +9,7 @@
 // @include        *casemgmt/forward.jsp*
 // @include        *demographic/search.jsp*
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version 1
+// @version  2.0
 // ==/UserScript== 
 
 var mybillingscreen = localStorage.getItem("mybillingpref");
