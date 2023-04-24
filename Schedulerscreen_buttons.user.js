@@ -12,7 +12,7 @@
 /*
     var sql2pass="SELECT provider_no, last_name, first_name FROM provider WHERE provider_no='000000'";
 //alert(sql2pass)
-    $(document).ready(function () { 
+    $(document).ready(function () {
       alert(sql2pass)
         $.ajax({  
             url: "https://secure56.junoemr.com/SDHurwitzInc/oscarReport/RptByExample.do" ,
@@ -47,10 +47,10 @@ x.before(y)
 //*********CUSTOM BUTTON NAME AND RBT TEMPLATE.ID*************************************************************************************
 //ADD YOUR OWN RBT NAME HERE
 var input15text = 'CELL'//'CDM\'s today'
-var input18text =  'CDM\'s today' // 'CDM List' //'DVL'
+var input18text = 'CDM List' //'DVL' //'CDM\'s today' //
 //ADD TEMPLATE ID HERE
 var input15var = 65//2
-var input18var =  2 // 22 //56
+var input18var =  22 // 2 // 22 //56
 
 function setCookie(cname, cvalue, exdays, cpath) {
     var d = new Date();
@@ -131,7 +131,7 @@ function mySetDate(interval) {
     var month = dt.getMonth() + 1;
     var day = dt.getDate();
     var year = dt.getFullYear();
-    vCal = vPath + 'provider/providercontrol.jsp?year=' + year + '&month=' + month + '&day=' + day + '&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + ProvNum
+    vCal = vPath + 'provider/providercontrol.jsp?year=' + year + '&month=' + month + '&day=' + day + '&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + 999998//ProvNum
     //alert(vCal)
     window.open(vCal, '_self');
 }
@@ -175,7 +175,7 @@ function showAlert() {
                 //alert(timeslot)
                 var n = timeslot.indexOf("VALUE='15'");
                 //alert(n)
-                
+               
             }
         }
         xmlhttp.open("GET", newURL, false);
@@ -327,7 +327,7 @@ input14.id = 'input14'
 input14.onclick = showAlert14;
 input14.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:0px;');
 document.body.appendChild(input14);
-//document.getElementById("input14").style.backgroundColor = "white"; 
+//document.getElementById("input14").style.backgroundColor = "white";
 function showAlert14() {
     window.open(vPath + 'oscarEncounter/oscarConsultationRequest/config/EditSpecialists.jsp')
 }
@@ -338,7 +338,7 @@ input15.id = 'input15'
 input15.onclick = showAlert15;
 input15.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:135px;');
 document.body.appendChild(input15);
-//document.getElementById("input15").style.backgroundColor = "white"; 
+//document.getElementById("input15").style.backgroundColor = "white";
 function showAlert15() {
     window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input15var + '&flag=0')
 }
@@ -362,6 +362,19 @@ document.body.appendChild(input18);
 function showAlert18() {
     window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + input18var + '&flag=1')
 }
+
+var input1800 = document.createElement('input');
+input1800.type = 'button';
+input1800.value = "CDM today";
+input1800.onclick = showAlert1800;
+input1800.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:300');
+document.body.appendChild(input1800);
+
+function showAlert1800() {
+  
+    window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=2' + '&flag=1')
+}
+
 var input19 = document.createElement('input');
 input19.type = 'button';
 input19.value = 'Stan Today';
@@ -393,6 +406,7 @@ document.body.appendChild(input13);
 document.getElementById('input13').style.backgroundColor = 'yellow';
 
 function showAlert13() {
+//window.open("https://phsa.zoom.us/my/drhurwitztelehealth?pwd=bko1QStVUzhkZXh0NGdQRXVFYzRTdz09")
 var myWindow = window.open(vPath+'/eform/efmshowform_data.jsp?fid=916', "", "width=600,height=400");
 
    // unsafeWindow.findProvider()
@@ -410,7 +424,9 @@ $('#firstTable > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > a:nth-
 //link to Ocus
 $('#helpLink').attr('onclick', '');
 $('#helpLink').click(function() {
-    window.open('http://www.oscarcanada.org')
+  //window.open(' https://worldoscar.org/downloads/')
+  //window.open('http://oscarcanada.org/')
+  window.open("https://oscargalaxy.org/downloads/");
 });
 
 var input26 = document.createElement('input');
@@ -437,15 +453,47 @@ input115.id = 'input115'
 input115.onclick = showAlert115;
 input115.setAttribute('style', 'font-size:18px;position:fixed;bottom:28px;right:410px;');
 document.body.appendChild(input115);
-//document.getElementById("input115").style.backgroundColor = "white"; 
+//document.getElementById("input115").style.backgroundColor = "white";
 function showAlert115() {
     window.open(vPath + 'oscarReport/reportByTemplate/reportConfiguration.jsp?templateid=' + '88' + '&flag=1')
 }
 
+var input118 = document.createElement('input');
+input118.type = 'button';
+input118.value = 'College';
+input118.onclick = showAlert118;
+input118.id = 'input118'
+input118.setAttribute('style', 'font-size:18px;position:fixed;top:100px;right:0px;');
+document.body.appendChild(input118);
+document.getElementById('input118').style.backgroundColor = 'pink';
+
+function showAlert118() {
+window.open("https://www.cpsbc.ca/public/registrant-directory")
+}
+
+
+var input180 = document.createElement('input');
+input180.type = 'button';
+//input180.value = 'Drug interactions';
+input180.value = 'LFP Timer';
+input180.onclick = showAlert180;
+input180.setAttribute('style', 'font-size:16px;z-index:1;position:fixed;top:140px;right:0px');
+document.body.appendChild(input180);
+function showAlert180()
+{
+ // window.open('https://reference.medscape.com/drug-interactionchecker')
+ //window.open('https://online.epocrates.com/interaction-check')
+  window.open(vPath + 'eform/efmformadd_data.jsp?fid=1224&demographic_no=3911&appointment=&parentAjaxId=eforms')
+  window.open(vPath + 'oscarEncounter/IncomingEncounter.do?providerNo=1&appointmentNo=&demographicNo=3911')
+}
+
+
+
 var input113 = document.createElement('input');
 input113.type = 'button';
-input113.value = 'Locum';
-//input113.value = 'Zoom';
+//input113.value = 'CareCon';
+//input113.value = 'Locum';
+input113.value = 'Zoom';
 //input113.id = 'input113'
 input113.onclick = showAlert113;
 input113.setAttribute('style', 'font-size:18px;position:fixed;bottom:150px;right:0px;');
@@ -454,8 +502,13 @@ document.getElementById('input113').style.backgroundColor = 'lightgray';
 //document.getElementById('input113').style.backgroundColor = '#CCFF00';
 
 function showAlert113() {
-unsafeWindow.findProvider()
+window.open("https://phsa.zoom.us/")
+//window.open("https://health.careconnect.ca")
+  /*unsafeWindow.findProvider()
 var theDefault = 7 // 'Ghobassy, Telehealth';
 window.location.href = vPath + 'provider/providercontrol.jsp?year=2021&month=04&day=06&view=0&displaymode=day&dboperation=searchappointmentday&provider_no=' + theDefault
 setCookie("theDefault", theDefault, 360, "path=/");
+*/
 }
+
+
