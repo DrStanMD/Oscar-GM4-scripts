@@ -34,3 +34,14 @@ setTimeout(function(){
 $('body > form:nth-child(1) > div:nth-child(3) > input:nth-child(1)').click()
 }, 200);
 }
+
+var e = document.getElementsByName("default_servicetype")[0];
+//alert(e.value)
+localStorage.setItem("mybillingpref", e.value);
+//localStorage.getItem("mybillingpref");
+
+var e = document.getElementsByName("default_servicetype")[0];
+e.onchange = function(){
+//alert(e.value)
+localStorage.setItem("mybillingpref", e.value);
+}
