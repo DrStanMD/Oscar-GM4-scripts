@@ -12,6 +12,7 @@
 //alert(window.name)
 //alert(window.opener.name)
 
+
 //=====Get Parameters============
 //vPath = '../'
 var params = {};
@@ -33,6 +34,8 @@ if (localStorage.getItem("tickler_close") == "yes") {
     localStorage.setItem("tickler_close", "no")
 }
 
+
+if (window.location.toString().indexOf("oscarMessenger/CreateMessage.jsp") > -1) {
 var input = document.createElement('input');
 input.type = 'button';
 input.id = "input"
@@ -41,10 +44,11 @@ input.onclick = showAlert;
 input.setAttribute('style', 'font-size:18px;position:fixed;top:50px;left:600px;');
 document.body.appendChild(input);
 document.getElementById('input').style.backgroundColor = 'pink';
+}
 
 
 function showAlert() {
 var mymsg = "I have advised the patient that the doctor is not available to return your call today. \n\nI have advised to attend Urgent Care or ER today if this an urgent medical problem or emergency.\n\nIf this is non-urgent condition, patient should self-book online appointment.\n\nReason why patient called:"
 document.getElementsByName('subject')[0].value = "Patient called today requesting URGENT call back"
 document.getElementsByName('message')[0].value = mymsg
-}
+} 
