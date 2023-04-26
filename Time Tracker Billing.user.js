@@ -212,8 +212,9 @@ window.addEventListener("load", function() {
             $("input[type=checkbox][value=98021]").attr("title", "Standard procedures $60\nGynecologic examinations including pelvic and speculum examinations\nCervical cancer screening\nIUD removal\nCervical polypectomy\nAnoscopy\nTrigger point injections\nTendon and bursa injections and aspirations\nIntra-articular injections and aspirations\nVaricose vein injections\nNot payable with other visits or procedures (except minor)");
             $("input[type=checkbox][value=98020]").attr("title", "Advanced procedures $110\nBiopsy of skin or mucosa\nAbscess,superficial opening\nLaceration or foreign body,minor\nExcision of tumour of skin,subcutaneous tissue or scar\nParonychia\nNail removal\nWedge excision or Vandenbos procedure of one nail\nHemorrhoid thrombotic,enucleation\nInsertion of IUD\nInsertion or removal of subdermal contraceptive implant\nVenereal warts\nCervix punch biopsy\nEndometrial biopsy\nProctosigmoidoscopy,rigid,diagnostic\nAbscess-perianal, I+D, superficial\nNasal fracture - simple reduction or with reduction and splinting\nPeripheral nerve block, single or double\nBiopsy of vulva, excisional lesion\nFine Needle aspiration of solid or cystic lesion\nApplication of Cast\nCurettage and electrosurgery of skin carcinoma\nAural polyp removal or debridement, foreign body removal\nIncision of peritonsillar abscess – under local anesthetic\nRemoval of tumour (including intraoral) or scar revision – 2 to 5 cm\nNot payable with other visits or procedures (except minor)");
 
-            $("input[type=checkbox][value=98031]").closest('tr').css('background-color', 'yellow')
-            $("input[type=checkbox][value=98032]").closest('tr').css('background-color', 'lightpink')
+            $("input[type=checkbox][value=98031]").closest('tr').css('background-color', 'yellow') // sets color
+            $("input[type=checkbox][value=98032]").closest('tr').css('background-color', 'lightpink')  //sets color
+            $("input[type=checkbox][value=98022]").closest('tr').css('background-color', 'lightblue')  //sets color
 
             var Y = "430";
             var X = "570"
