@@ -42,7 +42,6 @@ DT[1] = [
   ' Dr. Ahmed',
   ' Dr. Rapoport',
   ' Dr. Cherry',
-  ' Dr. Sampath',
   ' Dr. Nguyen',
   ' Dr. Yun',
   ' Dr. Fu',
@@ -52,10 +51,9 @@ DT[1] = [
   ' Dr. Thomas',
   ' Dr. Blicker',
   ' Dr. Luciuk',
-  ' Dr. Caswell',
   'Psychiatry',
-  ' Dr. Fishman',
-  ' Dr. Jakubowski',
+  ' Dr. Joseph Lee,
+  ' Dr. Sharifi',
   ' Dr. Orenstein',
   'Orthopedics',
   'Opthalmology',
@@ -394,4 +392,3 @@ function showAlert12() {
   //$(CloseButton).click();
 }
 //-----------------------------------------------------------------
-
