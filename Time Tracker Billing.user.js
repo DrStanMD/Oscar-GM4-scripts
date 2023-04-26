@@ -215,6 +215,7 @@ window.addEventListener("load", function() {
             $("input[type=checkbox][value=98031]").closest('tr').css('background-color', 'yellow') // sets color
             $("input[type=checkbox][value=98032]").closest('tr').css('background-color', 'lightpink')  //sets color
             $("input[type=checkbox][value=98022]").closest('tr').css('background-color', 'lightblue')  //sets color
+            $("input[type=checkbox][value=03333]").closest('tr').css('background-color', 'yellow')  //sets color
 
             var Y = "430";
             var X = "570"
@@ -572,4 +573,3 @@ window.addEventListener("load", function() {
     
 
 }, false);
-
