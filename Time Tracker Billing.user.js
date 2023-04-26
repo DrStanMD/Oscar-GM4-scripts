@@ -9,7 +9,7 @@
 // @include        *casemgmt/forward.jsp*
 // @include        *demographic/search.jsp*
 // @require        http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @version  2.0
+// @version  2.1
 // ==/UserScript== 
 
 var mybillingscreen = localStorage.getItem("mybillingpref");
@@ -112,6 +112,7 @@ window.addEventListener("load", function() {
                         var i = $('#aunits').val();
                         localStorage.setItem("aUnits", i);
                     }
+                  alert("D "+a+"-"+b+"@"+c+"\nI "+d+"-"+e+"@"+f+"\nA "+g+"-"+h+"@"+i)  //2023-Apr-25
 
                 }
             }
@@ -527,22 +528,23 @@ window.addEventListener("load", function() {
         BT.onclick = BTT;
         BT.setAttribute("style", "font-size:12px;position:fixed;top:0px;left:0px; background-color: PINK");
         document.body.appendChild(BT);
-        /*
+
                  function BTT() {
-                  if(locator.indexOf('billForm=COV') != -1){
-                  a = locator.replace("COV", "LFP");
-                  b = a + '&billType=COV'
+                  if(locator.indexOf('billForm=GP') != -1){
+                  a = locator.replace("GP", "LFP");
+                  b = a + '&billType=GP'
                   location.href = b;
                   return;
                  }
                   if(locator.indexOf('billForm=LFP') != -1){
-                  a = locator.replace("LFP", "COV");
-                  b = a + '&billType=COV'
+                  a = locator.replace("LFP", "GP");
+                  b = a + '&billType=GP'
                   location.href = b;
                   return;
                  }
                }
-         */
+      
+        /*
         function BTT() {
             if (locator.indexOf('billForm=' + mybillingscreen) != -1) {
                 a = locator.replace(mybillingscreen, "LFP");
@@ -557,6 +559,7 @@ window.addEventListener("load", function() {
                 return;
             }
         }
+        */
 
 
         $('html').keydown(function(e) {
@@ -565,6 +568,6 @@ window.addEventListener("load", function() {
             }
         });
     }
+    
 
 }, false);
-
