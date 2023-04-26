@@ -84,7 +84,7 @@ window.addEventListener("load", function() {
             function copyTime() {
                 var t = $('#TimeTrackerDate').val();
                 if (t) {
-                    alert("Copied time from " + t);
+                    //alert("Copied time from " + t);
                     var DPT = $('#units').val();
                     if (DPT > 0) {
                         var a = $('#blockTs').val();
@@ -112,7 +112,7 @@ window.addEventListener("load", function() {
                         var i = $('#aunits').val();
                         localStorage.setItem("aUnits", i);
                     }
-                  alert("D "+a+"-"+b+"@"+c+"\nI "+d+"-"+e+"@"+f+"\nA "+g+"-"+h+"@"+i)  //2023-Apr-25
+                  alert("Copied time from " + t + "\nD: "+a+"-"+b+" for "+c+"u"+"\nI: "+d+"-"+e+" for "+f+"u"+"\nA: "+g+"-"+h+" for "+i+"u")  //2023-Apr-25
 
                 }
             }
