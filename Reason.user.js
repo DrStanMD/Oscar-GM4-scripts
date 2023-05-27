@@ -2,7 +2,7 @@
 // @name        Reason Replace
 // @namespace   Stanscript
 // @include     *providercontrol.jsp?year*
-// @description Replaces Reason-for-visit to the line below. Adds Wait Time button, day of week in weekview, Twilio text message
+// @description Replaces Reason-for-visit to the line below. Adds Wait Time button, Twilio text message
 // @version     15.2
 // @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
 // @grant       none
