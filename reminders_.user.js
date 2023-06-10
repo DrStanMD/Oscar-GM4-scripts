@@ -15,17 +15,7 @@
 // ==/UserScript==
 
 
-/*
-open about:config and set the following to true.
-dom.allow_scripts_to_close_windows
-Requires Push to Reminders eform found at:
-https://github.com/DrStanMD/Oscar-GM4-scripts/blob/master/Push_to_Reminder.zip
-Edit the "Push to Reminder" eform and mark the following boxes as checked:
-Show Only Latest Revision of eForm Template
-Show Only Latest Revision of eForm Instance
-Patient Independent
-*/
-var inputvar = 226 //form id goes here
+//var inputvar = 226 //form id goes here
 var providername = "Dr. Hurwitz"
 var providerphone = "604-275-8228"
 
