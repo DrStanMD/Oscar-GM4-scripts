@@ -15,6 +15,16 @@
 // ==/UserScript==
 
 
+/*
+open about:config and set the following to true.
+dom.allow_scripts_to_close_windows
+Requires Push to Reminders eform found at:
+https://github.com/DrStanMD/Oscar-GM4-scripts/blob/master/Push_to_Reminder.zip
+Edit the "Push to Reminder" eform and mark the following boxes as checked:
+Show Only Latest Revision of eForm Template
+Show Only Latest Revision of eForm Instance
+Patient Independent
+*/
 var inputvar = 226 //form id goes here
 var providername = "Dr. Hurwitz"
 var providerphone = "604-275-8228"
@@ -38,30 +48,31 @@ if (location.search) {
 }
 
 //get demo_no*********************************************
-var myParam = location.search.split('demographicId=')[1]
 
 if (!myParam) {
     //alert("NO DEMO NO")
     var x = document.getElementsByName("demog");
     if (x[0]) {
         var demo_no = x[0].value
-        //alert(demo_no)
+        //alert("1" + demo_no)
     }
     var x = document.querySelector('[title="Annotation"]');
     if (x) {
         var y = x.outerHTML
         var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;"));
-        //alert(demo_no)
+        //alert("2" + demo_no)
     }
     var x = document.getElementsByClassName("NarrativeRes");
     if (x[0]) {
         var y = x[0].innerHTML
         //alert(y)
         var demo_no = y.substring(y.lastIndexOf("demo=") + 5, y.lastIndexOf("&amp;labType=HL7"));
-        //alert(demo_no)
+        //alert("3" + demo_no)
     }
 
 } else {
+  var myParam = location.search.split('demographicId=')[1]
+    //alert(myParam)
     var res = myParam.indexOf('&')
     var demo_no = myParam.substring(0, res)
     //alert(demo_no)
@@ -76,6 +87,10 @@ if (demo_no) {
     // alert("derived" +demoNo)
 }
 if (params.demographicId) {
+    var demoNo = params.demographicId
+    //alert("Params" + demoNo)
+}
+if (params.demographic_no) {
     var demoNo = params.demographicId
     //alert("Params" + demoNo)
 }
@@ -299,11 +314,16 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
     }
 
     if (!parseInt(demoNo)) {
-
-        myWindow = window.open(vPath + "oscarMDS/SearchPatient.do?labType=HL7&segmentID=" + params.segmentID + "&name=")
+         localStorage.setItem("tickler_close","yes")
+         var tickler = unsafeWindow.handleLab('',params.segmentID,'ticklerLab')// opens message/tickler  window to get demoNo
+        //myWindow = window.open(vPath + "oscarMDS/SearchPatient.do?labType=HL7&segmentID=" + params.segmentID + "&name=")
         setTimeout(function() {
-            myWindow.close();
-        }, 500);
+            //myWindow.close();  //2022-Dec-13
+            //localStorage.setItem("DemoNo",params.demographicNo);  //2022-Dec-13 for reminders this line in EChart_KeyboardShortcuts
+            demoNo = localStorage.getItem("DemoNo")
+            demono = localStorage.getItem("DemoNo")
+            //alert(demoNo)
+        }, 500); //need to wait for echart to load.
 
 
 
@@ -324,15 +344,8 @@ if ((y == 0) && x.indexOf('lab/CA/ALL/labDisplay.jsp') && !params.demoName) {
             demo_no = params2.demographicNo //2021-Aug-27
             //localStorage.setItem("DemoNo", demoNo);
         }, 500);
-
-        /*
-        unsafeWindow.handleLab('', params.segmentID, 'ticklerLab') //open one of the buttons to get the demo no
-        setTimeout(function() {
-            demono = localStorage.getItem("DemoNo")
-            localStorage.setItem("DemoNo", "");
-            //demoNo = localStorage.getItem("DemoNo")
-        }, 500);
-        */
+      //2022-Dec-13
+        //alert(localStorage.getItem("DemoNo"))
 
     }
 
@@ -456,8 +469,14 @@ function ButtonFunction2() {
                     addthis = document.getElementById('myOther').value
                 }
                 $(myElement).html(RestoreHTML)
+                //2022-Dec-10
                 window.open(vPath + '/eform/efmformadd_data.jsp?fid=' + inputvar + '&demographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2) //PREVENTION SCREEN********
-                switch (addthis) {
+                //window.open(vPath + 'eform/addEForm.do?efmfid=' + inputvar + '&efmdemographic_no=' + demono + '&appointment=0' + '&myparam1=' + addthis + '&myparam2=' + addthis2) //PREVENTION SCREEN********                                                      
+              
+              switch (addthis) {
+                    case 'FIT':
+                        vPrev = 'FOBT'
+                        break;
                     case 'Mammogram':
                         vPrev = 'MAM'
                         break;
@@ -536,6 +555,9 @@ function ButtonFunction3() {
                 window.open(vPath + '/tickler/ForwardDemographicTickler.do?docType=' + mydocType + '&docId=' + params.segmentID + '&demographic_no=' + demono + '&myparam1=' + addthis + '&myparam2=' + addthis2, '_blank', 'width=800, height=500') // (vPath +'/lab/CA/ALL/labDisplay.jsp?demographicId='+demono+'&providerNo=1&segmentID='+params.segmentID+'&multiID=null')
                 //PREVENTION SCREEN********
                 switch (addthis) {
+                    case 'FIT':
+                        vPrev = 'FOBT'
+                        break;
                     case 'Mammogram':
                         vPrev = 'MAM'
                         break;
@@ -658,3 +680,5 @@ if (demono > -1) {
 
 
 }
+
+document.getElementById("AutoReminders").style.visibility = "hidden"; //2023-Apr-01
