@@ -5,7 +5,8 @@
 // @include     */casemgmt/forward.jsp?action=view&demographic*
 // @include   *oscarEncounter*
 // @include  *careconnect*
-// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
+// @exclude  *oscarConsultationRequest*
+// @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @grant       GM.setValue
 // @grant       GM.getValue
 // @version 16.3
@@ -14,15 +15,7 @@
 /************************
 for email to function properly:
 set about:config
-network.protocol-handler.expose.mailto      to true
-/****************************
-
-/*
-$(document).ready(function() {
-  //$('#enTemplate').width("200px"); //widens search field
- var searchbar = "<input id='referral_name' style ='background-color: white;' list='CP' name='referral_name' onblur='this.style.width = /200px/' onchange='getValues(this.value)' onfocus='this.style.width = '400px'' onselect='$(/#textTextArea/) focus();this.focus()' placeholder='any eform info' style='width: 200px; font-size: 12px; background: transparent;' type='text'><datalist id='CP'></datalist>" 
-$('#cppBoxes').append(searchbar)  
-});
+network.protocol-handler.expose.mailto to true
 */
 
 if (window.location.href.indexOf("careconnect") != -1) {
@@ -48,62 +41,72 @@ if (location.search) {
 
 
 //****Future use to open Measurement and write to the current Encounter note
+$(document).ready(function() {
 var inputgroupno
 var str = localStorage.getItem("instructions" + params.demographicNo)
 if (str) {
     //alert(str)
-
-    $(document).ready(function() {
-        //Find INR input group number  
-        
-          for (i = 0; i < 100; i++) {
-          
-              var x = ($('#menu3 > a:nth-child(' + i + ')').html())
-              if (x) {
-                  //alert(x)
-                  if (x.indexOf('INR') > -1) { //search for this group
-                      inputgroupno = i
-                    alert(i)
-                      break;
+    /*
+        $(document).ready(function() {
+            //Find INR input group number  
+            
+              for (i = 0; i < 100; i++) {
+              
+                  var x = ($('#menu3 > a:nth-child(' + i + ')').html())
+                  if (x) {
+                      //alert(x)
+                      if (x.indexOf('INR') > -1) { //search for this group
+                          inputgroupno = i
+                        alert(i)
+                          break;
+                      }
                   }
               }
-          }
-          
+              
+            inputgroupno = 12
+            //alert(inputgroupno)
+            $('#menu3 > a:nth-child(' + inputgroupno + ')').html()
+        });
+    */
 
-        inputgroupno = 12
-        //alert(inputgroupno)
-        $('#menu3 > a:nth-child(' + inputgroupno + ')').html()
-    });
-
-
-    $(document).ready(function() {
+    setTimeout(function() {
+        //window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
+        //alert(str)
+        $('#menu3 > a:nth-child(' + 12 + ')').click() //to click on the INR
         setTimeout(function() {
-            //window.open(vPath+'/oscarEncounter/oscarMeasurements/SetupMeasurements.do?groupName=INR Management')
-            $('#menu3 > a:nth-child(' + inputgroupno + ')').click() //to click on the INR
-            //activeNote.value += str
-            setTimeout(function() {
-                localStorage.setItem("instructions" + demographicNo, "")
-            }, 500);
-        }, 2000);
-
-    });
+            localStorage.setItem("instructions" + demographicNo, "")
+        }, 100);
+      }, 5000);
 }
+  })
 //****End Future use to write to the current Encounter note
 
 
 //Reserve line in header
 //var header = document.getElementById('encounterHeader');
 var header = document.getElementById('encounterPageData')
+
 var headerReserve = header.innerHTML
 header.innerHTML += '<br>'
 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
-//vPath = ('https://' + location.host + '/' + firstElement + '/')
-vPath = '../'
-var myParam = location.search.split('demographicNo=')[1]
-var res = myParam.indexOf('&')
-var demo_no = myParam.substring(0, res)
+vPath = ('https://' + location.host + '/' + firstElement + '/')
+//vPath = '../'
+//var myParam = location.search.split('demographicNo=')[1]
+//var res = myParam.indexOf('&')
+//var demo_no = myParam.substring(0, res)
+var demo_no = params.demographicNo
+var params = {};
+if (location.search) {
+    var parts = location.search.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+}
+//alert(demo_no)
 var demoArray = [
     'Blank for backward compatibility',
     'Blank for backward compatibility',
@@ -165,13 +168,7 @@ function getMeasures(measure) {
     xmlhttp.send();
 }
 $(document).ready(function() {
-  
-  /*
-   setTimeout(function() {
-     alert()
-         }, 100);     
-  */
-  
+
     //$('.Header > a:nth-child(3) > span:nth-child(1))').click()  //2021-Aug-23 for appointment history
     for (j = 0; j < demoArray.length; j++) {
         //demoArray[j]= demoArray[j].replace(/"/g, "").replace(/'/g, "").replace(/\(|\)/g, "");  //remove parentheses
@@ -233,7 +230,7 @@ $(document).ready(function() {
     alert(this.value);
     }); 
     */
-    
+
     //var str = $('.Header > a:nth-child(1)').text()
     var str = document.querySelector('[title="Master Record"]').innerHTML;
     //alert(str)
@@ -241,11 +238,12 @@ $(document).ready(function() {
     var ptname = res[1] + ' ' + res[0]
     ptname = ptname.replace(",", " ");
     //alert(ptname)
-  
+
     header.innerHTML += (headerExtra1.bold() + demoArrayVal[10] + headerExtra5.bold() + demoArrayVal[3] + ', ' + demoArrayVal[4] +
         ' ' + headerExtra4.bold() + HCN.bold() + "Age:".bold() + demoArrayVal[6].fontcolor("red").bold() + '   email: '.bold() + demoArrayVal[11] + '   '
-       //+ '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
-        + '<button type="button" id="button10">Send email</button>'
+        //+ '<a href="mailto:' + ptname + '<' + demoArrayVal[1] + '>' + '?Subject=Confidential medical information" target="_blank">Send Mail</a>'
+        +
+        '<button type="button" id="button10">Send email</button>'
     );
     document.getElementById("button10").onclick = do_email;
     document.getElementById("button10").setAttribute('style', 'font-size:12px;position:fixed;top:17px;right:90px;z-index:100;'); //background-color:#FC74FD
