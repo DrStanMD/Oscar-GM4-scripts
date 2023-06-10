@@ -9,7 +9,7 @@
 // @include  *tickler/ticklerAdd.jsp*
 // @include  *dms/showDocument.jsp?segmentID*
 // @description Adds Reminders for screening follow up,link to Rx and invoice
-// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @version     15.10
 // @grant       none
 // ==/UserScript==
