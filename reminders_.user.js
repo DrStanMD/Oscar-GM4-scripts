@@ -15,7 +15,7 @@
 // ==/UserScript==
 
 
-//var inputvar = 226 //form id goes here
+var inputvar = 226 //form id goes here
 var providername = "Dr. Hurwitz"
 var providerphone = "604-275-8228"
 
