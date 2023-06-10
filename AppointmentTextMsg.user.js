@@ -4,8 +4,7 @@
 // @include     *providercontrol.jsp?year*
 // @description Sends Text to alert appointment ready
 // @version     15.1
-// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-
+// @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @grant       none
 // ==/UserScript==
 
