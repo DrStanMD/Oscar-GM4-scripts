@@ -4,7 +4,7 @@
 // @include     *providercontrol.jsp?year*
 // @description Replaces Reason-for-visit to the line below. Adds Wait Time button, Twilio text message
 // @version     15.2
-// @require   https://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @grant       none
 // ==/UserScript==
 
