@@ -10,7 +10,7 @@ https://www.w3schools.com/jsref/jsref_obj_regexp.asp
 // @description GM cheatsheat demostration
 // @include     *
 // @include     *billing/CA/BC/billStatus.jsp*
-// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require     https://code.jquery.com/jquery-3.6.4.min.js
 // @require     dummyPath/eform/displayImage.do?imagefile=MyPersonalData.js
 // @grant       none
 // ==/UserScript==
@@ -42,7 +42,6 @@ alert(vPath)
 //*****************************************************************
 
 
-
 //========Buttons============
 var input1 = document.createElement("input");
 input1.type = "button";
@@ -64,6 +63,7 @@ function ButtonFunction1() {
     //alert(formPath)
     window.open(formPath)
 }
+//**************************
 
 
 //*******Store value on this computer*************
@@ -74,18 +74,6 @@ alert(myDataString)
 //**********************
 
 //***********************************************************************
-
-
-// ==UserScript==
-// @name        Invoice Screen
-// @namespace   Stanscripts
-// @description Create multiline statements
-// @include     *billing/CA/BC/billStatus.jsp?lastName=*
-// @include             *billing/CA/BC/billStatus.jsp*
-// @require   http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js
-// @require http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
-// @grant       none
-// ==/UserScript==
 
 // GM4 does not allow changing the innerhtml of another window. (mywindow.document.body.innerHTML = data)
 //Use the following code:
@@ -112,19 +100,6 @@ for (var i = 0; i < myclass.length; i++) {
   var onclickvalue = myclass[i].getAttribute('title')
   alert(onclickvalue)
 }
-
-
-//========Buttons============
-var input1=document.createElement("input");
-input1.type="button";
-input1.value="BUTTON NAME";
-input1.onclick = ButtonFunction1;
-input1.setAttribute("style", "font-size:12px;position:fixed;top:15px;right:520px;");
-document.body.appendChild(input1); 
-function ButtonFunction1(){
-alert("Hello World!")
-}
-//*************************************************************
 
 
 //=========Option List Default============
@@ -200,17 +175,6 @@ window.addEventListener('keypress', function(theEvent) {
 
 
 //===========Cookies===============
-function setCookie(cname, cvalue, exdays, cpath)
-{
-  var d = new Date();
-  var time = d.getTime();
-  time += 10 * 1000; //expires in 10 seconds, 3600 expires in one hour
-  d.setTime(time);
-  var expires=  'expires=' + d.toUTCString()
-  //alert(expires)
-  document.cookie = cname + '=' + cvalue + '; ' + expires + '; ' + cpath
-} 
-//***********************
 function setCookie(cname,cvalue,exdays,cpath)
 {
 var d = new Date();
@@ -232,6 +196,7 @@ for(var i=0; i<ca.length; i++)
 }
 return "";
 }
+//getCookie("Mycookie")
 //*****************************************************************
 
 
@@ -242,226 +207,5 @@ $("input[name='value(FieldName)']").val();
 $('#txt_name').val();
 $('input[name=\'every_min\']').css('background-color', 'yellow');
 
-//***********************************
-function dateCalc(addDays){
- var month = new Array(11);
- month[0]=  "Jan";
- month[1]=  "Feb";
- month[2]=  "Mar";
- month[3]=  "Apr";
- month[4]=  "May";
- month[5]=  "Jun";
- month[6]=  "Jul";
- month[7]=  "Aug";
- month[8]=  "Sep";
- month[9]=  "Oct";
- month[10]=  "Nov";
- month[11]=  "Dec";
-
-var d = new Date(ProjLMP.value)
-//alert(d)
-cycleAdjust = cycle.value-28
-//  d.setTime(d.getTime()+(addDays*oneDay)+(cycleAdjust*oneDay))
-  d.setTime(d.getTime()+(addDays*oneDay))
-  d = new Date(d)
-var yyyy = d.getFullYear().toString();
-//var mm = (d.getMonth()+1).toString();
-var mm = d.getMonth()
-var dd  = d.getDate().toString()
-//var mmChars = mm.split('');
-var ddChars = dd.split('');
-//datestring = yyyy + '-' + (mmChars[1]?mm:"0"+mmChars[0]) + '-' + (ddChars[1]?dd:"0"+ddChars[0]);   
-datestring = (ddChars[1]?dd:"0"+ddChars[0]) + ' '  + month[mm] + ', ' + yyyy 
-}
-
-//----------------------------------
-<script>
-function dateReformat(mydate){
-//Today's date
-
- var month = new Array(11);
- month[0]=  "Jan";
- month[1]=  "Feb";
- month[2]=  "Mar";
- month[3]=  "Apr";
- month[4]=  "May";
- month[5]=  "Jun";
- month[6]=  "Jul";
- month[7]=  "Aug";
- month[8]=  "Sep";
- month[9]=  "Oct";
- month[10]=  "Nov";
- month[11]=  "Dec";
-
-var today = new Date(mydate);
-alert(today)
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var mmm = month[today.getMonth()]
-    var yy = today.getFullYear().toString().substr(-2);
-    var yyyy = today.getFullYear();
-
-    if(dd<10){
-        dd='0'+dd
-    } 
-    if(mm<10){
-        mm='0'+mm
-    } 
-    var today = yyyy+'-'+mmm+'-'+dd;
-	
-alert(today)
-}
-dateReformat("2019/02/11")
-</script>
-
-//************************************
-
-//*****Radio Boxes*******
-
-<style type="text/css">
-[class^="only-one-radio"]{
-	width: 14px;
-	height: 14px;
-	font-size: 14px;
-	border: 1px solid #000000;
-	cursor: pointer;
-	font-weight: bold;
-	text-align: center;
-	background: aquamarine;
-}
-</style>
-
-<script>
-
-function init(){
-var x = document.getElementsByClassName("cradio");
-//alert(x.length)
-for (var i = 0; i < x.length; i++) {
-if (x[i].value=="X"){
-x[i].style.boxShadow = "inset 0 0 0 1000px black"}
-}
-}
-function update(vid){
-//alert(vid.id)
-var x = document.getElementsByClassName(vid.className);
-if (x.length==1 && x[0].value=="X"){
-x[0].style.boxShadow = "inset 0 0 0 1000px white"
-x[0].value=""
-return
-}
-for (var i = 0; i < x.length; i++) {
-    //x[i].style.backgroundColor = "white";
-    x[i].style.boxShadow = "inset 0 0 0 1000px white"
-    x[i].value = "";
-}
-vid.value = "X"
-//vid.style.backgroundColor = "black";
-vid.style.boxShadow = "inset 0 0 0 1000px black"
-}
-</script>
 
 
-<td><input id="radio1" class="only-one-radio1  cradio" name="radio1" onclick="update(this)" type="text" value="X" /</td>
-<td><input id="radio2" class="only-one-radio1 cradio" name="radio2" onclick="update(this)" type="text" /></td>
-<td><input id="radio3" class="only-one-radio1 cradio" name="radio3" onclick="update(this)" type="text" /></td>
-
-//********
-<style type="text/css">
-[class^="only-one-radio"] {
-	width: 14px;
-	height: 14px;
-	font-size: 14px;
-	border: 1px solid #000000;
-	cursor: pointer;
-	font-weight: bold;
-	text-align: center;
-	background: aquamarine;
-}
-</style>
-<script>
-
-function init(){
-var x = document.getElementsByClassName("cradio");
-//alert(x.length)
-for (var i = 0; i < x.length; i++) {
-if (x[i].value=="X"){
-x[i].style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box
-}
-}
-}
-function update(vid){
-//alert(vid.id)
-var x = document.getElementsByClassName(vid.className);
-if (x.length==1 && x[0].value=="X"){
-x[0].style.boxShadow = "inset 0 0 0 1000px white"
-x[0].value=""
-return
-}
-for (var i = 0; i < x.length; i++) {
-    x[i].style.boxShadow = "inset 0 0 0 1000px white"
-    x[i].value = "";
-}
-vid.value = "X"
-vid.style.boxShadow = "inset 0 0 0 1000px black"  //comment this line to inactivate black box
-}
-</script>
-</head>
-
-<body onload="init()">
-
-<table style="height: 29px; position: absolute; left: 91px; top: 57px;">
-	<tr>
-		<td>
-		<input id="radio1" class="only-one-radio1  cradio" onclick="update(this)" style="width: 14px" type="text" value="X" /></td>
-		<td>
-		<input id="radio2" class="only-one-radio1 cradio" onclick="update(this)" style="width: 14px" type="text" /></td>
-		<td>
-		<input id="radio3" class="only-one-radio1 cradio" onclick="update(this)" style="width: 14px" type="text" /></td>
-	</tr>
-	<tr>
-		<td>
-		<input id="radio4" class="only-one-radio2  cradio" onclick="update(this)" style="width: 14px" type="text" value="X" /></td>
-		<td>
-		<input id="radio4" class="only-one-radio2 cradio" onclick="update(this)" style="width: 14px" type="text" /></td>
-		<td>
-		<input id="radio4" class="only-one-radio2 cradio" onclick="update(this)" style="width: 14px" type="text" /></td>
-	</tr>
-	<tr>
-		<td>
-		<input id="radio5" class="only-one-radio3  cradio" onclick="update(this)" style="width: 14px" type="text" value="X" /></td>
-		<td>
-	</tr>
-</table>
-
-//**********************************
-
-//Finding the FID of the eForm with formName
-function findFID(formName){
-  //1) open the eForm List window in a hidden iframe so that the user does not see a window being opened and closed quickly
-  var pathArray = window.location.pathname.split( '/' );
-  var newURL = window.location.protocol + "//" + window.location.host +"/"+pathArray[1]+"/eform/efmformslistadd.jsp?demographic_no="+demoNo;
-  var eFormListWindow = window.open(newURL, "hiddenWin");
-  
-  document.getElementById("hiddenWin").onload = function(){
-    //2) find all <a> elements in the hiddenWin iFrame containing the eFormListWindow 
-//Finding the FID of the eForm with formName
-findFID('Email Text Consent Form')//alert(fid)
-function findFID(formName) {
-  var mytag = document.getElementsByTagName('a');
-  for (var i = 0; i < mytag.length; i++) {
-    //alert(mytag[i].innerHTML)
-    if (mytag[i].innerHTML.indexOf(formName) > - 1) {
-      var onclickvalue = mytag[i].innerHTML.trim()      //alert(onclickvalue)    
-      //parse out the fid from this <a> element's action script
-      var fidRe = /efmformadd_data\.jsp\?fid=(\d*)&/;
-      var actionScript = mytag[i].getAttribute('onclick');
-      //alert(actionScript)
-      var myArray;
-      if ((myArray = fidRe.exec(actionScript)) !== null) {
-        fid = myArray[1];
-        alert(fid)
-      }
-    }
-  }
-}
-//*****************************************************************************
