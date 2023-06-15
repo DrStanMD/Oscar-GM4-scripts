@@ -25,12 +25,12 @@ Show Only Latest Revision of eForm Template
 Show Only Latest Revision of eForm Instance
 Patient Independent
 */
-var inputvar = 226 //form id goes here
+
 var providername = "Dr. Your Name"
 var providerphone = "Your Phone number"
 
 //**********************************************************
-
+var inputvar = 1 
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
 vPath = ('https://' + location.host + '/' + firstElement + '/')
