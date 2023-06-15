@@ -26,8 +26,8 @@ Show Only Latest Revision of eForm Instance
 Patient Independent
 */
 var inputvar = 226 //form id goes here
-var providername = "Dr. Hurwitz"
-var providerphone = "604-275-8228"
+var providername = "Dr. Your Name"
+var providerphone = "Your Phone number"
 
 //**********************************************************
 
