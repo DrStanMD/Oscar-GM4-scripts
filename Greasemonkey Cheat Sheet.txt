@@ -19,19 +19,6 @@ https://www.w3schools.com/jsref/jsref_obj_regexp.asp
 //===== a word of Caution when using @require ========
 alert("My Bank Account Number is " +myBankNumber)
 
-//=====Get Parameters============
-var params = {};
-if (location.search) {
-    var parts = location.search.substring(1).split('&');
-    for (var i = 0; i < parts.length; i++) {
-        var nv = parts[i].split('=');
-        if (!nv[0]) continue;
-        params[nv[0]] = nv[1] || true;
-    }
-}
-
-alert(params.year)
-
 
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
@@ -83,11 +70,7 @@ alert(myDataString)
 to activate a function with OSCAR
 unsafeWindow.functionName
 
-//********************
-localStorage.setItem("myItem", "myData")
-var myDataString = localStorage.getItem("myItem");
 //**********************
-
 
 var mytag = document.getElementsByTagName('a');
 for (var i = 0; i < mytag.length; i++) {
@@ -115,16 +98,6 @@ for (var theOption of theOptions) {
     }
 }
 //*****************************************************************
-
-
-//========Get Path============
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1) )
-//alert(firstElement)
-vPath = ("https://" + location.host + "/"  + firstElement + "/")
-//alert(vPath)
-//*****************************************************************
-
 
 //=====Get Parameters============
 var params = {};
