@@ -13,7 +13,7 @@
 //var twilio_auth = ''; // Twilio Auth Token
 //var twilio_number = '+1604xxxxxxx'; // Twilio phone number
 
-var doctor = "Hurwitz"
+var doctor = "Your Name"
 
 var myTextMessage = "Appointment reminder." +
     "                                          \n" +
