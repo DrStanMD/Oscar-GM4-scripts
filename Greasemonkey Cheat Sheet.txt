@@ -11,9 +11,18 @@ https://www.w3schools.com/jsref/jsref_obj_regexp.asp
 // @include     *
 // @include     *billing/CA/BC/billStatus.jsp*
 // @require     https://code.jquery.com/jquery-3.6.4.min.js
-// @require     dummyPath/eform/displayImage.do?imagefile=MyPersonalData.js
 // @grant       none
 // ==/UserScript==
+
+
+//========Get Path============
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+//alert(firstElement)
+vPath = ("https://" + location.host + "/" + firstElement + "/")
+alert(vPath)
+//*****************************************************************
+
 
 //========Buttons============
 var input1 = document.createElement("input");
@@ -37,20 +46,6 @@ function ButtonFunction1() {
     window.open(formPath)
 }
 //**************************
-
-
-//===== a word of Caution when using @require ========
-alert("My Bank Account Number is " +myBankNumber)
-
-
-//========Get Path============
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-//alert(firstElement)
-vPath = ("https://" + location.host + "/" + firstElement + "/")
-alert(vPath)
-//*****************************************************************
-
 
 //*******Store value on this computer*************
 var myData = "Good Morning"
