@@ -15,20 +15,6 @@ https://www.w3schools.com/jsref/jsref_obj_regexp.asp
 // @grant       none
 // ==/UserScript==
 
-
-//===== a word of Caution when using @require ========
-alert("My Bank Account Number is " +myBankNumber)
-
-
-//========Get Path============
-var elements = (window.location.pathname.split('/', 2))
-firstElement = (elements.slice(1))
-//alert(firstElement)
-vPath = ("https://" + location.host + "/" + firstElement + "/")
-alert(vPath)
-//*****************************************************************
-
-
 //========Buttons============
 var input1 = document.createElement("input");
 input1.type = "button";
@@ -51,6 +37,19 @@ function ButtonFunction1() {
     window.open(formPath)
 }
 //**************************
+
+
+//===== a word of Caution when using @require ========
+alert("My Bank Account Number is " +myBankNumber)
+
+
+//========Get Path============
+var elements = (window.location.pathname.split('/', 2))
+firstElement = (elements.slice(1))
+//alert(firstElement)
+vPath = ("https://" + location.host + "/" + firstElement + "/")
+alert(vPath)
+//*****************************************************************
 
 
 //*******Store value on this computer*************
