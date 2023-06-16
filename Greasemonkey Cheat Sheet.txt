@@ -54,6 +54,9 @@ var myDataString = localStorage.getItem("myItem");
 alert(myDataString)
 //**********************
 
+//highlight an element
+$('#element').css('background-color', 'yellow');
+
 //***********************************************************************
 
 // GM4 does not allow changing the innerhtml of another window. (mywindow.document.body.innerHTML = data)
