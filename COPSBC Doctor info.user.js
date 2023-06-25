@@ -6,7 +6,7 @@
 // @include     *oscarConsultationRequest/config/AddSpecialist.jsp*
 // @include     *provider/providercontrol.jsp?year*
 // @include     *provider/receptionistfindprovider.jsp*
-// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js
+// @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @grant       none
 // ==/UserScript==
 
