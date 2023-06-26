@@ -128,7 +128,6 @@ if (teststring.indexOf("oscarConsultationRequest/config/AddSpecialist.jsp") > -1
     function showAlert() {
 
         var fax = params.cfax
-        var fax = "250-555-5555"
         fax = fax.replace(/%20/g, " ").trim();
 
         if (fax.indexOf("1") == 0) {
