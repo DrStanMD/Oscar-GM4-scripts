@@ -108,7 +108,7 @@ if (teststring.indexOf("registrant-directory/search-result") > -1) {
     document.getElementById('input').style.backgroundColor = 'lime';
 
     function showAlert() {
-      window.open(getCookie("myPath") + "/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp?cID=" + collegeID + "&cdiscipline=" + discipline + "&caddress=" + address + "&clname=" + lname + "&cfname=" + fname + "&cphone=" + phone + "&cfax=" + fax)
+        window.open(getCookie("myPath") + "/oscarEncounter/oscarConsultationRequest/config/AddSpecialist.jsp?cID=" + collegeID + "&cdiscipline=" + discipline + "&caddress=" + address + "&clname=" + lname + "&cfname=" + fname + "&cphone=" + phone + "&cfax=" + fax)
 
     }
 }
@@ -126,12 +126,19 @@ if (teststring.indexOf("oscarConsultationRequest/config/AddSpecialist.jsp") > -1
     document.getElementById('input').style.backgroundColor = 'lime';
 
     function showAlert() {
-      
-    var fax = params.cfax
-    fax = fax.replace(/%20/g, " ").trim();
-    fax = fax.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');  
-    //alert(fax)
-      
+
+        var fax = params.cfax
+        var fax = "250-555-5555"
+        fax = fax.replace(/%20/g, " ").trim();
+
+        if (fax.indexOf("1") == 0) {
+            fax = fax.replace(/\D+/g, '').replace(/(\d{4})(\d{3})(\d{4})/, '$1-$2-$3'); //convert to xxx-xxx-xxxx
+        } else {
+            fax = fax.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3'); //convert to xxx-xxx-xxxx
+        }
+
+        //alert(fax)
+
         var address = params.caddress.replace(/%20/g, " ").trim()
         //alert(address)
         $('#EctConAddSpecialistForm').val(params.cID.trim());
