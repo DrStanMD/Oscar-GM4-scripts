@@ -7,6 +7,7 @@
 // @include     *provider/providercontrol.jsp?year*
 // @include     *provider/receptionistfindprovider.jsp*
 // @require  https://code.jquery.com/jquery-3.6.4.min.js
+// @version     15.1
 // @grant       none
 // ==/UserScript==
 
