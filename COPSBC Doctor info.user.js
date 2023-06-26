@@ -129,10 +129,9 @@ if (teststring.indexOf("oscarConsultationRequest/config/AddSpecialist.jsp") > -1
       
     var fax = params.cfax
     fax = fax.replace(/%20/g, " ").trim();
-    fax = fax.replace(" ", "").trim();
-    fax = fax.replace("(","")
-    fax = fax.replace(")","-")
-   
+    fax = fax.replace(/\D+/g, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3');  
+    //alert(fax)
+      
         var address = params.caddress.replace(/%20/g, " ").trim()
         //alert(address)
         $('#EctConAddSpecialistForm').val(params.cID.trim());
