@@ -125,13 +125,20 @@ if (teststring.indexOf("oscarConsultationRequest/config/AddSpecialist.jsp") > -1
     document.getElementById('input').style.backgroundColor = 'lime';
 
     function showAlert() {
+      
+    var fax = params.cfax
+    fax = fax.replace(/%20/g, " ").trim();
+    fax = fax.replace(" ", "").trim();
+    fax = fax.replace("(","")
+    fax = fax.replace(")","-")
+   
         var address = params.caddress.replace(/%20/g, " ").trim()
         //alert(address)
         $('#EctConAddSpecialistForm').val(params.cID.trim());
         $('input[name=\'lastName\']').val(params.clname.replace(/%20/g, " ").trim());
         $('input[name=\'firstName\']').val(params.cfname.replace(/%20/g, " ").trim());
         $('input[name=\'phone\']').val(params.cphone.replace(/%20/g, " ").trim());
-        $('input[name=\'fax\']').val(params.cfax.replace(/%20/g, " ").trim());
+        $('input[name=\'fax\']').val(fax);
         $('textarea[name=\'address\']').val(address);
         $('input[name=\'specType\']').val(params.cdiscipline.replace(/%20/g, " ").trim());
 
