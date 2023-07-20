@@ -3,13 +3,12 @@
 // @namespace   Stanscripts
 // @description Adds a new patient when not assigned
 // @include     *lab/CA/ALL/labDisplay.jsp?*
-
 // @include     *demographic/demographicaddrecordcustom.jsp*
 // @version  15.1
 // @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @grant       none
 // ==/UserScript==
-// @include     */annotation/annotation.jsp?display*
+
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
