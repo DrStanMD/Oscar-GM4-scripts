@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name        Report Not Assigned
+// @name        Report Not Assigned OpenOSP
 // @namespace   Stanscripts
-// @description Adds a new patient when not assigned
+// @description Adds a new patient when not assigned OpenOSP
 // @include     *lab/CA/ALL/labDisplay.jsp?*
 // @include     *demographic/demographicaddarecordhtm.jsp*
 // @version  15.1
