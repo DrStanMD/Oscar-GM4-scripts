@@ -2,8 +2,7 @@
 // @name        Report Not Assigned
 // @namespace   Stanscripts
 // @description Adds a new patient when not assigned
-// @include     *lab/CA/ALL/labDisplay.jsp?segmentID*
-// @include   *lab/CA/ALL/labDisplay.jsp?demographicId*
+// @include     *lab/CA/ALL/labDisplay.jsp?D*
 // @include     */annotation/annotation.jsp?display*
 // @include     *demographic/demographicaddrecordcustom.jsp*
 // @version  15.1
