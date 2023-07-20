@@ -73,9 +73,9 @@ if (teststring.indexOf("lab/CA/ALL/labDisplay.jsp") > -1) {
     localStorage.setItem("mydemoArray", JSON.stringify(demoArray));
 }
 
-if (teststring.indexOf("demographic/demographicaddrecordcustom") > -1) {
+if (teststring.indexOf("demographicaddarecordhtm") > -1) {
 
-    //========Buttons============
+  //========Buttons============
     var input1 = document.createElement("input");
     input1.type = "button";
     input1.value = "UPDATE";
