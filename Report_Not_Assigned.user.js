@@ -9,6 +9,16 @@
 // @grant       none
 // ==/UserScript==
 
+//=====Get Parameters============
+var params = {};
+if (location.search) {
+    var parts = location.search.substring(1).split('&');
+    for (var i = 0; i < parts.length; i++) {
+        var nv = parts[i].split('=');
+        if (!nv[0]) continue;
+        params[nv[0]] = nv[1] || true;
+    }
+}
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
@@ -28,7 +38,7 @@ if (teststring.indexOf("lab/CA/ALL/labDisplay.jsp") > -1) {
     document.body.appendChild(input);
 
     function ButtonFunction() {
-        window.open(vPath + "/demographic/demographicaddrecordcustom.jsp")
+        window.open(vPath + "/demographic/demographicaddrecordcustom.jsp?flag=1")
     }
 
 
@@ -72,8 +82,10 @@ if (teststring.indexOf("demographic/demographicaddrecordcustom") > -1) {
     input1.id = "testbutton";
     input1.onclick = ButtonFunction1;
     input1.setAttribute("style", "font-size:14px; position:absolute; top:20px; left:400px; background-color: lime;");
+  
+  if(params.flag==1){  
     document.body.appendChild(input1);
-
+    }
 
     function ButtonFunction1() {
         var storedNames = JSON.parse(localStorage.getItem("mydemoArray"));
