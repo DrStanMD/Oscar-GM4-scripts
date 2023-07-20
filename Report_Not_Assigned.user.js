@@ -2,14 +2,14 @@
 // @name        Report Not Assigned
 // @namespace   Stanscripts
 // @description Adds a new patient when not assigned
-// @include     *lab/CA/ALL/labDisplay.jsp?D*
-// @include     */annotation/annotation.jsp?display*
+// @include     *lab/CA/ALL/labDisplay.jsp?*
+
 // @include     *demographic/demographicaddrecordcustom.jsp*
 // @version  15.1
 // @require  https://code.jquery.com/jquery-3.6.4.min.js
 // @grant       none
 // ==/UserScript==
-
+// @include     */annotation/annotation.jsp?display*
 //========Get Path============
 var elements = (window.location.pathname.split('/', 2))
 firstElement = (elements.slice(1))
@@ -25,7 +25,7 @@ if (teststring.indexOf("lab/CA/ALL/labDisplay.jsp") > -1) {
     input.value = "Add new patient";
     input.id = "newdemo";
     input.onclick = ButtonFunction;
-    input.setAttribute("style", "font-size:14px; position:absolute; top:200px; left:10px; background-color: lime;");
+    input.setAttribute("style", "font-size:14px; position:absolute; top:50px; left:300px; background-color: lime;");
     document.body.appendChild(input);
 
     function ButtonFunction() {
