@@ -98,12 +98,38 @@ if (teststring.indexOf("demographic/demographicaddrecordcustom") > -1) {
             }
         }
 
+        //For the month
+        var theDefault = dob[1]
+        var theOptions = document.getElementsByName('month_of_birth')[0].options;
+
+        for (var theOption of theOptions) {
+            if (typeof(theOption) == 'object') {
+                if (theOption.text == theDefault) {
+                    theOption.selected = true;
+                    break;
+                }
+            }
+        }
+
+        //For the day
+        var theDefault = dob[2]
+        var theOptions = document.getElementsByName('date_of_birth')[0].options;
+
+        for (var theOption of theOptions) {
+            if (typeof(theOption) == 'object') {
+                if (theOption.text == theDefault) {
+                    theOption.selected = true;
+                    break;
+                }
+            }
+        }
+
         $('input[name=\'last_name\']').css('background-color', 'yellow');
         $('input[name=\'last_name\']').val(lastname);
         $('input[name=\'first_name\']').val(firstname);
         $('input[name=\'year_of_birth\']').val(dob[0]);
-        $('input[name=\'month_of_birth\']').val(dob[1]);
-        $('input[name=\'date_of_birth\']').val(dob[2]);
+        //$('input[name=\'month_of_birth\']').val(dob[1]);
+        //$('input[name=\'date_of_birth\']').val(dob[2]);
         //$('input[name=\'sex\']').val(storedNames[3]);
         $('input[name=\'hin\']').val(storedNames[4]);
     }
